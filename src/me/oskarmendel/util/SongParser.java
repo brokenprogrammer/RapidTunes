@@ -7,6 +7,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 
+/**
+ * 
+ * @author Oskar
+ *
+ */
 public class SongParser {
 	
 	public String[] parseSong(String songurl){

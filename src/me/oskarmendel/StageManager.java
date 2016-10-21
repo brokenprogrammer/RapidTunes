@@ -7,6 +7,11 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Oskar
+ *
+ */
 public class StageManager {
 	
 	static StageManager instance;
