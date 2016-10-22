@@ -24,7 +24,7 @@ public class RapidTunes extends Application{
 		
 		System.out.println("Length of videoData: " + videoData.length);
 		for(int i = 0; i <= videoData.length-1; i++) {
-			System.out.println(videoData[i]);
+			//System.out.println(videoData[i]);
 		}
 		
 		//Launches this application and calls the start method.
