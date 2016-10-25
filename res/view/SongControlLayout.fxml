@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+
+
+<HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Button mnemonicParsing="false" text="&lt;">
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </Button>
+      <Button mnemonicParsing="false" text="Play">
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </Button>
+      <Button mnemonicParsing="false" text="&gt;">
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </Button>
+      <Label text=" 0:00">
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </Label>
+      <ProgressBar prefHeight="18.0" prefWidth="400.0" progress="0.0">
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </ProgressBar>
+      <Label text="9:99">
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </Label>
+      <CheckBox mnemonicParsing="false" text="Shfl">
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </CheckBox>
+      <CheckBox mnemonicParsing="false" text="Rept" />
+      <Slider prefHeight="14.0" prefWidth="80.0">
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </Slider>
+   </children>
+</HBox>

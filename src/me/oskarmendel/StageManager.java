@@ -1,22 +1,47 @@
+/**
+ * RapidTunes.
+ * The music application to help you use all your music sources in one place.
+ *
+ * The MIT License (MIT)
+ *
+ * Copyright (C) 2016 The RapidTunes
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package me.oskarmendel;
 
 import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
+ * Manages the loading and changes of a stage.
  * 
  * @author Oskar
- *
+ * @version 0.00.00
+ * @name StageManager.java
  */
 public class StageManager {
 	
@@ -24,6 +49,7 @@ public class StageManager {
 	private Stage mainStage;
 	
 	/**
+	 * Manages the setting up and loading of the main window.
 	 * 
 	 * @param primaryStage
 	 * @throws IOException
@@ -32,11 +58,15 @@ public class StageManager {
 		mainStage = primaryStage;
 		mainStage.setTitle("RapidTunes");
 		
+		// Loading all the layouts for the different parts of the application.
+		VBox navigationLayout = (VBox) loadLayout("/view/NavigationLayout.fxml");
+		VBox playlistControlLayout = (VBox) loadLayout("/view/PlaylistControlLayout.fxml");
+		HBox songControlLayout = (HBox) loadLayout("/view/SongControlLayout.fxml");
+		BorderPane rootLayout = (BorderPane) loadLayout("/view/RootLayout.fxml");
 		
-		VBox navigationLayout = (VBox) loadLayout("/view/Navigation.fxml");
-		AnchorPane rootLayout = (AnchorPane) loadLayout("/view/Root.fxml");
-		
-		rootLayout.getChildren().add(navigationLayout);
+		rootLayout.setTop(navigationLayout);
+		rootLayout.setLeft(playlistControlLayout);
+		rootLayout.setBottom(songControlLayout);
 		
 		Scene mainScene = new Scene(rootLayout);
 		mainStage.setScene(mainScene);
@@ -57,6 +87,8 @@ public class StageManager {
 		FXMLLoader loader = new FXMLLoader();
 		System.out.println(getClass().getResource(layout));
 		loader.setLocation(getClass().getResource(layout));
+		//Store controller of target layout
+		//controllers.put(layout, loader.getController());
 		Parent nodeLayout = loader.load();
 		
 		return nodeLayout;
