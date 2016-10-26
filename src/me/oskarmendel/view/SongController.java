@@ -27,6 +27,12 @@
 
 package me.oskarmendel.view;
 
-public class SongController {
+/**
+ * 
+ * @author Oskar
+ * @version 0.00.00
+ * @name SongController.java
+ */
+public class SongController implements RapidTunesController {
 
 }

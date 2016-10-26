@@ -27,6 +27,37 @@
 
 package me.oskarmendel.view;
 
-public class NavigationController {
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
+/**
+ * Controller class for the navigation menu of the application.
+ * 
+ * @author Oskar
+ * @version 0.00.00
+ * @name NavigationController.java
+ */
+public class NavigationController implements RapidTunesController {
+	
+	@FXML private Button navBackBtn;
+	@FXML private Button navFrontBtn;
+	@FXML private TextField navSearchField;
+	@FXML private Button navSearchBtn;
+	
+	/**
+	 * Initilize the navigation controller. 
+	 * TODO Add call to this initialzer from Rootcontroller.
+	 */
+	@FXML public void initialize() {
+		//Add action events to buttons.
+	}
+	
+	/**
+	 * 
+	 * @param searchTerms
+	 */
+	public void preformSearch(String searchTerms) {
+		System.out.println("Search for this.. " + searchTerms);
+	}
 }

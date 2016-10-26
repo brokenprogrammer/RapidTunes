@@ -27,7 +27,10 @@
 
 package me.oskarmendel;
 
+import me.oskarmendel.view.*;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -49,6 +52,23 @@ public class StageManager {
 	private Stage mainStage;
 	
 	/**
+	 * Stores the controllers of each layout view
+	 */
+	private Map<String, RapidTunesController> controllers = new HashMap<>();
+	
+	public NavigationController getNavigationController() {
+		return (NavigationController) controllers.get(RapidTunesController.NAVIGATION_LAYOUT);
+	}
+	
+	public SongController getSongController() {
+		return (SongController) controllers.get(RapidTunesController.SONGCONTROL_LAYOUT);
+	}
+	
+	public PlaylistController getPlaylistController() {
+		return (PlaylistController) controllers.get(RapidTunesController.PLAYLISTCONTROL_LAYOUT);
+	}
+	
+	/**
 	 * Manages the setting up and loading of the main window.
 	 * 
 	 * @param primaryStage
@@ -59,10 +79,10 @@ public class StageManager {
 		mainStage.setTitle("RapidTunes");
 		
 		// Loading all the layouts for the different parts of the application.
-		VBox navigationLayout = (VBox) loadLayout("/view/NavigationLayout.fxml");
-		VBox playlistControlLayout = (VBox) loadLayout("/view/PlaylistControlLayout.fxml");
-		HBox songControlLayout = (HBox) loadLayout("/view/SongControlLayout.fxml");
-		BorderPane rootLayout = (BorderPane) loadLayout("/view/RootLayout.fxml");
+		VBox navigationLayout = (VBox) loadLayout(RapidTunesController.NAVIGATION_LAYOUT);
+		VBox playlistControlLayout = (VBox) loadLayout(RapidTunesController.PLAYLISTCONTROL_LAYOUT);
+		HBox songControlLayout = (HBox) loadLayout(RapidTunesController.SONGCONTROL_LAYOUT);
+		BorderPane rootLayout = (BorderPane) loadLayout(RapidTunesController.ROOT_LAYOUT);
 		
 		rootLayout.setTop(navigationLayout);
 		rootLayout.setLeft(playlistControlLayout);
@@ -88,7 +108,7 @@ public class StageManager {
 		System.out.println(getClass().getResource(layout));
 		loader.setLocation(getClass().getResource(layout));
 		//Store controller of target layout
-		//controllers.put(layout, loader.getController());
+		controllers.put(layout, loader.getController());
 		Parent nodeLayout = loader.load();
 		
 		return nodeLayout;
