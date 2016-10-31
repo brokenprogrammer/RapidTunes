@@ -57,6 +57,7 @@ public class NavigationController implements RapidTunesController {
 	 * Initilize the navigation controller. 
 	 * TODO Fix out of bounds exception when scrolling search terms.
 	 * TODO Implement YouTube search functionality.
+	 * TODO Migrate code to store history to its own class.
 	 */
 	@FXML public void initialize() {
 		//Add action events to buttons.
@@ -64,19 +65,20 @@ public class NavigationController implements RapidTunesController {
 		
 		navBackBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent e){
-				if (searchIterator >= 1) {
-					System.out.println(searchHistory.size());
-					navSearchField.setText(searchHistory.get(searchIterator-2)); //Fix out of bounds exception
+				if (searchIterator > 1) {
 					searchIterator -= 1;
+					System.out.println("Searchs: " + searchHistory.size() + " Current: " + searchIterator);
+					navSearchField.setText(searchHistory.get(searchIterator-1)); //Fix out of bounds exception
 				}
 			}
 		});
 		
 		navFrontBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent e){
-				if (searchIterator <= searchHistory.size()-1) {
-					System.out.println(searchHistory.size());
+				if (searchIterator < searchHistory.size()) {
 					searchIterator += 1;
+					System.out.println("Searchs: " + searchHistory.size() + " Current: " + searchIterator);
+					navSearchField.setText(searchHistory.get(searchIterator-1)); //Fix out of bounds exception
 				}
 			}
 		});
