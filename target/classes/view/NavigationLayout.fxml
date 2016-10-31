@@ -29,10 +29,10 @@
       </MenuBar>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" text="&lt;" />
-            <Button mnemonicParsing="false" text="&gt;" />
-            <TextField text="Search.." />
-            <Button mnemonicParsing="false" text="Search" />
+            <Button fx:id="navBackBtn" mnemonicParsing="false" text="&lt;" />
+            <Button fx:id="navFrontBtn" mnemonicParsing="false" text="&gt;" />
+            <TextField fx:id="navSearchField" text="Search.." />
+            <Button fx:id="navSearchBtn" mnemonicParsing="false" text="Search" />
          </children>
       </HBox>
    </children>

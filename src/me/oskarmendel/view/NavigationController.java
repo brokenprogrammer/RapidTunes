@@ -27,6 +27,11 @@
 
 package me.oskarmendel.view;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -45,12 +50,45 @@ public class NavigationController implements RapidTunesController {
 	@FXML private TextField navSearchField;
 	@FXML private Button navSearchBtn;
 	
+	List<String> searchHistory = new ArrayList<String>();
+	int searchIterator = 0;
+	
 	/**
 	 * Initilize the navigation controller. 
-	 * TODO Add call to this initialzer from Rootcontroller.
+	 * TODO Fix out of bounds exception when scrolling search terms.
+	 * TODO Implement YouTube search functionality.
 	 */
 	@FXML public void initialize() {
 		//Add action events to buttons.
+		System.out.println("Initialized navigation controller.");
+		
+		navBackBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override public void handle(ActionEvent e){
+				if (searchIterator >= 1) {
+					System.out.println(searchHistory.size());
+					navSearchField.setText(searchHistory.get(searchIterator-2)); //Fix out of bounds exception
+					searchIterator -= 1;
+				}
+			}
+		});
+		
+		navFrontBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override public void handle(ActionEvent e){
+				if (searchIterator <= searchHistory.size()-1) {
+					System.out.println(searchHistory.size());
+					searchIterator += 1;
+				}
+			}
+		});
+		
+		navSearchBtn.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override public void handle(ActionEvent e) {
+		        preformSearch(navSearchField.getText());
+		        //Save the search to history so we can back to it later.
+		        searchHistory.add(navSearchField.getText());
+		        searchIterator += 1;
+		    }
+		});
 	}
 	
 	/**
