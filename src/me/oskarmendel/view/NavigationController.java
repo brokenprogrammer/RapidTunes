@@ -35,6 +35,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import me.oskarmendel.player.search.YouTubeSearch;
 
 /**
  * Controller class for the navigation menu of the application.
@@ -62,6 +63,7 @@ public class NavigationController implements RapidTunesController {
 	@FXML public void initialize() {
 		//Add action events to buttons.
 		System.out.println("Initialized navigation controller.");
+		YouTubeSearch youtubeSearch = new YouTubeSearch();
 		
 		navBackBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent e){
@@ -89,6 +91,9 @@ public class NavigationController implements RapidTunesController {
 		        //Save the search to history so we can back to it later.
 		        searchHistory.add(navSearchField.getText());
 		        searchIterator += 1;
+		        
+		        //Performs the search for the keywords in the YouTube data API.
+		        youtubeSearch.search(navSearchField.getText());
 		    }
 		});
 	}

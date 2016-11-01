@@ -32,6 +32,7 @@ package me.oskarmendel.player.search;
  * Search History object to keep track of search entries.
  * 
  * TODO Implement this as Data structure object from my book.
+ * TODO Implement this as a Doubly-Linked List.
  * 
  * @author Oskar
  * @version 0.00.00
