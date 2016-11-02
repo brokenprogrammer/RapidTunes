@@ -29,6 +29,7 @@ package me.oskarmendel;
 
 import me.oskarmendel.view.*;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.fxml.FXMLLoader;
@@ -89,6 +90,7 @@ public class StageManager {
 		rootLayout.setBottom(songControlLayout);
 		
 		Scene mainScene = new Scene(rootLayout);
+		mainScene.getStylesheets().add(getClass().getResource(RapidTunesController.DARK_STYLING).toString());
 		mainStage.setScene(mainScene);
 		mainStage.setMinWidth(800);
 		mainStage.setMinHeight(600);

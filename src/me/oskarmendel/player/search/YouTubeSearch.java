@@ -72,7 +72,7 @@ public class YouTubeSearch {
 		// using the API key stored inside the properties file.
 		Properties properties = new Properties();
 		try {
-			InputStream inStream = getClass().getResourceAsStream("/keys/" + PROPERTIES_FILENAME);
+			InputStream inStream = getClass().getResourceAsStream("/properties/" + PROPERTIES_FILENAME);
 			properties.load(inStream);
 			
 			//Set the loaded key

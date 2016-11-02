@@ -38,12 +38,15 @@ public interface RapidTunesController {
 	String LAYOUTS_PATH = "/view/";
 	String IMAGES_PATH = "/images/";
 	String STYLES_PATH = "/css/";
-	String KEYS_PATH = "/keys/";
+	String PROPERTIES_PATH = "/properties/";
 
 	String ROOT_LAYOUT = LAYOUTS_PATH + "RootLayout.fxml";
 	String NAVIGATION_LAYOUT = LAYOUTS_PATH + "NavigationLayout.fxml";
 	String SONGCONTROL_LAYOUT = LAYOUTS_PATH + "SongControlLayout.fxml";
 	String PLAYLISTCONTROL_LAYOUT = LAYOUTS_PATH + "PlaylistControlLayout.fxml"; 
 	
-	String YOUTUBE_PROPERTIES = KEYS_PATH + "youtube.properties";
+	String DEFAULT_STYLING = STYLES_PATH + "Default.css";
+	String DARK_STYLING = STYLES_PATH + "Dark.css";
+	
+	String YOUTUBE_PROPERTIES = PROPERTIES_PATH + "youtube.properties";
 }
