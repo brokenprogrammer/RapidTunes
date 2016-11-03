@@ -71,6 +71,7 @@ public class StageManager {
 	
 	/**
 	 * Manages the setting up and loading of the main window.
+	 *  TODO: Decide what stylesheet to load depending on what it says in the properties file
 	 * 
 	 * @param primaryStage
 	 * @throws IOException

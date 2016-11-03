@@ -35,6 +35,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import me.oskarmendel.player.search.SearchHistoryList;
 import me.oskarmendel.player.search.YouTubeSearch;
 
 /**
@@ -63,6 +64,21 @@ public class NavigationController implements RapidTunesController {
 	@FXML public void initialize() {
 		//Add action events to buttons.
 		System.out.println("Initialized navigation controller.");
+		
+		/* TEMPORARY CODE FOR TESTING STACKED LIST. */
+		SearchHistoryList searchH = new SearchHistoryList();
+		searchH.addFirst("Test1");
+		searchH.addFirst("Test2");
+		searchH.addFirst("Test3");
+		searchH.add("Test4");
+		searchH.add("Test5");
+		searchH.add("Test6");
+		searchH.addFirst("Test7");
+		searchH.displayList();
+		System.out.println("Popped element with text: " + searchH.remove());
+		System.out.println("Popped element with text: " + searchH.remove());
+		searchH.displayList();
+		
 		YouTubeSearch youtubeSearch = new YouTubeSearch();
 		
 		navBackBtn.setOnAction(new EventHandler<ActionEvent>() {
