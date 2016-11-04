@@ -35,8 +35,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import me.oskarmendel.player.search.SearchHistoryList;
 import me.oskarmendel.player.search.YouTubeSearch;
+import me.oskarmendel.util.DoublyLinkedList;
 
 /**
  * Controller class for the navigation menu of the application.
@@ -66,7 +66,7 @@ public class NavigationController implements RapidTunesController {
 		System.out.println("Initialized navigation controller.");
 		
 		/* TEMPORARY CODE FOR TESTING STACKED LIST. */
-		SearchHistoryList searchH = new SearchHistoryList();
+		DoublyLinkedList<String> searchH = new DoublyLinkedList<String>();
 		searchH.addFirst("Test1");
 		searchH.addFirst("Test2");
 		searchH.addFirst("Test3");
@@ -75,8 +75,9 @@ public class NavigationController implements RapidTunesController {
 		searchH.add("Test6");
 		searchH.addFirst("Test7");
 		searchH.displayList();
-		System.out.println("Popped element with text: " + searchH.remove());
-		System.out.println("Popped element with text: " + searchH.remove());
+		System.out.println("Popped element with text: " + searchH.removeFirst());
+		System.out.println("Popped element with text: " + searchH.removeFirst());
+		//System.out.println("Popped element with text: " + searchH.remove());
 		searchH.displayList();
 		
 		YouTubeSearch youtubeSearch = new YouTubeSearch();
