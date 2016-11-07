@@ -27,6 +27,7 @@
 
 package me.oskarmendel.util;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -65,6 +66,7 @@ public class DoublyLinkedList<T> implements List<T>{
 			newEntry.prev = null; //no need since its null by default
 			first = newEntry;
 		}
+		this.size++;
 	}
 	
 	/**
@@ -87,6 +89,7 @@ public class DoublyLinkedList<T> implements List<T>{
 			newEntry.next = null;
 			last = newEntry;
 		}
+		this.size++;
 		return true;
 	}
 	
@@ -109,6 +112,7 @@ public class DoublyLinkedList<T> implements List<T>{
 			} else {
 				first = first.next;
 			}
+			this.size--;
 			return oldFirst.getContent(); // CHECK THIS HERE <------
 		}
 		return null;
@@ -117,31 +121,24 @@ public class DoublyLinkedList<T> implements List<T>{
 	/**
 	 * Removes the last item of the list.
 	 * 
-	 * @return The searchTerm within the removed History object.
+	 * @return True if object was removed, false otherwise.
 	 */
-	/*public String remove() {
+	@Override
+	public boolean remove(Object o) {
 		if (isEmpty()) {
 			//Throw exception
 		}
 		
 		if (!isEmpty()) {
-			String searchTerm = "";
-			
-			if(first.next == null) {
+			if (first.next == null) {
 				first = null;
 				last = null;
 			} else {
-				searchTerm = last.toString();
 				last = last.prev;
 				last.next = null;
 			}
-			return searchTerm;
+			return true;
 		}
-		return null;
-	}*/
-	@Override
-	public boolean remove(Object o) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
@@ -174,24 +171,57 @@ public class DoublyLinkedList<T> implements List<T>{
 		return this.size;
 	}
 
+	/**
+	 * Checks if object exists within the list.
+	 * 
+	 * @param object - object to look for within the list.
+	 * @return True if the object exists in the list.
+	 */
 	@Override
-	public boolean contains(Object o) {
-		// TODO Auto-generated method stub
+	public boolean contains(Object object) {
+		if (!isEmpty()) {
+			for (Node<T> x = first; x != null; x = x.next) {
+				if (object.equals(x.getContent())) {
+					return true;
+				}
+			}
+		}
 		return false;
 	}
-
+	
+	/**
+	 * 
+	 */
 	@Override
 	public Iterator<T> iterator() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Returns an array of all the elements in this list.
+	 * 
+	 * @return an array containing all the elements of this list.
+	 */
 	@Override
 	public Object[] toArray() {
-		// TODO Auto-generated method stub
+		if (!isEmpty()) {
+			Object[] list = new Object[this.size()];
+			int i = 0;
+			
+			for (Node<T> x = first; x != null; x = x.next) {
+				list[i] = (x.getContent());
+				i++;
+			}
+			
+			return list;
+		}
 		return null;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public <T> T[] toArray(T[] a) {
 		// TODO Auto-generated method stub
@@ -228,15 +258,35 @@ public class DoublyLinkedList<T> implements List<T>{
 		return false;
 	}
 
+	/**
+	 * Removes all the elements from the list.
+	 * The list will be empty after this call returns.
+	 */
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		first = null;
+		last  = null;
+		size = 0;
 	}
 
+	/**
+	 * Returns the element at the specified index.
+	 * 
+	 * @param index - position of the item to return.
+	 * @return the element at the specified position in this list.
+	 */
 	@Override
 	public T get(int index) {
-		// TODO Auto-generated method stub
+		
+		if (!isEmpty()) {
+			for (Node<T> x = first; x != null; x = x.next) {
+				if (index == 0) {
+					return x.getContent();
+				}
+				index--;
+			}
+		}
+		
 		return null;
 	}
 

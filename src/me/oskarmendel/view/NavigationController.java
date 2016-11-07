@@ -80,6 +80,12 @@ public class NavigationController implements RapidTunesController {
 		//System.out.println("Popped element with text: " + searchH.remove());
 		searchH.displayList();
 		
+		searchH.add("Lego");
+		searchH.contains(123);
+		searchH.contains("Lego");
+		
+		System.out.println(searchH.get(5));
+		
 		YouTubeSearch youtubeSearch = new YouTubeSearch();
 		
 		navBackBtn.setOnAction(new EventHandler<ActionEvent>() {
