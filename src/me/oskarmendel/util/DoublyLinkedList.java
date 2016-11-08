@@ -27,7 +27,6 @@
 
 package me.oskarmendel.util;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -119,17 +118,17 @@ public class DoublyLinkedList<T> implements List<T>{
 	}
 	
 	/**
-	 * Removes the last item of the list.
+	 * Removes the last element of the list.
 	 * 
-	 * @return True if object was removed, false otherwise.
+	 * @return the value from the removed item.
 	 */
-	@Override
-	public boolean remove(Object o) {
+	public T remove() {
 		if (isEmpty()) {
 			//Throw exception
 		}
 		
 		if (!isEmpty()) {
+			Node<T> oldLast = last;
 			if (first.next == null) {
 				first = null;
 				last = null;
@@ -137,8 +136,21 @@ public class DoublyLinkedList<T> implements List<T>{
 				last = last.prev;
 				last.next = null;
 			}
-			return true;
+			this.size--;
+			return oldLast.getContent(); 
 		}
+		return null;
+	}
+	
+	/**
+	 * Removes the first occurrence of the specified item from the list.
+	 * 
+	 * @param o - object to be removed if present.
+	 * @return True if object was removed, false otherwise.
+	 */
+	@Override
+	public boolean remove(Object o) {
+		// TODO currently not doing what it supposed to do.
 		return false;
 	}
 	
@@ -190,12 +202,24 @@ public class DoublyLinkedList<T> implements List<T>{
 	}
 	
 	/**
+	 * Returns an new iterator capable of iterating over all the elements
+	 * within this list.
 	 * 
+	 * @return an iterator of the elements in this list.
 	 */
 	@Override
 	public Iterator<T> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new DoublyLinkedListIterator();
+	}
+	
+	/**
+	 * Returns an iterator capable of iterating forward and backwards of 
+	 * the elements within the list.
+	 * 
+	 * @return a new DoublyLinkedListIterator instance.
+	 */
+	public DoublyLinkedListIterator getIterator() {
+		return new DoublyLinkedListIterator();
 	}
 
 	/**
@@ -277,7 +301,6 @@ public class DoublyLinkedList<T> implements List<T>{
 	 */
 	@Override
 	public T get(int index) {
-		
 		if (!isEmpty()) {
 			for (Node<T> x = first; x != null; x = x.next) {
 				if (index == 0) {
@@ -290,18 +313,44 @@ public class DoublyLinkedList<T> implements List<T>{
 		return null;
 	}
 
+	/**
+	 * Replaces the element at the given index.
+	 * 
+	 * @param index - position of the element to replace.
+	 * @param element - the element to replace the old element with.
+	 * @return the old element at the specified position.
+	 */
 	@Override
 	public T set(int index, T element) {
-		// TODO Auto-generated method stub
+		if (!isEmpty()) {
+			for (Node<T> x = first; x != null; x = x.next) {
+				if (index == 0) {
+					T oldElement = x.getContent();
+					x.setContent(element);
+					return oldElement;
+				}
+				index--;
+			}
+		}
 		return null;
 	}
 
+	/**
+	 * Inserts the specified element at the specified index and pushes
+	 * old elements position forward by one.
+	 * 
+	 * @param index - position element should be inserted at.
+	 * @param element - element to be inserted.
+	 */
 	@Override
 	public void add(int index, T element) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public T remove(int index) {
 		// TODO Auto-generated method stub
@@ -339,9 +388,10 @@ public class DoublyLinkedList<T> implements List<T>{
 	}
 	
 	/**
-	 * History object used by this list.
+	 * Node object used by this list.
 	 *  
 	 * @author Oskar
+	 * @version 0.00.00
 	 */
 	private static class Node<T> {
 		private T content;
@@ -366,10 +416,89 @@ public class DoublyLinkedList<T> implements List<T>{
 		
 		/**
 		 * 
+		 * @param content
+		 */
+		public void setContent(T content) {
+			this.content = content;
+		}
+		
+		/**
+		 * 
 		 */
 		@Override
 		public String toString() {
 			return content.toString();
 		}
+	}
+	
+	/**
+	 * Iterator class for the doubly linked list capable of iterating
+	 * forwards and backwards.
+	 * 
+	 * @author Oskar
+	 * @version 0.00.00
+	 */
+	public class DoublyLinkedListIterator implements Iterator<T> {
+
+		private Node<T> iteratorNode;
+		
+		/**
+		 * 
+		 */
+		public DoublyLinkedListIterator() {
+			this.iteratorNode = first;
+		}
+		
+		/**
+		 * Returns true if the list contains more items forward in the list.
+		 * 
+		 * @return True if there is more elements forwards in the list.
+		 */
+		@Override
+		public boolean hasNext() {
+			return iteratorNode != null; //TODO: Should this not be iteratorNode.next
+		}
+		
+		/**
+		 * Returns true if the list contains more items backwards in the list.
+		 * 
+		 * @return True if there is more elements backwards in the list.
+		 */
+		public boolean hasPrev() {
+			return iteratorNode.prev != null;
+		}
+
+		/**
+		 * Returns the current element in the iteration and then
+		 * traverses forward in the list. 
+		 * 
+		 * @return current element in the iteration.
+		 */
+		@Override
+		public T next() {
+			if (hasNext()) {
+				T res = iteratorNode.getContent();
+				iteratorNode = iteratorNode.next;
+				return res;
+			}
+			
+			return null;
+		}
+		
+		/**
+		 * Returns the current element in the iteration and then
+		 * traverses backwards in the list.
+		 * 
+		 * @return current element in the iteration.
+		 */
+		public T prev() {
+			if (hasPrev()) {
+				T res = iteratorNode.getContent();
+				iteratorNode = iteratorNode.prev;
+				return res;
+			}
+			return null;
+		}
+		
 	}
 }

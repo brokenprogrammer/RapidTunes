@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpRequest;
@@ -40,6 +41,8 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.SearchResult;
+
+import me.oskarmendel.RapidTunes;
 
 /**
  * Search History object to keep track of search entries.
@@ -51,6 +54,8 @@ import com.google.api.services.youtube.model.SearchResult;
  * @name YouTubeSearch.java
  */
 public class YouTubeSearch {
+	
+	private static final Logger LOGGER = Logger.getLogger(RapidTunes.class.getName());
 	
 	/*
 	 * Define a file that contains the developers API-key.

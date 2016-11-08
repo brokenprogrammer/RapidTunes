@@ -27,6 +27,10 @@
 
 package me.oskarmendel.view;
 
+import java.util.logging.Logger;
+
+import me.oskarmendel.RapidTunes;
+
 /**
  * 
  * @author Oskar
@@ -34,5 +38,6 @@ package me.oskarmendel.view;
  * @name PlaylistController.java
  */
 public class PlaylistController implements RapidTunesController {
-
+	
+	private static final Logger LOGGER = Logger.getLogger(RapidTunes.class.getName());
 }

@@ -32,6 +32,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -49,6 +52,7 @@ import javafx.stage.Stage;
  */
 public class StageManager {
 	
+	private static final Logger LOGGER = Logger.getLogger(RapidTunes.class.getName());
 	static StageManager instance;
 	private Stage mainStage;
 	
@@ -80,6 +84,7 @@ public class StageManager {
 		mainStage = primaryStage;
 		mainStage.setTitle("RapidTunes");
 		
+		LOGGER.log(Level.FINE, "Loading layouts..");
 		// Loading all the layouts for the different parts of the application.
 		VBox navigationLayout = (VBox) loadLayout(RapidTunesController.NAVIGATION_LAYOUT);
 		VBox playlistControlLayout = (VBox) loadLayout(RapidTunesController.PLAYLISTCONTROL_LAYOUT);
@@ -91,7 +96,10 @@ public class StageManager {
 		rootLayout.setBottom(songControlLayout);
 		
 		Scene mainScene = new Scene(rootLayout);
+		
+		LOGGER.log(Level.FINE, "Loading stylesheet..");
 		mainScene.getStylesheets().add(getClass().getResource(RapidTunesController.DARK_STYLING).toString());
+		
 		mainStage.setScene(mainScene);
 		mainStage.setMinWidth(800);
 		mainStage.setMinHeight(600);
@@ -108,8 +116,10 @@ public class StageManager {
 	 */
 	private Parent loadLayout(String layout) throws IOException{
 		FXMLLoader loader = new FXMLLoader();
-		System.out.println(getClass().getResource(layout));
+		
+		LOGGER.log(Level.FINE, "Loading Layout: " + layout);
 		loader.setLocation(getClass().getResource(layout));
+		
 		//Store controller of target layout
 		controllers.put(layout, loader.getController());
 		Parent nodeLayout = loader.load();

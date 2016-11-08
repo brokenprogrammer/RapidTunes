@@ -27,14 +27,14 @@
 
 package me.oskarmendel.view;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import me.oskarmendel.RapidTunes;
 import me.oskarmendel.player.search.YouTubeSearch;
 import me.oskarmendel.util.DoublyLinkedList;
 
@@ -52,11 +52,12 @@ public class NavigationController implements RapidTunesController {
 	@FXML private TextField navSearchField;
 	@FXML private Button navSearchBtn;
 	
-	List<String> searchHistory = new ArrayList<String>();
+	private static final Logger LOGGER = Logger.getLogger(RapidTunes.class.getName());
+	DoublyLinkedList<String> searchHistory = new DoublyLinkedList<String>();
 	int searchIterator = 0;
 	
 	/**
-	 * Initilize the navigation controller. 
+	 * Initialize the navigation controller. 
 	 * TODO Fix out of bounds exception when scrolling search terms.
 	 * TODO Implement YouTube search functionality.
 	 * TODO Migrate code to store history to its own class.
@@ -65,26 +66,7 @@ public class NavigationController implements RapidTunesController {
 		//Add action events to buttons.
 		System.out.println("Initialized navigation controller.");
 		
-		/* TEMPORARY CODE FOR TESTING STACKED LIST. */
-		DoublyLinkedList<String> searchH = new DoublyLinkedList<String>();
-		searchH.addFirst("Test1");
-		searchH.addFirst("Test2");
-		searchH.addFirst("Test3");
-		searchH.add("Test4");
-		searchH.add("Test5");
-		searchH.add("Test6");
-		searchH.addFirst("Test7");
-		searchH.displayList();
-		System.out.println("Popped element with text: " + searchH.removeFirst());
-		System.out.println("Popped element with text: " + searchH.removeFirst());
-		//System.out.println("Popped element with text: " + searchH.remove());
-		searchH.displayList();
-		
-		searchH.add("Lego");
-		searchH.contains(123);
-		searchH.contains("Lego");
-		
-		System.out.println(searchH.get(5));
+//		DoublyLinkedList<String>.DoublyLinkedListIterator itr = searchH.getIterator();
 		
 		YouTubeSearch youtubeSearch = new YouTubeSearch();
 		
@@ -110,7 +92,7 @@ public class NavigationController implements RapidTunesController {
 		
 		navSearchBtn.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override public void handle(ActionEvent e) {
-		        preformSearch(navSearchField.getText());
+		        //preformSearch(navSearchField.getText());
 		        //Save the search to history so we can back to it later.
 		        searchHistory.add(navSearchField.getText());
 		        searchIterator += 1;

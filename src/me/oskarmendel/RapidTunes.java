@@ -27,6 +27,9 @@
 
 package me.oskarmendel;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import me.oskarmendel.StageManager;
@@ -39,9 +42,10 @@ import me.oskarmendel.util.SongParser;
  * @name RapidTunes.java
  */
 public class RapidTunes extends Application{
-
+	
+	private static final Logger LOGGER = Logger.getLogger(RapidTunes.class.getName());
+	
 	public static void main(String[] args) {
-		// TODO Connect controllers to the individual layouts., styling in css..
 		// TODO Create a logger to log to the console when parts of the application are loaded etc. - LoggerFactory
 		// TODO Add functionality to search / query song sources.
 		// TODO Display search results from searched / queried source.
@@ -58,6 +62,7 @@ public class RapidTunes extends Application{
 		}
 		
 		//Launches this application and calls the start method.
+		LOGGER.log(Level.FINE, "Launching RapidTunes");
 		Application.launch(args);
 	}
 
