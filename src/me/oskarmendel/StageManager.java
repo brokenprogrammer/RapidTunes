@@ -39,6 +39,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -52,7 +53,7 @@ import javafx.stage.Stage;
  */
 public class StageManager {
 	
-	private static final Logger LOGGER = Logger.getLogger(RapidTunes.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(StageManager.class.getName());
 	static StageManager instance;
 	private Stage mainStage;
 	
@@ -89,15 +90,17 @@ public class StageManager {
 		VBox navigationLayout = (VBox) loadLayout(RapidTunesController.NAVIGATION_LAYOUT);
 		VBox playlistControlLayout = (VBox) loadLayout(RapidTunesController.PLAYLISTCONTROL_LAYOUT);
 		HBox songControlLayout = (HBox) loadLayout(RapidTunesController.SONGCONTROL_LAYOUT);
+		GridPane songBrowserLayout = (GridPane) loadLayout(RapidTunesController.SONGBROWSER_LAYOUT);
 		BorderPane rootLayout = (BorderPane) loadLayout(RapidTunesController.ROOT_LAYOUT);
 		
 		rootLayout.setTop(navigationLayout);
 		rootLayout.setLeft(playlistControlLayout);
 		rootLayout.setBottom(songControlLayout);
+		rootLayout.setCenter(songBrowserLayout);
 		
 		Scene mainScene = new Scene(rootLayout);
 		
-		LOGGER.log(Level.FINE, "Loading stylesheet..");
+		LOGGER.log(Level.FINE, "Loading stylesheet: " + RapidTunesController.DARK_STYLING);
 		mainScene.getStylesheets().add(getClass().getResource(RapidTunesController.DARK_STYLING).toString());
 		
 		mainStage.setScene(mainScene);

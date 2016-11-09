@@ -27,8 +27,8 @@
 
 package me.oskarmendel;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.IOException;
+import java.util.logging.*;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -44,12 +44,14 @@ import me.oskarmendel.util.SongParser;
 public class RapidTunes extends Application{
 	
 	private static final Logger LOGGER = Logger.getLogger(RapidTunes.class.getName());
+	private static final String LOG_FILE = "RapidTunes-log.txt";
 	
 	public static void main(String[] args) {
-		// TODO Create a logger to log to the console when parts of the application are loaded etc. - LoggerFactory
+		// TODO Create stylings like text size that fits all screens, now fits mac not windows comp.
 		// TODO Add functionality to search / query song sources.
 		// TODO Display search results from searched / queried source.
 		// TODO Download song and split video / sound if required and add to created song object.
+		// TODO Does logger need improovement, Add formatting through simple formatter?? 
 		SongParser sp = new SongParser();
 		
 		String[] videoData = {};
@@ -61,15 +63,44 @@ public class RapidTunes extends Application{
 			//System.out.println(videoData[i]);
 		}
 		
+		initializeLogger();
+		
 		//Launches this application and calls the start method.
 		LOGGER.log(Level.FINE, "Launching RapidTunes");
 		Application.launch(args);
 	}
 
+	/**
+	 * Main entry point for JavaFX applications.
+	 * Method implemented from Application.
+	 */
 	@Override
 	public void start(Stage arg0) throws Exception {
 		StageManager sm = new StageManager();
 		sm.showRapidTunes(arg0);
 	}
-
+	
+	/**
+	 * Initialize the logger and the file the logs will be stored in.
+	 */
+	public static void initializeLogger() {
+		LogManager logManager = LogManager.getLogManager();
+		java.util.logging.Logger log = logManager.getLogger("");
+		log.setUseParentHandlers(false); //Removing console handler.
+		log.setLevel(Level.FINE); 		 //Log up to the FINE level
+		
+		FileHandler fh; 
+		
+		try {
+			fh = new FileHandler(LOG_FILE);
+			log.addHandler(fh);
+			
+			SimpleFormatter formatter = new SimpleFormatter();
+			fh.setFormatter(formatter);
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

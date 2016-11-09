@@ -27,6 +27,7 @@
 
 package me.oskarmendel.view;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -34,7 +35,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import me.oskarmendel.RapidTunes;
 import me.oskarmendel.player.search.YouTubeSearch;
 import me.oskarmendel.util.DoublyLinkedList;
 
@@ -52,8 +52,9 @@ public class NavigationController implements RapidTunesController {
 	@FXML private TextField navSearchField;
 	@FXML private Button navSearchBtn;
 	
-	private static final Logger LOGGER = Logger.getLogger(RapidTunes.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(NavigationController.class.getName());
 	DoublyLinkedList<String> searchHistory = new DoublyLinkedList<String>();
+	DoublyLinkedList<String>.DoublyLinkedListIterator searchHistoryIterator;
 	int searchIterator = 0;
 	
 	/**
@@ -62,52 +63,41 @@ public class NavigationController implements RapidTunesController {
 	 * TODO Implement YouTube search functionality.
 	 * TODO Migrate code to store history to its own class.
 	 */
-	@FXML public void initialize() {
-		//Add action events to buttons.
-		System.out.println("Initialized navigation controller.");
+	@FXML 
+	public void initialize() {
+		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
 		
-//		DoublyLinkedList<String>.DoublyLinkedListIterator itr = searchH.getIterator();
-		
+		searchHistoryIterator = searchHistory.getIterator(true);
 		YouTubeSearch youtubeSearch = new YouTubeSearch();
 		
 		navBackBtn.setOnAction(new EventHandler<ActionEvent>() {
-			@Override public void handle(ActionEvent e){
-				if (searchIterator > 1) {
-					searchIterator -= 1;
-					System.out.println("Searchs: " + searchHistory.size() + " Current: " + searchIterator);
-					navSearchField.setText(searchHistory.get(searchIterator-1)); //Fix out of bounds exception
+			@Override 
+			public void handle(ActionEvent e){
+				if (searchHistoryIterator.hasPrev()) {
+					navSearchField.setText(searchHistoryIterator.prev());
 				}
 			}
 		});
 		
 		navFrontBtn.setOnAction(new EventHandler<ActionEvent>() {
-			@Override public void handle(ActionEvent e){
-				if (searchIterator < searchHistory.size()) {
-					searchIterator += 1;
-					System.out.println("Searchs: " + searchHistory.size() + " Current: " + searchIterator);
-					navSearchField.setText(searchHistory.get(searchIterator-1)); //Fix out of bounds exception
+			@Override 
+			public void handle(ActionEvent e){
+				if (searchHistoryIterator.hasNext()) {
+					navSearchField.setText(searchHistoryIterator.next());
 				}
 			}
 		});
 		
 		navSearchBtn.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override public void handle(ActionEvent e) {
-		        //preformSearch(navSearchField.getText());
+		    @Override 
+		    public void handle(ActionEvent e) {
 		        //Save the search to history so we can back to it later.
 		        searchHistory.add(navSearchField.getText());
-		        searchIterator += 1;
+		        searchHistoryIterator = searchHistory.getIterator(true);
 		        
 		        //Performs the search for the keywords in the YouTube data API.
 		        youtubeSearch.search(navSearchField.getText());
 		    }
 		});
-	}
-	
-	/**
-	 * 
-	 * @param searchTerms
-	 */
-	public void preformSearch(String searchTerms) {
-		System.out.println("Search for this.. " + searchTerms);
 	}
 }

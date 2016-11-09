@@ -55,7 +55,7 @@ import me.oskarmendel.RapidTunes;
  */
 public class YouTubeSearch {
 	
-	private static final Logger LOGGER = Logger.getLogger(RapidTunes.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(YouTubeSearch.class.getName());
 	
 	/*
 	 * Define a file that contains the developers API-key.

@@ -44,6 +44,7 @@ public interface RapidTunesController {
 	String NAVIGATION_LAYOUT = LAYOUTS_PATH + "NavigationLayout.fxml";
 	String SONGCONTROL_LAYOUT = LAYOUTS_PATH + "SongControlLayout.fxml";
 	String PLAYLISTCONTROL_LAYOUT = LAYOUTS_PATH + "PlaylistControlLayout.fxml"; 
+	String SONGBROWSER_LAYOUT = LAYOUTS_PATH + "SongBrowserLayout.fxml";
 	
 	String DEFAULT_STYLING = STYLES_PATH + "Default.css";
 	String DARK_STYLING = STYLES_PATH + "Dark.css";

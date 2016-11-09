@@ -221,6 +221,10 @@ public class DoublyLinkedList<T> implements List<T>{
 	public DoublyLinkedListIterator getIterator() {
 		return new DoublyLinkedListIterator();
 	}
+	
+	public DoublyLinkedListIterator getIterator(boolean startback) {
+		return new DoublyLinkedListIterator(startback);
+	}
 
 	/**
 	 * Returns an array of all the elements in this list.
@@ -449,6 +453,14 @@ public class DoublyLinkedList<T> implements List<T>{
 			this.iteratorNode = first;
 		}
 		
+		public DoublyLinkedListIterator(boolean startFromBack) {
+			if (startFromBack) {
+				this.iteratorNode = last;
+			} else {
+				this.iteratorNode = first;
+			}
+		}
+		
 		/**
 		 * Returns true if the list contains more items forward in the list.
 		 * 
@@ -456,7 +468,7 @@ public class DoublyLinkedList<T> implements List<T>{
 		 */
 		@Override
 		public boolean hasNext() {
-			return iteratorNode != null; //TODO: Should this not be iteratorNode.next
+			return iteratorNode.next != null;
 		}
 		
 		/**
@@ -469,36 +481,39 @@ public class DoublyLinkedList<T> implements List<T>{
 		}
 
 		/**
-		 * Returns the current element in the iteration and then
-		 * traverses forward in the list. 
+		 * Traverses forward in the list then returns the element at the current
+		 * position in the list. 
 		 * 
-		 * @return current element in the iteration.
+		 * @return next element in the iteration.
 		 */
 		@Override
 		public T next() {
 			if (hasNext()) {
-				T res = iteratorNode.getContent();
 				iteratorNode = iteratorNode.next;
-				return res;
 			}
-			
-			return null;
+			return iteratorNode.getContent();
 		}
 		
 		/**
-		 * Returns the current element in the iteration and then
-		 * traverses backwards in the list.
+		 * Traverses backwards in the list then returns the element at the current 
+		 * position in the list.
 		 * 
-		 * @return current element in the iteration.
+		 * @return previous element in the iteration.
 		 */
 		public T prev() {
 			if (hasPrev()) {
-				T res = iteratorNode.getContent();
 				iteratorNode = iteratorNode.prev;
-				return res;
 			}
-			return null;
+			return iteratorNode.getContent();
 		}
 		
+		/**
+		 * Returns the current element in the iteration without traversing the list.
+		 * 
+		 * @return current element in the iteration.
+		 */
+		public T current() {
+			return iteratorNode.getContent();
+		}
 	}
 }

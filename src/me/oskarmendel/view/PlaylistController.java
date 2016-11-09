@@ -27,9 +27,10 @@
 
 package me.oskarmendel.view;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import me.oskarmendel.RapidTunes;
+import javafx.fxml.FXML;
 
 /**
  * 
@@ -39,5 +40,11 @@ import me.oskarmendel.RapidTunes;
  */
 public class PlaylistController implements RapidTunesController {
 	
-	private static final Logger LOGGER = Logger.getLogger(RapidTunes.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(PlaylistController.class.getName());
+	
+	@FXML 
+	public void initialize() {
+		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
+	}
+	
 }
