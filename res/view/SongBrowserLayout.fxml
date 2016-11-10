@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.GridPane?>
 
-<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.oskarmendel.view.SongBrowserController">
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="songBrowserGrid" fx:controller="me.oskarmendel.view.SongBrowserController">
 	<!-- TODO Add Nodes -->
 </GridPane>
 

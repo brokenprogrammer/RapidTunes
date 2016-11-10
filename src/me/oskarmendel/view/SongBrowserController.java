@@ -31,7 +31,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
-import me.oskarmendel.RapidTunes;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 
 /**
  * 
@@ -41,10 +46,39 @@ import me.oskarmendel.RapidTunes;
  */
 public class SongBrowserController implements RapidTunesController {
 	
+	@FXML private GridPane songBrowserGrid;
+	
 	private static final Logger LOGGER = Logger.getLogger(SongBrowserController.class.getName());
 	
 	@FXML 
 	public void initialize() {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
+		
+		songBrowserGrid.setPadding(new Insets(20));
+		songBrowserGrid.setHgap(20);
+		songBrowserGrid.setVgap(20);
+		
+		ColumnConstraints col1 = new ColumnConstraints();
+        col1.setPercentWidth(50);
+        col1.setHalignment(HPos.CENTER);
+        ColumnConstraints col2 = new ColumnConstraints();
+        col2.setPercentWidth(50);
+        col2.setHalignment(HPos.CENTER);
+        songBrowserGrid.getColumnConstraints().addAll(col1,col2);
+		
+//		Text scenetitle = new Text("Welcome");
+//		songBrowserGrid.add(scenetitle, 0, 0, 2, 1);
+        
+		songBrowserGrid.add(new Label("1"), 1, 0);
+		songBrowserGrid.add(new Label("0"), 0, 0);
+		songBrowserGrid.add(new Label("2"), 0, 1);
+		songBrowserGrid.add(new Label("3"), 1, 1);
+	}
+	
+	/**
+	 * 
+	 */
+	public void populateSongBrowser() {
+		
 	}
 }

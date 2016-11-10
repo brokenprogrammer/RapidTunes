@@ -42,8 +42,6 @@ import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.SearchResult;
 
-import me.oskarmendel.RapidTunes;
-
 /**
  * Search History object to keep track of search entries.
  * 
