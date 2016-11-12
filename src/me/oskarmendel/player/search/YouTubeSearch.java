@@ -87,7 +87,7 @@ public class YouTubeSearch {
 		}
 	}
 	
-	public void search(String keywords) {
+	public List<SearchResult> search(String keywords) {
 		System.out.println("YouTube Search Initiated..");
 		
 		try {
@@ -126,13 +126,15 @@ public class YouTubeSearch {
             // Handle the results from the api request.
             if (searchResultList != null) {
             	//Print result for testing
-            	int x = 0;
-            	while (x < searchResultList.size()) {
-            		SearchResult oneVid = searchResultList.get(x);
-            		System.out.println("Title: " + oneVid.getSnippet().getTitle() + " "
-            				+ "Thumbnail: " + oneVid.getSnippet().getThumbnails().getDefault().getUrl());
-            		x++;
-            	}
+            	//int x = 0;
+            	//while (x < searchResultList.size()) {
+            		//SearchResult oneVid = searchResultList.get(x);
+            		//System.out.println("Title: " + oneVid.getSnippet().getTitle() + " "
+            		//		+ "Thumbnail: " + oneVid.getSnippet().getThumbnails().getDefault().getUrl());
+            		//x++;
+            		//return oneVid.getSnippet().getThumbnails().getDefault().getUrl();
+            	//}
+            	return searchResultList;
             }
 			
 		} catch (GoogleJsonResponseException e) {
@@ -141,6 +143,8 @@ public class YouTubeSearch {
 		} catch (IOException e) {
             System.err.println("There was an IO error: " + e.getCause() + " : " + e.getMessage());
 		}
+		
+		return null;
 	}
 	
 }

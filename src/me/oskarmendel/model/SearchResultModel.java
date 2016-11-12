@@ -25,33 +25,45 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.view;
+package me.oskarmendel.model;
 
-import me.oskarmendel.StageManager;
+import java.util.List;
+
+import com.google.api.services.youtube.model.SearchResult;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
+ * Model that manages search results for the application.
+ * This allows mulitple controllers have access to the search results.
  * 
  * @author Oskar
  * @version 0.00.00
- * @name RapidTunesController.java
+ * @name SearchResultModel.java
  */
-public interface RapidTunesController {
-
-	String LAYOUTS_PATH = "/view/";
-	String IMAGES_PATH = "/images/";
-	String STYLES_PATH = "/css/";
-	String PROPERTIES_PATH = "/properties/";
-
-	String ROOT_LAYOUT = LAYOUTS_PATH + "RootLayout.fxml";
-	String NAVIGATION_LAYOUT = LAYOUTS_PATH + "NavigationLayout.fxml";
-	String SONGCONTROL_LAYOUT = LAYOUTS_PATH + "SongControlLayout.fxml";
-	String PLAYLISTCONTROL_LAYOUT = LAYOUTS_PATH + "PlaylistControlLayout.fxml"; 
-	String SONGBROWSER_LAYOUT = LAYOUTS_PATH + "SongBrowserLayout.fxml";
+public class SearchResultModel {
 	
-	String DEFAULT_STYLING = STYLES_PATH + "Default.css";
-	String DARK_STYLING = STYLES_PATH + "Dark.css";
+	private final ObservableList<SearchResult> searchResultList = FXCollections.observableArrayList();
 	
-	String YOUTUBE_PROPERTIES = PROPERTIES_PATH + "youtube.properties";
+	/**
+	 * 
+	 * @return
+	 */
+	public ObservableList<SearchResult> getSearchResultList() {
+		return searchResultList;
+	}
 	
-	StageManager stageManager = StageManager.getInstance();
+	/**
+	 * 
+	 * @param searchResultList
+	 */
+	public void setSearchResultList(List<SearchResult> searchResultList) {
+		this.searchResultList.clear();
+		
+		// TODO: Temp til i know how to add all List elements to ObservableList
+		for (int x = 0; x <= searchResultList.size()-1; x++) {
+			this.searchResultList.add(searchResultList.get(x));
+		}
+	}
 }

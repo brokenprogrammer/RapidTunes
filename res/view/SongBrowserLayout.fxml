@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.*?>
+<?import javafx.scene.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ListView?>
 
-<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:id="songBrowserGrid" fx:controller="me.oskarmendel.view.SongBrowserController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="songBrowserPane" fx:controller="me.oskarmendel.view.SongBrowserController">
 	<!-- TODO Add Nodes -->
-</GridPane>
+	<!-- <children> -->
+		<ListView fx:id="songList" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+	<!--</children>-->
+</AnchorPane>
 

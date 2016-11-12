@@ -27,6 +27,7 @@
 
 package me.oskarmendel;
 
+import me.oskarmendel.model.SearchResultModel;
 import me.oskarmendel.view.*;
 import java.io.IOException;
 import java.util.HashMap;
@@ -37,14 +38,16 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * Manages the loading and changes of a stage.
+ * Singleton that manages the loading and changes of a stage.
  * 
  * @author Oskar
  * @version 0.00.00
@@ -53,8 +56,23 @@ import javafx.stage.Stage;
 public class StageManager {
 	
 	private static final Logger LOGGER = Logger.getLogger(StageManager.class.getName());
-	static StageManager instance;
+	
+	private static StageManager instance;
+	
+	private SearchResultModel searchResultModel;
 	private Stage mainStage;
+	
+	/**
+	 * Returns the singleton instance of StageManager creating it if 
+	 * necessary.
+	 * 
+	 * @return the singleton instance of StageManager.
+	 */
+	public static StageManager getInstance() {
+		if (instance == null)
+			instance = new StageManager();
+		return instance;
+	}
 	
 	/**
 	 * Stores the controllers of each layout view
@@ -73,6 +91,10 @@ public class StageManager {
 		return (PlaylistController) controllers.get(RapidTunesController.PLAYLISTCONTROL_LAYOUT);
 	}
 	
+	public SongBrowserController getSongBrowserController() {
+		return (SongBrowserController) controllers.get(RapidTunesController.SONGBROWSER_LAYOUT);
+	}
+	
 	/**
 	 * Manages the setting up and loading of the main window.
 	 *  TODO: Decide what stylesheet to load depending on what it says in the properties file
@@ -89,8 +111,12 @@ public class StageManager {
 		VBox navigationLayout = (VBox) loadLayout(RapidTunesController.NAVIGATION_LAYOUT);
 		VBox playlistControlLayout = (VBox) loadLayout(RapidTunesController.PLAYLISTCONTROL_LAYOUT);
 		HBox songControlLayout = (HBox) loadLayout(RapidTunesController.SONGCONTROL_LAYOUT);
-		GridPane songBrowserLayout = (GridPane) loadLayout(RapidTunesController.SONGBROWSER_LAYOUT);
+		AnchorPane songBrowserLayout = (AnchorPane) loadLayout(RapidTunesController.SONGBROWSER_LAYOUT);
 		BorderPane rootLayout = (BorderPane) loadLayout(RapidTunesController.ROOT_LAYOUT);
+		
+		searchResultModel = new SearchResultModel();
+		getNavigationController().initSearchResultModel(searchResultModel);
+		getSongBrowserController().initSearchResultModel(searchResultModel);
 		
 		rootLayout.setTop(navigationLayout);
 		rootLayout.setLeft(playlistControlLayout);
@@ -122,9 +148,10 @@ public class StageManager {
 		LOGGER.log(Level.FINE, "Loading Layout: " + layout);
 		loader.setLocation(getClass().getResource(layout));
 		
+		Parent nodeLayout = loader.load();
+		
 		//Store controller of target layout
 		controllers.put(layout, loader.getController());
-		Parent nodeLayout = loader.load();
 		
 		return nodeLayout;
 	}

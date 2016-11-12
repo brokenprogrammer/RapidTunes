@@ -35,6 +35,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import me.oskarmendel.model.SearchResultModel;
 import me.oskarmendel.player.search.YouTubeSearch;
 import me.oskarmendel.util.DoublyLinkedList;
 
@@ -53,6 +54,9 @@ public class NavigationController implements RapidTunesController {
 	@FXML private Button navSearchBtn;
 	
 	private static final Logger LOGGER = Logger.getLogger(NavigationController.class.getName());
+	
+	private SearchResultModel searchResultModel;
+	
 	DoublyLinkedList<String> searchHistory = new DoublyLinkedList<String>();
 	DoublyLinkedList<String>.DoublyLinkedListIterator searchHistoryIterator;
 	int searchIterator = 0;
@@ -96,8 +100,26 @@ public class NavigationController implements RapidTunesController {
 		        searchHistoryIterator = searchHistory.getIterator(true);
 		        
 		        //Performs the search for the keywords in the YouTube data API.
-		        youtubeSearch.search(navSearchField.getText());
+		        //System.out.println(youtubeSearch.search(navSearchField.getText()));
+		        //stageManager.getSongBrowserController().populateSongBrowser(youtubeSearch.search(navSearchField.getText()));
+		        searchResultModel.setSearchResultList(youtubeSearch.search(navSearchField.getText()));
 		    }
 		});
+	}
+	
+	/**
+	 * 
+	 * @param searchResultModel
+	 */
+	public void initSearchResultModel(SearchResultModel searchResultModel) {
+		//Make sure model is only set once.
+		if (this.searchResultModel != null) {
+            throw new IllegalStateException("Model can only be initialized once");
+		}
+		
+		this.searchResultModel = searchResultModel;
+		
+		//This controller will edit the SearchResultModel
+		
 	}
 }
