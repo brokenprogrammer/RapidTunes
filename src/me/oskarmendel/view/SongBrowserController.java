@@ -61,8 +61,12 @@ public class SongBrowserController implements RapidTunesController {
 	}
 	
 	/**
+	 * Initializes the SearchResultModel which connects the list of search results between
+	 * the SongBrowserController and the NavigationController.
+	 * This controller will use the data within the models ObservableList and display it within 
+	 * the local ListView.
 	 * 
-	 * @param searchResultModel
+	 * @param searchResultModel - searchResultModel object to get data from.
 	 */
 	public void initSearchResultModel(SearchResultModel searchResultModel) {
 		//Make sure model is only set once.

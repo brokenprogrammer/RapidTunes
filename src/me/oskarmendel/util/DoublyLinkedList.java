@@ -27,6 +27,7 @@
 
 package me.oskarmendel.util;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -110,6 +111,7 @@ public class DoublyLinkedList<T> implements List<T>{
 				last = null;
 			} else {
 				first = first.next;
+				first.prev = null;
 			}
 			this.size--;
 			return oldFirst.getContent(); // CHECK THIS HERE <------
@@ -144,7 +146,7 @@ public class DoublyLinkedList<T> implements List<T>{
 	
 	/**
 	 * Removes the first occurrence of the specified item from the list.
-	 * TODO: DOES THIS WORK ??? DOES NOT WORK - http://stackoverflow.com/questions/8523436/removing-a-node-from-a-doubly-linked-list
+	 * 
 	 * @param o - object to be removed if present.
 	 * @return True if object was removed, false otherwise.
 	 */
@@ -160,16 +162,18 @@ public class DoublyLinkedList<T> implements List<T>{
 					Node<T> next = x.next;
 					Node<T> prev = x.prev;
 					
-					if (prev == null) {		   //At first
-						first = next;
-						next.prev = prev;
-					} else if (next == null) { //At last
-						prev.next = next;
-						last = prev;
+					//If prev is null then the element is at first if next is null then at last.
+					if (prev == null) {
+						first = first.next;
+						first.prev = null;
+					} else if (next == null) {
+						last = last.prev;
+						last.next = null;
 					} else {
 						prev.next = next;
 						next.prev = prev;
 					}
+					this.size--;
 					return true;
 				}
 			}
@@ -272,12 +276,26 @@ public class DoublyLinkedList<T> implements List<T>{
 	}
 
 	/**
-	 * 
+	 * TODO: Look at http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/jdk8-b132/src/share/classes/java/util/AbstractCollection.java#l112
+	 * TODO: Line 174
+	 * TODO: http://stackoverflow.com/questions/4010924/java-how-to-implement-toarray-for-collection
+	 * @param T - the runtime type of the array to contain the collection
+	 * @param a - the array into which the elements of this list are to be stored, 
+	 * 				if it is big enough; otherwise, a new array of the same runtime 
+	 * 				type is allocated for this purpose.
+	 * @return  an array containing the elements of this list.
 	 */
+	@SuppressWarnings({ "hiding", "unchecked" })
 	@Override
-	public <T> T[] toArray(T[] a) {
-		// TODO Auto-generated method stub
-		return null;
+	public <T> T[] toArray(T[] a) {	
+		Object[] original = toArray();
+		T[] result = Arrays.copyOf(a, original.length);
+		
+		for (int x = 0; x < original.length; x++) {
+			result[x] = (T)original[x];
+		}
+		
+		return result;
 	}
 
 	@Override
@@ -471,14 +489,34 @@ public class DoublyLinkedList<T> implements List<T>{
 		private Node<T> iteratorNode;
 		
 		/**
-		 * 
+		 * Initializes a DoublyLinkedListIterator with the default value of 
+		 * iteratorNode starting from the start of the list.
 		 */
 		public DoublyLinkedListIterator() {
 			this.iteratorNode = first;
 		}
 		
-		public DoublyLinkedListIterator(boolean startFromBack) {
-			if (startFromBack) {
+		/**
+		 * Initializes a DoublyLinkedListIterator with the option of choosing
+		 * if iteratorNode should start at the first element or last of the list.
+		 * 
+		 * @param setToLast - Set the iteratorNode to the last item of the DoublyLinkedList
+		 */
+		public DoublyLinkedListIterator(boolean setToLast) {
+			if (setToLast) {
+				this.iteratorNode = last;
+			} else {
+				this.iteratorNode = first;
+			}
+		}
+		
+		/**
+		 * Updates the iteratorNode to the DoublyLinkedList boundy elements last or first.
+		 * 
+		 * @param setToLast - Set the iteratorNode to the last item of the DoublyLinkedList
+		 */
+		public void update(boolean setToLast) {
+			if (setToLast) {
 				this.iteratorNode = last;
 			} else {
 				this.iteratorNode = first;

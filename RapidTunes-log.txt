@@ -1,30 +1,1254 @@
-Nov 15, 2016 11:32:31 AM me.oskarmendel.RapidTunes main
+Nov 15, 2016 7:51:11 PM me.oskarmendel.RapidTunes main
 FINE: Launching RapidTunes
-Nov 15, 2016 11:32:31 AM me.oskarmendel.StageManager showRapidTunes
+Nov 15, 2016 7:51:11 PM me.oskarmendel.StageManager showRapidTunes
 FINE: Loading layouts..
-Nov 15, 2016 11:32:31 AM me.oskarmendel.StageManager loadLayout
+Nov 15, 2016 7:51:11 PM me.oskarmendel.StageManager loadLayout
 FINE: Loading Layout: /view/NavigationLayout.fxml
-Nov 15, 2016 11:32:31 AM me.oskarmendel.view.NavigationController initialize
+Nov 15, 2016 7:51:11 PM me.oskarmendel.view.NavigationController initialize
 FINE: Initialized: me.oskarmendel.view.NavigationController
-Nov 15, 2016 11:32:31 AM me.oskarmendel.StageManager loadLayout
+Nov 15, 2016 7:51:11 PM me.oskarmendel.StageManager loadLayout
 FINE: Loading Layout: /view/PlaylistControlLayout.fxml
-Nov 15, 2016 11:32:31 AM me.oskarmendel.view.PlaylistController initialize
+Nov 15, 2016 7:51:11 PM me.oskarmendel.view.PlaylistController initialize
 FINE: Initialized: me.oskarmendel.view.PlaylistController
-Nov 15, 2016 11:32:31 AM me.oskarmendel.StageManager loadLayout
+Nov 15, 2016 7:51:11 PM me.oskarmendel.StageManager loadLayout
 FINE: Loading Layout: /view/SongControlLayout.fxml
-Nov 15, 2016 11:32:31 AM me.oskarmendel.view.SongController initialize
+Nov 15, 2016 7:51:11 PM me.oskarmendel.view.SongController initialize
 FINE: Initialized: me.oskarmendel.view.SongController
-Nov 15, 2016 11:32:31 AM me.oskarmendel.StageManager loadLayout
+Nov 15, 2016 7:51:11 PM me.oskarmendel.StageManager loadLayout
 FINE: Loading Layout: /view/SongBrowserLayout.fxml
-Nov 15, 2016 11:32:31 AM me.oskarmendel.view.SongBrowserController initialize
+Nov 15, 2016 7:51:11 PM me.oskarmendel.view.SongBrowserController initialize
 FINE: Initialized: me.oskarmendel.view.SongBrowserController
-Nov 15, 2016 11:32:31 AM me.oskarmendel.StageManager loadLayout
+Nov 15, 2016 7:51:11 PM me.oskarmendel.StageManager loadLayout
 FINE: Loading Layout: /view/RootLayout.fxml
-Nov 15, 2016 11:32:31 AM me.oskarmendel.StageManager showRapidTunes
+Nov 15, 2016 7:51:11 PM me.oskarmendel.StageManager showRapidTunes
 FINE: Loading stylesheet: /css/Dark.css
-Nov 15, 2016 11:32:32 AM javafx.scene.Scene$13 invalidated
+Nov 15, 2016 7:51:12 PM javafx.scene.Scene$13 invalidated
 FINE: Changed focus from null to Button[id=navBackBtn, styleClass=button]'<'
-Nov 15, 2016 11:32:32 AM javafx.scene.Node$FocusedProperty markInvalid
+Nov 15, 2016 7:51:12 PM javafx.scene.Node$FocusedProperty markInvalid
 FINE: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: true] focused=true
-Nov 15, 2016 11:32:34 AM javafx.scene.Node$FocusedProperty markInvalid
+Nov 15, 2016 7:51:13 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: false] focused=false
+Nov 15, 2016 7:51:13 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: true] focused=true
+Nov 15, 2016 7:51:13 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from Button[id=navBackBtn, styleClass=button]'<' to TextField[id=navSearchField, styleClass=text-input text-field]
+Nov 15, 2016 7:51:16 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: false] focused=false
+Nov 15, 2016 7:51:16 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: true] focused=true
+Nov 15, 2016 7:51:16 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from TextField[id=navSearchField, styleClass=text-input text-field] to Button[id=navSearchBtn, styleClass=button]'Search'
+Nov 15, 2016 7:51:16 PM com.google.api.client.http.HttpRequest execute
+CONFIG: -------------- REQUEST  --------------
+GET https://www.googleapis.com/youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=Nirvana&type=video
+Accept-Encoding: gzip
+User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)
+
+Nov 15, 2016 7:51:16 PM com.google.api.client.http.HttpRequest execute
+CONFIG: curl -v --compressed -H 'Accept-Encoding: gzip' -H 'User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)' -- 'https://www.googleapis.com/youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=Nirvana&type=video'
+Nov 15, 2016 7:51:17 PM sun.net.www.protocol.http.HttpURLConnection writeRequests
+FINE: sun.net.www.MessageHeader@2f3b535b6 pairs: {GET /youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=Nirvana&type=video HTTP/1.1: null}{Accept-Encoding: gzip}{User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)}{Host: www.googleapis.com}{Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2}{Connection: keep-alive}
+Nov 15, 2016 7:51:18 PM sun.net.www.protocol.http.HttpURLConnection getInputStream0
+FINE: sun.net.www.MessageHeader@145f1f5d15 pairs: {null: HTTP/1.1 200 OK}{Expires: Tue, 15 Nov 2016 18:51:18 GMT}{Date: Tue, 15 Nov 2016 18:51:18 GMT}{Cache-Control: private, max-age=120, must-revalidate, no-transform}{ETag: "sZ5p5Mo8dPpfIzLYQBF8QIQJym0/10Kn6ogdJ1EIA3U2WPBTzG2HiMA"}{Vary: Origin}{Vary: X-Origin}{Content-Type: application/json; charset=UTF-8}{Content-Encoding: gzip}{X-Content-Type-Options: nosniff}{X-Frame-Options: SAMEORIGIN}{X-XSS-Protection: 1; mode=block}{Server: GSE}{Alt-Svc: quic=":443"; ma=2592000; v="36,35,34"}{Transfer-Encoding: chunked}
+Nov 15, 2016 7:51:18 PM com.google.api.client.http.HttpResponse <init>
+CONFIG: -------------- RESPONSE --------------
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Alt-Svc: quic=":443"; ma=2592000; v="36,35,34"
+Server: GSE
+X-Content-Type-Options: nosniff
+Date: Tue, 15 Nov 2016 18:51:18 GMT
+X-Frame-Options: SAMEORIGIN
+Cache-Control: private, max-age=120, must-revalidate, no-transform
+ETag: "sZ5p5Mo8dPpfIzLYQBF8QIQJym0/10Kn6ogdJ1EIA3U2WPBTzG2HiMA"
+Content-Encoding: gzip
+Vary: X-Origin
+Vary: Origin
+Expires: Tue, 15 Nov 2016 18:51:18 GMT
+X-XSS-Protection: 1; mode=block
+Content-Type: application/json; charset=UTF-8
+
+Nov 15, 2016 7:51:18 PM com.google.api.client.util.LoggingByteArrayOutputStream close
+CONFIG: Total: 6,786 bytes
+Nov 15, 2016 7:51:18 PM com.google.api.client.util.LoggingByteArrayOutputStream close
+CONFIG: {
+ "items": [
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "hTWKbfoikeg"
+   },
+   "snippet": {
+    "title": "Nirvana - Smells Like Teen Spirit",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/hTWKbfoikeg/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "vabnZ9-ex7o"
+   },
+   "snippet": {
+    "title": "Nirvana - Come As You Are",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/vabnZ9-ex7o/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "fregObNcHC8"
+   },
+   "snippet": {
+    "title": "Nirvana - The Man Who Sold The World (MTV Unplugged)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/fregObNcHC8/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "pkcJEvMcnEg"
+   },
+   "snippet": {
+    "title": "Nirvana - Lithium",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/pkcJEvMcnEg/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "n6P0SitRwy8"
+   },
+   "snippet": {
+    "title": "Nirvana - Heart-Shaped Box",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/n6P0SitRwy8/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "PbgKEjNBHqM"
+   },
+   "snippet": {
+    "title": "Nirvana - In Bloom",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/PbgKEjNBHqM/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "qv96yJYhk3M"
+   },
+   "snippet": {
+    "title": "Nirvana - You Know You're Right",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/qv96yJYhk3M/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "-m2yifmS4-Y"
+   },
+   "snippet": {
+    "title": "Nirvana - MTV Unplugged (1993) (Full Concert) *Broadcast Version*",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/-m2yifmS4-Y/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "i0g8toTz-ek"
+   },
+   "snippet": {
+    "title": "Nirvana - MTV Live And Loud 1993 (Full Concert)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/i0g8toTz-ek/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "mcXYz0gtJeM"
+   },
+   "snippet": {
+    "title": "Nirvana - Where did you sleep last night - Unplugged in new york",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/mcXYz0gtJeM/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "Rkc_BUH9AUw"
+   },
+   "snippet": {
+    "title": "Nirvana Best tracks(COMPILATION ALBUMS 2015!!)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Rkc_BUH9AUw/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "aWmkuH1k7uA"
+   },
+   "snippet": {
+    "title": "Nirvana - All Apologies (MTV Unplugged)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/aWmkuH1k7uA/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "0LFVQpDKHk4"
+   },
+   "snippet": {
+    "title": "Nirvana - All Apologies",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/0LFVQpDKHk4/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "Y5e1tYuCOBo"
+   },
+   "snippet": {
+    "title": "JELENA ROZGA - NIRVANA (OFFICIAL VIDEO HD)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Y5e1tYuCOBo/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "QECJ9pCyhns"
+   },
+   "snippet": {
+    "title": "Nirvana - Sliver",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/QECJ9pCyhns/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "Ee6xkwVucIE"
+   },
+   "snippet": {
+    "title": "Nirvana - Breed",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Ee6xkwVucIE/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "HxJYaL5bcdw"
+   },
+   "snippet": {
+    "title": "107 Nirvana Music Facts YOU Should Know (Ep. #21) - MicDrop",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/HxJYaL5bcdw/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "AhcttcXcRYY"
+   },
+   "snippet": {
+    "title": "Nirvana - About A Girl (MTV Unplugged)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/AhcttcXcRYY/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "7bnwDDJn0-w"
+   },
+   "snippet": {
+    "title": "Nirvana - Plateau/Oh, Me/Lake Of Fire (Legendado)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/7bnwDDJn0-w/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "DGPbHUZQ-VE"
+   },
+   "snippet": {
+    "title": "TEENS REACT TO NIRVANA",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/DGPbHUZQ-VE/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "QD0D7IuriWQ"
+   },
+   "snippet": {
+    "title": "Nirvana - Aneurysm",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/QD0D7IuriWQ/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "Tt4UuWqm1ZQ"
+   },
+   "snippet": {
+    "title": "The Story Of Nirvana (Documentary)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Tt4UuWqm1ZQ/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "uT1BuLYt2RU"
+   },
+   "snippet": {
+    "title": "Nirvana - Lake of Fire.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/uT1BuLYt2RU/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "mSJvQn8FEY4"
+   },
+   "snippet": {
+    "title": "NIRVANA \"About A Girl-Polly-Breed-Sliver-Love Buzz\".LIVE AT THE PARAMOUNT.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/mSJvQn8FEY4/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "teetvAUcG_E"
+   },
+   "snippet": {
+    "title": "Nirvana - Breed",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/teetvAUcG_E/default.jpg"
+     }
+    }
+   }
+  }
+ ]
+}
+
+Nov 15, 2016 7:51:18 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: false] focused=false
+Nov 15, 2016 7:51:18 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: true] focused=true
+Nov 15, 2016 7:51:18 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from Button[id=navSearchBtn, styleClass=button]'Search' to TextField[id=navSearchField, styleClass=text-input text-field]
+Nov 15, 2016 7:51:22 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: false] focused=false
+Nov 15, 2016 7:51:22 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: true] focused=true
+Nov 15, 2016 7:51:22 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from TextField[id=navSearchField, styleClass=text-input text-field] to Button[id=navSearchBtn, styleClass=button]'Search'
+Nov 15, 2016 7:51:22 PM com.google.api.client.http.HttpRequest execute
+CONFIG: -------------- REQUEST  --------------
+GET https://www.googleapis.com/youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=Nirvana%20Live&type=video
+Accept-Encoding: gzip
+User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)
+
+Nov 15, 2016 7:51:22 PM com.google.api.client.http.HttpRequest execute
+CONFIG: curl -v --compressed -H 'Accept-Encoding: gzip' -H 'User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)' -- 'https://www.googleapis.com/youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=Nirvana%20Live&type=video'
+Nov 15, 2016 7:51:22 PM sun.net.www.protocol.http.HttpURLConnection writeRequests
+FINE: sun.net.www.MessageHeader@616a5a156 pairs: {GET /youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=Nirvana%20Live&type=video HTTP/1.1: null}{Accept-Encoding: gzip}{User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)}{Host: www.googleapis.com}{Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2}{Connection: keep-alive}
+Nov 15, 2016 7:51:23 PM sun.net.www.protocol.http.HttpURLConnection getInputStream0
+FINE: sun.net.www.MessageHeader@68d188be15 pairs: {null: HTTP/1.1 200 OK}{Expires: Tue, 15 Nov 2016 18:51:22 GMT}{Date: Tue, 15 Nov 2016 18:51:22 GMT}{Cache-Control: private, max-age=120, must-revalidate, no-transform}{ETag: "sZ5p5Mo8dPpfIzLYQBF8QIQJym0/3-PK1y0lT66xZzn_dpBrGmisFkY"}{Vary: Origin}{Vary: X-Origin}{Content-Type: application/json; charset=UTF-8}{Content-Encoding: gzip}{X-Content-Type-Options: nosniff}{X-Frame-Options: SAMEORIGIN}{X-XSS-Protection: 1; mode=block}{Server: GSE}{Alt-Svc: quic=":443"; ma=2592000; v="36,35,34"}{Transfer-Encoding: chunked}
+Nov 15, 2016 7:51:23 PM com.google.api.client.http.HttpResponse <init>
+CONFIG: -------------- RESPONSE --------------
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Alt-Svc: quic=":443"; ma=2592000; v="36,35,34"
+Server: GSE
+X-Content-Type-Options: nosniff
+Date: Tue, 15 Nov 2016 18:51:22 GMT
+X-Frame-Options: SAMEORIGIN
+Cache-Control: private, max-age=120, must-revalidate, no-transform
+ETag: "sZ5p5Mo8dPpfIzLYQBF8QIQJym0/3-PK1y0lT66xZzn_dpBrGmisFkY"
+Content-Encoding: gzip
+Vary: X-Origin
+Vary: Origin
+Expires: Tue, 15 Nov 2016 18:51:22 GMT
+X-XSS-Protection: 1; mode=block
+Content-Type: application/json; charset=UTF-8
+
+Nov 15, 2016 7:51:23 PM com.google.api.client.util.LoggingByteArrayOutputStream close
+CONFIG: Total: 7,166 bytes
+Nov 15, 2016 7:51:23 PM com.google.api.client.util.LoggingByteArrayOutputStream close
+CONFIG: {
+ "items": [
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "i0g8toTz-ek"
+   },
+   "snippet": {
+    "title": "Nirvana - MTV Live And Loud 1993 (Full Concert)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/i0g8toTz-ek/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "St4hkywbmhg"
+   },
+   "snippet": {
+    "title": "Nirvana - Live at Reading 1992",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/St4hkywbmhg/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "SJLe1UTqKvA"
+   },
+   "snippet": {
+    "title": "Nirvana - Lithium (Live at Reading 1992)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/SJLe1UTqKvA/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "Ax0C6rlo-54"
+   },
+   "snippet": {
+    "title": "Nirvana - Rape Me (Live at the Paramount 1991) HD",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Ax0C6rlo-54/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "PvwqSMRtoSI"
+   },
+   "snippet": {
+    "title": "Nirvana - Aneurysm (Live at Reading 1992)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/PvwqSMRtoSI/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "-_awkqs7oG8"
+   },
+   "snippet": {
+    "title": "Live At Paramount Theatre 10/31/91",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/-_awkqs7oG8/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "4IUPlVzJI_M"
+   },
+   "snippet": {
+    "title": "Nirvana Live At Paradiso 11/25/91 (Full)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/4IUPlVzJI_M/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "MHWX3pCSEpU"
+   },
+   "snippet": {
+    "title": "Nirvana Live at the MTV Video Music Awards 1992 1080p HD",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/MHWX3pCSEpU/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "eXMzBsqVcPg"
+   },
+   "snippet": {
+    "title": "Nirvana - live \"Hollywood Rock festival\" Brazil 1993 (full)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/eXMzBsqVcPg/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "uJzNckemi-Y"
+   },
+   "snippet": {
+    "title": "Nirvana  Live At Paradiso Club, Amsterdam 11/25/1991 full concert",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/uJzNckemi-Y/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "9yJ1sQ8xl9A"
+   },
+   "snippet": {
+    "title": "Nirvana - Endless, Nameless 12/13/93 - Pier 48 (MTV Live and Loud), Seattle, WA",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/9yJ1sQ8xl9A/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "9hFO290YK1U"
+   },
+   "snippet": {
+    "title": "Nirvana - Live at Kapu, 1989, Full (MATRIX)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/9hFO290YK1U/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "tGc8jL4dzao"
+   },
+   "snippet": {
+    "title": "Nirvana - Breed (Live At The Paramount/1991)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/tGc8jL4dzao/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "_sqL8dVIG2k"
+   },
+   "snippet": {
+    "title": "Nirvana - Smells Like Teen Spirit (Live at the Paramount) HD",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/_sqL8dVIG2k/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "vX-OiKzO4-o"
+   },
+   "snippet": {
+    "title": "Nirvana - Territorial Pissings - Live Tonight Sold Out",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/vX-OiKzO4-o/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "dUb69RIqfO8"
+   },
+   "snippet": {
+    "title": "Drain You (Live On \"Nulle Part Ailleurs\", Paris, France/1...",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/dUb69RIqfO8/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "NJqQf5DObtY"
+   },
+   "snippet": {
+    "title": "Nirvana - Come As You Are (Live at Reading 1992)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/NJqQf5DObtY/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "D742dNm1f8Q"
+   },
+   "snippet": {
+    "title": "Nirvana - In Bloom (Live at Reading 1992)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/D742dNm1f8Q/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "h6MGBngdZQU"
+   },
+   "snippet": {
+    "title": "Nirvana - Blew \"Live & Loud MTV 93\" HD",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/h6MGBngdZQU/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "-CK6_DIMyIY"
+   },
+   "snippet": {
+    "title": "Nirvana - Rape Me (Live And Loud Rehearsal/Seattle/1993)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/-CK6_DIMyIY/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "Pgq9kp4n49Q"
+   },
+   "snippet": {
+    "title": "Nirvana- Come As you Are \"Live & Loud MTV 93\"",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Pgq9kp4n49Q/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "m0drC8qVMRk"
+   },
+   "snippet": {
+    "title": "Nirvana - All Apologies (Live at Reading 1992)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/m0drC8qVMRk/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "mSJvQn8FEY4"
+   },
+   "snippet": {
+    "title": "NIRVANA \"About A Girl-Polly-Breed-Sliver-Love Buzz\".LIVE AT THE PARAMOUNT.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/mSJvQn8FEY4/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "fregObNcHC8"
+   },
+   "snippet": {
+    "title": "Nirvana - The Man Who Sold The World (MTV Unplugged)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/fregObNcHC8/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "LgTp5DC7K44"
+   },
+   "snippet": {
+    "title": "Nirvana - Drain You - Kurt's Voice Change 1991-1994 (Live Mix)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/LgTp5DC7K44/default.jpg"
+     }
+    }
+   }
+  }
+ ]
+}
+
+Nov 15, 2016 7:51:23 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: false] focused=false
+Nov 15, 2016 7:51:23 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: true] focused=true
+Nov 15, 2016 7:51:23 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from Button[id=navSearchBtn, styleClass=button]'Search' to TextField[id=navSearchField, styleClass=text-input text-field]
+Nov 15, 2016 7:51:28 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: false] focused=false
+Nov 15, 2016 7:51:28 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: true] focused=true
+Nov 15, 2016 7:51:28 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from TextField[id=navSearchField, styleClass=text-input text-field] to Button[id=navSearchBtn, styleClass=button]'Search'
+Nov 15, 2016 7:51:28 PM com.google.api.client.http.HttpRequest execute
+CONFIG: -------------- REQUEST  --------------
+GET https://www.googleapis.com/youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=Red%20Hot%20Chilli%20Peppers&type=video
+Accept-Encoding: gzip
+User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)
+
+Nov 15, 2016 7:51:28 PM com.google.api.client.http.HttpRequest execute
+CONFIG: curl -v --compressed -H 'Accept-Encoding: gzip' -H 'User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)' -- 'https://www.googleapis.com/youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=Red%20Hot%20Chilli%20Peppers&type=video'
+Nov 15, 2016 7:51:29 PM sun.net.www.protocol.http.HttpURLConnection writeRequests
+FINE: sun.net.www.MessageHeader@5d9734786 pairs: {GET /youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=Red%20Hot%20Chilli%20Peppers&type=video HTTP/1.1: null}{Accept-Encoding: gzip}{User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)}{Host: www.googleapis.com}{Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2}{Connection: keep-alive}
+Nov 15, 2016 7:51:29 PM sun.net.www.protocol.http.HttpURLConnection getInputStream0
+FINE: sun.net.www.MessageHeader@223b3b0315 pairs: {null: HTTP/1.1 200 OK}{Expires: Tue, 15 Nov 2016 18:51:29 GMT}{Date: Tue, 15 Nov 2016 18:51:29 GMT}{Cache-Control: private, max-age=120, must-revalidate, no-transform}{ETag: "sZ5p5Mo8dPpfIzLYQBF8QIQJym0/PJhG3ARvG6UpcAbb-eSfVCyU35g"}{Vary: Origin}{Vary: X-Origin}{Content-Type: application/json; charset=UTF-8}{Content-Encoding: gzip}{X-Content-Type-Options: nosniff}{X-Frame-Options: SAMEORIGIN}{X-XSS-Protection: 1; mode=block}{Server: GSE}{Alt-Svc: quic=":443"; ma=2592000; v="36,35,34"}{Transfer-Encoding: chunked}
+Nov 15, 2016 7:51:29 PM com.google.api.client.http.HttpResponse <init>
+CONFIG: -------------- RESPONSE --------------
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Alt-Svc: quic=":443"; ma=2592000; v="36,35,34"
+Server: GSE
+X-Content-Type-Options: nosniff
+Date: Tue, 15 Nov 2016 18:51:29 GMT
+X-Frame-Options: SAMEORIGIN
+Cache-Control: private, max-age=120, must-revalidate, no-transform
+ETag: "sZ5p5Mo8dPpfIzLYQBF8QIQJym0/PJhG3ARvG6UpcAbb-eSfVCyU35g"
+Content-Encoding: gzip
+Vary: X-Origin
+Vary: Origin
+Expires: Tue, 15 Nov 2016 18:51:29 GMT
+X-XSS-Protection: 1; mode=block
+Content-Type: application/json; charset=UTF-8
+
+Nov 15, 2016 7:51:30 PM com.google.api.client.util.LoggingByteArrayOutputStream close
+CONFIG: Total: 7,264 bytes
+Nov 15, 2016 7:51:30 PM com.google.api.client.util.LoggingByteArrayOutputStream close
+CONFIG: {
+ "items": [
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "Q0oIoR9mLwc"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - Dark Necessities [OFFICIAL VIDEO]",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Q0oIoR9mLwc/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "rhz_Hh1Dy0c"
+   },
+   "snippet": {
+    "title": "Red Hot Chilli Peppers - The Getaway (Full Album)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/rhz_Hh1Dy0c/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "GLvohMXgcBo"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - Under The Bridge [Official Music Video]",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/GLvohMXgcBo/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "l-E0nFErk3w"
+   },
+   "snippet": {
+    "title": "RED HOT CHILLI PEPPERS - CAN'T STOP",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/l-E0nFErk3w/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "rn_YodiJO6k"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - Otherside [Official Music Video]",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/rn_YodiJO6k/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "cfudXO_vzWk"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers Carpool Karaoke",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/cfudXO_vzWk/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "YlUKcNNmywk"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - Californication [Official Music Video]",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/YlUKcNNmywk/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "JQYJRw4R4-Q"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - Californication (Lyrics)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/JQYJRw4R4-Q/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "qJ_Tw0w3lLA"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - Dark Necessities [OFFICIAL AUDIO]",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/qJ_Tw0w3lLA/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "s9Rgfim-xuo"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers-Otherside",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/s9Rgfim-xuo/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "RtBbinpK5XI"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - The Adventures of Rain Dance Maggie [Official Music Video]",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/RtBbinpK5XI/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "HI-8CVixZ5o"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - Go Robot [OFFICIAL VIDEO]",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/HI-8CVixZ5o/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "JnfyjwChuNU"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - By The Way [Official Music Video]",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/JnfyjwChuNU/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "mzJj5-lubeM"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - Scar Tissue [Official Music Video]",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/mzJj5-lubeM/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "Sb5aq5HcS1A"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - Dani California [Official Music Video]",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Sb5aq5HcS1A/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "0fcRa5Z6LmU"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - The Zephyr Song [Official Music Video]",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/0fcRa5Z6LmU/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "rDPWw_tqjqI"
+   },
+   "snippet": {
+    "title": "RED HOT CHILI PEPPERS - UNDER THE BRIDGE VOCAL COVER 2016 (OFFICIAL) 1080p FULL",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/rDPWw_tqjqI/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "8DyziWtkfBw"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - Can't Stop [Official Music Video]",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/8DyziWtkfBw/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "CshcQ0-TnwU"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers By the Way (Full Album)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/CshcQ0-TnwU/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "yuFI5KSPAt4"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - Snow (Hey Oh) (Official Music Video)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/yuFI5KSPAt4/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "lwlogyj7nFE"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - Under The Bridge (Official Music Video)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/lwlogyj7nFE/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "1_HkEMasarg"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers LIVE Reading Festival 2016 BBC FULL CONCERT",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/1_HkEMasarg/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "YXdOAUKCc0k"
+   },
+   "snippet": {
+    "title": "Red Hot Chili Peppers - By The Way (Video)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/YXdOAUKCc0k/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "XyJn9gz8UHY"
+   },
+   "snippet": {
+    "title": "Red Hot Chilli Peppers - Under the bridge",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/XyJn9gz8UHY/default.jpg"
+     }
+    }
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "mgRszQjvtQA"
+   },
+   "snippet": {
+    "title": "Red Hot Chilli Peppers CALIFORNICATION Full Álbum Top",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/mgRszQjvtQA/default.jpg"
+     }
+    }
+   }
+  }
+ ]
+}
+
+Nov 15, 2016 7:51:32 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: false] focused=false
+Nov 15, 2016 7:51:32 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: true] focused=true
+Nov 15, 2016 7:51:32 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from Button[id=navSearchBtn, styleClass=button]'Search' to TextField[id=navSearchField, styleClass=text-input text-field]
+Nov 15, 2016 7:51:34 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: false] focused=false
+Nov 15, 2016 7:51:34 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: true] focused=true
+Nov 15, 2016 7:51:34 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from TextField[id=navSearchField, styleClass=text-input text-field] to Button[id=navBackBtn, styleClass=button]'<'
+Nov 15, 2016 7:51:36 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: false] focused=false
+Nov 15, 2016 7:51:36 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=navFrontBtn, styleClass=button]'>', name: focused, value: true] focused=true
+Nov 15, 2016 7:51:36 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from Button[id=navBackBtn, styleClass=button]'<' to Button[id=navFrontBtn, styleClass=button]'>'
+Nov 15, 2016 7:51:37 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=navFrontBtn, styleClass=button]'>', name: focused, value: false] focused=false
+Nov 15, 2016 7:51:37 PM javafx.scene.Node$FocusedProperty markInvalid
+FINE: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: true] focused=true
+Nov 15, 2016 7:51:37 PM javafx.scene.Scene$13 invalidated
+FINE: Changed focus from Button[id=navFrontBtn, styleClass=button]'>' to Button[id=navBackBtn, styleClass=button]'<'
+Nov 15, 2016 7:51:39 PM javafx.scene.Node$FocusedProperty markInvalid
 FINE: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: false] focused=false

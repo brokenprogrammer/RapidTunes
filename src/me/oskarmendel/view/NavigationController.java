@@ -90,11 +90,12 @@ public class NavigationController implements RapidTunesController {
 	 	searchH.contains(123);
 	 	searchH.contains("Lego");
 		
-	 	//searchH.remove("Test4");
+	 	searchH.remove("Test4");
 	 	//searchH.remove("Test6");
-	 	//searchH.remove("Test2");
-	 	//searchH.remove("Test1");
-	 	//searchH.remove("Lego");
+	 	//searchH.remove("Test5");
+	 	searchH.remove("Test2");
+	 	searchH.remove("Test1");
+	 	searchH.remove("Lego");
 	 	searchH.displayList();
 	 	
 	 	//System.out.println(searchH.get(5));
@@ -102,6 +103,7 @@ public class NavigationController implements RapidTunesController {
 		searchHistoryIterator = searchHistory.getIterator(true);
 		YouTubeSearch youtubeSearch = new YouTubeSearch();
 		
+		//Back Button in the search bar.
 		navBackBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e){
@@ -111,6 +113,7 @@ public class NavigationController implements RapidTunesController {
 			}
 		});
 		
+		//Forward Button in the search bar.
 		navFrontBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e){
@@ -120,24 +123,27 @@ public class NavigationController implements RapidTunesController {
 			}
 		});
 		
+		//Search Button in the search bar.
 		navSearchBtn.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override 
 		    public void handle(ActionEvent e) {
 		        //Save the search to history so we can back to it later.
 		        searchHistory.add(navSearchField.getText());
-		        searchHistoryIterator = searchHistory.getIterator(true);
+		        searchHistoryIterator.update(true);
 		        
-		        //Performs the search for the keywords in the YouTube data API.
-		        //System.out.println(youtubeSearch.search(navSearchField.getText()));
-		        //stageManager.getSongBrowserController().populateSongBrowser(youtubeSearch.search(navSearchField.getText()));
+		        //Performs the search for the keywords in the YouTube data API and 
+		        //populates the searchResultModel with results.
 		        searchResultModel.setSearchResultList(youtubeSearch.search(navSearchField.getText()));
 		    }
 		});
 	}
 	
 	/**
+	 * Initializes the SearchResultModel which connects the list of search results between
+	 * the NavigationController and the SongBrowserController.
+	 * This controller will edit the SearchResultModel by pushing searchResults to its ObservableList.
 	 * 
-	 * @param searchResultModel
+	 * @param searchResultModel - searchResultModel object to share data to.
 	 */
 	public void initSearchResultModel(SearchResultModel searchResultModel) {
 		//Make sure model is only set once.
@@ -146,8 +152,6 @@ public class NavigationController implements RapidTunesController {
 		}
 		
 		this.searchResultModel = searchResultModel;
-		
-		//This controller will edit the SearchResultModel
 		
 	}
 }
