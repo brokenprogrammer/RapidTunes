@@ -33,6 +33,7 @@ import java.util.logging.Logger;
 import com.google.api.services.youtube.model.SearchResult;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import me.oskarmendel.model.SearchResultModel;
@@ -72,15 +73,17 @@ public class SongBrowserController implements RapidTunesController {
 		this.searchResultModel = searchResultModel;
 		songList.setItems(searchResultModel.getSearchResultList());
 		
-		//Set currently selected song, Might be handy.
-		//listView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> 
-		//model.setCurrentPerson(newSelection));
-		/*model.currentPersonProperty().addListener((obs, oldPerson, newPerson) -> {
-            if (newPerson == null) {
-                listView.getSelectionModel().clearSelection();
-            } else {
-                listView.getSelectionModel().select(newPerson);
-            }
-        });*/
+		//Only display the title of each song in the search result list
+		songList.setCellFactory(lv -> new ListCell<SearchResult>() {
+			@Override
+			public void updateItem(SearchResult result, boolean empty) {
+				super.updateItem(result, empty);
+				if (empty) {
+					setText(null);
+				} else {
+					setText(result.getSnippet().getTitle());
+				}
+			}
+		});
 	}
 }

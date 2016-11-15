@@ -144,13 +144,37 @@ public class DoublyLinkedList<T> implements List<T>{
 	
 	/**
 	 * Removes the first occurrence of the specified item from the list.
-	 * 
+	 * TODO: DOES THIS WORK ??? DOES NOT WORK - http://stackoverflow.com/questions/8523436/removing-a-node-from-a-doubly-linked-list
 	 * @param o - object to be removed if present.
 	 * @return True if object was removed, false otherwise.
 	 */
 	@Override
 	public boolean remove(Object o) {
-		// TODO currently not doing what it supposed to do.
+		if (isEmpty()) {
+			//Throw Exception
+		}
+		
+		if (!isEmpty()) {
+			for (Node<T> x = first; x != null; x = x.next) {
+				if (o.equals(x.getContent())) {
+					Node<T> next = x.next;
+					Node<T> prev = x.prev;
+					
+					if (prev == null) {		   //At first
+						first = next;
+						next.prev = prev;
+					} else if (next == null) { //At last
+						prev.next = next;
+						last = prev;
+					} else {
+						prev.next = next;
+						next.prev = prev;
+					}
+					return true;
+				}
+			}
+		}
+		
 		return false;
 	}
 	

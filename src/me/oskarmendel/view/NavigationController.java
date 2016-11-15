@@ -71,6 +71,34 @@ public class NavigationController implements RapidTunesController {
 	public void initialize() {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
 		
+		/* TEMPORARY CODE FOR TESTING STACKED LIST. */
+		DoublyLinkedList<String> searchH = new DoublyLinkedList<String>();
+	    searchH.addFirst("Test1");
+		searchH.addFirst("Test2");
+		searchH.addFirst("Test3");
+ 		searchH.add("Test4");
+ 		searchH.add("Test5");
+ 		searchH.add("Test6");
+ 		searchH.addFirst("Test7");
+	 	searchH.displayList();
+	 	System.out.println("Popped element with text: " + searchH.removeFirst());
+	 	System.out.println("Popped element with text: " + searchH.removeFirst());
+	 	//System.out.println("Popped element with text: " + searchH.remove());
+	 	//searchH.displayList();
+	 	
+	 	searchH.add("Lego");
+	 	searchH.contains(123);
+	 	searchH.contains("Lego");
+		
+	 	//searchH.remove("Test4");
+	 	//searchH.remove("Test6");
+	 	//searchH.remove("Test2");
+	 	//searchH.remove("Test1");
+	 	//searchH.remove("Lego");
+	 	searchH.displayList();
+	 	
+	 	//System.out.println(searchH.get(5));
+		
 		searchHistoryIterator = searchHistory.getIterator(true);
 		YouTubeSearch youtubeSearch = new YouTubeSearch();
 		
