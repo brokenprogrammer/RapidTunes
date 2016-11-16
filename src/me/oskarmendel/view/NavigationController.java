@@ -90,13 +90,19 @@ public class NavigationController implements RapidTunesController {
 	 	searchH.contains(123);
 	 	searchH.contains("Lego");
 		
-	 	searchH.remove("Test4");
-	 	//searchH.remove("Test6");
-	 	//searchH.remove("Test5");
-	 	searchH.remove("Test2");
-	 	searchH.remove("Test1");
-	 	searchH.remove("Lego");
+//	 	searchH.remove("Test4");
+//	 	searchH.remove("Test6");
+//	 	searchH.remove("Test5");
+//	 	searchH.remove("Test2");
+//	 	searchH.remove("Test1");
+//	 	searchH.remove("Lego");
 	 	searchH.displayList();
+	 	
+	 	String[] mine = searchH.toArray(new String[0]);
+	 	
+	 	for (int x = 0; x <= mine.length-1; x++) {
+	 		System.out.println("Content in mine: " + mine[x]);
+	 	}
 	 	
 	 	//System.out.println(searchH.get(5));
 		
@@ -108,7 +114,8 @@ public class NavigationController implements RapidTunesController {
 			@Override 
 			public void handle(ActionEvent e){
 				if (searchHistoryIterator.hasPrev()) {
-					navSearchField.setText(searchHistoryIterator.prev());
+					searchHistoryIterator.prev();
+					navSearchField.setText(searchHistoryIterator.current());
 				}
 			}
 		});
@@ -118,7 +125,8 @@ public class NavigationController implements RapidTunesController {
 			@Override 
 			public void handle(ActionEvent e){
 				if (searchHistoryIterator.hasNext()) {
-					navSearchField.setText(searchHistoryIterator.next());
+					searchHistoryIterator.next();
+					navSearchField.setText(searchHistoryIterator.current());
 				}
 			}
 		});

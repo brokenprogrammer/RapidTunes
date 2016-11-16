@@ -27,6 +27,7 @@
 
 package me.oskarmendel.util;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
@@ -35,8 +36,7 @@ import java.util.ListIterator;
 
 /**
  * Doubly Linked List data structure implemented as generic to fit multiple types.
- * TODO: Currently a linked list, change it to doubly linked.
- * TODO: Implement this as a Doubly-Linked List.
+ * TODO: Implement all implemented methods.
  * 
  * @author Oskar
  * @version 0.00.00
@@ -163,7 +163,12 @@ public class DoublyLinkedList<T> implements List<T>{
 					Node<T> prev = x.prev;
 					
 					//If prev is null then the element is at first if next is null then at last.
-					if (prev == null) {
+					//Both null means size is currently 1 and we are removing the last element in the list.
+					if (next == null && prev == null) {
+						first = null;
+						last = null;
+					}
+					else if (prev == null) {
 						first = first.next;
 						first.prev = null;
 					} else if (next == null) {
@@ -276,9 +281,13 @@ public class DoublyLinkedList<T> implements List<T>{
 	}
 
 	/**
-	 * TODO: Look at http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/jdk8-b132/src/share/classes/java/util/AbstractCollection.java#l112
-	 * TODO: Line 174
-	 * TODO: http://stackoverflow.com/questions/4010924/java-how-to-implement-toarray-for-collection
+	 * Returns an array containing all of the elements in this list in
+     * proper sequence (from first to last element); the runtime type of
+     * the returned array is that of the specified array.  If the list fits
+     * in the specified array, it is returned therein.  Otherwise, a new
+     * array is allocated with the runtime type of the specified array and
+     * the size of this list.
+     * 
 	 * @param T - the runtime type of the array to contain the collection
 	 * @param a - the array into which the elements of this list are to be stored, 
 	 * 				if it is big enough; otherwise, a new array of the same runtime 
@@ -288,14 +297,30 @@ public class DoublyLinkedList<T> implements List<T>{
 	@SuppressWarnings({ "hiding", "unchecked" })
 	@Override
 	public <T> T[] toArray(T[] a) {	
-		Object[] original = toArray();
-		T[] result = Arrays.copyOf(a, original.length);
+		//Josh Bloch implementation of toArray. Implemented like this to learn more advanced standards.
 		
-		for (int x = 0; x < original.length; x++) {
-			result[x] = (T)original[x];
+		// Estimate size of array; be prepared to see more or fewer elements
+		int size = size();
+		T[] r = a.length >= size
+				? a
+				: (T[]) Array.newInstance(a.getClass().getComponentType(), size);
+		
+		DoublyLinkedListIterator it = getIterator();
+		
+		for (int i = 0; i < r.length; i++) {
+			if (!it.hasNext()) { //Fewer elements than expected.
+				if (a != r) {
+					return Arrays.copyOf(r, i);
+				}
+				r[i] = null; //Null-terminate.
+				return r;
+			}
+			r[i] = (T) it.next(); //Skips the absolutley first element of the list.
 		}
 		
-		return result;
+		//Can make return depending on if it missed an element in the list:
+		// return it.hasNext() ? finishToArray(r, it) : r;
+		return r;
 	}
 
 	@Override
@@ -550,10 +575,13 @@ public class DoublyLinkedList<T> implements List<T>{
 		 */
 		@Override
 		public T next() {
+			T current = iteratorNode.getContent();
+			
 			if (hasNext()) {
 				iteratorNode = iteratorNode.next;
 			}
-			return iteratorNode.getContent();
+			
+			return current;
 		}
 		
 		/**
@@ -563,10 +591,13 @@ public class DoublyLinkedList<T> implements List<T>{
 		 * @return previous element in the iteration.
 		 */
 		public T prev() {
+			T current = iteratorNode.getContent();
+			
 			if (hasPrev()) {
 				iteratorNode = iteratorNode.prev;
 			}
-			return iteratorNode.getContent();
+			
+			return current;
 		}
 		
 		/**
