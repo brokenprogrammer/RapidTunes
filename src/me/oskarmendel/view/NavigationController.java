@@ -90,21 +90,16 @@ public class NavigationController implements RapidTunesController {
 	 	searchH.contains(123);
 	 	searchH.contains("Lego");
 		
-//	 	searchH.remove("Test4");
-//	 	searchH.remove("Test6");
-//	 	searchH.remove("Test5");
-//	 	searchH.remove("Test2");
-//	 	searchH.remove("Test1");
-//	 	searchH.remove("Lego");
-	 	System.out.println("Removed element : " + searchH.remove(5));
+	 	searchH.remove("Test4");
+	 	searchH.remove("Test6");
+	 	searchH.remove("Test5");
+	 	searchH.remove("Test2");
+	 	searchH.remove("Test1");
+	 	//searchH.remove("Lego");
+	 	//System.out.println("Removed element : " + searchH.remove(5));
 	 	//System.out.println("Removed element : " + searchH.remove(0));
+	 	searchH.add(0, "Oskar");
 	 	searchH.displayList();
-	 	
-	 	String[] mine = searchH.toArray(new String[0]);
-	 	
-	 	for (int x = 0; x <= mine.length-1; x++) {
-	 		System.out.println("Content in mine: " + mine[x]);
-	 	}
 	 	
 	 	//System.out.println(searchH.get(5));
 		

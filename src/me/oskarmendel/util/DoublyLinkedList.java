@@ -27,11 +27,8 @@
 
 package me.oskarmendel.util;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.AbstractSequentialList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.ListIterator;
 
 /**
@@ -42,7 +39,7 @@ import java.util.ListIterator;
  * @version 0.00.00
  * @name DoublyLinkedList.java
  */
-public class DoublyLinkedList<T> implements List<T>{
+public class DoublyLinkedList<T> extends AbstractSequentialList<T>{
 	private int size;				// Number of elements in the list.
 	private Node<T> first = null;	// First item in the list.
 	private Node<T> last = null;	// Last item in the list.
@@ -56,16 +53,13 @@ public class DoublyLinkedList<T> implements List<T>{
 		Node<T> newEntry = new Node<T>(data);
 		
 		if (isEmpty()) {
-			newEntry.next = null; //no need since its null by default
-			newEntry.prev = null; //no need since its null by default
-			first = newEntry;
 			last = newEntry;
 		} else {
 			first.prev = newEntry;
 			newEntry.next = first;
-			newEntry.prev = null; //no need since its null by default
-			first = newEntry;
 		}
+		
+		first = newEntry;
 		this.size++;
 	}
 	
@@ -74,74 +68,120 @@ public class DoublyLinkedList<T> implements List<T>{
 	 * 
 	 * @param data - data to populate the Node object with.
 	 */
-	@Override
 	public boolean add(T data) {
 		Node<T> newEntry = new Node<T>(data);
 		
 		if (isEmpty()) {
-			newEntry.next = null;
-			newEntry.prev = null;
 			first = newEntry;
-			last = newEntry;
 		} else {
 			last.next = newEntry;
 			newEntry.prev = last;
-			newEntry.next = null;
-			last = newEntry;
 		}
+		
+		last = newEntry;
 		this.size++;
 		return true;
+	}
+	
+	/**
+	 * Inserts the specified element at the specified index and pushes
+	 * old elements position forward by one. 
+	 * 
+	 * 
+	 * @param index - position element should be inserted at.
+	 * @param element - element to be inserted.
+	 * 
+	 * @throws IndexOutOfBoundsException - index is out of bounds.
+	 */
+	@Override
+	public void add(int index, T element) {
+		if ((index < 0 || index >= size())) {
+			//Attempting to add to an non-existing index.
+			throw new IndexOutOfBoundsException();
+		}
+		
+		for (Node<T> x = first; x != null; x = x.next) {
+			if (index == 0) {
+				Node<T> next = x.next;
+				Node<T> prev = x.prev;
+				Node<T> newEntry = new Node<T>(element);
+				
+				//Size of the list is 1.
+				if (prev == null && next == null) {
+					addFirst(element);
+				} else if (prev == null) { // Found element is at the first index of the list.
+					addFirst(element);
+				} else { 
+					//The elements should be pushed forward and since this method
+					//only accept indexes compared to elements within this list 
+					//the same logic applies to an index at the end of the list 
+					//as the middle of the list. An element will never be pushed 
+					//to the end of the list with this method since thats and uninitialized index.
+					prev.next = newEntry;
+					newEntry.prev = prev;
+					
+					x.prev = newEntry;
+					newEntry.next = x;
+				}
+				
+				size++;
+			}
+			index--;
+		}
 	}
 	
 	/**
 	 * Removes the current first element of the list.
 	 * 
 	 * @return The searchTerm within the removed History object.
+	 * 
+	 * @throws IndexOutOfBoundsException - if attempting to remove element from empty list.
 	 */
 	public T removeFirst() {
 		if (isEmpty()) {
-			//Throw exception
+			//Trying to remove element from an empty list.
+			throw new IndexOutOfBoundsException();
 		}
 		
-		if (!isEmpty()) {
-			Node<T> oldFirst = first;
-			
-			if (first.next == null) {
-				first = null;
-				last = null;
-			} else {
-				first = first.next;
-				first.prev = null;
-			}
-			this.size--;
-			return oldFirst.getContent(); // CHECK THIS HERE <------
+		Node<T> oldFirst = first;
+		
+		if (first.next == null) {
+			first = null;
+			last = null;
+		} else {
+			first = first.next;
+			first.prev = null;
 		}
-		return null;
+		
+		this.size--;
+		return oldFirst != null ? oldFirst.getContent() : null;
 	}
 	
 	/**
 	 * Removes the last element of the list.
 	 * 
 	 * @return the value from the removed item.
+	 * 
+	 * @throws IndexOutOfBoundsException - if attempting to remove element from empty list.
 	 */
 	public T remove() {
 		if (isEmpty()) {
-			//Throw exception
+			//Trying to remove element from an empty list.
+			throw new IndexOutOfBoundsException();
 		}
 		
-		if (!isEmpty()) {
-			Node<T> oldLast = last;
-			if (first.next == null) {
-				first = null;
-				last = null;
-			} else {
-				last = last.prev;
-				last.next = null;
-			}
-			this.size--;
-			return oldLast.getContent(); 
+		Node<T> oldLast = last;
+		
+		if (first.next == null) {
+			first = null;
+			last = null;
+		} else {
+			last = last.prev;
+			last.next = null;
 		}
-		return null;
+		
+		this.size--;
+		return oldLast != null ? oldLast.getContent() : null;
 	}
 	
 	/**
@@ -151,41 +191,43 @@ public class DoublyLinkedList<T> implements List<T>{
 	 * 
 	 * @param index - the index of the element to be removed
 	 * @return the element that was removed from the list.
+	 * 
+	 * @throws IndexOutOfBoundsException - if attempting to remove element from empty list.
 	 */
 	@Override
 	public T remove(int index) {
-		if(isEmpty()) {
-			//Throw exception
+		if(isEmpty() || (index < 0 || index > size())) {
+			//Trying to remove element from an empty list.
+			throw new IndexOutOfBoundsException();
 		}
 		
-		if(!isEmpty()) {
-			for (Node<T> x = first; x != null; x = x.next) {
-				if (index == 0) {
-					Node<T> next = x.next;
-					Node<T> prev = x.prev;
-					T removed = x.getContent();
-					
-					//Size of the list is 1 and the list will be empty after this element is removed.
-					if (prev == null && next == null) {
-						first = null;
-						last = null;
-					} else if (prev == null) { // Found element is at the first index of the list.
-						first = first.next;
-						first.prev = null;
-					} else if (next == null) { // Found element is at the last index of the list.
-						last = last.prev;
-						last.next = null;
-					} else {
-						prev.next = next;
-						next.prev = prev;
-					}
-					
-					size--;
-					return removed;
+		for (Node<T> x = first; x != null; x = x.next) {
+			if (index == 0) {
+				Node<T> next = x.next;
+				Node<T> prev = x.prev;
+				T removed = x.getContent();
+				
+				//Size of the list is 1 and the list will be empty after this element is removed.
+				if (prev == null && next == null) {
+					first = null;
+					last = null;
+				} else if (prev == null) { // Found element is at the first index of the list.
+					first = first.next;
+					first.prev = null;
+				} else if (next == null) { // Found element is at the last index of the list.
+					last = last.prev;
+					last.next = null;
+				} else {
+					prev.next = next;
+					next.prev = prev;
 				}
-				index--;
+				
+				size--;
+				return removed;
 			}
+			index--;
 		}
+		
 		return null;
 	}
 	
@@ -193,37 +235,37 @@ public class DoublyLinkedList<T> implements List<T>{
 	 * Removes the first occurrence of the specified item from the list.
 	 * 
 	 * @param o - object to be removed if present.
-	 * @return True if object was removed, false otherwise.
+	 * @return true if object was found and removed, false otherwise.
+	 * 
+	 * @throws IndexOutOfBoundsException - if attempting to remove element from empty list.
 	 */
-	@Override
 	public boolean remove(Object o) {
 		if (isEmpty()) {
-			//Throw Exception
+			//Trying to remove element from an empty list.
+			throw new IndexOutOfBoundsException();
 		}
 		
-		if (!isEmpty()) {
-			for (Node<T> x = first; x != null; x = x.next) {
-				if (o.equals(x.getContent())) {
-					Node<T> next = x.next;
-					Node<T> prev = x.prev;
-					
-					//Size of the list is 1 and the list will be empty after this element is removed.
-					if (next == null && prev == null) {
-						first = null;
-						last = null;
-					} else if (prev == null) { //Found element is at the first index of the list.
-						first = first.next;
-						first.prev = null;
-					} else if (next == null) { // Found element is at the last index of the list.
-						last = last.prev;
-						last.next = null;
-					} else {
-						prev.next = next;
-						next.prev = prev;
-					}
-					this.size--;
-					return true;
+		for (Node<T> x = first; x != null; x = x.next) {
+			if (o.equals(x.getContent())) {
+				Node<T> next = x.next;
+				Node<T> prev = x.prev;
+				
+				//Size of the list is 1 and the list will be empty after this element is removed.
+				if (next == null && prev == null) {
+					first = null;
+					last = null;
+				} else if (prev == null) { //Found element is at the first index of the list.
+					first = first.next;
+					first.prev = null;
+				} else if (next == null) { // Found element is at the last index of the list.
+					last = last.prev;
+					last.next = null;
+				} else {
+					prev.next = next;
+					next.prev = prev;
 				}
+				this.size--;
+				return true;
 			}
 		}
 		
@@ -265,7 +307,6 @@ public class DoublyLinkedList<T> implements List<T>{
 	 * @param object - object to look for within the list.
 	 * @return True if the object exists in the list.
 	 */
-	@Override
 	public boolean contains(Object object) {
 		if (!isEmpty()) {
 			for (Node<T> x = first; x != null; x = x.next) {
@@ -288,6 +329,14 @@ public class DoublyLinkedList<T> implements List<T>{
 		return new DoublyLinkedListIterator();
 	}
 	
+	// REFARCTORED CODE UNTIL HERE /////// ----------------------------------------------------------------
+	
+	@Override
+	public ListIterator<T> listIterator(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	/**
 	 * Returns an iterator capable of iterating forward and backwards of 
 	 * the elements within the list.
@@ -307,7 +356,6 @@ public class DoublyLinkedList<T> implements List<T>{
 	 * 
 	 * @return an array containing all the elements of this list.
 	 */
-	@Override
 	public Object[] toArray() {
 		if (!isEmpty()) {
 			Object[] list = new Object[this.size()];
@@ -324,83 +372,9 @@ public class DoublyLinkedList<T> implements List<T>{
 	}
 
 	/**
-	 * Returns an array containing all of the elements in this list in
-     * proper sequence (from first to last element); the runtime type of
-     * the returned array is that of the specified array.  If the list fits
-     * in the specified array, it is returned therein.  Otherwise, a new
-     * array is allocated with the runtime type of the specified array and
-     * the size of this list.
-     * 
-	 * @param T - the runtime type of the array to contain the collection
-	 * @param a - the array into which the elements of this list are to be stored, 
-	 * 				if it is big enough; otherwise, a new array of the same runtime 
-	 * 				type is allocated for this purpose.
-	 * @return  an array containing the elements of this list.
-	 */
-	@SuppressWarnings({ "hiding", "unchecked" })
-	@Override
-	public <T> T[] toArray(T[] a) {	
-		//Josh Bloch implementation of toArray. Implemented like this to learn more advanced standards.
-		
-		// Estimate size of array; be prepared to see more or fewer elements
-		int size = size();
-		T[] r = a.length >= size
-				? a
-				: (T[]) Array.newInstance(a.getClass().getComponentType(), size);
-		
-		DoublyLinkedListIterator it = getIterator();
-		
-		for (int i = 0; i < r.length; i++) {
-			if (!it.hasNext()) { //Fewer elements than expected.
-				if (a != r) {
-					return Arrays.copyOf(r, i);
-				}
-				r[i] = null; //Null-terminate.
-				return r;
-			}
-			r[i] = (T) it.next(); //Skips the absolutley first element of the list.
-		}
-		
-		//Can make return depending on if it missed an element in the list:
-		// return it.hasNext() ? finishToArray(r, it) : r;
-		return r;
-	}
-
-	@Override
-	public boolean containsAll(Collection<?> c) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean addAll(Collection<? extends T> c) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean addAll(int index, Collection<? extends T> c) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean removeAll(Collection<?> c) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean retainAll(Collection<?> c) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/**
 	 * Removes all the elements from the list.
 	 * The list will be empty after this call returns.
 	 */
-	@Override
 	public void clear() {
 		first = null;
 		last  = null;
@@ -446,49 +420,6 @@ public class DoublyLinkedList<T> implements List<T>{
 				index--;
 			}
 		}
-		return null;
-	}
-
-	/**
-	 * Inserts the specified element at the specified index and pushes
-	 * old elements position forward by one.
-	 * 
-	 * @param index - position element should be inserted at.
-	 * @param element - element to be inserted.
-	 */
-	@Override
-	public void add(int index, T element) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int indexOf(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int lastIndexOf(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public ListIterator<T> listIterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ListIterator<T> listIterator(int index) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<T> subList(int fromIndex, int toIndex) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	
