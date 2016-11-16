@@ -1,30 +1,30 @@
-Nov 16, 2016 9:50:34 AM me.oskarmendel.RapidTunes main
+Nov 16, 2016 12:45:48 PM me.oskarmendel.RapidTunes main
 FINE: Launching RapidTunes
-Nov 16, 2016 9:50:34 AM me.oskarmendel.StageManager showRapidTunes
+Nov 16, 2016 12:45:48 PM me.oskarmendel.StageManager showRapidTunes
 FINE: Loading layouts..
-Nov 16, 2016 9:50:34 AM me.oskarmendel.StageManager loadLayout
+Nov 16, 2016 12:45:48 PM me.oskarmendel.StageManager loadLayout
 FINE: Loading Layout: /view/NavigationLayout.fxml
-Nov 16, 2016 9:50:34 AM me.oskarmendel.view.NavigationController initialize
+Nov 16, 2016 12:45:48 PM me.oskarmendel.view.NavigationController initialize
 FINE: Initialized: me.oskarmendel.view.NavigationController
-Nov 16, 2016 9:50:34 AM me.oskarmendel.StageManager loadLayout
+Nov 16, 2016 12:45:48 PM me.oskarmendel.StageManager loadLayout
 FINE: Loading Layout: /view/PlaylistControlLayout.fxml
-Nov 16, 2016 9:50:34 AM me.oskarmendel.view.PlaylistController initialize
+Nov 16, 2016 12:45:48 PM me.oskarmendel.view.PlaylistController initialize
 FINE: Initialized: me.oskarmendel.view.PlaylistController
-Nov 16, 2016 9:50:34 AM me.oskarmendel.StageManager loadLayout
+Nov 16, 2016 12:45:48 PM me.oskarmendel.StageManager loadLayout
 FINE: Loading Layout: /view/SongControlLayout.fxml
-Nov 16, 2016 9:50:34 AM me.oskarmendel.view.SongController initialize
+Nov 16, 2016 12:45:48 PM me.oskarmendel.view.SongController initialize
 FINE: Initialized: me.oskarmendel.view.SongController
-Nov 16, 2016 9:50:34 AM me.oskarmendel.StageManager loadLayout
+Nov 16, 2016 12:45:48 PM me.oskarmendel.StageManager loadLayout
 FINE: Loading Layout: /view/SongBrowserLayout.fxml
-Nov 16, 2016 9:50:34 AM me.oskarmendel.view.SongBrowserController initialize
+Nov 16, 2016 12:45:48 PM me.oskarmendel.view.SongBrowserController initialize
 FINE: Initialized: me.oskarmendel.view.SongBrowserController
-Nov 16, 2016 9:50:34 AM me.oskarmendel.StageManager loadLayout
+Nov 16, 2016 12:45:48 PM me.oskarmendel.StageManager loadLayout
 FINE: Loading Layout: /view/RootLayout.fxml
-Nov 16, 2016 9:50:34 AM me.oskarmendel.StageManager showRapidTunes
+Nov 16, 2016 12:45:48 PM me.oskarmendel.StageManager showRapidTunes
 FINE: Loading stylesheet: /css/Dark.css
-Nov 16, 2016 9:50:35 AM javafx.scene.Scene$13 invalidated
+Nov 16, 2016 12:45:49 PM javafx.scene.Scene$13 invalidated
 FINE: Changed focus from null to Button[id=navBackBtn, styleClass=button]'<'
-Nov 16, 2016 9:50:35 AM javafx.scene.Node$FocusedProperty markInvalid
+Nov 16, 2016 12:45:49 PM javafx.scene.Node$FocusedProperty markInvalid
 FINE: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: true] focused=true
-Nov 16, 2016 9:50:36 AM javafx.scene.Node$FocusedProperty markInvalid
+Nov 16, 2016 12:45:50 PM javafx.scene.Node$FocusedProperty markInvalid
 FINE: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: false] focused=false

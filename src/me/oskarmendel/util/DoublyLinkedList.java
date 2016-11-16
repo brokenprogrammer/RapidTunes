@@ -145,6 +145,51 @@ public class DoublyLinkedList<T> implements List<T>{
 	}
 	
 	/**
+	 * Removes the element at the specified position in this list (optional operation). 
+	 * Shifts any subsequent elements to the left (subtracts one from their indices). 
+	 * Returns the element that was removed from the list.
+	 * 
+	 * @param index - the index of the element to be removed
+	 * @return the element that was removed from the list.
+	 */
+	@Override
+	public T remove(int index) {
+		if(isEmpty()) {
+			//Throw exception
+		}
+		
+		if(!isEmpty()) {
+			for (Node<T> x = first; x != null; x = x.next) {
+				if (index == 0) {
+					Node<T> next = x.next;
+					Node<T> prev = x.prev;
+					T removed = x.getContent();
+					
+					//Size of the list is 1 and the list will be empty after this element is removed.
+					if (prev == null && next == null) {
+						first = null;
+						last = null;
+					} else if (prev == null) { // Found element is at the first index of the list.
+						first = first.next;
+						first.prev = null;
+					} else if (next == null) { // Found element is at the last index of the list.
+						last = last.prev;
+						last.next = null;
+					} else {
+						prev.next = next;
+						next.prev = prev;
+					}
+					
+					size--;
+					return removed;
+				}
+				index--;
+			}
+		}
+		return null;
+	}
+	
+	/**
 	 * Removes the first occurrence of the specified item from the list.
 	 * 
 	 * @param o - object to be removed if present.
@@ -162,16 +207,14 @@ public class DoublyLinkedList<T> implements List<T>{
 					Node<T> next = x.next;
 					Node<T> prev = x.prev;
 					
-					//If prev is null then the element is at first if next is null then at last.
-					//Both null means size is currently 1 and we are removing the last element in the list.
+					//Size of the list is 1 and the list will be empty after this element is removed.
 					if (next == null && prev == null) {
 						first = null;
 						last = null;
-					}
-					else if (prev == null) {
+					} else if (prev == null) { //Found element is at the first index of the list.
 						first = first.next;
 						first.prev = null;
-					} else if (next == null) {
+					} else if (next == null) { // Found element is at the last index of the list.
 						last = last.prev;
 						last.next = null;
 					} else {
@@ -419,15 +462,6 @@ public class DoublyLinkedList<T> implements List<T>{
 		
 	}
 
-	/**
-	 * 
-	 */
-	@Override
-	public T remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public int indexOf(Object o) {
 		// TODO Auto-generated method stub
@@ -512,6 +546,7 @@ public class DoublyLinkedList<T> implements List<T>{
 	public class DoublyLinkedListIterator implements Iterator<T> {
 
 		private Node<T> iteratorNode;
+		public int index;
 		
 		/**
 		 * Initializes a DoublyLinkedListIterator with the default value of 
@@ -519,6 +554,7 @@ public class DoublyLinkedList<T> implements List<T>{
 		 */
 		public DoublyLinkedListIterator() {
 			this.iteratorNode = first;
+			this.index = 0;
 		}
 		
 		/**
@@ -530,8 +566,10 @@ public class DoublyLinkedList<T> implements List<T>{
 		public DoublyLinkedListIterator(boolean setToLast) {
 			if (setToLast) {
 				this.iteratorNode = last;
+				this.index = size();
 			} else {
 				this.iteratorNode = first;
+				this.index = 0;
 			}
 		}
 		
@@ -543,8 +581,10 @@ public class DoublyLinkedList<T> implements List<T>{
 		public void update(boolean setToLast) {
 			if (setToLast) {
 				this.iteratorNode = last;
+				this.index = size();
 			} else {
 				this.iteratorNode = first;
+				this.index = 0;
 			}
 		}
 		
@@ -555,7 +595,7 @@ public class DoublyLinkedList<T> implements List<T>{
 		 */
 		@Override
 		public boolean hasNext() {
-			return iteratorNode.next != null;
+			return index < size();
 		}
 		
 		/**
@@ -564,7 +604,7 @@ public class DoublyLinkedList<T> implements List<T>{
 		 * @return True if there is more elements backwards in the list.
 		 */
 		public boolean hasPrev() {
-			return iteratorNode.prev != null;
+			return index > 1;
 		}
 
 		/**
@@ -581,6 +621,7 @@ public class DoublyLinkedList<T> implements List<T>{
 				iteratorNode = iteratorNode.next;
 			}
 			
+			index++;
 			return current;
 		}
 		
@@ -597,6 +638,7 @@ public class DoublyLinkedList<T> implements List<T>{
 				iteratorNode = iteratorNode.prev;
 			}
 			
+			index--;
 			return current;
 		}
 		
