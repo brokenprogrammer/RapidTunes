@@ -33,7 +33,7 @@ import java.util.ListIterator;
 
 /**
  * Doubly Linked List data structure implemented as generic to fit multiple types.
- * TODO: Implement all implemented methods.
+ * TODO: Test all implemented Methods to make sure they work.
  * 
  * @author Oskar
  * @version 0.00.00
@@ -328,9 +328,7 @@ public class DoublyLinkedList<T> extends AbstractSequentialList<T>{
 	public Iterator<T> iterator() {
 		return new DoublyLinkedListIterator();
 	}
-	
-	// REFARCTORED CODE UNTIL HERE /////// ----------------------------------------------------------------
-	
+		
 	@Override
 	public ListIterator<T> listIterator(int index) {
 		// TODO Auto-generated method stub
@@ -347,6 +345,13 @@ public class DoublyLinkedList<T> extends AbstractSequentialList<T>{
 		return new DoublyLinkedListIterator();
 	}
 	
+	/**
+	 * Returns an iterator capable of iterating forward and backwards of 
+	 * the elements within the list.
+	 * 
+	 * @param startBack - decide whether the list should start from the last element or not.
+	 * @return a new DoublyLinkedListIterator instance.
+	 */
 	public DoublyLinkedListIterator getIterator(boolean startback) {
 		return new DoublyLinkedListIterator(startback);
 	}
@@ -435,31 +440,40 @@ public class DoublyLinkedList<T> extends AbstractSequentialList<T>{
 		private Node<T> prev;
 		
 		/**
+		 * Contruct a new Node object with the specified content.
 		 * 
-		 * @param searchTerm
+		 * @param content - the content to be stored within the node.
 		 */
 		public Node(T content) {
 			this.content = content;
 		}
 		
 		/**
+		 * Getter for the Node objects content.
 		 * 
-		 * @return
+		 * @return this node's content.
 		 */
 		public T getContent() {
 			return content;
 		}
 		
 		/**
+		 * Setter for the Node objects content.
 		 * 
-		 * @param content
+		 * @param content - new content to store within the Node.
 		 */
 		public void setContent(T content) {
 			this.content = content;
 		}
 		
 		/**
+		 * Returns a string representation of the object. In general, 
+		 * the toString method returns a string that "textually represents" 
+		 * this object. The result should be a concise but informative 
+		 * representation that is easy for a person to read. It is 
+		 * recommended that all subclasses override this method.
 		 * 
+		 * @return a string representation of the object.
 		 */
 		@Override
 		public String toString() {
