@@ -97,7 +97,7 @@ public class DoublyLinkedList<T> extends AbstractSequentialList<T>{
 	public void add(int index, T element) {
 		if ((index < 0 || index >= size())) {
 			//Attempting to add to an non-existing index.
-			throw new IndexOutOfBoundsException();
+			throw new IndexOutOfBoundsException("Attempt to add element to index that does not exist.");
 		}
 		
 		for (Node<T> x = first; x != null; x = x.next) {

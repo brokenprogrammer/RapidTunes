@@ -31,7 +31,9 @@ import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * 
@@ -41,6 +43,9 @@ import org.junit.Test;
  */
 public class DoublyLinkedListTest {
 	DoublyLinkedList<Integer> list;
+	
+	@Rule
+    public ExpectedException thrown = ExpectedException.none();
 	
 	/**
 	 * @throws java.lang.Exception
@@ -79,7 +84,11 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testIsEmpty() {
-		fail("Not yet implemented"); // TODO
+		assertEquals("Size is currently empty.", true, list.isEmpty());
+		list.add(10);
+		assertEquals("Size is currently not empty.", false, list.isEmpty());
+		list.clear();
+		assertEquals("Size is currently empty.", true, list.isEmpty());
 	}
 
 	/**
@@ -87,7 +96,10 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testClear() {
-		fail("Not yet implemented"); // TODO
+		list.add(10);
+		assertEquals("Size is currently not empty.", false, list.isEmpty());
+		list.clear();
+		assertEquals("Size is currently empty.", true, list.isEmpty());
 	}
 
 	/**
@@ -95,7 +107,24 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testAddFirst() {
-		fail("Not yet implemented"); // TODO
+		int first = 0;
+		
+		list.add(20);
+		list.add(40);
+		
+		list.addFirst(10);
+		first = list.get(0);
+		assertEquals("First item in list is 10.", 10, first);
+		
+		list.addFirst(5);
+		first = list.get(0);
+		assertEquals("First item in list is 5.", 5, first);
+		
+		list.addFirst(1);
+		first = list.get(0);
+		assertEquals("First item in list is 1.", 1, first);
+		
+		list.clear();
 	}
 
 	/**
@@ -103,7 +132,22 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testAddT() {
-		fail("Not yet implemented"); // TODO
+		int element = 0;
+		
+		assertEquals("Successfully added item to the list.", true, list.add(20));
+		
+		element = list.get(0);
+		assertEquals("Item within the list is 20", 20, element);
+		
+		assertEquals("Successfully added item to the end of the list.", true, list.add(500));
+		element = list.get(list.size()-1);
+		assertEquals("Last item within the list is 500", 500, element);
+		
+		assertEquals("Successfully added item to the end of the list.", true, list.add(1000));
+		element = list.get(list.size()-1);
+		assertEquals("Last item within the list is 1000", 1000, element);
+		
+		list.clear();
 	}
 
 	/**
@@ -111,8 +155,39 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testAddIntT() {
-		fail("Not yet implemented"); // TODO
+		int element = 0;
+		
+		//Cannot add an element to an index that doesnt exist. 
+		try {
+			list.add(0, 10);
+			fail("Expected an IndexOutOfBoundsException to be thrown");
+		} catch (IndexOutOfBoundsException e) {
+			assertTrue(e.getMessage().equals("Attempt to add element to index that does not exist."));
+		}
+		
+		list.add(10);
+		
+		list.add(0, 20);
+		element = list.get(0);
+		assertEquals("First item in list is 20.", 20, element);
+		
+		list.add(1, 500);
+		element = list.get(1);
+		assertEquals("Item in list at index 1 is 500.", 10, element);
+		
+		list.clear();
 	}
+	
+	/**
+	 * Test method for exception from {@link me.oskarmendel.util.DoublyLinkedList#add(int, java.lang.Object)}.
+	 */
+	@Test
+    public void testAddIntTThrowsIndexOutOfBoundsException() {
+        thrown.expect(IndexOutOfBoundsException.class);
+        //Test the exception message
+        thrown.expectMessage("Attempt to add element to index that does not exist.");
+        list.add(0, 10);
+    }
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.DoublyLinkedList#removeFirst()}.
@@ -207,7 +282,25 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testGetInt() {
-		fail("Not yet implemented"); // TODO
+		int element = 0;
+		
+		list.add(20);
+		element = list.get(0);
+		assertEquals("Item in list at index 1 is 20.", 20, element);
+		
+		list.addFirst(30);
+		element = list.get(0);
+		assertEquals("Item in the list as index 0 is 30", 30, element);
+		element = list.get(1);
+		assertEquals("Item in the list as index 1 is 20", 20, element);
+		
+		list.add(1, 200);
+		element = list.get(1);
+		assertEquals("Item in the list as index 1 is 200", 200, element);	
+		element = list.get(2);
+		assertEquals("Item in the list as index 1 is 20", 20, element);
+		
+		list.clear();
 	}
 
 	/**

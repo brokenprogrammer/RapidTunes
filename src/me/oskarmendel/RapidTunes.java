@@ -51,6 +51,8 @@ public class RapidTunes extends Application{
 		// TODO Display search results from searched / queried source.
 		// TODO Download song and split video / sound if required and add to created song object.
 		// TODO Does logger need improovement, Add formatting through simple formatter?? 
+		// TODO Implement threading when song is splitted with video etc.. Concurrency package
+		
 		
 		//SongParser sp = new SongParser();
 		//String[] videoData = {};
