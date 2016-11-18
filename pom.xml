@@ -16,6 +16,17 @@
       </plugin>
     </plugins>
   </build>
+  
+  <repositories>
+  	<repository>
+    	<id>maven-central-repo</id>
+        <url>http://repo1.maven.org/maven2</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+  </repositories>
+  
   <dependencies>
   	
   	<dependency>
@@ -30,6 +41,27 @@
         <artifactId>google-api-services-youtube</artifactId>
         <version>v3-rev179-1.22.0</version>
     </dependency>
+    
+    <!-- JUnit testing framework -->
+    <dependency>
+	  <groupId>junit</groupId>
+	  <artifactId>junit</artifactId>
+	  <version>4.12</version>
+	  <scope>test</scope>
+	</dependency>
 		    
+	<!-- TestFX testing framework for JavaFX -->
+	<dependency>
+        <groupId>org.testfx</groupId>
+        <artifactId>testfx-core</artifactId>
+        <version>4.0.1-alpha</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.testfx</groupId>
+        <artifactId>testfx-junit</artifactId>
+        <version>4.0.1-alpha</version>
+        <scope>test</scope>
+    </dependency>
   </dependencies>
 </project>
