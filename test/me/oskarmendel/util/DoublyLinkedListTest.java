@@ -29,6 +29,9 @@ package me.oskarmendel.util;
 
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
+import java.util.ListIterator;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -173,7 +176,7 @@ public class DoublyLinkedListTest {
 		
 		list.add(1, 500);
 		element = list.get(1);
-		assertEquals("Item in list at index 1 is 500.", 10, element);
+		assertEquals("Item in list at index 1 is 500.", 500, element);
 		
 		list.clear();
 	}
@@ -194,7 +197,30 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testRemoveFirst() {
-		fail("Not yet implemented"); // TODO
+		int element = 0;
+		
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		list.add(40);
+		list.add(50);
+		
+		element = list.removeFirst();
+		assertEquals("First item in list is 10.", 10, element);
+		
+		element = list.removeFirst();;
+		assertEquals("First item in list is 20.", 20, element);
+		
+		element = list.removeFirst();;
+		assertEquals("First item in list is 30.", 30, element);
+		
+		element = list.removeFirst();;
+		assertEquals("First item in list is 40.", 40, element);
+		
+		element = list.removeFirst();;
+		assertEquals("First item in list is 50.", 50, element);
+		
+		list.clear();
 	}
 
 	/**
@@ -202,7 +228,30 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testRemove() {
-		fail("Not yet implemented"); // TODO
+		int element = 0;
+		
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		list.add(40);
+		list.add(50);
+		
+		element = list.remove();
+		assertEquals("Last item in list is 50.", 50, element);
+		
+		element = list.remove();
+		assertEquals("Last item in list is 40.", 40, element);
+		
+		element = list.remove();
+		assertEquals("Last item in list is 30.", 30, element);
+		
+		element = list.remove();
+		assertEquals("Last item in list is 20.", 20, element);
+		
+		element = list.remove();
+		assertEquals("Last item in list is 10.", 10, element);
+		
+		list.clear();
 	}
 
 	/**
@@ -210,7 +259,30 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testRemoveInt() {
-		fail("Not yet implemented"); // TODO
+		int element = 0;
+		
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		list.add(40);
+		list.add(50);
+		
+		element = list.remove(3);
+		assertEquals("Removed item in list is 40.", 40, element);
+		
+		element = list.remove(0);
+		assertEquals("Removed item in list is 10.", 10, element);
+		
+		element = list.remove(2);
+		assertEquals("Removed item in list is 50.", 50, element);
+		
+		element = list.remove(0);
+		assertEquals("Removed item in list is 20.", 20, element);
+		
+		element = list.remove(0);
+		assertEquals("Removed item in list is 30.", 30, element);
+		
+		list.clear();
 	}
 
 	/**
@@ -218,15 +290,24 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testRemoveObject() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.util.DoublyLinkedList#displayList()}.
-	 */
-	@Test
-	public final void testDisplayList() {
-		fail("Not yet implemented"); // TODO
+		
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		list.add(40);
+		list.add(50);
+		
+		assertEquals("Removed item in list is 40.", true, list.remove(new Integer(40)));
+		
+		assertEquals("Removed item in list is 10.", true, list.remove(new Integer(10)));
+		
+		assertEquals("Removed item in list is 50.", true, list.remove(new Integer(50)));
+		
+		assertEquals("Removed item in list is 20.", true, list.remove(new Integer(20)));
+		
+		assertEquals("Removed item in list is 30.", true, list.remove(new Integer(30)));
+		
+		list.clear();
 	}
 
 	/**
@@ -234,7 +315,31 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testContainsObject() {
-		fail("Not yet implemented"); // TODO
+		
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		list.add(40);
+		list.add(50);
+		
+		assertEquals("List contains item 40.", true, list.contains(40));
+		
+		assertEquals("List contains item 10.", true, list.contains(10));
+		
+		assertEquals("List contains item 50.", true, list.contains(50));
+		
+		assertEquals("List contains item 20.", true, list.contains(20));
+		
+		assertEquals("List contains item 30.", true, list.contains(30));
+		
+		assertEquals("List doesnt contain item 300.", false, list.contains(300));
+		
+		assertEquals("List doesnt contain item 26.", false, list.contains(26));
+		
+		assertEquals("List doesnt contain item 124.", false, list.contains(124));
+		
+		list.clear();
+		
 	}
 
 	/**
@@ -242,7 +347,22 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testIterator() {
-		fail("Not yet implemented"); // TODO
+		
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		list.add(40);
+		list.add(50);
+		
+		Iterator it = list.iterator();
+		
+		assertEquals("Next item is 10.", 10, it.next());
+		assertEquals("Next item is 20.", 20, it.next());
+		assertEquals("Next item is 30.", 30, it.next());
+		assertEquals("Next item is 40.", 40, it.next());
+		assertEquals("Next item is 50.", 50, it.next());
+		
+		list.clear();
 	}
 
 	/**
@@ -250,23 +370,19 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testListIteratorInt() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.util.DoublyLinkedList#getIterator()}.
-	 */
-	@Test
-	public final void testGetIterator() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.util.DoublyLinkedList#getIterator(boolean)}.
-	 */
-	@Test
-	public final void testGetIteratorBoolean() {
-		fail("Not yet implemented"); // TODO
+		
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		list.add(40);
+		list.add(50);
+		
+		ListIterator<Integer> it = list.listIterator(3);
+		
+		assertEquals("Next item is 40.", new Integer(40), it.next());
+		assertEquals("Next item is 50.", new Integer(50), it.next());
+		
+		list.clear();
 	}
 
 	/**
@@ -274,7 +390,21 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testToArray() {
-		fail("Not yet implemented"); // TODO
+		Object[] testArray;
+		
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		list.add(40);
+		list.add(50);
+		
+		testArray = list.toArray();
+		
+		int x = 10;
+		for (Object o : testArray) {
+			assertEquals("Next item is " + x, o, x);
+			x += 10;
+		}
 	}
 
 	/**
@@ -308,7 +438,32 @@ public class DoublyLinkedListTest {
 	 */
 	@Test
 	public final void testSetIntT() {
-		fail("Not yet implemented"); // TODO
+		int element = 0;
+		
+		list.add(10);
+		list.add(20);
+		list.add(30);
+		list.add(40);
+		list.add(50);
+		
+		list.set(2, 35);
+		list.set(3, 55);
+		list.set(4, 100);
+		
+		element = list.get(0);
+		assertEquals("Next item is 10.", 10, element);
+		
+		element = list.get(1);
+		assertEquals("Next item is 20.", 20, element);
+		
+		element = list.get(2);
+		assertEquals("Next item is 35.", 35, element);
+		
+		element = list.get(3);
+		assertEquals("Next item is 55.", 55, element);
+		
+		element = list.get(4);
+		assertEquals("Next item is 100.", 100, element);
 	}
 
 }

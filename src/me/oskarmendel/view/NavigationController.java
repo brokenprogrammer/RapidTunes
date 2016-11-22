@@ -63,45 +63,10 @@ public class NavigationController implements RapidTunesController {
 	
 	/**
 	 * Initialize the navigation controller. 
-	 * TODO Fix out of bounds exception when scrolling search terms.
-	 * TODO Implement YouTube search functionality.
-	 * TODO Migrate code to store history to its own class.
 	 */
 	@FXML 
 	public void initialize() {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
-		
-		/* TEMPORARY CODE FOR TESTING STACKED LIST. */
-		DoublyLinkedList<String> searchH = new DoublyLinkedList<String>();
-	    searchH.addFirst("Test1");
-		searchH.addFirst("Test2");
-		searchH.addFirst("Test3");
- 		searchH.add("Test4");
- 		searchH.add("Test5");
- 		searchH.add("Test6");
- 		searchH.addFirst("Test7");
-	 	searchH.displayList();
-	 	System.out.println("Popped element with text: " + searchH.removeFirst());
-	 	System.out.println("Popped element with text: " + searchH.removeFirst());
-	 	//System.out.println("Popped element with text: " + searchH.remove());
-	 	//searchH.displayList();
-	 	
-	 	searchH.add("Lego");
-	 	searchH.contains(123);
-	 	searchH.contains("Lego");
-		
-	 	searchH.remove("Test4");
-	 	searchH.remove("Test6");
-	 	searchH.remove("Test5");
-	 	searchH.remove("Test2");
-	 	searchH.remove("Test1");
-	 	//searchH.remove("Lego");
-	 	//System.out.println("Removed element : " + searchH.remove(5));
-	 	//System.out.println("Removed element : " + searchH.remove(0));
-	 	searchH.add(0, "Oskar");
-	 	searchH.displayList();
-	 	
-	 	//System.out.println(searchH.get(5));
 		
 		searchHistoryIterator = searchHistory.getIterator(true);
 		YouTubeSearch youtubeSearch = new YouTubeSearch();
@@ -110,8 +75,8 @@ public class NavigationController implements RapidTunesController {
 		navBackBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e){
-				if (searchHistoryIterator.hasPrev()) {
-					searchHistoryIterator.prev();
+				if (searchHistoryIterator.hasPrevious()) {
+					searchHistoryIterator.previous();
 					navSearchField.setText(searchHistoryIterator.current());
 				}
 			}

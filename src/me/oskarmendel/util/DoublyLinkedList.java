@@ -280,15 +280,7 @@ public class DoublyLinkedList<T> extends AbstractSequentialList<T>{
 	public boolean isEmpty() {
 		return first == null;
 	}
-	
-	/**
-	 * TODO: Remove this method and override toString.
-	 */
-	public void displayList() {
-		for (Node<T> x = first; x != null; x = x.next) {
-			System.out.println(x.toString());
-		}
-	}
+
 
 	/**
 	 * Returns the number of nodes within the list.
@@ -328,11 +320,21 @@ public class DoublyLinkedList<T> extends AbstractSequentialList<T>{
 	public Iterator<T> iterator() {
 		return new DoublyLinkedListIterator();
 	}
-		
+	
+	/**
+	 * Return an new iterator capable of iterator over all elements 
+	 * within this list.
+	 * 
+	 * @param index - starting index for the iterator.
+	 * @return an iterator of the elemends in this list.
+	 */
 	@Override
 	public ListIterator<T> listIterator(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if (index > size() || index < 0) {
+			throw new IndexOutOfBoundsException();
+		}
+		
+		return new DoublyLinkedListIterator(index);
 	}
 	
 	/**
@@ -488,7 +490,7 @@ public class DoublyLinkedList<T> extends AbstractSequentialList<T>{
 	 * @author Oskar
 	 * @version 0.00.00
 	 */
-	public class DoublyLinkedListIterator implements Iterator<T> {
+	public class DoublyLinkedListIterator implements ListIterator<T> {
 
 		private Node<T> iteratorNode;
 		public int index;
@@ -500,6 +502,15 @@ public class DoublyLinkedList<T> extends AbstractSequentialList<T>{
 		public DoublyLinkedListIterator() {
 			this.iteratorNode = first;
 			this.index = 0;
+		}
+		
+		public DoublyLinkedListIterator(int index) {
+			this.iteratorNode = first;
+			this.index = 0;
+			
+			for (int x = 0; x < index; x++) {
+				next();
+			}
 		}
 		
 		/**
@@ -548,7 +559,8 @@ public class DoublyLinkedList<T> extends AbstractSequentialList<T>{
 		 * 
 		 * @return True if there is more elements backwards in the list.
 		 */
-		public boolean hasPrev() {
+		@Override
+		public boolean hasPrevious() {
 			return index > 1;
 		}
 
@@ -576,10 +588,11 @@ public class DoublyLinkedList<T> extends AbstractSequentialList<T>{
 		 * 
 		 * @return previous element in the iteration.
 		 */
-		public T prev() {
+		@Override
+		public T previous() {
 			T current = iteratorNode.getContent();
 			
-			if (hasPrev()) {
+			if (hasPrevious()) {
 				iteratorNode = iteratorNode.prev;
 			}
 			
@@ -594,6 +607,45 @@ public class DoublyLinkedList<T> extends AbstractSequentialList<T>{
 		 */
 		public T current() {
 			return iteratorNode.getContent();
+		}
+		
+		/**
+		 * Returns the index of the element that would be returned by a subsequent 
+		 * call to next. (Returns list size if the list iterator is at the end of the list.)
+		 * 
+		 * @return the index of the element that would be returned by a subsequent call to next.
+		 */
+		@Override
+		public int nextIndex() {
+			return this.index;
+		}
+
+		/**
+		 * Returns the index of the element that would be returned by a subsequent
+		 * call to previous(). (Returns -1 if the list iterator is at the beginning of the list.)
+		 * 
+		 * @return the index of the element that would be returned by a subsequent call to previous.
+		 */
+		@Override
+		public int previousIndex() {
+			return this.index;
+		}
+
+		@Override
+		public void remove() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void set(T e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void add(T e) {
+			// TODO Auto-generated method stub
 		}
 	}
 }
