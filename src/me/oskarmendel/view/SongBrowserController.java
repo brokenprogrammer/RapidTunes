@@ -32,15 +32,19 @@ import java.util.logging.Logger;
 
 import com.google.api.services.youtube.model.SearchResult;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import me.oskarmendel.model.SearchResultModel;
 
 /**
  * TODO: Create a CellFactory that decides how to present the listView Cells.
  * 		Can be found at: https://github.com/james-d/SimpleMVP/blob/master/src/examples/mvp/list/ListController.java
+ * 
+ * TODO: http://stackoverflow.com/questions/11180884/how-to-populate-a-tableview-that-is-defined-in-an-fxml-file-that-is-designed-in
+ * TODO: https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/table-view.htm#CJAGAAEE
  * 
  * @author Oskar
  * @version 0.00.00
@@ -49,7 +53,11 @@ import me.oskarmendel.model.SearchResultModel;
 public class SongBrowserController implements RapidTunesController {
 	
 	@FXML private AnchorPane songBrowserPane;
-	@FXML private ListView<SearchResult> songList;
+	@FXML private TableView<SearchResult> songList;
+	@FXML private TableColumn<SearchResult, String> songListSong;
+	@FXML private TableColumn<SearchResult, String> songListPublisher;
+	@FXML private TableColumn<SearchResult, String> songListTime;
+	@FXML private TableColumn<SearchResult, String> songListSource;
 	
 	private static final Logger LOGGER = Logger.getLogger(SongBrowserController.class.getName());
 	
@@ -58,6 +66,29 @@ public class SongBrowserController implements RapidTunesController {
 	@FXML 
 	public void initialize() {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
+		
+		//Define width for the TableView columns
+		songList.getColumns().forEach(c -> {
+			if(c.getText().equals("Song")) {
+				c.prefWidthProperty().bind(songList.widthProperty().divide(2));
+			} else if(c.getText().equals("Publisher")){
+				c.prefWidthProperty().bind(songList.widthProperty().divide(4));
+			} else {
+				c.prefWidthProperty().bind(songList.widthProperty().divide(8));
+			}
+		});
+		
+		//This is how to set the value by using Property of a object
+		//We will switch to this way after we implemented a yt song object.
+		//TODO: When implementing read up on the PropertyValueFactory class.
+		//TODO: https://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/PropertyValueFactory.html
+		//songListSong.setCellValueFactory(new PropertyValueFactory<SearchResult, String>("title"));
+		
+		//Manually setting the content as a simple string property.
+		songListSong.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getSnippet().getTitle()));
+		songListPublisher.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getSnippet().getChannelTitle()));
+		songListTime.setCellValueFactory(c -> new SimpleStringProperty("Get from api"));
+		songListSource.setCellValueFactory(c -> new SimpleStringProperty("YT"));
 	}
 	
 	/**
@@ -77,8 +108,9 @@ public class SongBrowserController implements RapidTunesController {
 		this.searchResultModel = searchResultModel;
 		songList.setItems(searchResultModel.getSearchResultList());
 		
+		
 		//Only display the title of each song in the search result list
-		songList.setCellFactory(lv -> new ListCell<SearchResult>() {
+		/*songList.setCellFactory(lv -> new ListCell<SearchResult>() {
 			@Override
 			public void updateItem(SearchResult result, boolean empty) {
 				super.updateItem(result, empty);
@@ -88,6 +120,8 @@ public class SongBrowserController implements RapidTunesController {
 					setText(result.getSnippet().getTitle());
 				}
 			}
-		});
+		});*/
+		
+		
 	}
 }

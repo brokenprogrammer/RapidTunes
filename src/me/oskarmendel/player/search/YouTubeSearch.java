@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
@@ -88,7 +89,7 @@ public class YouTubeSearch {
 	}
 	
 	public List<SearchResult> search(String keywords) {
-		System.out.println("YouTube Search Initiated..");
+		LOGGER.log(Level.FINE, "YouTube Search Initiated..");
 		
 		try {
 			// This object is used to make YouTube Data API requests. The last
@@ -115,7 +116,7 @@ public class YouTubeSearch {
 			
 			// To increase efficiency, only retrieve the fields that the
             // application uses.
-            search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url)");
+            search.setFields("items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url, snippet/channelTitle)");
             search.setMaxResults(MAX_VIDEOS_RETURNED);
             
             // Call the api and handle results.
