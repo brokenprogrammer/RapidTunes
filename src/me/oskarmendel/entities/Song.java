@@ -8,7 +8,8 @@ package me.oskarmendel.entities;
  */
 public class Song {
 	
-	private String title;
+	private String title, artist, album;
+	private int length;
 	
 	public Song(){
 		
@@ -21,5 +22,29 @@ public class Song {
 	public void setTitle(String t){
 		
 		title = t;
+	}
+	public String getArtist(){
+		
+		return artist;
+	}
+	public void setArtist(String t){
+		
+		artist = t;
+	}
+	public String getAlbum(){
+		
+		return album;
+	}
+	public void setAlbum(String t){
+		
+		title = album;
+	}
+	public int getLength(){
+		
+		return length;
+	}
+	public void setLength(int t){
+		
+		length = t;
 	}
 }
