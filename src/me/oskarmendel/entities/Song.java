@@ -37,7 +37,7 @@ public class Song {
 	}
 	public void setAlbum(String t){
 		
-		title = album;
+		album = t;
 	}
 	public int getLength(){
 		
