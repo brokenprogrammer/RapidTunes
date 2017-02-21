@@ -68,19 +68,14 @@ public class RapidTunes extends Application{
 			//System.out.println(videoData[i]);
 		//}
 		
-		try{
-			File directory = new File("C:\\Users\\JeSpEr\\Desktop");
-			LocalSearch ls = new LocalSearch();
-			ArrayList<Song> songs = ls.search("drum", directory);
-			
-			for(int i=0; i<songs.size(); i++){
-				
-				System.out.println(songs.get(i).getTitle());
-			}
-			
-		} catch(Exception e){
-			System.out.println("File not found.");
-		}
+		
+//		LocalSearch ls = new LocalSearch();
+//		ArrayList<Song> songs = ls.search("drum", "C:\\Users\\JeSpEr\\Desktop");
+//			
+//		for(int i=0; i<songs.size(); i++){
+//				
+//			System.out.println(songs.get(i).getTitle());
+//		}
 		
 		initializeLogger();
 		

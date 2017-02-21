@@ -1,30 +1,30 @@
-feb 21, 2017 12:10:33 FM me.oskarmendel.RapidTunes main
+feb 21, 2017 6:57:30 EM me.oskarmendel.RapidTunes main
 FIN: Launching RapidTunes
-feb 21, 2017 12:10:33 FM me.oskarmendel.StageManager showRapidTunes
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager showRapidTunes
 FIN: Loading layouts..
-feb 21, 2017 12:10:33 FM me.oskarmendel.StageManager loadLayout
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/NavigationLayout.fxml
-feb 21, 2017 12:10:33 FM me.oskarmendel.view.NavigationController initialize
+feb 21, 2017 6:57:30 EM me.oskarmendel.view.NavigationController initialize
 FIN: Initialized: me.oskarmendel.view.NavigationController
-feb 21, 2017 12:10:33 FM me.oskarmendel.StageManager loadLayout
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/PlaylistControlLayout.fxml
-feb 21, 2017 12:10:33 FM me.oskarmendel.view.PlaylistController initialize
+feb 21, 2017 6:57:30 EM me.oskarmendel.view.PlaylistController initialize
 FIN: Initialized: me.oskarmendel.view.PlaylistController
-feb 21, 2017 12:10:33 FM me.oskarmendel.StageManager loadLayout
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/SongControlLayout.fxml
-feb 21, 2017 12:10:33 FM me.oskarmendel.view.SongController initialize
+feb 21, 2017 6:57:30 EM me.oskarmendel.view.SongController initialize
 FIN: Initialized: me.oskarmendel.view.SongController
-feb 21, 2017 12:10:33 FM me.oskarmendel.StageManager loadLayout
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/SongBrowserLayout.fxml
-feb 21, 2017 12:10:33 FM me.oskarmendel.view.SongBrowserController initialize
+feb 21, 2017 6:57:30 EM me.oskarmendel.view.SongBrowserController initialize
 FIN: Initialized: me.oskarmendel.view.SongBrowserController
-feb 21, 2017 12:10:33 FM me.oskarmendel.StageManager loadLayout
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/RootLayout.fxml
-feb 21, 2017 12:10:33 FM me.oskarmendel.StageManager showRapidTunes
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager showRapidTunes
 FIN: Loading stylesheet: /css/Dark.css
-feb 21, 2017 12:10:33 FM javafx.scene.Node$FocusedProperty markInvalid
+feb 21, 2017 6:57:30 EM javafx.scene.Node$FocusedProperty markInvalid
 FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: true] focused=true
-feb 21, 2017 12:10:33 FM javafx.scene.Scene$13 invalidated
+feb 21, 2017 6:57:30 EM javafx.scene.Scene$13 invalidated
 FIN: Changed focus from null to Button[id=navBackBtn, styleClass=button]'<'
-feb 21, 2017 12:10:35 FM javafx.scene.Node$FocusedProperty markInvalid
+feb 21, 2017 6:57:35 EM javafx.scene.Node$FocusedProperty markInvalid
 FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: false] focused=false

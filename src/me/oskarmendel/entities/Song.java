@@ -1,6 +1,7 @@
 package me.oskarmendel.entities;
 
 /**
+ * Object representing a song
  * 
  * @author Jesper
  * @version 0.00.00
@@ -15,36 +16,76 @@ public class Song {
 		
 	}
 	
+	/**
+	 * Get song title
+	 * 
+	 * @return title
+	 */
 	public String getTitle(){
 		
 		return title;
 	}
-	public void setTitle(String t){
+	/**
+	 * Set song title
+	 * 
+	 * @param title
+	 */
+	public void setTitle(String title){
 		
-		title = t;
+		this.title = title;
 	}
+	/**
+	 * Get artist
+	 * 
+	 * @return artist
+	 */
 	public String getArtist(){
 		
 		return artist;
 	}
-	public void setArtist(String t){
+	/**
+	 * Set artist
+	 * 
+	 * @param artist
+	 */
+	public void setArtist(String artist){
 		
-		artist = t;
+		this.artist = artist;
 	}
+	/**
+	 * Get album
+	 * 
+	 * @return album
+	 */
 	public String getAlbum(){
 		
 		return album;
 	}
-	public void setAlbum(String t){
+	/**
+	 * Set album
+	 * 
+	 * @param album
+	 */
+	public void setAlbum(String album){
 		
-		title = album;
+		this.album = album;
 	}
+	/**
+	 * Get song length
+	 * 
+	 * @return length
+	 */
 	public int getLength(){
 		
 		return length;
 	}
-	public void setLength(int t){
+	/**
+	 * Set song length
+	 * 
+	 * @param length
+	 */
+	public void setLength(int length){
 		
-		length = t;
+		this.length = length;
 	}
 }
