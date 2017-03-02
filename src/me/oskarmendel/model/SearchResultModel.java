@@ -29,7 +29,7 @@ package me.oskarmendel.model;
 
 import java.util.List;
 
-import com.google.api.services.youtube.model.SearchResult;
+import com.google.api.services.youtube.model.Video;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -44,13 +44,13 @@ import javafx.collections.ObservableList;
  */
 public class SearchResultModel {
 	
-	private final ObservableList<SearchResult> searchResultList = FXCollections.observableArrayList();
+	private final ObservableList<Video> searchResultList = FXCollections.observableArrayList();
 	
 	/**
 	 * 
 	 * @return
 	 */
-	public ObservableList<SearchResult> getSearchResultList() {
+	public ObservableList<Video> getSearchResultList() {
 		return searchResultList;
 	}
 	
@@ -58,7 +58,7 @@ public class SearchResultModel {
 	 * 
 	 * @param searchResultList
 	 */
-	public void setSearchResultList(List<SearchResult> searchResultList) {
+	public void setSearchResultList(List<Video> searchResultList) {
 		this.searchResultList.clear();
 		
 		// TODO: Temp til i know how to add all List elements to ObservableList

@@ -30,7 +30,7 @@ package me.oskarmendel.view;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.google.api.services.youtube.model.SearchResult;
+import com.google.api.services.youtube.model.Video;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -53,11 +53,11 @@ import me.oskarmendel.model.SearchResultModel;
 public class SongBrowserController implements RapidTunesController {
 	
 	@FXML private AnchorPane songBrowserPane;
-	@FXML private TableView<SearchResult> songList;
-	@FXML private TableColumn<SearchResult, String> songListSong;
-	@FXML private TableColumn<SearchResult, String> songListPublisher;
-	@FXML private TableColumn<SearchResult, String> songListTime;
-	@FXML private TableColumn<SearchResult, String> songListSource;
+	@FXML private TableView<Video> songList;
+	@FXML private TableColumn<Video, String> songListSong;
+	@FXML private TableColumn<Video, String> songListPublisher;
+	@FXML private TableColumn<Video, String> songListTime;
+	@FXML private TableColumn<Video, String> songListSource;
 	
 	private static final Logger LOGGER = Logger.getLogger(SongBrowserController.class.getName());
 	
@@ -82,12 +82,12 @@ public class SongBrowserController implements RapidTunesController {
 		//We will switch to this way after we implemented a yt song object.
 		//TODO: When implementing read up on the PropertyValueFactory class.
 		//TODO: https://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/PropertyValueFactory.html
-		//songListSong.setCellValueFactory(new PropertyValueFactory<SearchResult, String>("title"));
+		//songListSong.setCellValueFactory(new PropertyValueFactory<Video, String>("title"));
 		
 		//Manually setting the content as a simple string property.
 		songListSong.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getSnippet().getTitle()));
 		songListPublisher.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getSnippet().getChannelTitle()));
-		songListTime.setCellValueFactory(c -> new SimpleStringProperty("Get from api"));
+		songListTime.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getContentDetails().getDuration()));
 		songListSource.setCellValueFactory(c -> new SimpleStringProperty("YT"));
 	}
 	

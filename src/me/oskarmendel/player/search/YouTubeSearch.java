@@ -29,6 +29,7 @@ package me.oskarmendel.player.search;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -39,9 +40,12 @@ import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestInitializer;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.Joiner;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.SearchResult;
+import com.google.api.services.youtube.model.Video;
+import com.google.api.services.youtube.model.VideoListResponse;
 
 /**
  * Search History object to keep track of search entries.
@@ -71,6 +75,9 @@ public class YouTubeSearch {
 	 */
 	public static YouTube youtube;
 	
+	/**
+	 * 
+	 */
 	public YouTubeSearch () {
 		// Load the properties required for YouTube data api requests by
 		// using the API key stored inside the properties file.
@@ -88,7 +95,12 @@ public class YouTubeSearch {
 		}
 	}
 	
-	public List<SearchResult> search(String keywords) {
+	/**
+	 * 
+	 * @param keywords
+	 * @return
+	 */
+	public List<Video> search(String keywords) {
 		LOGGER.log(Level.FINE, "YouTube Search Initiated..");
 		
 		try {
@@ -122,20 +134,27 @@ public class YouTubeSearch {
             // Call the api and handle results.
             SearchListResponse searchResponse = search.execute();
             List<SearchResult> searchResultList = searchResponse.getItems();
+            List<String> videoIds = new ArrayList<String>();
             
             
             // Handle the results from the api request.
             if (searchResultList != null) {
-            	//Print result for testing
-            	//int x = 0;
-            	//while (x < searchResultList.size()) {
-            		//SearchResult oneVid = searchResultList.get(x);
-            		//System.out.println("Title: " + oneVid.getSnippet().getTitle() + " "
-            		//		+ "Thumbnail: " + oneVid.getSnippet().getThumbnails().getDefault().getUrl());
-            		//x++;
-            		//return oneVid.getSnippet().getThumbnails().getDefault().getUrl();
-            	//}
-            	return searchResultList;
+            	
+            	// Merge video IDs
+                for (SearchResult searchResult : searchResultList) {
+                    videoIds.add(searchResult.getId().getVideoId());
+                }
+                Joiner stringJoiner = Joiner.on(',');
+                String videoId = stringJoiner.join(videoIds);
+                
+                // Call the YouTube Data API's youtube.videos.list method to
+                // retrieve the resources that represent the specified videos.
+                YouTube.Videos.List listVideosRequest = youtube.videos().list("snippet, contentDetails").setId(videoId);
+                listVideosRequest.setKey(API_KEY); //Set key for this request.
+                VideoListResponse listResponse = listVideosRequest.execute();
+                
+                List<Video> videoList = listResponse.getItems();
+            	return videoList;
             }
 			
 		} catch (GoogleJsonResponseException e) {
