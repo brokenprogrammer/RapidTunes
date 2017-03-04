@@ -4,11 +4,22 @@
 <?import javafx.scene.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.TableView?>
+
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="songBrowserPane" fx:controller="me.oskarmendel.view.SongBrowserController">
 	<!-- TODO Add Nodes -->
 	<!-- <children> -->
-		<ListView fx:id="songList" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+		<TableView fx:id="songList" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+			<columns>
+				<TableColumn fx:id="songListSong" prefWidth="75.0" text="Song"/>
+				<TableColumn fx:id="songListPublisher" prefWidth="75.0" text="Publisher"/>
+				<TableColumn fx:id="songListTime" prefWidth="75.0" text="Time"/>
+				<TableColumn fx:id="songListSource" prefWidth="75.0" text="Source"/>
+			</columns>
+		</TableView>
+		<!--<ListView fx:id="songList" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" /> -->
 	<!--</children>-->
 </AnchorPane>
 

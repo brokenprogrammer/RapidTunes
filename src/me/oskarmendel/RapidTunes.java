@@ -57,7 +57,6 @@ public class RapidTunes extends Application{
 		// TODO Does logger need improovement, Add formatting through simple formatter?? 
 		// TODO Implement threading when song is splitted with video etc.. Concurrency package
 		
-		
 		//SongParser sp = new SongParser();
 		//String[] videoData = {};
 		//videoData = sp.parseSong("http://www.youtube.com/get_video_info?video_id=t-_fGnCPXeQ");
