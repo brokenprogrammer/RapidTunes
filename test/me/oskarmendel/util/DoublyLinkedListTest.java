@@ -354,6 +354,7 @@ public class DoublyLinkedListTest {
 		list.add(40);
 		list.add(50);
 		
+		@SuppressWarnings("rawtypes")
 		Iterator it = list.iterator();
 		
 		assertEquals("Next item is 10.", 10, it.next());

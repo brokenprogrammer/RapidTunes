@@ -25,95 +25,55 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.entities;
+package me.oskarmendel.player.search.local;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import me.oskarmendel.entities.Song;
 
 /**
- * Object representing a song
  * 
- * @author Jesper Bergström
+ * @author Oskar
  * @version 0.00.00
- * @name Song.java
+ * @name LocalSearchTest.java
  */
-public class Song {
+public class LocalSearchTest {
+
+	LocalSearch search;
 	
-	private String title;
-	private String artist;
-	private String album;
-	private int length;
-	
-	public Song(){
+	@Before
+	public void setUp() throws Exception {
+		search = new LocalSearch();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	/**
+	 * Test method for {@link me.oskarmendel.player.search.local.LocalSearch#LocalSearch()}.
+	 */
+	@Test
+	public final void testLocalSearch() {
+		//Add test later if parameters would be added to the constructor.
+	}
+
+	/**
+	 * Test method for {@link me.oskarmendel.player.search.local.LocalSearch#search()}.
+	 */
+	@Test
+	public final void testSearch() {
+		ArrayList<Song> songList = new ArrayList<Song>();
 		
+		//Find the local demo song called "Brad Sucks - Total Breakdown" in the demo folder.
+		songList = search.search("Brad Sucks", "./demo");
+		assertEquals("The local song 'Brad Sucks' was searched for", "Brad Sucks - Total Breakdown.mp3", songList.get(0).getTitle());
 	}
-	
-	/**
-	 * Get song title
-	 * 
-	 * @return title
-	 */
-	public String getTitle(){
-		return title;
-	}
-	
-	/**
-	 * Set song title
-	 * 
-	 * @param title
-	 */
-	public void setTitle(String title){
-		this.title = title;
-	}
-	
-	/**
-	 * Get artist
-	 * 
-	 * @return artist
-	 */
-	public String getArtist(){
-		return artist;
-	}
-	
-	/**
-	 * Set artist
-	 * 
-	 * @param artist
-	 */
-	public void setArtist(String artist){
-		this.artist = artist;
-	}
-	
-	/**
-	 * Get album
-	 * 
-	 * @return album
-	 */
-	public String getAlbum(){
-		return album;
-	}
-	
-	/**
-	 * Set album
-	 * 
-	 * @param album
-	 */
-	public void setAlbum(String album){
-		this.album = album;
-	}
-	
-	/**
-	 * Get song length
-	 * 
-	 * @return length
-	 */
-	public int getLength(){
-		return length;
-	}
-	
-	/**
-	 * Set song length
-	 * 
-	 * @param length
-	 */
-	public void setLength(int length){
-		this.length = length;
-	}
+
 }
