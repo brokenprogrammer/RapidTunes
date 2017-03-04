@@ -1,3 +1,35 @@
+<<<<<<< HEAD
+feb 21, 2017 6:57:30 EM me.oskarmendel.RapidTunes main
+FIN: Launching RapidTunes
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager showRapidTunes
+FIN: Loading layouts..
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager loadLayout
+FIN: Loading Layout: /view/NavigationLayout.fxml
+feb 21, 2017 6:57:30 EM me.oskarmendel.view.NavigationController initialize
+FIN: Initialized: me.oskarmendel.view.NavigationController
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager loadLayout
+FIN: Loading Layout: /view/PlaylistControlLayout.fxml
+feb 21, 2017 6:57:30 EM me.oskarmendel.view.PlaylistController initialize
+FIN: Initialized: me.oskarmendel.view.PlaylistController
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager loadLayout
+FIN: Loading Layout: /view/SongControlLayout.fxml
+feb 21, 2017 6:57:30 EM me.oskarmendel.view.SongController initialize
+FIN: Initialized: me.oskarmendel.view.SongController
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager loadLayout
+FIN: Loading Layout: /view/SongBrowserLayout.fxml
+feb 21, 2017 6:57:30 EM me.oskarmendel.view.SongBrowserController initialize
+FIN: Initialized: me.oskarmendel.view.SongBrowserController
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager loadLayout
+FIN: Loading Layout: /view/RootLayout.fxml
+feb 21, 2017 6:57:30 EM me.oskarmendel.StageManager showRapidTunes
+FIN: Loading stylesheet: /css/Dark.css
+feb 21, 2017 6:57:30 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: true] focused=true
+feb 21, 2017 6:57:30 EM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from null to Button[id=navBackBtn, styleClass=button]'<'
+feb 21, 2017 6:57:35 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: false] focused=false
+=======
 Mar 02, 2017 9:49:35 AM me.oskarmendel.RapidTunes main
 FINE: Launching RapidTunes
 Mar 02, 2017 9:49:35 AM me.oskarmendel.StageManager showRapidTunes
@@ -1024,3 +1056,4 @@ Mar 02, 2017 9:49:46 AM javafx.scene.Node$FocusedProperty markInvalid
 FINE: ReadOnlyBooleanProperty [bean: TableRow@5f5cad34[styleClass=cell indexed-cell table-row-cell]'null', name: focused, value: true] focused=true
 Mar 02, 2017 9:49:48 AM javafx.scene.Node$FocusedProperty markInvalid
 FINE: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: false] focused=false
+>>>>>>> refs/remotes/brokenprogrammer/master
