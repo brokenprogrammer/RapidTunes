@@ -28,7 +28,23 @@
   </repositories>
   
   <dependencies>
+  
+  	<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
+	<dependency>
+	    <groupId>org.codehaus.groovy</groupId>
+	    <artifactId>groovy-all</artifactId>
+	    <version>2.4.9</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/net.sf.javamusictag/jid3lib -->
+	<dependency>
+	    <groupId>net.sf.javamusictag</groupId>
+	    <artifactId>jid3lib</artifactId>
+	    <version>0.5.4</version>
+	</dependency>
+	
   	
+  	<!-- Google Client API -->
   	<dependency>
   		<groupId>com.google.api-client</groupId>
   		<artifactId>google-api-client</artifactId>
@@ -57,11 +73,14 @@
         <version>4.0.1-alpha</version>
         <scope>test</scope>
     </dependency>
+    
+    <!-- TestFX JUnit integration -->
     <dependency>
         <groupId>org.testfx</groupId>
         <artifactId>testfx-junit</artifactId>
         <version>4.0.1-alpha</version>
         <scope>test</scope>
     </dependency>
+    
   </dependencies>
 </project>
