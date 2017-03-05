@@ -29,10 +29,9 @@ package me.oskarmendel.model;
 
 import java.util.List;
 
-import com.google.api.services.youtube.model.Video;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import me.oskarmendel.entities.Song;
 
 /**
  * Model that manages search results for the application.
@@ -44,13 +43,13 @@ import javafx.collections.ObservableList;
  */
 public class SearchResultModel {
 	
-	private final ObservableList<Video> searchResultList = FXCollections.observableArrayList();
+	private final ObservableList<Song> searchResultList = FXCollections.observableArrayList();
 	
 	/**
 	 * 
 	 * @return
 	 */
-	public ObservableList<Video> getSearchResultList() {
+	public ObservableList<Song> getSearchResultList() {
 		return searchResultList;
 	}
 	
@@ -58,7 +57,7 @@ public class SearchResultModel {
 	 * 
 	 * @param searchResultList
 	 */
-	public void setSearchResultList(List<Video> searchResultList) {
+	public void setSearchResultList(List<Song> searchResultList) {
 		this.searchResultList.clear();
 		
 		// TODO: Temp til i know how to add all List elements to ObservableList
@@ -66,4 +65,5 @@ public class SearchResultModel {
 			this.searchResultList.add(searchResultList.get(x));
 		}
 	}
+
 }

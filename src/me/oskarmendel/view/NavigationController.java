@@ -29,15 +29,21 @@ package me.oskarmendel.view;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import me.oskarmendel.entities.Song;
 import me.oskarmendel.model.SearchResultModel;
 import me.oskarmendel.player.search.YouTubeSearch;
+import me.oskarmendel.player.search.local.LocalSearch;
 import me.oskarmendel.util.DoublyLinkedList;
+
+import com.google.api.services.youtube.model.Video;
 
 /**
  * Controller class for the navigation menu of the application.
@@ -101,9 +107,34 @@ public class NavigationController implements RapidTunesController {
 		        searchHistory.add(navSearchField.getText());
 		        searchHistoryIterator.update(true);
 		        
+		        LocalSearch ls = new LocalSearch();
+		        
+		        List<Video> ytListVideo = youtubeSearch.search(navSearchField.getText()); //List of songs from yt
+		        List<Song> localList = ls.search(navSearchField.getText(), "./demo"); //List of songs from local
+		        List<Song> songList = new ArrayList<Song>(); //Result list
+		        
+		        //Add all yt songs to songList
+		        for(int i=0; i<ytListVideo.size(); i++){
+		        	
+		        	Song s = new Song();
+		        	
+		        	s.setTitle(ytListVideo.get(i).getSnippet().getTitle());
+		        	s.setArtist(ytListVideo.get(i).getSnippet().getChannelTitle());
+		        	s.setLength(ytListVideo.get(i).getContentDetails().getDuration());
+		        	songList.add(s);
+		        }
+		        
+		        //Add all local songs to songList
+		        for(int i=0; i<localList.size(); i++){
+		        	
+		        	Song s = new Song();
+		        	s.setTitle(localList.get(i).getTitle());
+		        	songList.add(s);
+		        }
+		        
 		        //Performs the search for the keywords in the YouTube data API and 
 		        //populates the searchResultModel with results.
-		        searchResultModel.setSearchResultList(youtubeSearch.search(navSearchField.getText()));
+		        searchResultModel.setSearchResultList(songList);
 		    }
 		});
 	}
