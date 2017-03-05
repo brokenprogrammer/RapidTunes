@@ -66,9 +66,6 @@ public class RapidTunes extends Application{
 		//}
 		
 		FileStripper f = new FileStripper();
-		System.out.println(f.test());
-		System.out.println(f.tester("Working please"));
-		System.out.println(f.getName("Oskar Mendel"));
 		
 		initializeLogger();
 		

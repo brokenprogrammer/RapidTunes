@@ -39,7 +39,7 @@ public class Song {
 	private String title;
 	private String artist;
 	private String album;
-	private int length;
+	private String length;
 	
 	public Song(){
 		
@@ -104,7 +104,7 @@ public class Song {
 	 * 
 	 * @return length
 	 */
-	public int getLength(){
+	public String getLength(){
 		return length;
 	}
 	
@@ -113,7 +113,7 @@ public class Song {
 	 * 
 	 * @param length
 	 */
-	public void setLength(int length){
+	public void setLength(String length){
 		this.length = length;
 	}
 }
