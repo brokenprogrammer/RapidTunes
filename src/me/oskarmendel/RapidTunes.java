@@ -27,16 +27,12 @@
 
 package me.oskarmendel;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.*;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
 import me.oskarmendel.StageManager;
-import me.oskarmendel.entities.Song;
-import me.oskarmendel.player.search.local.LocalSearch;
 
 /**
  * 
@@ -66,15 +62,6 @@ public class RapidTunes extends Application{
 		//for(int i = 0; i <= videoData.length-1; i++) {
 			//System.out.println(videoData[i]);
 		//}
-		
-		
-//		LocalSearch ls = new LocalSearch();
-//		ArrayList<Song> songs = ls.search("drum", "C:\\Users\\JeSpEr\\Desktop");
-//			
-//		for(int i=0; i<songs.size(); i++){
-//				
-//			System.out.println(songs.get(i).getTitle());
-//		}
 		
 		initializeLogger();
 		
