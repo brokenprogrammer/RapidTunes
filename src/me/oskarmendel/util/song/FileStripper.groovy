@@ -58,11 +58,12 @@ class FileStripper {
 		Song song = new Song()
 		
 		if(mp3.hasId3v1Tag()) {
-			song = stripMp3ID3v1(mp3File)
+			song = stripMp3ID3v1(mp3)
 		} else if(mp3.hasId3v2Tag()) {
-			song = stripMp3ID3v2(mp3File)
+			song = stripMp3ID3v2(mp3)
 		}
 		
+		return song
 	}
 	
 	/**
@@ -72,7 +73,7 @@ class FileStripper {
 	 * @return A Song object containing all the tags from the mp3File.
 	 */
 	private Song stripMp3ID3v1(Mp3File mp3File) {
-		if(!mp3File.exists() || !mp3File.hasId3v1Tag()) {
+		if(!mp3File.hasId3v1Tag()) {
 			throw new IllegalArgumentException("No such file exists!")
 		}
 		
@@ -94,7 +95,7 @@ class FileStripper {
 	 * @return A Song object containing all the tags from the mp3File.
 	 */
 	private Song stripMp3ID3v2(Mp3File mp3File) {
-		if(!mp3File.exists() || !mp3File.hasId3v2Tag()) {
+		if(!mp3File.hasId3v2Tag()) {
 			throw new IllegalArgumentException("No such file exists!")
 		}
 		

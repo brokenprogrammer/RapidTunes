@@ -74,6 +74,15 @@ public class LocalSearchTest {
 		//Find the local demo song called "Brad Sucks - Total Breakdown" in the demo folder.
 		songList = search.search("Brad Sucks", "./demo");
 		assertEquals("The local song 'Brad Sucks' was searched for", "Brad Sucks - Total Breakdown.mp3", songList.get(0).getTitle());
+		assertEquals("Only one song matched the search", 1, songList.size());
+		
+		//Find the local demo songs in the demo folder.
+		//TODO: Should't have to clear list when making new search.
+		songList.clear();
+		songList = search.search("", "./demo");
+		
+		assertEquals("Two song matched the search", 2, songList.size());
+		assertEquals("The second local song is 'Jimmy Pengium'", "Jimmy Pengiun - Untitled Star.flac", songList.get(1).getTitle());
 	}
 
 }

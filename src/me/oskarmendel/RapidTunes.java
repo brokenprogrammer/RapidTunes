@@ -33,7 +33,6 @@ import java.util.logging.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import me.oskarmendel.StageManager;
-import me.oskarmendel.util.song.FileStripper;
 
 
 /**
@@ -64,8 +63,6 @@ public class RapidTunes extends Application{
 		//for(int i = 0; i <= videoData.length-1; i++) {
 			//System.out.println(videoData[i]);
 		//}
-		
-		FileStripper f = new FileStripper();
 		
 		initializeLogger();
 		
