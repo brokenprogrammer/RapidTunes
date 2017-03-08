@@ -28,79 +28,42 @@
 package me.oskarmendel.entities;
 
 /**
- * Object representing a song
+ * Object representing a song from the local hard drive
  * 
  * @author Jesper Bergström
  * @version 0.00.00
  * @name Song.java
  */
-public abstract class Song {
-	
-	protected String title;
-	protected String artist;
-	protected String album;
-	protected String length;
-	protected String path;
-	
-	public Song(){
-		
-	}
-	
-	/**
-	 * Get song title
-	 * 
-	 * @return title
-	 */
-	public String getTitle(){
-		return title;
-	}
+public class LocalSong extends Song{
 	
 	/**
 	 * Set song title
 	 * 
 	 * @param title
 	 */
-	abstract void setTitle(String title);
-	
-	/**
-	 * Get artist
-	 * 
-	 * @return artist
-	 */
-	public String getArtist(){
-		return artist;
+	@Override
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	/**
-	 * Set artist
+	 * Set song artist
 	 * 
 	 * @param artist
 	 */
-	abstract void setArtist(String artist);
-	
-	/**
-	 * Get album
-	 * 
-	 * @return album
-	 */
-	public String getAlbum(){
-		return album;
+	@Override
+	public void setArtist(String artist) {
+		this.artist = artist;
 	}
 	
 	/**
-	 * Set album
+	 * Set song album
 	 * 
 	 * @param album
 	 */
-	abstract void setAlbum(String album);
-	
-	/**
-	 * Get song length
-	 * 
-	 * @return length
-	 */
-	public String getLength(){
-		return length;
+	@Override
+	public void setAlbum(String album) {
+		this.album = album;
 	}
 	
 	/**
@@ -108,15 +71,9 @@ public abstract class Song {
 	 * 
 	 * @param length
 	 */
-	abstract void setLength(String length);
-	
-	/**
-	 * Get song path
-	 * 
-	 * @return path
-	 */
-	public String getPath(){
-		return path;
+	@Override
+	public void setLength(String length) {
+		this.length = length;
 	}
 	
 	/**
@@ -124,5 +81,9 @@ public abstract class Song {
 	 * 
 	 * @param path
 	 */
-	abstract void setPath(String path);
+	@Override
+	public void setPath(String path) {
+		this.path = path;
+	}
+		
 }

@@ -42,103 +42,103 @@ import org.junit.Test;
  */
 public class SongTest {
 	
-	Song song;
-	
-	@Before
-	public void setUp() throws Exception {
-		song = new Song();
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#getTitle()}.
-	 */
-	@Test
-	public void testGetTitle() {
-		song.setTitle("The Middle");
-		assertEquals("Title of the song is 'The Middle'", "The Middle", song.getTitle());
-		song.setTitle("Sweetness");
-		assertEquals("Title of the song is 'Sweetness'", "Sweetness", song.getTitle());
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#setTitle()}.
-	 */
-	@Test
-	public void testSetTitle() {
-		song.setTitle("The Middle");
-		assertEquals("Title of the song is 'The Middle'", "The Middle", song.getTitle());
-		song.setTitle("Sweetness");
-		assertEquals("Title of the song is 'Sweetness'", "Sweetness", song.getTitle());
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#getArtist()}.
-	 */
-	@Test
-	public void testGetArtist() {
-		song.setArtist("Jimmy Eat World");
-		assertEquals("Artist of the song is 'Jimmy Eat World'", "Jimmy Eat World", song.getArtist());
-		song.setArtist("Nirvana");
-		assertEquals("Artist of the song is 'Nirvana'", "Nirvana", song.getArtist());
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#setArtist()}.
-	 */
-	@Test
-	public void testSetArtist() {
-		song.setArtist("Jimmy Eat World");
-		assertEquals("Artist of the song is 'Jimmy Eat World'", "Jimmy Eat World", song.getArtist());
-		song.setArtist("Nirvana");
-		assertEquals("Artist of the song is 'Nirvana'", "Nirvana", song.getArtist());
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#getAlbum()}.
-	 */
-	@Test
-	public void testGetAlbum() {
-		song.setAlbum("Bleed American");
-		assertEquals("Album of the song is 'Bleed American'", "Bleed American", song.getAlbum());
-		song.setAlbum("Futures");
-		assertEquals("Album of the song is 'Futures'", "Futures", song.getAlbum());
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#setAlbum()}.
-	 */
-	@Test
-	public void testSetAlbum() {
-		song.setAlbum("Bleed American");
-		assertEquals("Album of the song is 'Bleed American'", "Bleed American", song.getAlbum());
-		song.setAlbum("Futures");
-		assertEquals("Album of the song is 'Futures'", "Futures", song.getAlbum());
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#getLength()}.
-	 */
-	@Test
-	public void testGetLength() {
-		song.setLength("120");
-		assertEquals("Length of the song is '120'", "120", song.getLength());
-		song.setLength("1000");
-		assertEquals("Length of the song is '1000'", "1000", song.getLength());
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#setLength()}.
-	 */
-	@Test
-	public void testSetLength() {
-		song.setLength("120");
-		assertEquals("Length of the song is '120'", "120", song.getLength());
-		song.setLength("1000");
-		assertEquals("Length of the song is '1000'", "1000", song.getLength());
-	}
+//	Song song;
+//	
+//	@Before
+//	public void setUp() throws Exception {
+//		song = new Song();
+//	}
+//
+//	@After
+//	public void tearDown() throws Exception {
+//	}
+//
+//	/**
+//	 * Test method for {@link me.oskarmendel.entities.Song#getTitle()}.
+//	 */
+//	@Test
+//	public void testGetTitle() {
+//		song.setTitle("The Middle");
+//		assertEquals("Title of the song is 'The Middle'", "The Middle", song.getTitle());
+//		song.setTitle("Sweetness");
+//		assertEquals("Title of the song is 'Sweetness'", "Sweetness", song.getTitle());
+//	}
+//
+//	/**
+//	 * Test method for {@link me.oskarmendel.entities.Song#setTitle()}.
+//	 */
+//	@Test
+//	public void testSetTitle() {
+//		song.setTitle("The Middle");
+//		assertEquals("Title of the song is 'The Middle'", "The Middle", song.getTitle());
+//		song.setTitle("Sweetness");
+//		assertEquals("Title of the song is 'Sweetness'", "Sweetness", song.getTitle());
+//	}
+//
+//	/**
+//	 * Test method for {@link me.oskarmendel.entities.Song#getArtist()}.
+//	 */
+//	@Test
+//	public void testGetArtist() {
+//		song.setArtist("Jimmy Eat World");
+//		assertEquals("Artist of the song is 'Jimmy Eat World'", "Jimmy Eat World", song.getArtist());
+//		song.setArtist("Nirvana");
+//		assertEquals("Artist of the song is 'Nirvana'", "Nirvana", song.getArtist());
+//	}
+//
+//	/**
+//	 * Test method for {@link me.oskarmendel.entities.Song#setArtist()}.
+//	 */
+//	@Test
+//	public void testSetArtist() {
+//		song.setArtist("Jimmy Eat World");
+//		assertEquals("Artist of the song is 'Jimmy Eat World'", "Jimmy Eat World", song.getArtist());
+//		song.setArtist("Nirvana");
+//		assertEquals("Artist of the song is 'Nirvana'", "Nirvana", song.getArtist());
+//	}
+//
+//	/**
+//	 * Test method for {@link me.oskarmendel.entities.Song#getAlbum()}.
+//	 */
+//	@Test
+//	public void testGetAlbum() {
+//		song.setAlbum("Bleed American");
+//		assertEquals("Album of the song is 'Bleed American'", "Bleed American", song.getAlbum());
+//		song.setAlbum("Futures");
+//		assertEquals("Album of the song is 'Futures'", "Futures", song.getAlbum());
+//	}
+//
+//	/**
+//	 * Test method for {@link me.oskarmendel.entities.Song#setAlbum()}.
+//	 */
+//	@Test
+//	public void testSetAlbum() {
+//		song.setAlbum("Bleed American");
+//		assertEquals("Album of the song is 'Bleed American'", "Bleed American", song.getAlbum());
+//		song.setAlbum("Futures");
+//		assertEquals("Album of the song is 'Futures'", "Futures", song.getAlbum());
+//	}
+//
+//	/**
+//	 * Test method for {@link me.oskarmendel.entities.Song#getLength()}.
+//	 */
+//	@Test
+//	public void testGetLength() {
+//		song.setLength("120");
+//		assertEquals("Length of the song is '120'", "120", song.getLength());
+//		song.setLength("1000");
+//		assertEquals("Length of the song is '1000'", "1000", song.getLength());
+//	}
+//
+//	/**
+//	 * Test method for {@link me.oskarmendel.entities.Song#setLength()}.
+//	 */
+//	@Test
+//	public void testSetLength() {
+//		song.setLength("120");
+//		assertEquals("Length of the song is '120'", "120", song.getLength());
+//		song.setLength("1000");
+//		assertEquals("Length of the song is '1000'", "1000", song.getLength());
+//	}
 
 }

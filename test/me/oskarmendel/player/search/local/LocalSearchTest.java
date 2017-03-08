@@ -30,11 +30,13 @@ package me.oskarmendel.player.search.local;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import me.oskarmendel.entities.LocalSong;
 import me.oskarmendel.entities.Song;
 
 /**
@@ -69,7 +71,7 @@ public class LocalSearchTest {
 	 */
 	@Test
 	public final void testSearch() {
-		ArrayList<Song> songList = new ArrayList<Song>();
+		List<Song> songList = new ArrayList<Song>();
 		
 		//Find the local demo song called "Brad Sucks - Total Breakdown" in the demo folder.
 		songList = search.search("Brad Sucks", "./demo");
