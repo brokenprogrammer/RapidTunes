@@ -68,7 +68,7 @@ public class FlacFile {
 	public FlacFile(String path) throws IOException {
 		File file = new File(path);
 		
-		FlacParser.parseFlacFile(file, this);
+		//FlacParser.parseFlacFile(file, this);
 	}
 	
 	/**

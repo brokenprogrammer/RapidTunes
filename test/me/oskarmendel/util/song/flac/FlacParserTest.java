@@ -67,7 +67,13 @@ public class FlacParserTest {
 	 */
 	@Test
 	public final void testParseFlacFile() {
-		fail("Not yet implemented");
+		try {
+			FlacParser.parseFlacFile(flacFile, new FlacFile("./demo/Jimmy Pengiun - Untitled Star.flac"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//fail("Not yet implemented");
 	}
 
 	/**
