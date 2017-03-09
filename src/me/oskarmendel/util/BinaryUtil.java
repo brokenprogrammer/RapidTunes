@@ -35,6 +35,12 @@ import java.nio.charset.Charset;
 /**
  * Utility class to handle binary operations connected to reading binary files.
  * 
+ * Notes: This class uses Hexadecimal values for some operations on bytes and here are their
+ * descriptions.
+ * 
+ * 		0x0F - Translates to bit-pattern: 0000 1111.
+ * 		0xFF - Translates to bit-pattern: 1111 1111.
+ * 
  * @author Oskar Mendel
  * @version 0.00.00
  * @name BinaryUtil.java
@@ -147,6 +153,46 @@ public class BinaryUtil {
 	 */
 	public static int getBitAtBE(byte b, int position) {
 		return (b >> (7 - position)) & 1;
+	}
+	
+	/**
+	 * Retrieves the top four bits within a byte. 
+	 * 
+	 * @param b - Byte to retrieve bits from.
+	 * @return The top nibble of target byte.
+	 */
+	public static int getTopNibble(byte b) {
+		return (b >> 4) & 0x0F;
+	}
+	
+	/**
+	 * Retrieves the bottom four bits within a byte. 
+	 * 
+	 * @param b - Byte to retrieve bits from.
+	 * @return The bottom nibble of target byte.
+	 */
+	public static int getBottomNibble(byte b) {
+		return (b & 0x0F);
+	}
+	
+	/**
+	 * Retrieves the top four bits within a integer. 
+	 * 
+	 * @param i - Integer to retrieve bits from.
+	 * @return The top nibble of target integer.
+	 */
+	public static int getTopNibble(int i) {
+		return (i >> 4) & 0x0F;
+	}
+	
+	/**
+	 * Retrieves the bottom four bits within a integer. 
+	 * 
+	 * @param i - Integer to retrieve bits from.
+	 * @return The bottom nibble of target integer.
+	 */
+	public static int getBottomNibble(int i) {
+		return (i & 0x0F);
 	}
 	
 	/**
@@ -279,7 +325,40 @@ public class BinaryUtil {
         int x2 = b[i++] & 0xFF;
         int x3 = b[i++] & 0xFF;
         int x4 = b[i++] & 0xFF;
-        return addBytesToInt(x1, x2, x3, x4);
+        return addBytesToIntBE(x1, x2, x3, x4);
+	}
+	
+	/**
+	 * Creates a String of a specified amounts of bits at the target offset.
+	 * TODO: Needs cleaning.
+	 * 
+	 * @param bits - Amount of bits to be populated.
+	 * @param offset - Offset at were to start populating bits.
+	 * @return A String representation of a byte.
+	 */
+	public static String createByteString(int bits, int offset) {
+		if(bits > 8 || (bits+offset) > 8) {
+			System.out.println(bits + " " + bits+offset);
+			throw new IllegalArgumentException("Too many bits or too big offset to create byte.");
+		}
+		int populated = 0;
+		String s = "";
+		
+		for (int x = 0; x < offset; x++) {
+			s += "0";
+			populated++;
+		}
+		
+		for(int x = 0; x < bits; x++) {
+			s += "1";
+			populated++;
+		}
+		
+		for (int x = populated; x < 8; x++) {
+			s += "0";
+		}
+		
+		return s;
 	}
 	
 	/**

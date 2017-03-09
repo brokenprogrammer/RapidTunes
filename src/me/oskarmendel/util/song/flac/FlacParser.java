@@ -38,6 +38,8 @@ import me.oskarmendel.util.BinaryUtil;
 
 /**
  * Class to parse files of the Flac format retrieving data such as meta tags.
+ * Implemented using the formatting for Flac files represented here:
+ * https://xiph.org/flac/format.html
  * 
  * @author Oskar Mendel
  * @version 0.00.00
@@ -204,35 +206,42 @@ public class FlacParser {
       		BinaryUtil.byteToInt(data[bitOffset++]))
 		);
 		
-		//TEMP
 		int[] lastEight = new int[8];
 		for (int i = 0; i < 8; i++) {
 			lastEight[i] = BinaryUtil.byteToInt(data[bitOffset+i]);
 		}
 		bitOffset += 8;
 		
-		
-		//FIX THIS TRASH TEMP CODE
-		
+		/*
+		 * This section of code is implemented using the Flac format specification.
+		 * Sample Rate: 20 bits.
+		 * Number of Channels 3 bits.
+		 * Bits per sample: 5 bits.
+		 * Number of samples: 36 bits.
+		 * 
+		 * This section manually reads the bytes and places them into their corresponding integer.
+		 * 
+		 * Example: Sample Rate is made out of 20 bits, that takes up 2 and a half byte. That means
+		 * that 4 of the bits will be in the third byte. We then read the first two bytes and shifts
+		 * them as many steps as the next bits takes up. For Sample rate the lowest 4 bits read from
+		 * the 3rd byte takes 4 positions so the 8 bits read from the 2nd byte has to be shifted 4
+		 * positions and then the 8 bits in the first byte has to be shifted 8+4 = 12 positions.
+		 */
 		int sampleRate = (lastEight[0]<<12) + (lastEight[1]<<4) + ((lastEight[2]&0xf0)>>4);
 		int numChannels = ((lastEight[2] & 0x0e) >> 1) + 1;
-        int bitsPerSample = ((lastEight[2]&0x01)<<4) + ((lastEight[3]&0xf0)>>4) + 1;
-        int numberOfSamples = ((lastEight[3]&0x0f)<<30) + (lastEight[4]<<24) + 
+		int bitsPerSample = ((lastEight[2]&0x01)<<4) + ((lastEight[3]&0xf0)>>4) + 1;
+		int numberOfSamples = ((lastEight[3]&0x0f)<<30) + (lastEight[4]<<24) + 
         		(lastEight[5]<<16) + (lastEight[6]<<8) + lastEight[7];
-        
         
         flac.setSampleRate(sampleRate);
         flac.setNumChannels(numChannels);
         flac.setBisPerSample(bitsPerSample);
         flac.setNumSamples(numberOfSamples);
-//        System.out.println("sampleRate: " + sampleRate);
-//        System.out.println("numChannels: " + numChannels);
-//        System.out.println("bitsPerSample: " + bitsPerSample);
-//        System.out.println("numberOfSamples: " + numberOfSamples);
 	}
 	
 	/**
 	 * Helper method to read the contents of the STREAMINFO meta data block of the flac file.
+	 * Vorbis Comment specification can be found here: https://www.xiph.org/vorbis/doc/v-comment.html
 	 * 
 	 * @param input - InputStream of the file to read.
 	 * @param flac - Target FlacFile object to populate with data.
@@ -245,6 +254,8 @@ public class FlacParser {
 		bitOffset += 4;
 		
 		String vendorString = BinaryUtil.getBytesToString(data, bitOffset, vendorLength);
+		flac.setVendor(vendorString);
+		
 		bitOffset+= vendorLength;
 		
 		int numComments = (int) BinaryUtil.addBytesToInt4(data, bitOffset);

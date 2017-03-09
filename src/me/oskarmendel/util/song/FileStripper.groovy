@@ -35,7 +35,7 @@
 /**
  * File stripper that attempts to strip tags from song files.
  * TODO: Check if there is enough error checking. def keyword?
- * TODO: 
+ * TODO: Method to check what file it is to strip.
  * 
  * @author Oskar Mendel
  * @version 0.00.00

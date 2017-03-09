@@ -53,6 +53,8 @@ public class FlacFile {
 	private int numSamples;			//Represented as 36 bits
 	
 	//Data from the Vorbis Comments within the Flac file. 
+	private String vendor;
+	
 	private String artist;
 	private String album;
 	private String title;
@@ -225,6 +227,20 @@ public class FlacFile {
 	}
 
 
+
+	/**
+	 * @return the vendor
+	 */
+	public String getVendor() {
+		return vendor;
+	}
+
+	/**
+	 * @param vendor the vendor to set
+	 */
+	public void setVendor(String vendor) {
+		this.vendor = vendor;
+	}
 
 	/**
 	 * @return the artist
