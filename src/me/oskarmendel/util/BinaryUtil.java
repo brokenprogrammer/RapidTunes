@@ -232,7 +232,7 @@ public class BinaryUtil {
 	 * @return Integer constructed with all the byte values.
 	 */
 	public static long addBytesToInt(int x1, int x2, int x3, int x4) {
-		return (x3 << 32) | (x3 << 16) | (x2 << 8) | (x1 & 0xFF);
+		return (x4 << 32) | (x3 << 16) | (x2 << 8) | (x1 & 0xFF);
 	}
 	
 	/**
@@ -268,7 +268,7 @@ public class BinaryUtil {
 	 * @return long constructed with all the byte values.
 	 */
 	public static long addBytesToIntBE(int x1, int x2, int x3, int x4) {
-		return (x1 << 16) | (x2 << 8) | (x3 & 0xFF);
+		return (x1 << 32) | (x2 << 16) | (x3 << 8) | (x4 & 0xFF);
 	}
 	
 	

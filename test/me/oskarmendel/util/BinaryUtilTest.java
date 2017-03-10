@@ -231,137 +231,258 @@ public class BinaryUtilTest {
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#getBottomNibble(byte)}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testGetBottomNibbleByte() {
-		fail("Not yet implemented");
+		byte b1 = 0x0F; //0000 1111
+		byte b2 = (byte)0xFF; //1111 1111
+		byte b3 = Byte.parseByte(BinaryUtil.createByteString(2, 6), 2); //00000011
+		byte b4 = Byte.parseByte(BinaryUtil.createByteString(4, 2), 2); //00111100
+		
+		assertEquals("Getting the bottom nibble of '15'.", BinaryUtil.getBottomNibble(b1), 15);
+		assertEquals("Getting the bottom nibble of '255'.", BinaryUtil.getBottomNibble(b2), 15);
+		assertEquals("Getting the bottom nibble of '3'.", BinaryUtil.getBottomNibble(b3), 3);
+		assertEquals("Getting the bottom nibble of '60'.", BinaryUtil.getBottomNibble(b4), 12);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#getTopNibble(int)}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testGetTopNibbleInt() {
-		fail("Not yet implemented");
+		int b1 = 15;
+		int b2 = 255;
+		int b3 = 3;
+		int b4 = 60;
+		
+		assertEquals("Getting the top nibble of '15'.", BinaryUtil.getTopNibble(b1), 0);
+		assertEquals("Getting the top nibble of '255'.", BinaryUtil.getTopNibble(b2), 15);
+		assertEquals("Getting the top nibble of '3'.", BinaryUtil.getTopNibble(b3), 0);
+		assertEquals("Getting the top nibble of '60'.", BinaryUtil.getTopNibble(b4), 3);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#getBottomNibble(int)}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testGetBottomNibbleInt() {
-		fail("Not yet implemented");
+		int b1 = 15;
+		int b2 = 255;
+		int b3 = 3;
+		int b4 = 60;
+		
+		assertEquals("Getting the top nibble of '15'.", BinaryUtil.getBottomNibble(b1), 15);
+		assertEquals("Getting the top nibble of '255'.", BinaryUtil.getBottomNibble(b2), 15);
+		assertEquals("Getting the top nibble of '3'.", BinaryUtil.getBottomNibble(b3), 3);
+		assertEquals("Getting the top nibble of '60'.", BinaryUtil.getBottomNibble(b4), 12);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToInt(int, int)}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testAddBytesToIntIntInt() {
-		fail("Not yet implemented");
+		int b1 = 15;
+		int b2 = 255;
+		int b3 = 3;
+		int b4 = 60;
+		
+		//1111 1111 0000 1111 = 65295
+		assertEquals("Adding bytes of '255' and '15'.", BinaryUtil.addBytesToInt(b1, b2), 65295);
+		//0000 0011 1111 1111 = 1023
+		assertEquals("Adding bytes of '3' and '255'.", BinaryUtil.addBytesToInt(b2, b3), 1023);
+		//0011 1100 0000 0011 = 15363
+		assertEquals("Adding bytes of '60' and '3'.", BinaryUtil.addBytesToInt(b3, b4), 15363);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToInt(int, int, int)}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testAddBytesToIntIntIntInt() {
-		fail("Not yet implemented");
+		int b1 = 15;
+		int b2 = 255;
+		int b3 = 3;
+		int b4 = 60;
+		
+		//0000 0011 1111 1111 0000 1111 = 261903
+		assertEquals("Adding bytes of '3', '255' and '15'.", BinaryUtil.addBytesToInt(b1, b2, b3), 261903);
+		//0011 1100 0000 0011 1111 1111 = 3933183
+		assertEquals("Adding bytes of '60', '3' and '255'.", BinaryUtil.addBytesToInt(b2, b3, b4), 3933183);
+		//0000 1111 0011 1100 0000 0011 = 998403
+		assertEquals("Adding bytes of '15', '60' and '3'.", BinaryUtil.addBytesToInt(b3, b4, b1), 998403);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToInt(int, int, int, int)}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testAddBytesToIntIntIntIntInt() {
-		fail("Not yet implemented");
+		int b1 = 15;
+		int b2 = 255;
+		int b3 = 3;
+		int b4 = 60;
+		
+		// 0011 1100 0000 0011 1111 1111 0000 1111 = 261951
+		assertEquals("Adding bytes of '60', '3', '255' and '15'.", BinaryUtil.addBytesToInt(b1, b2, b3, b4), 261951);
+		//0000 1111 0011 1100 0000 0011 1111 1111 = 3933183
+		assertEquals("Adding bytes of '15', '60', '3' and '255'.", BinaryUtil.addBytesToInt(b2, b3, b4, b1), 3933183);
+		//1111 1111 0000 1111 0011 1100 0000 0011 = 998655
+		assertEquals("Adding bytes of '255', '15', '60' and '3'.", BinaryUtil.addBytesToInt(b3, b4, b1, b2), 998655);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToIntBE(int, int)}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testAddBytesToIntBEIntInt() {
-		fail("Not yet implemented");
+		int b1 = 15;
+		int b2 = 255;
+		int b3 = 3;
+		int b4 = 60;
+		
+		//0000 1111 1111 1111 = 4095
+		assertEquals("Adding bytes of '15' and '255'.", BinaryUtil.addBytesToIntBE(b1, b2), 4095);
+		//1111 1111 0000 0011 = 65283
+		assertEquals("Adding bytes of '255' and '3'.", BinaryUtil.addBytesToIntBE(b2, b3), 65283);
+		//0000 0011 0011 1100 = 828
+		assertEquals("Adding bytes of '3' and '60'.", BinaryUtil.addBytesToIntBE(b3, b4), 828);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToIntBE(int, int, int)}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testAddBytesToIntBEIntIntInt() {
-		fail("Not yet implemented");
+		int b1 = 15;
+		int b2 = 255;
+		int b3 = 3;
+		int b4 = 60;
+		
+		//0000 1111 1111 1111 0000 0011 = 1048323
+		assertEquals("Adding bytes of '15', '255' and '3'.", BinaryUtil.addBytesToIntBE(b1, b2, b3), 1048323);
+		//1111 1111 0000 0011 0011 1100 = 16712508
+		assertEquals("Adding bytes of '255', '3' and '60'.", BinaryUtil.addBytesToIntBE(b2, b3, b4), 16712508);
+		//0000 0011 0011 1100 0000 1111 = 211983
+		assertEquals("Adding bytes of '3', '60' and '15'.", BinaryUtil.addBytesToIntBE(b3, b4, b1), 211983);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToIntBE(int, int, int, int)}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testAddBytesToIntBEIntIntIntInt() {
-		fail("Not yet implemented");
+		int b1 = 15;
+		int b2 = 255;
+		int b3 = 3;
+		int b4 = 60;
+		
+		//0000 1111 1111 1111 0000 0011 0011 1100 = 16712511
+		assertEquals("Adding bytes of '15', '255', '3' and '60'.", BinaryUtil.addBytesToIntBE(b1, b2, b3, b4), 16712511);
+		
+		//1111 1111 0000 0011 0011 1100 0000 1111 = 212223
+		assertEquals("Adding bytes of '255', '3', '60' and '15'.", BinaryUtil.addBytesToIntBE(b2, b3, b4, b1), 212223);
+		
+		//0000 0011 0011 1100 0000 1111 1111 1111 = 3936255
+		assertEquals("Adding bytes of '3', '60', '15' and '255'.", BinaryUtil.addBytesToIntBE(b3, b4, b1, b2), 3936255);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToInt4(byte[])}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testAddBytesToInt4ByteArray() {
-		fail("Not yet implemented");
+		byte[] b1 = {15, (byte) 255, 3, 60};
+		byte[] b2 = {(byte) 255, 3, 60, 15};
+		byte[] b3 = {3, 60, 15, (byte) 255};
+		
+		assertEquals("Adding bytes of '60', '3', '255' and '15'.", BinaryUtil.addBytesToInt4(b1), 261951);
+		assertEquals("Adding bytes of '15', '60', '3' and '255'.", BinaryUtil.addBytesToInt4(b2), 3933183);
+		assertEquals("Adding bytes of '255', '15', '60' and '3'.", BinaryUtil.addBytesToInt4(b3), 998655);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToInt4(byte[], int)}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testAddBytesToInt4ByteArrayInt() {
-		fail("Not yet implemented");
+		byte[] b1 = {15, (byte) 255, 3, 60, 1, 127};
+		byte[] b2 = {1, 44, 82, (byte) 255, 3, 60, 15};
+		byte[] b3 = {111, 32, (byte) 222, (byte) 210, 3, 60, 15, (byte) 255};
+		
+		assertEquals("Adding bytes of '60', '3', '255' and '15'.", BinaryUtil.addBytesToInt4(b1, 0), 261951);
+		assertEquals("Adding bytes of '15', '60', '3' and '255'.", BinaryUtil.addBytesToInt4(b2, 3), 3933183);
+		assertEquals("Adding bytes of '255', '15', '60' and '3'.", BinaryUtil.addBytesToInt4(b3, 4), 998655);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToInt4BE(byte[])}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testAddBytesToInt4BEByteArray() {
-		fail("Not yet implemented");
+		byte[] b1 = {15, (byte) 255, 3, 60};
+		byte[] b2 = {(byte) 255, 3, 60, 15};
+		byte[] b3 = {3, 60, 15, (byte) 255};
+		
+		assertEquals("Adding bytes of '15', '255', '3' and '60'.", BinaryUtil.addBytesToInt4BE(b1), 16712511);
+		assertEquals("Adding bytes of '255', '3', '60' and '15'.", BinaryUtil.addBytesToInt4BE(b2), 212223);
+		assertEquals("Adding bytes of '3', '60', '15' and '255'.", BinaryUtil.addBytesToInt4BE(b3), 3936255);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToInt4BE(byte[], int)}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testAddBytesToInt4BEByteArrayInt() {
-		fail("Not yet implemented");
+		byte[] b1 = {15, (byte) 255, 3, 60, 1, 127};
+		byte[] b2 = {1, 44, 82, (byte) 255, 3, 60, 15};
+		byte[] b3 = {111, 32, (byte) 222, (byte) 210, 3, 60, 15, (byte) 255};
+		
+		assertEquals("Adding bytes of '15', '255', '3' and '60'.", BinaryUtil.addBytesToInt4BE(b1, 0), 16712511);
+		assertEquals("Adding bytes of '255', '3', '60' and '15'.", BinaryUtil.addBytesToInt4BE(b2, 3), 212223);
+		assertEquals("Adding bytes of '3', '60', '15' and '255'.", BinaryUtil.addBytesToInt4BE(b3, 4), 3936255);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#createByteString(int, int)}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testCreateByteString() {
-		fail("Not yet implemented");
+		String fifteen = BinaryUtil.createByteString(4, 4);
+		byte fifteenByte = Byte.parseByte(fifteen, 2);
+		
+		String three = BinaryUtil.createByteString(2, 6);
+		byte threeByte = Byte.parseByte(three, 2);
+		
+		String fivehundredfiftyfive = BinaryUtil.createByteString(8, 0);
+		int fivehundredfiftyfiveInt = Integer.parseInt(fivehundredfiftyfive, 2);
+		
+		assertEquals("Created byte string representing '15'", fifteen, "00001111");
+		assertEquals("Created byte string is representing '15'", BinaryUtil.byteToInt(fifteenByte), 15);
+		
+		assertEquals("Created byte string representing '3'", three, "00000011");
+		assertEquals("Created byte string is representing '3'", BinaryUtil.byteToInt(threeByte), 3);
+		
+		assertEquals("Created byte string representing '255'", fivehundredfiftyfive, "11111111");
+		assertEquals("Created byte string is representing '255'", fivehundredfiftyfiveInt, 255);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#getBytesToString(byte[], int, int)}.
-	 * TODO Implement.
 	 */
 	@Test
 	public final void testGetBytesToString() {
-		fail("Not yet implemented");
+		String helloStr = "Hello";
+		byte[] helloBytes = helloStr.getBytes();
+		
+		String oskarMendelStr = "Oskar Mendel";
+		byte[] oskarMendelBytes = oskarMendelStr.getBytes();
+		
+		assertEquals("String within helloBytes is 'Hello'", BinaryUtil.getBytesToString(helloBytes, 0, helloBytes.length), helloStr);
+		assertEquals("String within oskarMendelBytes is 'Oskar Mendel'", 
+				BinaryUtil.getBytesToString(oskarMendelBytes, 0, oskarMendelBytes.length), oskarMendelStr);
+		assertEquals("String within oskarMendelBytes is 'Mendel'", 
+				BinaryUtil.getBytesToString(oskarMendelBytes, 6, 6), "Mendel");
 	}
 
 }
