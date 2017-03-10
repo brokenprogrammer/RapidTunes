@@ -25,56 +25,65 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.player.search.local;
-
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import me.oskarmendel.entities.Song;
+package me.oskarmendel.entities;
 
 /**
+ * Object representing a song from the youtube
  * 
- * @author Oskar
+ * @author Jesper Bergström
  * @version 0.00.00
- * @name LocalSearchTest.java
+ * @name Song.java
  */
-public class LocalSearchTest {
+public class YouTubeSong extends Song{
 
-	LocalSearch search;
+	/**
+	 * Set song title
+	 * 
+	 * @param title
+	 */
+	@Override
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
-	@Before
-	public void setUp() throws Exception {
-		search = new LocalSearch();
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	/**
-	 * Test method for {@link me.oskarmendel.player.search.local.LocalSearch#LocalSearch()}.
+	 * Set song artist
+	 * 
+	 * @param artist
 	 */
-	@Test
-	public final void testLocalSearch() {
-		//Add test later if parameters would be added to the constructor.
+	@Override
+	public void setArtist(String artist) {
+		this.artist = artist;
 	}
-
+	
 	/**
-	 * Test method for {@link me.oskarmendel.player.search.local.LocalSearch#search()}.
+	 * Set song album
+	 * 
+	 * @param album
 	 */
-	@Test
-	public final void testSearch() {
-		List<Song> songList = new ArrayList<Song>();
-		
-		//Find the local demo song called "Brad Sucks - Total Breakdown" in the demo folder.
-		songList = search.search("Brad Sucks", "./demo");
-		assertEquals("The local song 'Brad Sucks' was searched for", "Brad Sucks - Total Breakdown.mp3", songList.get(0).getTitle());
+	@Override
+	public void setAlbum(String album) {
+		this.album = album;
+	}
+	
+	/**
+	 * Set song length
+	 * 
+	 * @param length
+	 */
+	@Override
+	public void setLength(String length) {
+		this.length = length;
+	}
+	
+	/**
+	 * Set song path
+	 * 
+	 * @param path
+	 */
+	@Override
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 }

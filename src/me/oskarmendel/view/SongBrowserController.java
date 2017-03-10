@@ -30,13 +30,12 @@ package me.oskarmendel.view;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.google.api.services.youtube.model.Video;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import me.oskarmendel.entities.Song;
 import me.oskarmendel.model.SearchResultModel;
 
 /**
@@ -53,11 +52,11 @@ import me.oskarmendel.model.SearchResultModel;
 public class SongBrowserController implements RapidTunesController {
 	
 	@FXML private AnchorPane songBrowserPane;
-	@FXML private TableView<Video> songList;
-	@FXML private TableColumn<Video, String> songListSong;
-	@FXML private TableColumn<Video, String> songListPublisher;
-	@FXML private TableColumn<Video, String> songListTime;
-	@FXML private TableColumn<Video, String> songListSource;
+	@FXML private TableView<Song> songList;
+	@FXML private TableColumn<Song, String> songListSong;
+	@FXML private TableColumn<Song, String> songListPublisher;
+	@FXML private TableColumn<Song, String> songListTime;
+	@FXML private TableColumn<Song, String> songListSource;
 	
 	private static final Logger LOGGER = Logger.getLogger(SongBrowserController.class.getName());
 	
@@ -85,9 +84,9 @@ public class SongBrowserController implements RapidTunesController {
 		//songListSong.setCellValueFactory(new PropertyValueFactory<Video, String>("title"));
 		
 		//Manually setting the content as a simple string property.
-		songListSong.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getSnippet().getTitle()));
-		songListPublisher.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getSnippet().getChannelTitle()));
-		songListTime.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getContentDetails().getDuration()));
+		songListSong.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getTitle()));
+		songListPublisher.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getArtist()));
+		songListTime.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getLength()));
 		songListSource.setCellValueFactory(c -> new SimpleStringProperty("YT"));
 	}
 	

@@ -29,14 +29,17 @@ package me.oskarmendel.view;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import me.oskarmendel.entities.Song;
 import me.oskarmendel.model.SearchResultModel;
-import me.oskarmendel.player.search.YouTubeSearch;
+import me.oskarmendel.player.search.SearchHandler;
+
 import me.oskarmendel.util.DoublyLinkedList;
 
 /**
@@ -69,7 +72,6 @@ public class NavigationController implements RapidTunesController {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
 		
 		searchHistoryIterator = searchHistory.getIterator(true);
-		YouTubeSearch youtubeSearch = new YouTubeSearch();
 		
 		//Back Button in the search bar.
 		navBackBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -101,9 +103,13 @@ public class NavigationController implements RapidTunesController {
 		        searchHistory.add(navSearchField.getText());
 		        searchHistoryIterator.update(true);
 		        
+		        //SearchHandler performs a search and ads results to list.
+		        SearchHandler sh = SearchHandler.getInstance();
+		        List<Song> songList = sh.search(navSearchField.getText(), "C:\\");
+		        
 		        //Performs the search for the keywords in the YouTube data API and 
 		        //populates the searchResultModel with results.
-		        searchResultModel.setSearchResultList(youtubeSearch.search(navSearchField.getText()));
+		        searchResultModel.setSearchResultList(songList);
 		    }
 		});
 	}
