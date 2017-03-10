@@ -53,24 +53,27 @@ public class SearchHandlerTest {
 	public void setUp() throws Exception {
 		sh = SearchHandler.getInstance();
 	}
-	
+
 	@After
 	public void tearDown() throws Exception {
 	}
-	
+
 	/**
-	 * Test method for {@link me.oskarmendel.player.search.SearchHandler#search()}.
+	 * Test method for
+	 * {@link me.oskarmendel.player.search.SearchHandler#search()}.
 	 */
 	@Test
-	public final void testSearch(){
-		
+	public final void testSearch() {
+
 		List<Song> songList = new ArrayList<Song>();
-        
+
 		songList.addAll(sh.search("brad", "./demo"));
-		
-        assertEquals("'brad' was searched for", "Brad Sucks - Total Breakdown.mp3", songList.get(0).getTitle());
-        assertEquals("first object is a 'LocalSong'", "class me.oskarmendel.entities.LocalSong", songList.get(0).getClass().toString());
-        assertEquals("second object is a 'YouTubeSong'", "class me.oskarmendel.entities.YouTubeSong", songList.get(1).getClass().toString());
+
+		assertEquals("'brad' was searched for", "Brad Sucks - Total Breakdown.mp3", songList.get(0).getTitle());
+		assertEquals("first object is a 'LocalSong'", "class me.oskarmendel.entities.LocalSong",
+				songList.get(0).getClass().toString());
+		assertEquals("second object is a 'YouTubeSong'", "class me.oskarmendel.entities.YouTubeSong",
+				songList.get(1).getClass().toString());
 	}
-	
+
 }
