@@ -37,78 +37,78 @@ import me.oskarmendel.entities.YouTubeSong;
 import me.oskarmendel.player.search.local.LocalSearch;
 
 /**
- * Class that handles all searches.
- * Uses a Singleton.
+ * Class that handles all searches. Uses a Singleton.
  * 
  * @author Jesper Bergström
  * @version 0.00.00
  * @name SearchHandler.java
  */
 public class SearchHandler {
-	
+
 	private static SearchHandler INSTANCE = null;
-	
-	private SearchHandler(){
-		
+
+	private SearchHandler() {
+
 	}
-	
+
 	/**
 	 * Singleton
 	 * 
 	 * @return
 	 */
-	public static SearchHandler getInstance(){
-		
-		if(INSTANCE == null)
+	public static SearchHandler getInstance() {
+
+		if (INSTANCE == null)
 			INSTANCE = new SearchHandler();
-		
+
 		return INSTANCE;
-	}	
-	
+	}
+
 	/**
 	 * Method that calls all search methods and adds them to one list of songs.
 	 * 
 	 * @param searchWord
 	 * @return List of songs
 	 */
-	public List<Song> search(String searchWord, String path){
-		
-        List<Song> songList = new ArrayList<Song>();
-        
-        songList.addAll(searchLocal(searchWord, path));
-        songList.addAll(searchYouTube(searchWord));
-        
-        return songList;
+	public List<Song> search(String searchWord, String path) {
+
+		List<Song> songList = new ArrayList<Song>();
+
+		songList.addAll(searchLocal(searchWord, path));
+		songList.addAll(searchYouTube(searchWord));
+
+		return songList;
 	}
-	
+
 	/**
-	 * Search method that runs a youtube search and converts the Video objects to YouTubeSong objects
+	 * Search method that runs a youtube search and converts the Video objects
+	 * to YouTubeSong objects
 	 * 
 	 * @param searchWord
 	 * @return List of songs
 	 */
-	private List<Song> searchYouTube(String searchWord){
-		
+	private List<Song> searchYouTube(String searchWord) {
+
 		List<Song> songList = new ArrayList<Song>();
-		
+
 		YouTubeSearch ys = new YouTubeSearch();
-		
-		List<Video> ytList = ys.search(searchWord); //List of videos from yt
-		
-        //Convert all videos to YouTubeSong and add them to songList
-        for(int i=0; i<ytList.size(); i++){
-        	
-        	YouTubeSong s = new YouTubeSong();
-        	
-        	s.setTitle(ytList.get(i).getSnippet().getTitle());
-        	s.setArtist(ytList.get(i).getSnippet().getChannelTitle());
-        	s.setLength(ytList.get(i).getContentDetails().getDuration());
-        	songList.add(s);
-        }
-		
+
+		List<Video> ytList = ys.search(searchWord); // List of videos from yt
+
+		// Convert all videos to YouTubeSong and add them to songList
+		for (int i = 0; i < ytList.size(); i++) {
+
+			YouTubeSong s = new YouTubeSong();
+
+			s.setTitle(ytList.get(i).getSnippet().getTitle());
+			s.setArtist(ytList.get(i).getSnippet().getChannelTitle());
+			s.setLength(ytList.get(i).getContentDetails().getDuration());
+			songList.add(s);
+		}
+
 		return songList;
 	}
-	
+
 	/**
 	 * Search method that runs a local search.
 	 * 
@@ -116,12 +116,13 @@ public class SearchHandler {
 	 * @param path
 	 * @return List of songs
 	 */
-	private List<Song> searchLocal(String searchWord, String path){
-		
+	private List<Song> searchLocal(String searchWord, String path) {
+
 		LocalSearch ls = new LocalSearch();
-		
-		List<Song> localList = ls.search(searchWord, path); //List of songs from local
-		
+
+		List<Song> localList = ls.search(searchWord, path); // List of songs
+															// from local
+
 		return localList;
 	}
 }
