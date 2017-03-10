@@ -1,30 +1,94 @@
-mar 05, 2017 10:30:25 EM me.oskarmendel.RapidTunes main
+mar 10, 2017 3:35:04 FM me.oskarmendel.RapidTunes main
 FIN: Launching RapidTunes
-mar 05, 2017 10:30:25 EM me.oskarmendel.StageManager showRapidTunes
+mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager showRapidTunes
 FIN: Loading layouts..
-mar 05, 2017 10:30:25 EM me.oskarmendel.StageManager loadLayout
+mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/NavigationLayout.fxml
-mar 05, 2017 10:30:25 EM me.oskarmendel.view.NavigationController initialize
+mar 10, 2017 3:35:04 FM me.oskarmendel.view.NavigationController initialize
 FIN: Initialized: me.oskarmendel.view.NavigationController
-mar 05, 2017 10:30:25 EM me.oskarmendel.StageManager loadLayout
+mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/PlaylistControlLayout.fxml
-mar 05, 2017 10:30:25 EM me.oskarmendel.view.PlaylistController initialize
+mar 10, 2017 3:35:04 FM me.oskarmendel.view.PlaylistController initialize
 FIN: Initialized: me.oskarmendel.view.PlaylistController
-mar 05, 2017 10:30:25 EM me.oskarmendel.StageManager loadLayout
+mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/SongControlLayout.fxml
-mar 05, 2017 10:30:25 EM me.oskarmendel.view.SongController initialize
+mar 10, 2017 3:35:04 FM me.oskarmendel.view.SongController initialize
 FIN: Initialized: me.oskarmendel.view.SongController
-mar 05, 2017 10:30:25 EM me.oskarmendel.StageManager loadLayout
+mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/SongBrowserLayout.fxml
-mar 05, 2017 10:30:25 EM me.oskarmendel.view.SongBrowserController initialize
+mar 10, 2017 3:35:04 FM me.oskarmendel.view.SongBrowserController initialize
 FIN: Initialized: me.oskarmendel.view.SongBrowserController
-mar 05, 2017 10:30:25 EM me.oskarmendel.StageManager loadLayout
+mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/RootLayout.fxml
-mar 05, 2017 10:30:25 EM me.oskarmendel.StageManager showRapidTunes
+mar 10, 2017 3:35:05 FM me.oskarmendel.StageManager showRapidTunes
 FIN: Loading stylesheet: /css/Dark.css
-mar 05, 2017 10:30:26 EM javafx.scene.Node$FocusedProperty markInvalid
+mar 10, 2017 3:35:05 FM javafx.scene.Node$FocusedProperty markInvalid
 FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: true] focused=true
-mar 05, 2017 10:30:26 EM javafx.scene.Scene$13 invalidated
+mar 10, 2017 3:35:05 FM javafx.scene.Scene$13 invalidated
 FIN: Changed focus from null to Button[id=navBackBtn, styleClass=button]'<'
-mar 05, 2017 10:30:28 EM javafx.scene.Node$FocusedProperty markInvalid
+mar 10, 2017 3:35:07 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from null to ContextMenuContent[id=null, styleClass=context-menu]
+mar 10, 2017 3:35:07 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
+mar 10, 2017 3:35:07 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
+mar 10, 2017 3:35:07 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from null to ContextMenuContent[id=null, styleClass=context-menu]
+mar 10, 2017 3:35:07 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
+mar 10, 2017 3:35:08 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
+mar 10, 2017 3:35:08 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from null to ContextMenuContent[id=null, styleClass=context-menu]
+mar 10, 2017 3:35:08 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
+mar 10, 2017 3:35:08 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
+mar 10, 2017 3:35:08 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: true] focused=true
+mar 10, 2017 3:35:08 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent[id=null, styleClass=context-menu] to ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item]
+mar 10, 2017 3:35:09 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: false] focused=false
+mar 10, 2017 3:35:09 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item] to ContextMenuContent[id=null, styleClass=context-menu]
+mar 10, 2017 3:35:09 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: false] focused=false
+mar 10, 2017 3:35:22 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: true] focused=true
+mar 10, 2017 3:35:23 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
+mar 10, 2017 3:35:23 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
+mar 10, 2017 3:35:23 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
+mar 10, 2017 3:35:25 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
+mar 10, 2017 3:35:25 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: true] focused=true
+mar 10, 2017 3:35:25 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent[id=null, styleClass=context-menu] to ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item]
+mar 10, 2017 3:35:26 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: false] focused=false
+mar 10, 2017 3:35:26 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item] to ContextMenuContent[id=null, styleClass=context-menu]
+mar 10, 2017 3:35:26 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
+mar 10, 2017 3:35:26 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
+mar 10, 2017 3:35:26 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: true] focused=true
+mar 10, 2017 3:35:26 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent[id=null, styleClass=context-menu] to ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item]
+mar 10, 2017 3:35:27 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: false] focused=false
+mar 10, 2017 3:35:27 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: true] focused=true
+mar 10, 2017 3:35:27 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item] to ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item]
+mar 10, 2017 3:35:28 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: false] focused=false
+mar 10, 2017 3:35:28 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item] to ContextMenuContent[id=null, styleClass=context-menu]
+mar 10, 2017 3:35:28 FM javafx.scene.Node$FocusedProperty markInvalid
 FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: false] focused=false
