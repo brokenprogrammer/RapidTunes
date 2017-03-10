@@ -105,7 +105,7 @@ public class NavigationController implements RapidTunesController {
 		        
 		        //SearchHandler performs a search and ads results to list.
 		        SearchHandler sh = SearchHandler.getInstance();
-		        List<Song> songList = sh.search(navSearchField);
+		        List<Song> songList = sh.search(navSearchField.getText(), "C:\\");
 		        
 		        //Performs the search for the keywords in the YouTube data API and 
 		        //populates the searchResultModel with results.

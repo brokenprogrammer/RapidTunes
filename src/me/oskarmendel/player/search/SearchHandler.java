@@ -32,13 +32,13 @@ import java.util.List;
 
 import com.google.api.services.youtube.model.Video;
 
-import javafx.scene.control.TextField;
 import me.oskarmendel.entities.Song;
 import me.oskarmendel.entities.YouTubeSong;
 import me.oskarmendel.player.search.local.LocalSearch;
 
 /**
  * Class that handles all searches.
+ * Uses a Singleton.
  * 
  * @author Jesper Bergström
  * @version 0.00.00
@@ -71,11 +71,11 @@ public class SearchHandler {
 	 * @param searchWord
 	 * @return List of songs
 	 */
-	public List<Song> search(TextField searchWord){
+	public List<Song> search(String searchWord, String path){
 		
         List<Song> songList = new ArrayList<Song>();
         
-        songList.addAll(searchLocal(searchWord.getText(), "C:\\"));
+        songList.addAll(searchLocal(searchWord, path));
         songList.addAll(searchYouTube(searchWord));
         
         return songList;
@@ -87,13 +87,13 @@ public class SearchHandler {
 	 * @param searchWord
 	 * @return List of songs
 	 */
-	private List<Song> searchYouTube(TextField searchWord){
+	private List<Song> searchYouTube(String searchWord){
 		
 		List<Song> songList = new ArrayList<Song>();
 		
 		YouTubeSearch ys = new YouTubeSearch();
 		
-		List<Video> ytList = ys.search(searchWord.getText()); //List of videos from yt
+		List<Video> ytList = ys.search(searchWord); //List of videos from yt
 		
         //Convert all videos to YouTubeSong and add them to songList
         for(int i=0; i<ytList.size(); i++){

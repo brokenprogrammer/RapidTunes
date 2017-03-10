@@ -25,7 +25,7 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.player.search.local;
+package me.oskarmendel.player.search;
 
 import static org.junit.Assert.*;
 
@@ -39,42 +39,38 @@ import org.junit.Test;
 import me.oskarmendel.entities.Song;
 
 /**
+ * Testing the SearchHandler class.
  * 
- * @author Oskar
+ * @author Jesper Bergström
  * @version 0.00.00
- * @name LocalSearchTest.java
+ * @name SearchHandlerTest.java
  */
-public class LocalSearchTest {
+public class SearchHandlerTest {
 
-	LocalSearch search;
-	
+	SearchHandler sh;
+
 	@Before
 	public void setUp() throws Exception {
-		search = new LocalSearch();
+		sh = SearchHandler.getInstance();
 	}
-
+	
 	@After
 	public void tearDown() throws Exception {
 	}
-
+	
 	/**
-	 * Test method for {@link me.oskarmendel.player.search.local.LocalSearch#LocalSearch()}.
+	 * Test method for {@link me.oskarmendel.player.search.SearchHandler#search()}.
 	 */
 	@Test
-	public final void testLocalSearch() {
-		//Add test later if parameters would be added to the constructor.
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.player.search.local.LocalSearch#search()}.
-	 */
-	@Test
-	public final void testSearch() {
-		List<Song> songList = new ArrayList<Song>();
+	public final void testSearch(){
 		
-		//Find the local demo song called "Brad Sucks - Total Breakdown" in the demo folder.
-		songList = search.search("Brad Sucks", "./demo");
-		assertEquals("The local song 'Brad Sucks' was searched for", "Brad Sucks - Total Breakdown.mp3", songList.get(0).getTitle());
+		List<Song> songList = new ArrayList<Song>();
+        
+		songList.addAll(sh.search("brad", "./demo"));
+		
+        assertEquals("'brad' was searched for", "Brad Sucks - Total Breakdown.mp3", songList.get(0).getTitle());
+        assertEquals("first object is a 'LocalSong'", "class me.oskarmendel.entities.LocalSong", songList.get(0).getClass().toString());
+        assertEquals("second object is a 'YouTubeSong'", "class me.oskarmendel.entities.YouTubeSong", songList.get(1).getClass().toString());
 	}
-
+	
 }
