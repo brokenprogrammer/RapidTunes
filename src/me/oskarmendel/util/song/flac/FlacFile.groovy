@@ -53,6 +53,10 @@ class FlacFile extends MusicFile{
 	//Data from the Vorbis Comments within the Flac file.
 	String vendor
 	
+	FlacFile() {
+		
+	}
+	
 	/**
 	 * Constructs a new FlacFile object and directly populates it with data
 	 * from the specified file at the target file path.
@@ -81,9 +85,14 @@ class FlacFile extends MusicFile{
 
 	/**
 	 * Initializes the parsing of data using the FlacParser class.
+	 * 
+	 * @throws IllegalArgumentException - When the FlacFile doesn't have an initialized file and filepath.
 	 */
 	@Override
 	def parse() {
+		if(this.file == null || this.filePath == null) {
+			throw new IllegalArgumentException("File and file path is not initialized!");
+		}
 		FlacParser.parseFlacFile(this.file, this)
 	}
 }

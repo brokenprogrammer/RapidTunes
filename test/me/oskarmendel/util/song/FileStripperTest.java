@@ -65,7 +65,7 @@ public class FileStripperTest {
 	/**
 	 * Test method for {@link me.oskarmendel.util.song.FileStripper#stripMp3Song(java.io.File)}.
 	 */
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public final void testStripMp3Song() {
 		File fileeBrad = new File("./demo/Brad Sucks - Total Breakdown.mp3");
 		Song songBrad = fileStripper.stripMp3Song(fileeBrad);
@@ -74,6 +74,25 @@ public class FileStripperTest {
 		assertEquals("Artist of the song is 'Brad Sucks'", "Brad Sucks", songBrad.getArtist());
 		assertEquals("Album of the song is 'Out of It'", "Out of It", songBrad.getAlbum());
 		assertEquals("Length of the song in seconds is '139'", "139", songBrad.getLength());
+		
+		//Force exception
+		fileStripper.stripMp3Song(new File(""));
 	}
 
+	/**
+	 * Test method for {@link me.oskarmendel.util.song.FileStripper#stripFlacSong(java.io.File)}.
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public final void testStripFlacSong() {
+		File fileeJimmy = new File("./demo/Jimmy Pengiun - Untitled Star.flac");
+		Song songJimmy = fileStripper.stripFlacSong(fileeJimmy);
+		
+		assertEquals("Title of the song is 'Untitled Star'", "Untitled Star", songJimmy.getTitle());
+		assertEquals("Artist of the song is 'Jimmy Penguin'", "Jimmy Pengiun", songJimmy.getArtist());
+		assertEquals("Album of the song is 'The S27 Double Bluff'", "The S27 Double Bluff", songJimmy.getAlbum());
+		assertEquals("Length of the song in seconds is 'unknown'", "", songJimmy.getLength()); //Length for flac songs is not yet parsed.
+		
+		//Force exception
+		fileStripper.stripFlacSong(new File(""));
+	}
 }

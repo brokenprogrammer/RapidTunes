@@ -65,23 +65,49 @@ public class FlacParserTest {
 	/**
 	 * Test method for {@link me.oskarmendel.util.song.flac.FlacParser#parseFlacFile(java.io.File, me.oskarmendel.util.song.flac.FlacFile)}.
 	 */
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public final void testParseFlacFile() {
-		//FlacParser.parseFlacFile(flacFile, new FlacFile("./demo/Jimmy Pengiun - Untitled Star.flac"));
-		FlacFile f = new FlacFile("./demo/Jimmy Pengiun - Untitled Star.flac");
-		assertEquals("Flac File title is 'Untitled Star'", f.getTitle(), "Untitled Star");
-		//fail("Not yet implemented");
+		FlacFile f = new FlacFile();
+		
+		try {
+			FlacParser.parseFlacFile(flacFile, f);
+			
+			assertEquals("Flac file title is 'Untitled Star'", "Untitled Star", f.getTitle());
+			assertEquals("Flac file artist is 'Jimmy Penguin'", "Jimmy Pengiun", f.getArtist());
+			assertEquals("Flac file album is 'The S27 Double Bluff'", "The S27 Double Bluff", f.getAlbum());
+			
+			assertEquals("flac file length in seconds is 'unknown'", "", ""); //Length for flac songs is not yet parsed.
+			
+			assertEquals("Flac file minimum block size is 4096", 4096, f.getMinimumBlockSize());
+			assertEquals("Flac file maximum block size is 4096", 4096, f.getMaximumBlockSize());
+			assertEquals("Flac file minimum frame size is 2330", 2330, f.getMinimumFrameSize());
+			assertEquals("Flac file maximum frame size is 10805", 10805, f.getMaximumFrameSize());
+			
+			assertEquals("Flac file sample rate is 44100", 44100, f.getSampleRate());
+			assertEquals("Flac file number of channels is 2", 2, f.getNumChannels());
+			assertEquals("Flac file bits per sample is 16", 16, f.getBitsPerSample());
+			assertEquals("Flac file number of samples is 3657265", 3657265, f.getNumSamples());
+			
+			//Force exception
+			FlacParser.parseFlacFile(new File(""), f);
+		} catch (IOException e) {
+			fail(e.toString());
+		}
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.song.flac.FlacParser#isFlacFile(java.io.File)}.
 	 */
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public final void testIsFlacFile() {
 		try {
 			assertEquals("The specified file is of the type 'flac'", true, FlacParser.isFlacFile(flacFile));
+			assertEquals("The specified file is not the type 'flac'", false, FlacParser.isFlacFile(new File("./demo/Brad Sucks - Total Breakdown.mp3")));
+			
+			//Force Exception
+			assertEquals("When the file does not exist an exception is thrown", false, FlacParser.isFlacFile(new File("")));
 		} catch (IOException e) {
-			e.printStackTrace();
+			fail(e.toString());
 		}
 	}
 

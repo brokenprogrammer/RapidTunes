@@ -102,6 +102,9 @@ public class FlacParser {
 	 * @return True if the file is a Flac file, false otherwise.
 	 */
 	public static boolean isFlacFile(File file) throws IOException, FileNotFoundException {
+		if(!file.exists()){
+			throw new IllegalArgumentException("Specified file doesn't exist!");
+		}
 		InputStream input = new BufferedInputStream(new FileInputStream(file)); //JAVADOC why this can give IOException
 		byte[] STREAMTAG = new byte[4];
 		input.read(STREAMTAG, 0, 4);

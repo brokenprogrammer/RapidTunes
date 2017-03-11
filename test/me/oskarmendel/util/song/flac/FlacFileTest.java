@@ -40,12 +40,16 @@ import org.junit.Test;
  * @name FlacFileTest.java
  */
 public class FlacFileTest {
+	FlacFile flacFile;
+	FlacFile f;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		flacFile = new FlacFile("./demo/Jimmy Pengiun - Untitled Star.flac");
+		f = new FlacFile();
 	}
 
 	/**
@@ -60,7 +64,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetMinimumBlockSize() {
-		fail("Not yet implemented");
+		assertEquals("Flac file minimum block size is 4096", 4096, flacFile.getMinimumBlockSize());
+		flacFile.setMinimumBlockSize(1337);
+		assertEquals("Flac file minimum block size is 1337", 1337, flacFile.getMinimumBlockSize());
+		
+		f.setMinimumBlockSize(420);
+		assertEquals("Flac file minimum block size is 420", 420, f.getMinimumBlockSize());
 	}
 
 	/**
@@ -68,7 +77,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetMinimumBlockSize() {
-		fail("Not yet implemented");
+		assertEquals("Flac file minimum block size is 4096", 4096, flacFile.getMinimumBlockSize());
+		flacFile.setMinimumBlockSize(1337);
+		assertEquals("Flac file minimum block size is 1337", 1337, flacFile.getMinimumBlockSize());
+		
+		f.setMinimumBlockSize(420);
+		assertEquals("Flac file minimum block size is 420", 420, f.getMinimumBlockSize());
 	}
 
 	/**
@@ -76,7 +90,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetMaximumBlockSize() {
-		fail("Not yet implemented");
+		assertEquals("Flac file maximum block size is 4096", 4096, flacFile.getMaximumBlockSize());
+		flacFile.setMaximumBlockSize(1337);
+		assertEquals("Flac file maximum block size is 1337", 1337, flacFile.getMaximumBlockSize());
+		
+		f.setMaximumBlockSize(420);
+		assertEquals("Flac file maximum block size is 420", 420, f.getMaximumBlockSize());
 	}
 
 	/**
@@ -84,7 +103,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetMaximumBlockSize() {
-		fail("Not yet implemented");
+		assertEquals("Flac file maximum block size is 4096", 4096, flacFile.getMaximumBlockSize());
+		flacFile.setMaximumBlockSize(1337);
+		assertEquals("Flac file maximum block size is 1337", 1337, flacFile.getMaximumBlockSize());
+		
+		f.setMaximumBlockSize(420);
+		assertEquals("Flac file maximum block size is 420", 420, f.getMaximumBlockSize());
 	}
 
 	/**
@@ -92,7 +116,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetMinimumFrameSize() {
-		fail("Not yet implemented");
+		assertEquals("Flac file minimum frame size is 2330", 2330, flacFile.getMinimumFrameSize());
+		flacFile.setMinimumFrameSize(1337);
+		assertEquals("Flac file minimum frame size is 1337", 1337, flacFile.getMinimumFrameSize());
+		
+		f.setMinimumFrameSize(420);
+		assertEquals("Flac file minimum frame size is 420", 420, f.getMinimumFrameSize());
 	}
 
 	/**
@@ -100,7 +129,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetMinimumFrameSize() {
-		fail("Not yet implemented");
+		assertEquals("Flac file minimum frame size is 2330", 2330, flacFile.getMinimumFrameSize());
+		flacFile.setMinimumFrameSize(1337);
+		assertEquals("Flac file minimum frame size is 1337", 1337, flacFile.getMinimumFrameSize());
+		
+		f.setMinimumFrameSize(420);
+		assertEquals("Flac file minimum frame size is 420", 420, f.getMinimumFrameSize());
 	}
 
 	/**
@@ -108,7 +142,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetMaximumFrameSize() {
-		fail("Not yet implemented");
+		assertEquals("Flac file maximum frame size is 10805", 10805, flacFile.getMaximumFrameSize());
+		flacFile.setMaximumFrameSize(1337);
+		assertEquals("Flac file maximum frame size is 1337", 1337, flacFile.getMaximumFrameSize());
+		
+		f.setMaximumFrameSize(420);
+		assertEquals("Flac file maximum frame size is 420", 420, f.getMaximumFrameSize());
 	}
 
 	/**
@@ -116,7 +155,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetMaximumFrameSize() {
-		fail("Not yet implemented");
+		assertEquals("Flac file maximum frame size is 10805", 10805, flacFile.getMaximumFrameSize());
+		flacFile.setMaximumFrameSize(1337);
+		assertEquals("Flac file maximum frame size is 1337", 1337, flacFile.getMaximumFrameSize());
+		
+		f.setMaximumFrameSize(420);
+		assertEquals("Flac file maximum frame size is 420", 420, f.getMaximumFrameSize());
 	}
 
 	/**
@@ -124,7 +168,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetSampleRate() {
-		fail("Not yet implemented");
+		assertEquals("Flac file sample rate is 44100", 44100, flacFile.getSampleRate());
+		flacFile.setSampleRate(1337);
+		assertEquals("Flac file sample rate is 1337", 1337, flacFile.getSampleRate());
+		
+		f.setSampleRate(420);
+		assertEquals("Flac file sample rate is 420", 420, f.getSampleRate());
 	}
 
 	/**
@@ -132,7 +181,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetSampleRate() {
-		fail("Not yet implemented");
+		assertEquals("Flac file sample rate is 44100", 44100, flacFile.getSampleRate());
+		flacFile.setSampleRate(1337);
+		assertEquals("Flac file sample rate is 1337", 1337, flacFile.getSampleRate());
+		
+		f.setSampleRate(420);
+		assertEquals("Flac file sample rate is 420", 420, f.getSampleRate());
 	}
 
 	/**
@@ -140,7 +194,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetNumChannels() {
-		fail("Not yet implemented");
+		assertEquals("Flac file number of channels is 2", 2, flacFile.getNumChannels());
+		flacFile.setNumChannels(1337);
+		assertEquals("Flac file number of channels is 1337", 1337, flacFile.getNumChannels());
+		
+		f.setNumChannels(420);
+		assertEquals("Flac file number of channels is 420", 420, f.getNumChannels());
 	}
 
 	/**
@@ -148,7 +207,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetNumChannels() {
-		fail("Not yet implemented");
+		assertEquals("Flac file number of channels is 2", 2, flacFile.getNumChannels());
+		flacFile.setNumChannels(1337);
+		assertEquals("Flac file number of channels is 1337", 1337, flacFile.getNumChannels());
+		
+		f.setNumChannels(420);
+		assertEquals("Flac file number of channels is 420", 420, f.getNumChannels());
 	}
 
 	/**
@@ -156,7 +220,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetBisPerSample() {
-		fail("Not yet implemented");
+		assertEquals("Flac file bits per sample is 16", 16, flacFile.getBitsPerSample());
+		flacFile.setBitsPerSample(1337);
+		assertEquals("Flac file bits per sample is 1337", 1337, flacFile.getBitsPerSample());
+		
+		f.setBitsPerSample(420);
+		assertEquals("Flac file bits per sample is 420", 420, f.getBitsPerSample());
 	}
 
 	/**
@@ -164,7 +233,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetBisPerSample() {
-		fail("Not yet implemented");
+		assertEquals("Flac file bits per sample is 16", 16, flacFile.getBitsPerSample());
+		flacFile.setBitsPerSample(1337);
+		assertEquals("Flac file bits per sample is 1337", 1337, flacFile.getBitsPerSample());
+		
+		f.setBitsPerSample(420);
+		assertEquals("Flac file bits per sample is 420", 420, f.getBitsPerSample());
 	}
 
 	/**
@@ -172,7 +246,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetNumSamples() {
-		fail("Not yet implemented");
+		assertEquals("Flac file number of samples is 3657265", 3657265, flacFile.getNumSamples());
+		flacFile.setNumSamples(1337);
+		assertEquals("Flac file number of samples is 1337", 1337, flacFile.getNumSamples());
+		
+		f.setNumSamples(420);
+		assertEquals("Flac file number of samples is 420", 420, f.getNumSamples());
 	}
 
 	/**
@@ -180,7 +259,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetNumSamples() {
-		fail("Not yet implemented");
+		assertEquals("Flac file number of samples is 3657265", 3657265, flacFile.getNumSamples());
+		flacFile.setNumSamples(1337);
+		assertEquals("Flac file number of samples is 1337", 1337, flacFile.getNumSamples());
+		
+		f.setNumSamples(420);
+		assertEquals("Flac file number of samples is 420", 420, f.getNumSamples());
 	}
 
 	/**
@@ -188,7 +272,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetVendor() {
-		fail("Not yet implemented");
+		assertEquals("Flac file vendor is reference libFLAC 1.2.1 20070917", "reference libFLAC 1.2.1 20070917", flacFile.getVendor());
+		flacFile.setVendor("Oskar Mendel");
+		assertEquals("Flac file vendor is 1337", "Oskar Mendel", flacFile.getVendor());
+		
+		f.setVendor("I am tired, it is 6 AM");
+		assertEquals("Flac file vendor is a message about how tired i am", "I am tired, it is 6 AM", f.getVendor());
 	}
 
 	/**
@@ -196,7 +285,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetVendor() {
-		fail("Not yet implemented");
+		assertEquals("Flac file vendor is reference libFLAC 1.2.1 20070917", "reference libFLAC 1.2.1 20070917", flacFile.getVendor());
+		flacFile.setVendor("Oskar Mendel");
+		assertEquals("Flac file vendor is 1337", "Oskar Mendel", flacFile.getVendor());
+		
+		f.setVendor("I am tired, it is 6 AM");
+		assertEquals("Flac file vendor is a message about how tired i am", "I am tired, it is 6 AM", f.getVendor());
 	}
 
 	/**
@@ -204,7 +298,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetArtist() {
-		fail("Not yet implemented");
+		assertEquals("Flac file artist is 'Jimmy Penguin'", "Jimmy Pengiun", flacFile.getArtist());
+		flacFile.setArtist("Oskar Mendel");
+		assertEquals("Flac file artist is 'Oskar Mendel'", "Oskar Mendel", flacFile.getArtist());
+		
+		f.setArtist("Oskar");
+		assertEquals("Flac file artist is 'Oskar'", "Oskar", f.getArtist());
 	}
 
 	/**
@@ -212,7 +311,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetArtist() {
-		fail("Not yet implemented");
+		assertEquals("Flac file artist is 'Jimmy Penguin'", "Jimmy Pengiun", flacFile.getArtist());
+		flacFile.setArtist("Oskar Mendel");
+		assertEquals("Flac file artist is 'Oskar Mendel'", "Oskar Mendel", flacFile.getArtist());
+		
+		f.setArtist("Oskar");
+		assertEquals("Flac file artist is 'Oskar'", "Oskar", f.getArtist());
 	}
 
 	/**
@@ -220,7 +324,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetAlbum() {
-		fail("Not yet implemented");
+		assertEquals("Flac file album is 'The S27 Double Bluff'", "The S27 Double Bluff", flacFile.getAlbum());
+		flacFile.setAlbum("Oskar Mendel");
+		assertEquals("Flac file album is 'Oskar Mendel'", "Oskar Mendel", flacFile.getAlbum());
+		
+		f.setAlbum("Oskar");
+		assertEquals("Flac file album is 'Oskar'", "Oskar", f.getAlbum());
 	}
 
 	/**
@@ -228,7 +337,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetAlbum() {
-		fail("Not yet implemented");
+		assertEquals("Flac file album is 'The S27 Double Bluff'", "The S27 Double Bluff", flacFile.getAlbum());
+		flacFile.setAlbum("Oskar Mendel");
+		assertEquals("Flac file album is 'Oskar Mendel'", "Oskar Mendel", flacFile.getAlbum());
+		
+		f.setAlbum("Oskar");
+		assertEquals("Flac file album is 'Oskar'", "Oskar", f.getAlbum());
 	}
 
 	/**
@@ -236,7 +350,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetTitle() {
-		fail("Not yet implemented");
+		assertEquals("Flac file title is 'Untitled Star'", "Untitled Star", flacFile.getTitle());
+		flacFile.setTitle("Oskar Mendel");
+		assertEquals("Flac file title is 'Oskar Mendel'", "Oskar Mendel", flacFile.getTitle());
+		
+		f.setTitle("Oskar");
+		assertEquals("Flac file title is 'Oskar'", "Oskar", f.getTitle());
 	}
 
 	/**
@@ -244,7 +363,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetTitle() {
-		fail("Not yet implemented");
+		assertEquals("Flac file title is 'Untitled Star'", "Untitled Star", flacFile.getTitle());
+		flacFile.setTitle("Oskar Mendel");
+		assertEquals("Flac file title is 'Oskar Mendel'", "Oskar Mendel", flacFile.getTitle());
+		
+		f.setTitle("Oskar");
+		assertEquals("Flac file title is 'Oskar'", "Oskar", f.getTitle());
 	}
 
 	/**
@@ -252,7 +376,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetGenre() {
-		fail("Not yet implemented");
+		assertEquals("Flac file genre is not set", null, flacFile.getGenre());
+		flacFile.setGenre("Oskar Mendel");
+		assertEquals("Flac file genre is 'Oskar Mendel'", "Oskar Mendel", flacFile.getGenre());
+		
+		f.setGenre("Oskar");
+		assertEquals("Flac file genre is 'Oskar'", "Oskar", f.getGenre());
 	}
 
 	/**
@@ -260,7 +389,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetGenre() {
-		fail("Not yet implemented");
+		assertEquals("Flac file genre is not set", null, flacFile.getGenre());
+		flacFile.setGenre("Oskar Mendel");
+		assertEquals("Flac file genre is 'Oskar Mendel'", "Oskar Mendel", flacFile.getGenre());
+		
+		f.setGenre("Oskar");
+		assertEquals("Flac file genre is 'Oskar'", "Oskar", f.getGenre());
 	}
 
 	/**
@@ -268,7 +402,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetTrackNumber() {
-		fail("Not yet implemented");
+		assertEquals("Flac file track number is 5", "5", flacFile.getTrackNumber());
+		flacFile.setTrackNumber("105");
+		assertEquals("Flac file track number is 105", "105", flacFile.getTrackNumber());
+		
+		f.setTrackNumber("-120");
+		assertEquals("Flac file genre is -120", "-120", f.getTrackNumber());
 	}
 
 	/**
@@ -276,7 +415,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetTrackNumber() {
-		fail("Not yet implemented");
+		assertEquals("Flac file track number is 5", "5", flacFile.getTrackNumber());
+		flacFile.setTrackNumber("105");
+		assertEquals("Flac file track number is 105", "105", flacFile.getTrackNumber());
+		
+		f.setTrackNumber("-120");
+		assertEquals("Flac file genre is -120", "-120", f.getTrackNumber());
 	}
 
 	/**
@@ -284,7 +428,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testGetDate() {
-		fail("Not yet implemented");
+		assertEquals("Flac file date is not set", null, flacFile.getDate());
+		flacFile.setDate("2017-03-11");
+		assertEquals("Flac file date is 2017-03-11", "2017-03-11", flacFile.getDate());
+		
+		f.setDate("Best Day Ever!");
+		assertEquals("Flac file date is Best Day Ever!", "Best Day Ever!", f.getDate());
 	}
 
 	/**
@@ -292,7 +441,12 @@ public class FlacFileTest {
 	 */
 	@Test
 	public final void testSetDate() {
-		fail("Not yet implemented");
+		assertEquals("Flac file date is not set", null, flacFile.getDate());
+		flacFile.setDate("2017-03-11");
+		assertEquals("Flac file date is 2017-03-11", "2017-03-11", flacFile.getDate());
+		
+		f.setDate("Best Day Ever!");
+		assertEquals("Flac file date is Best Day Ever!", "Best Day Ever!", f.getDate());
 	}
 
 }
