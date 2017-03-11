@@ -40,6 +40,7 @@ import me.oskarmendel.util.BinaryUtil;
  * Class to parse files of the Flac format retrieving data such as meta tags.
  * Implemented using the formatting for Flac files represented here:
  * https://xiph.org/flac/format.html
+ * TODO: Parse length of song.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
@@ -235,7 +236,7 @@ public class FlacParser {
         
         flac.setSampleRate(sampleRate);
         flac.setNumChannels(numChannels);
-        flac.setBisPerSample(bitsPerSample);
+        flac.setBitsPerSample(bitsPerSample);
         flac.setNumSamples(numberOfSamples);
 	}
 	

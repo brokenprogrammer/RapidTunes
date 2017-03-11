@@ -31,6 +31,7 @@
  import com.mpatric.mp3agic.ID3v2
  import com.mpatric.mp3agic.Mp3File
  import me.oskarmendel.entities.Song;
+import me.oskarmendel.util.song.flac.FlacFile
 
 /**
  * File stripper that attempts to strip tags from song files.
@@ -47,7 +48,7 @@ class FileStripper {
 	 * Strips the tags from a mp3 file and places them within a Song object.
 	 * 
 	 * @param mp3File - Target File to strip the tags from.
-	 * @return A Song object containing all the tags from the mp3File.
+	 * @return A Song object containing all the tags from the mp3 file.
 	 */
 	Song stripMp3Song(File mp3File) {
 		if(!mp3File.exists()) {
@@ -62,6 +63,28 @@ class FileStripper {
 		} else if(mp3.hasId3v2Tag()) {
 			song = stripMp3ID3v2(mp3)
 		}
+		
+		return song
+	}
+	
+	/**
+	 * Strips the tags from a Flac file and places them within a Song object.
+	 * 
+	 * @param flacFile - Target File to strip the tags from.
+	 * @return A Song object containing all the tags from the Flac file.
+	 */
+	Song stripFlacSong(File flacFile) {
+		if(!flacFile.exists()) {
+			throw new IllegalArgumentException("No such file exists!")
+		}
+		
+		FlacFile flac = new FlacFile(flacFile)
+		Song song = new Song()
+		
+		song.setTitle(flac.getTitle())
+		song.setArtist(flac.getArtist())
+		song.setAlbum(flac.getAlbum())
+		song.setLength("")
 		
 		return song
 	}

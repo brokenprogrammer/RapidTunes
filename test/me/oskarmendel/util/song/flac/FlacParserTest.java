@@ -67,12 +67,9 @@ public class FlacParserTest {
 	 */
 	@Test
 	public final void testParseFlacFile() {
-		try {
-			FlacParser.parseFlacFile(flacFile, new FlacFile("./demo/Jimmy Pengiun - Untitled Star.flac"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//FlacParser.parseFlacFile(flacFile, new FlacFile("./demo/Jimmy Pengiun - Untitled Star.flac"));
+		FlacFile f = new FlacFile("./demo/Jimmy Pengiun - Untitled Star.flac");
+		assertEquals("Flac File title is 'Untitled Star'", f.getTitle(), "Untitled Star");
 		//fail("Not yet implemented");
 	}
 
