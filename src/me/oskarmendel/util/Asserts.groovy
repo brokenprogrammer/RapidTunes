@@ -30,6 +30,7 @@ package me.oskarmendel.util
 /**
  * Class to perform various types of assertions of data or values of this application.
  * This class is constructed using the bouncer pattern.
+ * TODO: throw exceptions instead of using groovy asserts.
  *
  * @author Oskar Mendel
  * @version 0.00.00
