@@ -36,7 +36,7 @@ import org.junit.Test;
 
 /**
  * 
- * @author Jesper Bergström
+ * @author Jesper Bergstrï¿½m
  * @version 0.00.00
  * @name LocalSongTest.java
  */

@@ -1,50 +1,97 @@
-mar 10, 2017 2:47:12 FM me.oskarmendel.RapidTunes main
+mar 10, 2017 3:35:04 FM me.oskarmendel.RapidTunes main
 FIN: Launching RapidTunes
-mar 10, 2017 2:47:12 FM me.oskarmendel.StageManager showRapidTunes
+mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager showRapidTunes
 FIN: Loading layouts..
-mar 10, 2017 2:47:12 FM me.oskarmendel.StageManager loadLayout
+mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/NavigationLayout.fxml
-mar 10, 2017 2:47:12 FM me.oskarmendel.view.NavigationController initialize
+mar 10, 2017 3:35:04 FM me.oskarmendel.view.NavigationController initialize
 FIN: Initialized: me.oskarmendel.view.NavigationController
-mar 10, 2017 2:47:12 FM me.oskarmendel.StageManager loadLayout
+mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/PlaylistControlLayout.fxml
-mar 10, 2017 2:47:12 FM me.oskarmendel.view.PlaylistController initialize
+mar 10, 2017 3:35:04 FM me.oskarmendel.view.PlaylistController initialize
 FIN: Initialized: me.oskarmendel.view.PlaylistController
-mar 10, 2017 2:47:12 FM me.oskarmendel.StageManager loadLayout
+mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/SongControlLayout.fxml
-mar 10, 2017 2:47:12 FM me.oskarmendel.view.SongController initialize
+mar 10, 2017 3:35:04 FM me.oskarmendel.view.SongController initialize
 FIN: Initialized: me.oskarmendel.view.SongController
-mar 10, 2017 2:47:12 FM me.oskarmendel.StageManager loadLayout
+mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/SongBrowserLayout.fxml
-mar 10, 2017 2:47:12 FM me.oskarmendel.view.SongBrowserController initialize
+mar 10, 2017 3:35:04 FM me.oskarmendel.view.SongBrowserController initialize
 FIN: Initialized: me.oskarmendel.view.SongBrowserController
-mar 10, 2017 2:47:12 FM me.oskarmendel.StageManager loadLayout
+mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/RootLayout.fxml
-mar 10, 2017 2:47:12 FM me.oskarmendel.StageManager showRapidTunes
+mar 10, 2017 3:35:05 FM me.oskarmendel.StageManager showRapidTunes
 FIN: Loading stylesheet: /css/Dark.css
-mar 10, 2017 2:47:12 FM javafx.scene.Node$FocusedProperty markInvalid
+mar 10, 2017 3:35:05 FM javafx.scene.Node$FocusedProperty markInvalid
 FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: true] focused=true
-mar 10, 2017 2:47:12 FM javafx.scene.Scene$13 invalidated
+mar 10, 2017 3:35:05 FM javafx.scene.Scene$13 invalidated
 FIN: Changed focus from null to Button[id=navBackBtn, styleClass=button]'<'
-mar 10, 2017 2:47:13 FM javafx.scene.Node$FocusedProperty markInvalid
+mar 10, 2017 3:35:07 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from null to ContextMenuContent[id=null, styleClass=context-menu]
+mar 10, 2017 3:35:07 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
+mar 10, 2017 3:35:07 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
+mar 10, 2017 3:35:07 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from null to ContextMenuContent[id=null, styleClass=context-menu]
+mar 10, 2017 3:35:07 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
+mar 10, 2017 3:35:08 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
+mar 10, 2017 3:35:08 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from null to ContextMenuContent[id=null, styleClass=context-menu]
+mar 10, 2017 3:35:08 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
+mar 10, 2017 3:35:08 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
+mar 10, 2017 3:35:08 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: true] focused=true
+mar 10, 2017 3:35:08 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent[id=null, styleClass=context-menu] to ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item]
+mar 10, 2017 3:35:09 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: false] focused=false
+mar 10, 2017 3:35:09 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item] to ContextMenuContent[id=null, styleClass=context-menu]
+mar 10, 2017 3:35:09 FM javafx.scene.Node$FocusedProperty markInvalid
 FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: false] focused=false
-mar 10, 2017 2:47:13 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: true] focused=true
-mar 10, 2017 2:47:13 FM javafx.scene.Scene$13 invalidated
-FIN: Changed focus from Button[id=navBackBtn, styleClass=button]'<' to TextField[id=navSearchField, styleClass=text-input text-field]
-mar 10, 2017 2:47:18 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: false] focused=false
-mar 10, 2017 2:47:18 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: true] focused=true
-mar 10, 2017 2:47:18 FM javafx.scene.Scene$13 invalidated
-FIN: Changed focus from TextField[id=navSearchField, styleClass=text-input text-field] to Button[id=navSearchBtn, styleClass=button]'Search'
-mar 10, 2017 2:47:36 FM me.oskarmendel.player.search.YouTubeSearch search
-FIN: YouTube Search Initiated..
-mar 10, 2017 2:47:36 FM com.google.api.client.http.HttpRequest execute
-KONFIG: -------------- REQUEST  --------------
-GET https://www.googleapis.com/youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url,%20snippet/channelTitle)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=brad&type=video
-Accept-Encoding: gzip
-User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)
+mar 10, 2017 3:35:22 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: true] focused=true
+mar 10, 2017 3:35:23 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
+mar 10, 2017 3:35:23 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
+mar 10, 2017 3:35:23 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
+mar 10, 2017 3:35:25 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
+mar 10, 2017 3:35:25 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: true] focused=true
+mar 10, 2017 3:35:25 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent[id=null, styleClass=context-menu] to ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item]
+mar 10, 2017 3:35:26 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: false] focused=false
+mar 10, 2017 3:35:26 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item] to ContextMenuContent[id=null, styleClass=context-menu]
+mar 10, 2017 3:35:26 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
+mar 10, 2017 3:35:26 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
+mar 10, 2017 3:35:26 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: true] focused=true
+mar 10, 2017 3:35:26 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent[id=null, styleClass=context-menu] to ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item]
+mar 10, 2017 3:35:27 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: false] focused=false
+mar 10, 2017 3:35:27 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: true] focused=true
+mar 10, 2017 3:35:27 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item] to ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item]
+mar 10, 2017 3:35:28 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: false] focused=false
+mar 10, 2017 3:35:28 FM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item] to ContextMenuContent[id=null, styleClass=context-menu]
+mar 10, 2017 3:35:28 FM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: false] focused=false
 
 mar 10, 2017 2:47:36 FM com.google.api.client.http.HttpRequest execute
 KONFIG: curl -v --compressed -H 'Accept-Encoding: gzip' -H 'User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)' -- 'https://www.googleapis.com/youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url,%20snippet/channelTitle)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=brad&type=video'
@@ -71,7 +118,7 @@ X-XSS-Protection: 1; mode=block
 Content-Type: application/json; charset=UTF-8
 
 mar 10, 2017 2:47:36 FM com.google.api.client.util.LoggingByteArrayOutputStream close
-KONFIG: Total: 7 972 bytes
+KONFIG: Total: 7ï¿½972 bytes
 mar 10, 2017 2:47:36 FM com.google.api.client.util.LoggingByteArrayOutputStream close
 KONFIG: {
  "items": [
@@ -96,7 +143,7 @@ KONFIG: {
     "videoId": "OM-FUVJvleA"
    },
    "snippet": {
-    "title": "Angelina Jolie’s secret texts to Brad Pitt: She wants him back!",
+    "title": "Angelina Jolieï¿½s secret texts to Brad Pitt: She wants him back!",
     "thumbnails": {
      "default": {
       "url": "https://i.ytimg.com/vi/OM-FUVJvleA/default.jpg"
@@ -484,7 +531,7 @@ X-XSS-Protection: 1; mode=block
 Content-Type: application/json; charset=UTF-8
 
 mar 10, 2017 2:47:37 FM com.google.api.client.util.LoggingByteArrayOutputStream close
-KONFIG: Total: 88 266 bytes (logging first 16 384 bytes)
+KONFIG: Total: 88ï¿½266 bytes (logging first 16ï¿½384 bytes)
 mar 10, 2017 2:47:37 FM com.google.api.client.util.LoggingByteArrayOutputStream close
 KONFIG: {
  "kind": "youtube#videoListResponse",
@@ -563,8 +610,8 @@ KONFIG: {
    "snippet": {
     "publishedAt": "2017-03-08T22:58:32.000Z",
     "channelId": "UC83JgNlgVNqSSFASAJcuAlw",
-    "title": "Angelina Jolie’s secret texts to Brad Pitt: She wants him back!",
-    "description": "Angelina Jolie’s secret texts to Brad Pitt: She wants him back! - https://youtu.be/OM-FUVJvleA\nSubscribe to watch for more upcoming videos: https://goo.gl/y764nt\nThanks for watching! Feel free to share this video.\n\nSource -- Read this article plus more interesting news at: http://www.celebsnow.co.uk/celebrity-news/angelina-jolie-brad-pitt-texts-643467\n\n\n\n\nKeywords:\nangelina jolie | bbc angelina jolie | angelina jolie divorce | bbc interview angelina jolie | angelina in cambodia | bbc news interview with angelina jolie | angelina jolie interview | cambodia | angelina family | angelina jolie interview 2017 | brad pitt | angelina jolie brad pitt divorce | news uk | brad angelina | angelina crying | angelina jolie crying |",
+    "title": "Angelina Jolieï¿½s secret texts to Brad Pitt: She wants him back!",
+    "description": "Angelina Jolieï¿½s secret texts to Brad Pitt: She wants him back! - https://youtu.be/OM-FUVJvleA\nSubscribe to watch for more upcoming videos: https://goo.gl/y764nt\nThanks for watching! Feel free to share this video.\n\nSource -- Read this article plus more interesting news at: http://www.celebsnow.co.uk/celebrity-news/angelina-jolie-brad-pitt-texts-643467\n\n\n\n\nKeywords:\nangelina jolie | bbc angelina jolie | angelina jolie divorce | bbc interview angelina jolie | angelina in cambodia | bbc news interview with angelina jolie | angelina jolie interview | cambodia | angelina family | angelina jolie interview 2017 | brad pitt | angelina jolie brad pitt divorce | news uk | brad angelina | angelina crying | angelina jolie crying |",
     "thumbnails": {
      "default": {
       "url": "https://i.ytimg.com/vi/OM-FUVJvleA/default.jpg",
@@ -596,8 +643,8 @@ KONFIG: {
     "categoryId": "24",
     "liveBroadcastContent": "none",
     "localized": {
-     "title": "Angelina Jolie’s secret texts to Brad Pitt: She wants him back!",
-     "description": "Angelina Jolie’s secret texts to Brad Pitt: She wants him back! - https://youtu.be/OM-FUVJvleA\nSubscribe to watch for more upcoming videos: https://goo.gl/y764nt\nThanks for watching! Feel free to share this video.\n\nSource -- Read this article plus more interesting news at: http://www.celebsnow.co.uk/celebrity-news/angelina-jolie-brad-pitt-texts-643467\n\n\n\n\nKeywords:\nangelina jolie | bbc angelina jolie | angelina jolie divorce | bbc interview angelina jolie | angelina in cambodia | bbc news interview with angelina jolie | angelina jolie interview | cambodia | angelina family | angelina jolie interview 2017 | brad pitt | angelina jolie brad pitt divorce | news uk | brad angelina | angelina crying | angelina jolie crying |"
+     "title": "Angelina Jolieï¿½s secret texts to Brad Pitt: She wants him back!",
+     "description": "Angelina Jolieï¿½s secret texts to Brad Pitt: She wants him back! - https://youtu.be/OM-FUVJvleA\nSubscribe to watch for more upcoming videos: https://goo.gl/y764nt\nThanks for watching! Feel free to share this video.\n\nSource -- Read this article plus more interesting news at: http://www.celebsnow.co.uk/celebrity-news/angelina-jolie-brad-pitt-texts-643467\n\n\n\n\nKeywords:\nangelina jolie | bbc angelina jolie | angelina jolie divorce | bbc interview angelina jolie | angelina in cambodia | bbc news interview with angelina jolie | angelina jolie interview | cambodia | angelina family | angelina jolie interview 2017 | brad pitt | angelina jolie brad pitt divorce | news uk | brad angelina | angelina crying | angelina jolie crying |"
     },
     "defaultAudioLanguage": "en"
    },

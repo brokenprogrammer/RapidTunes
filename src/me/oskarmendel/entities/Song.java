@@ -30,7 +30,7 @@ package me.oskarmendel.entities;
 /**
  * Object representing a song
  * 
- * @author Jesper Bergström
+ * @author Jesper Bergstrï¿½m
  * @version 0.00.00
  * @name Song.java
  */
