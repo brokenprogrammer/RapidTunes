@@ -25,45 +25,65 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.model;
-
-import java.util.List;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import me.oskarmendel.entities.Song;
+package me.oskarmendel.entities;
 
 /**
- * Model that manages search results for the application.
- * This allows mulitple controllers have access to the search results.
+ * Object representing a song from the local hard drive
  * 
- * @author Oskar
+ * @author Jesper Bergström
  * @version 0.00.00
- * @name SearchResultModel.java
+ * @name Song.java
  */
-public class SearchResultModel {
-	
-	private final ObservableList<Song> searchResultList = FXCollections.observableArrayList();
+public class LocalSong extends Song{
 	
 	/**
+	 * Set song title
 	 * 
-	 * @return
+	 * @param title
 	 */
-	public ObservableList<Song> getSearchResultList() {
-		return searchResultList;
+	@Override
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	/**
+	 * Set song artist
 	 * 
-	 * @param searchResultList
+	 * @param artist
 	 */
-	public void setSearchResultList(List<Song> searchResultList) {
-		this.searchResultList.clear();
+	@Override
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+	
+	/**
+	 * Set song album
+	 * 
+	 * @param album
+	 */
+	@Override
+	public void setAlbum(String album) {
+		this.album = album;
+	}
+	
+	/**
+	 * Set song length
+	 * 
+	 * @param length
+	 */
+	@Override
+	public void setLength(String length) {
+		this.length = length;
+	}
+	
+	/**
+	 * Set song path
+	 * 
+	 * @param path
+	 */
+	@Override
+	public void setPath(String path) {
+		this.path = path;
+	}
 		
-		// TODO: Temp til i know how to add all List elements to ObservableList
-		for (int x = 0; x <= searchResultList.size()-1; x++) {
-			this.searchResultList.add(searchResultList.get(x));
-		}
-	}
-
 }

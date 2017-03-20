@@ -36,17 +36,17 @@ import org.junit.Test;
 
 /**
  * 
- * @author Oskar
+ * @author Jesper Bergstr�m
  * @version 0.00.00
- * @name SongTest.java
+ * @name LocalSongTest.java
  */
-public class SongTest {
+public class LocalSongTest {
 	
 	Song song;
 	
 	@Before
 	public void setUp() throws Exception {
-		song = new Song();
+		song = new LocalSong();
 	}
 
 	@After
@@ -54,7 +54,7 @@ public class SongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#getTitle()}.
+	 * Test method for {@link me.oskarmendel.entities.LocalSong#getTitle()}.
 	 */
 	@Test
 	public void testGetTitle() {
@@ -65,7 +65,7 @@ public class SongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#setTitle()}.
+	 * Test method for {@link me.oskarmendel.entities.LocalSong#setTitle()}.
 	 */
 	@Test
 	public void testSetTitle() {
@@ -76,7 +76,7 @@ public class SongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#getArtist()}.
+	 * Test method for {@link me.oskarmendel.entities.LocalSong#getArtist()}.
 	 */
 	@Test
 	public void testGetArtist() {
@@ -87,7 +87,7 @@ public class SongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#setArtist()}.
+	 * Test method for {@link me.oskarmendel.entities.LocalSong#setArtist()}.
 	 */
 	@Test
 	public void testSetArtist() {
@@ -98,7 +98,7 @@ public class SongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#getAlbum()}.
+	 * Test method for {@link me.oskarmendel.entities.LocalSong#getAlbum()}.
 	 */
 	@Test
 	public void testGetAlbum() {
@@ -109,7 +109,7 @@ public class SongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#setAlbum()}.
+	 * Test method for {@link me.oskarmendel.entities.LocalSong#setAlbum()}.
 	 */
 	@Test
 	public void testSetAlbum() {
@@ -120,7 +120,7 @@ public class SongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#getLength()}.
+	 * Test method for {@link me.oskarmendel.entities.LocalSong#getLength()}.
 	 */
 	@Test
 	public void testGetLength() {
@@ -131,7 +131,7 @@ public class SongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.Song#setLength()}.
+	 * Test method for {@link me.oskarmendel.entities.LocalSong#setLength()}.
 	 */
 	@Test
 	public void testSetLength() {
@@ -140,5 +140,27 @@ public class SongTest {
 		song.setLength("1000");
 		assertEquals("Length of the song is '1000'", "1000", song.getLength());
 	}
-
+	
+	/**
+	 * Test method for {@link me.oskarmendel.entities.LocalSong#getPath()}.
+	 */
+	@Test
+	public void testGetPath() {
+		song.setPath("C:\\King.mp3");
+		assertEquals("Path of the song is 'C:\\King.mp3'", "C:\\King.mp3", song.getPath());
+		song.setPath("C:\\Users\\Jesper\\Music\\King.mp3");
+		assertEquals("Path of the song is 'C:\\Users\\Jesper\\Music\\King.mp3'", "C:\\Users\\Jesper\\Music\\King.mp3", song.getPath());
+	}
+	
+	/**
+	 * Test method for {@link me.oskarmendel.entities.LocalSong#setPath()}.
+	 */
+	@Test
+	public void testSetPath() {
+		song.setPath("C:\\King.mp3");
+		assertEquals("Path of the song is 'C:\\King.mp3'", "C:\\King.mp3", song.getPath());
+		song.setPath("C:\\Users\\Jesper\\Music\\King.mp3");
+		assertEquals("Path of the song is 'C:\\Users\\Jesper\\Music\\King.mp3'", "C:\\Users\\Jesper\\Music\\King.mp3", song.getPath());
+	}
 }
+

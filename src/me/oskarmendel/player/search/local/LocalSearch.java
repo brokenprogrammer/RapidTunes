@@ -29,7 +29,9 @@ package me.oskarmendel.player.search.local;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
+import me.oskarmendel.entities.LocalSong;
 import me.oskarmendel.entities.Song;
 
 /**
@@ -58,7 +60,7 @@ public class LocalSearch {
 	 * @param path - Path on the device to search through.
 	 * @return list - Containing all the found songs. 
 	 */
-	public ArrayList<Song> search(String keyword, String path) {
+	public List<Song> search(String keyword, String path) {
 
 		try {
 			File directory = new File(path);
@@ -80,7 +82,7 @@ public class LocalSearch {
 
 					if (directory.getName().endsWith(format[i])) {
 
-						Song s = new Song();
+						LocalSong s = new LocalSong();
 
 						s.setTitle(directory.getName());
 

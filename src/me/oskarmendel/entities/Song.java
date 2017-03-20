@@ -30,16 +30,17 @@ package me.oskarmendel.entities;
 /**
  * Object representing a song
  * 
- * @author Jesper Bergström
+ * @author Jesper Bergstrï¿½m
  * @version 0.00.00
  * @name Song.java
  */
-public class Song {
+public abstract class Song {
 	
-	private String title;
-	private String artist;
-	private String album;
-	private String length;
+	protected String title;
+	protected String artist;
+	protected String album;
+	protected String length;
+	protected String path;
 	
 	public Song(){
 		
@@ -59,9 +60,7 @@ public class Song {
 	 * 
 	 * @param title
 	 */
-	public void setTitle(String title){
-		this.title = title;
-	}
+	abstract void setTitle(String title);
 	
 	/**
 	 * Get artist
@@ -77,9 +76,7 @@ public class Song {
 	 * 
 	 * @param artist
 	 */
-	public void setArtist(String artist){
-		this.artist = artist;
-	}
+	abstract void setArtist(String artist);
 	
 	/**
 	 * Get album
@@ -95,9 +92,7 @@ public class Song {
 	 * 
 	 * @param album
 	 */
-	public void setAlbum(String album){
-		this.album = album;
-	}
+	abstract void setAlbum(String album);
 	
 	/**
 	 * Get song length
@@ -113,7 +108,21 @@ public class Song {
 	 * 
 	 * @param length
 	 */
-	public void setLength(String length){
-		this.length = length;
+	abstract void setLength(String length);
+	
+	/**
+	 * Get song path
+	 * 
+	 * @return path
+	 */
+	public String getPath(){
+		return path;
 	}
+	
+	/**
+	 * Set song path
+	 * 
+	 * @param path
+	 */
+	abstract void setPath(String path);
 }
