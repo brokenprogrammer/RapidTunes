@@ -30,7 +30,8 @@
  import com.mpatric.mp3agic.ID3v1
  import com.mpatric.mp3agic.ID3v2
  import com.mpatric.mp3agic.Mp3File
- import me.oskarmendel.entities.Song;
+import me.oskarmendel.entities.LocalSong
+import me.oskarmendel.entities.Song;
 import me.oskarmendel.util.song.flac.FlacFile
 
 /**
@@ -50,13 +51,13 @@ class FileStripper {
 	 * @param mp3File - Target File to strip the tags from.
 	 * @return A Song object containing all the tags from the mp3 file.
 	 */
-	Song stripMp3Song(File mp3File) {
+	LocalSong stripMp3Song(File mp3File) {
 		if(!mp3File.exists()) {
 			throw new IllegalArgumentException("No such file exists!")
 		}
 		
 		Mp3File mp3 = new Mp3File(mp3File)
-		Song song = new Song()
+		LocalSong song = new LocalSong()
 		
 		if(mp3.hasId3v1Tag()) {
 			song = stripMp3ID3v1(mp3)
@@ -73,13 +74,13 @@ class FileStripper {
 	 * @param flacFile - Target File to strip the tags from.
 	 * @return A Song object containing all the tags from the Flac file.
 	 */
-	Song stripFlacSong(File flacFile) {
+	LocalSong stripFlacSong(File flacFile) {
 		if(!flacFile.exists()) {
 			throw new IllegalArgumentException("No such file exists!")
 		}
 		
 		FlacFile flac = new FlacFile(flacFile)
-		Song song = new Song()
+		LocalSong song = new LocalSong()
 		
 		song.setTitle(flac.getTitle())
 		song.setArtist(flac.getArtist())
@@ -95,13 +96,13 @@ class FileStripper {
 	 * @param mp3File - Target Mp3File with ID3v1 tags to strip.
 	 * @return A Song object containing all the tags from the mp3File.
 	 */
-	private Song stripMp3ID3v1(Mp3File mp3File) {
+	private LocalSong stripMp3ID3v1(Mp3File mp3File) {
 		if(!mp3File.hasId3v1Tag()) {
 			throw new IllegalArgumentException("No such file exists!")
 		}
 		
 		ID3v1 id3v1Tags = mp3File.getId3v1Tag()
-		Song mp3Song = new Song()
+		LocalSong mp3Song = new LocalSong()
 		
 		mp3Song.setTitle(id3v1Tags.getTitle())
 		mp3Song.setArtist(id3v1Tags.getArtist())
@@ -117,13 +118,13 @@ class FileStripper {
 	 * @param mp3File - Target Mp3File with ID3v2 tags to strip.
 	 * @return A Song object containing all the tags from the mp3File.
 	 */
-	private Song stripMp3ID3v2(Mp3File mp3File) {
+	private LocalSong stripMp3ID3v2(Mp3File mp3File) {
 		if(!mp3File.hasId3v2Tag()) {
 			throw new IllegalArgumentException("No such file exists!")
 		}
 		
 		ID3v2 id3v2Tags = mp3File.getId3v2Tag()
-		Song mp3Song = new Song()
+		LocalSong mp3Song = new LocalSong()
 		
 		mp3Song.setTitle(id3v2Tags.getTitle())
 		mp3Song.setArtist(id3v2Tags.getArtist())

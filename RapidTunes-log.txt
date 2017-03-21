@@ -1,200 +1,93 @@
-mar 10, 2017 3:35:04 FM me.oskarmendel.RapidTunes main
+mar 21, 2017 6:40:16 EM me.oskarmendel.RapidTunes main
 FIN: Launching RapidTunes
-mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager showRapidTunes
+mar 21, 2017 6:40:16 EM me.oskarmendel.StageManager showRapidTunes
 FIN: Loading layouts..
-mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
+mar 21, 2017 6:40:16 EM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/NavigationLayout.fxml
-mar 10, 2017 3:35:04 FM me.oskarmendel.view.NavigationController initialize
+mar 21, 2017 6:40:16 EM me.oskarmendel.view.NavigationController initialize
 FIN: Initialized: me.oskarmendel.view.NavigationController
-mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
+mar 21, 2017 6:40:16 EM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/PlaylistControlLayout.fxml
-mar 10, 2017 3:35:04 FM me.oskarmendel.view.PlaylistController initialize
+mar 21, 2017 6:40:16 EM me.oskarmendel.view.PlaylistController initialize
 FIN: Initialized: me.oskarmendel.view.PlaylistController
-mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
+mar 21, 2017 6:40:16 EM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/SongControlLayout.fxml
-mar 10, 2017 3:35:04 FM me.oskarmendel.view.SongController initialize
+mar 21, 2017 6:40:16 EM me.oskarmendel.view.SongController initialize
 FIN: Initialized: me.oskarmendel.view.SongController
-mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
+mar 21, 2017 6:40:16 EM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/SongBrowserLayout.fxml
-mar 10, 2017 3:35:04 FM me.oskarmendel.view.SongBrowserController initialize
+mar 21, 2017 6:40:16 EM me.oskarmendel.view.SongBrowserController initialize
 FIN: Initialized: me.oskarmendel.view.SongBrowserController
-mar 10, 2017 3:35:04 FM me.oskarmendel.StageManager loadLayout
+mar 21, 2017 6:40:16 EM me.oskarmendel.StageManager loadLayout
 FIN: Loading Layout: /view/RootLayout.fxml
-mar 10, 2017 3:35:05 FM me.oskarmendel.StageManager showRapidTunes
+mar 21, 2017 6:40:16 EM me.oskarmendel.StageManager showRapidTunes
 FIN: Loading stylesheet: /css/Dark.css
-mar 10, 2017 3:35:05 FM javafx.scene.Node$FocusedProperty markInvalid
+mar 21, 2017 6:40:17 EM javafx.scene.Node$FocusedProperty markInvalid
 FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: true] focused=true
-mar 10, 2017 3:35:05 FM javafx.scene.Scene$13 invalidated
+mar 21, 2017 6:40:17 EM javafx.scene.Scene$13 invalidated
 FIN: Changed focus from null to Button[id=navBackBtn, styleClass=button]'<'
-mar 10, 2017 3:35:07 FM javafx.scene.Scene$13 invalidated
-FIN: Changed focus from null to ContextMenuContent[id=null, styleClass=context-menu]
-mar 10, 2017 3:35:07 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
-mar 10, 2017 3:35:07 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
-mar 10, 2017 3:35:07 FM javafx.scene.Scene$13 invalidated
-FIN: Changed focus from null to ContextMenuContent[id=null, styleClass=context-menu]
-mar 10, 2017 3:35:07 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
-mar 10, 2017 3:35:08 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
-mar 10, 2017 3:35:08 FM javafx.scene.Scene$13 invalidated
-FIN: Changed focus from null to ContextMenuContent[id=null, styleClass=context-menu]
-mar 10, 2017 3:35:08 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
-mar 10, 2017 3:35:08 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
-mar 10, 2017 3:35:08 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: true] focused=true
-mar 10, 2017 3:35:08 FM javafx.scene.Scene$13 invalidated
-FIN: Changed focus from ContextMenuContent[id=null, styleClass=context-menu] to ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item]
-mar 10, 2017 3:35:09 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: false] focused=false
-mar 10, 2017 3:35:09 FM javafx.scene.Scene$13 invalidated
-FIN: Changed focus from ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item] to ContextMenuContent[id=null, styleClass=context-menu]
-mar 10, 2017 3:35:09 FM javafx.scene.Node$FocusedProperty markInvalid
+mar 21, 2017 6:40:18 EM javafx.scene.Node$FocusedProperty markInvalid
 FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: false] focused=false
-mar 10, 2017 3:35:22 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: true] focused=true
-mar 10, 2017 3:35:23 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
-mar 10, 2017 3:35:23 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
-mar 10, 2017 3:35:23 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
-mar 10, 2017 3:35:25 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
-mar 10, 2017 3:35:25 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: true] focused=true
-mar 10, 2017 3:35:25 FM javafx.scene.Scene$13 invalidated
-FIN: Changed focus from ContextMenuContent[id=null, styleClass=context-menu] to ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item]
-mar 10, 2017 3:35:26 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: false] focused=false
-mar 10, 2017 3:35:26 FM javafx.scene.Scene$13 invalidated
-FIN: Changed focus from ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item] to ContextMenuContent[id=null, styleClass=context-menu]
-mar 10, 2017 3:35:26 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: true] focused=true
-mar 10, 2017 3:35:26 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent[id=null, styleClass=context-menu], name: focused, value: false] focused=false
-mar 10, 2017 3:35:26 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: true] focused=true
-mar 10, 2017 3:35:26 FM javafx.scene.Scene$13 invalidated
-FIN: Changed focus from ContextMenuContent[id=null, styleClass=context-menu] to ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item]
-mar 10, 2017 3:35:27 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: false] focused=false
-mar 10, 2017 3:35:27 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: true] focused=true
-mar 10, 2017 3:35:27 FM javafx.scene.Scene$13 invalidated
-FIN: Changed focus from ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item] to ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item]
-mar 10, 2017 3:35:28 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item], name: focused, value: false] focused=false
-mar 10, 2017 3:35:28 FM javafx.scene.Scene$13 invalidated
-FIN: Changed focus from ContextMenuContent$MenuItemContainer[id=null, styleClass=menu-item] to ContextMenuContent[id=null, styleClass=context-menu]
-mar 10, 2017 3:35:28 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: Button[id=navBackBtn, styleClass=button]'<', name: focused, value: false] focused=false
+mar 21, 2017 6:40:18 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: true] focused=true
+mar 21, 2017 6:40:18 EM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from Button[id=navBackBtn, styleClass=button]'<' to TextField[id=navSearchField, styleClass=text-input text-field]
+mar 21, 2017 6:40:21 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: false] focused=false
+mar 21, 2017 6:40:21 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: true] focused=true
+mar 21, 2017 6:40:21 EM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from TextField[id=navSearchField, styleClass=text-input text-field] to Button[id=navSearchBtn, styleClass=button]'Search'
+mar 21, 2017 6:40:21 EM me.oskarmendel.player.search.YouTubeSearch search
+FIN: YouTube Search Initiated..
+mar 21, 2017 6:40:21 EM com.google.api.client.http.HttpRequest execute
+KONFIG: -------------- REQUEST  --------------
+GET https://www.googleapis.com/youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url,%20snippet/channelTitle)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=brad&type=video
+Accept-Encoding: gzip
+User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)
 
-mar 10, 2017 2:47:36 FM com.google.api.client.http.HttpRequest execute
+mar 21, 2017 6:40:21 EM com.google.api.client.http.HttpRequest execute
 KONFIG: curl -v --compressed -H 'Accept-Encoding: gzip' -H 'User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)' -- 'https://www.googleapis.com/youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url,%20snippet/channelTitle)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=brad&type=video'
-mar 10, 2017 2:47:36 FM sun.net.www.protocol.http.HttpURLConnection writeRequests
-FIN: sun.net.www.MessageHeader@50c201dd6 pairs: {GET /youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url,%20snippet/channelTitle)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=brad&type=video HTTP/1.1: null}{Accept-Encoding: gzip}{User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)}{Host: www.googleapis.com}{Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2}{Connection: keep-alive}
-mar 10, 2017 2:47:36 FM sun.net.www.protocol.http.HttpURLConnection getInputStream0
-FIN: sun.net.www.MessageHeader@2d6ce2e515 pairs: {null: HTTP/1.1 200 OK}{Expires: Fri, 10 Mar 2017 01:47:37 GMT}{Date: Fri, 10 Mar 2017 01:47:37 GMT}{Cache-Control: private, max-age=120, must-revalidate, no-transform}{ETag: "uQc-MPTsstrHkQcRXL3IWLmeNsM/FXbh2LXVOfGlRgwJO_dv0hUXqJs"}{Vary: Origin}{Vary: X-Origin}{Content-Type: application/json; charset=UTF-8}{Content-Encoding: gzip}{X-Content-Type-Options: nosniff}{X-Frame-Options: SAMEORIGIN}{X-XSS-Protection: 1; mode=block}{Server: GSE}{Alt-Svc: quic=":443"; ma=2592000; v="36,35,34"}{Transfer-Encoding: chunked}
-mar 10, 2017 2:47:36 FM com.google.api.client.http.HttpResponse <init>
+mar 21, 2017 6:40:21 EM sun.net.www.protocol.http.HttpURLConnection writeRequests
+FIN: sun.net.www.MessageHeader@4836ff456 pairs: {GET /youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url,%20snippet/channelTitle)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=brad&type=video HTTP/1.1: null}{Accept-Encoding: gzip}{User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)}{Host: www.googleapis.com}{Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2}{Connection: keep-alive}
+mar 21, 2017 6:40:21 EM sun.net.www.protocol.http.HttpURLConnection getInputStream0
+FIN: sun.net.www.MessageHeader@26eb226e15 pairs: {null: HTTP/1.1 200 OK}{Expires: Tue, 21 Mar 2017 17:40:24 GMT}{Date: Tue, 21 Mar 2017 17:40:24 GMT}{Cache-Control: private, max-age=120, must-revalidate, no-transform}{ETag: "uQc-MPTsstrHkQcRXL3IWLmeNsM/31gWMTM1r-3cLk9bwgu3GyZt5to"}{Vary: Origin}{Vary: X-Origin}{Content-Type: application/json; charset=UTF-8}{Content-Encoding: gzip}{X-Content-Type-Options: nosniff}{X-Frame-Options: SAMEORIGIN}{X-XSS-Protection: 1; mode=block}{Server: GSE}{Alt-Svc: quic=":443"; ma=2592000; v="37,36,35"}{Transfer-Encoding: chunked}
+mar 21, 2017 6:40:21 EM com.google.api.client.http.HttpResponse <init>
 KONFIG: -------------- RESPONSE --------------
 HTTP/1.1 200 OK
 Transfer-Encoding: chunked
-Alt-Svc: quic=":443"; ma=2592000; v="36,35,34"
+Alt-Svc: quic=":443"; ma=2592000; v="37,36,35"
 Server: GSE
 X-Content-Type-Options: nosniff
-Date: Fri, 10 Mar 2017 01:47:37 GMT
+Date: Tue, 21 Mar 2017 17:40:24 GMT
 X-Frame-Options: SAMEORIGIN
 Cache-Control: private, max-age=120, must-revalidate, no-transform
-ETag: "uQc-MPTsstrHkQcRXL3IWLmeNsM/FXbh2LXVOfGlRgwJO_dv0hUXqJs"
+ETag: "uQc-MPTsstrHkQcRXL3IWLmeNsM/31gWMTM1r-3cLk9bwgu3GyZt5to"
 Content-Encoding: gzip
 Vary: X-Origin
 Vary: Origin
-Expires: Fri, 10 Mar 2017 01:47:37 GMT
+Expires: Tue, 21 Mar 2017 17:40:24 GMT
 X-XSS-Protection: 1; mode=block
 Content-Type: application/json; charset=UTF-8
 
-mar 10, 2017 2:47:36 FM com.google.api.client.util.LoggingByteArrayOutputStream close
-KONFIG: Total: 7ï¿½972 bytes
-mar 10, 2017 2:47:36 FM com.google.api.client.util.LoggingByteArrayOutputStream close
+mar 21, 2017 6:40:21 EM com.google.api.client.util.LoggingByteArrayOutputStream close
+KONFIG: Total: 8 086 bytes
+mar 21, 2017 6:40:21 EM com.google.api.client.util.LoggingByteArrayOutputStream close
 KONFIG: {
  "items": [
   {
    "id": {
     "kind": "youtube#video",
-    "videoId": "ccucF-ftCNM"
+    "videoId": "b7dMF8CBwZw"
    },
    "snippet": {
-    "title": "Bonus! - Car Chat With Lenny & Brad",
+    "title": "Haircut Tutorial: Brad Pitt's Hairstyle in Fury",
     "thumbnails": {
      "default": {
-      "url": "https://i.ytimg.com/vi/ccucF-ftCNM/default.jpg"
+      "url": "https://i.ytimg.com/vi/b7dMF8CBwZw/default.jpg"
      }
     },
-    "channelTitle": "The Delray Misfits"
-   }
-  },
-  {
-   "id": {
-    "kind": "youtube#video",
-    "videoId": "OM-FUVJvleA"
-   },
-   "snippet": {
-    "title": "Angelina Jolieï¿½s secret texts to Brad Pitt: She wants him back!",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/OM-FUVJvleA/default.jpg"
-     }
-    },
-    "channelTitle": "Vision On Open Air"
-   }
-  },
-  {
-   "id": {
-    "kind": "youtube#video",
-    "videoId": "D9eGLz4jdZk"
-   },
-   "snippet": {
-    "title": "Brad Tries Lay's Thailand",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/D9eGLz4jdZk/default.jpg"
-     }
-    },
-    "channelTitle": "Stoned Gremlin Productions"
-   }
-  },
-  {
-   "id": {
-    "kind": "youtube#video",
-    "videoId": "Wbbu4qzjRVg"
-   },
-   "snippet": {
-    "title": "Brad Plays Zelda: Breath of the Wild - Avoiding Main Story, Mild Spoilers",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/Wbbu4qzjRVg/default.jpg"
-     }
-    },
-    "channelTitle": "Easy Allies Plays"
-   }
-  },
-  {
-   "id": {
-    "kind": "youtube#video",
-    "videoId": "CqcSEpf5i_k"
-   },
-   "snippet": {
-    "title": "School Built in 1800 now Farm Field #112 That Brad Guy",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/CqcSEpf5i_k/default.jpg"
-     }
-    },
-    "channelTitle": "The Hoover Boys"
+    "channelTitle": "MC Barber"
    }
   },
   {
@@ -215,21 +108,6 @@ KONFIG: {
   {
    "id": {
     "kind": "youtube#video",
-    "videoId": "aPO87id0dbo"
-   },
-   "snippet": {
-    "title": "BRAD - Buttercup",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/aPO87id0dbo/default.jpg"
-     }
-    },
-    "channelTitle": "BradVEVO"
-   }
-  },
-  {
-   "id": {
-    "kind": "youtube#video",
     "videoId": "nZO9JGSScMQ"
    },
    "snippet": {
@@ -245,16 +123,61 @@ KONFIG: {
   {
    "id": {
     "kind": "youtube#video",
-    "videoId": "UzEXigbZT94"
+    "videoId": "aPO87id0dbo"
    },
    "snippet": {
-    "title": "BRAD: un GRINGO CRITICA MEXICO",
+    "title": "BRAD - Buttercup",
     "thumbnails": {
      "default": {
-      "url": "https://i.ytimg.com/vi/UzEXigbZT94/default.jpg"
+      "url": "https://i.ytimg.com/vi/aPO87id0dbo/default.jpg"
      }
     },
-    "channelTitle": "Benshorts"
+    "channelTitle": "BradVEVO"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "Ebrh9-WdowY"
+   },
+   "snippet": {
+    "title": "Fight Night London: Marlon Vera and Brad Pickett Octagon Interviews",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Ebrh9-WdowY/default.jpg"
+     }
+    },
+    "channelTitle": "UFC - Ultimate Fighting Championship"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "13j6cPAJ4i4"
+   },
+   "snippet": {
+    "title": "Brad Underwood | We Will Win",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/13j6cPAJ4i4/default.jpg"
+     }
+    },
+    "channelTitle": "Fighting Illini Athletics"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "IGa16I12L48"
+   },
+   "snippet": {
+    "title": "Angelina Jolie 'Moving To London' With The Kids And Brad Reportedly \"Hit The Roof\" At The News",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/IGa16I12L48/default.jpg"
+     }
+    },
+    "channelTitle": "Vision On Open Air"
    }
   },
   {
@@ -275,31 +198,31 @@ KONFIG: {
   {
    "id": {
     "kind": "youtube#video",
-    "videoId": "TeNXXhMShTk"
+    "videoId": "fpH2ZA7kTJg"
    },
    "snippet": {
-    "title": "WAR MACHINE Official Trailer (2017) Brad Pitt, Netflix Movie HD",
+    "title": "Brad Pitt hides out in art studio bolthole listening to break up ballads",
     "thumbnails": {
      "default": {
-      "url": "https://i.ytimg.com/vi/TeNXXhMShTk/default.jpg"
+      "url": "https://i.ytimg.com/vi/fpH2ZA7kTJg/default.jpg"
      }
     },
-    "channelTitle": "ONE Media"
+    "channelTitle": "Celebrities TV"
    }
   },
   {
    "id": {
     "kind": "youtube#video",
-    "videoId": "ZqnAk4oJz4M"
+    "videoId": "Cr20XpsBwFY"
    },
    "snippet": {
-    "title": "SCOOT WARS IS BACK!",
+    "title": "3/7/2017 - Ross VS. Brad: Grixis Delver vs Merfolk [Modern]",
     "thumbnails": {
      "default": {
-      "url": "https://i.ytimg.com/vi/ZqnAk4oJz4M/default.jpg"
+      "url": "https://i.ytimg.com/vi/Cr20XpsBwFY/default.jpg"
      }
     },
-    "channelTitle": "Scooter Brad"
+    "channelTitle": "Star City Games"
    }
   },
   {
@@ -320,76 +243,16 @@ KONFIG: {
   {
    "id": {
     "kind": "youtube#video",
-    "videoId": "HYv4jGM1Nq0"
+    "videoId": "MrKdZumLkPg"
    },
    "snippet": {
-    "title": "Brad Pitt And Jennifer Aniston Turn Friendship Into A Professional Collaboration",
+    "title": "She thought she was going to Barbados!",
     "thumbnails": {
      "default": {
-      "url": "https://i.ytimg.com/vi/HYv4jGM1Nq0/default.jpg"
+      "url": "https://i.ytimg.com/vi/MrKdZumLkPg/default.jpg"
      }
     },
-    "channelTitle": "Vision On Open Air"
-   }
-  },
-  {
-   "id": {
-    "kind": "youtube#video",
-    "videoId": "uC6bDdA-fzs"
-   },
-   "snippet": {
-    "title": "Brad Pitt and Jennifer  Aniston have got big  news",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/uC6bDdA-fzs/default.jpg"
-     }
-    },
-    "channelTitle": "VIVIDPEDIA WORLD"
-   }
-  },
-  {
-   "id": {
-    "kind": "youtube#video",
-    "videoId": "DapV-BOWhnc"
-   },
-   "snippet": {
-    "title": "Brad Pitt is Texting Jen!",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/DapV-BOWhnc/default.jpg"
-     }
-    },
-    "channelTitle": "Wendy Williams"
-   }
-  },
-  {
-   "id": {
-    "kind": "youtube#video",
-    "videoId": "hJiJsbZDNow"
-   },
-   "snippet": {
-    "title": "Danny Ainge Met With Isaiah Thomas After Anti-Brad Steven Rant",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/hJiJsbZDNow/default.jpg"
-     }
-    },
-    "channelTitle": "NESN"
-   }
-  },
-  {
-   "id": {
-    "kind": "youtube#video",
-    "videoId": "zYYwoM8-GVM"
-   },
-   "snippet": {
-    "title": "What has Brad Pitt adopted  to keep him distracted from Angie",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/zYYwoM8-GVM/default.jpg"
-     }
-    },
-    "channelTitle": "CURRENT AFFAIRS"
+    "channelTitle": "Brad Holmes"
    }
   },
   {
@@ -410,61 +273,46 @@ KONFIG: {
   {
    "id": {
     "kind": "youtube#video",
-    "videoId": "MrKdZumLkPg"
+    "videoId": "vdC3qVFEV_Q"
    },
    "snippet": {
-    "title": "She thought she was going to Barbados!",
+    "title": "Brad Pitt  is glad  it’s over!",
     "thumbnails": {
      "default": {
-      "url": "https://i.ytimg.com/vi/MrKdZumLkPg/default.jpg"
+      "url": "https://i.ytimg.com/vi/vdC3qVFEV_Q/default.jpg"
      }
     },
-    "channelTitle": "Brad Holmes"
+    "channelTitle": "THE HIGH BROW"
    }
   },
   {
    "id": {
     "kind": "youtube#video",
-    "videoId": "wFUAJtsKGoM"
+    "videoId": "lwG5_sxFmhk"
    },
    "snippet": {
-    "title": "Getting Your Ex Back (What Works & What Doesn't!)",
+    "title": "THUGGERY K-Brad Pop Off on Wolfkrone at Final Round 20",
     "thumbnails": {
      "default": {
-      "url": "https://i.ytimg.com/vi/wFUAJtsKGoM/default.jpg"
+      "url": "https://i.ytimg.com/vi/lwG5_sxFmhk/default.jpg"
      }
     },
-    "channelTitle": "Brad Browning"
+    "channelTitle": "BasedMonster"
    }
   },
   {
    "id": {
     "kind": "youtube#video",
-    "videoId": "sIH9zF7w6Ow"
+    "videoId": "6GuWL3_YZ3g"
    },
    "snippet": {
-    "title": "NEW APEX PRO SCOOTERS SPLATTER DECKS (2017 COLORS?)",
+    "title": "Brad Pickett vs Marlon Vera [FIGHT HIGHLIGHTS]",
     "thumbnails": {
      "default": {
-      "url": "https://i.ytimg.com/vi/sIH9zF7w6Ow/default.jpg"
+      "url": "https://i.ytimg.com/vi/6GuWL3_YZ3g/default.jpg"
      }
     },
-    "channelTitle": "Scooter Brad"
-   }
-  },
-  {
-   "id": {
-    "kind": "youtube#video",
-    "videoId": "JCjXaEbrLdw"
-   },
-   "snippet": {
-    "title": "Brad Paisley - She's Everything",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/JCjXaEbrLdw/default.jpg"
-     }
-    },
-    "channelTitle": "BRADPAISLEYVEVO"
+    "channelTitle": "Sports FIGHT"
    }
   },
   {
@@ -485,57 +333,162 @@ KONFIG: {
   {
    "id": {
     "kind": "youtube#video",
-    "videoId": "2oNDUh2y8es"
+    "videoId": "UE6iAjEv9dQ"
    },
    "snippet": {
-    "title": "WAR MACHINE Official Trailer (2017) Brad Pitt Comedy Movie HD",
+    "title": "Brad Paisley - Online",
     "thumbnails": {
      "default": {
-      "url": "https://i.ytimg.com/vi/2oNDUh2y8es/default.jpg"
+      "url": "https://i.ytimg.com/vi/UE6iAjEv9dQ/default.jpg"
      }
     },
-    "channelTitle": "JoBlo Movie Trailers"
+    "channelTitle": "BRADPAISLEYVEVO"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "JCjXaEbrLdw"
+   },
+   "snippet": {
+    "title": "Brad Paisley - She's Everything",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/JCjXaEbrLdw/default.jpg"
+     }
+    },
+    "channelTitle": "BRADPAISLEYVEVO"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "Fq7NFDayA7k"
+   },
+   "snippet": {
+    "title": "El hombre que se parece a Brad Pitt - Peter Capusotto y sus videos - Temporada 10",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Fq7NFDayA7k/default.jpg"
+     }
+    },
+    "channelTitle": "Peter Capusotto y sus Videos"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "GgCRBoL19Sc"
+   },
+   "snippet": {
+    "title": "O, brad frumos - Cântece de iarn? pentru copii | TraLaLa",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/GgCRBoL19Sc/default.jpg"
+     }
+    },
+    "channelTitle": "TraLaLa - Cantece si desene animate pentru copii"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "QBjTYeDzP_w"
+   },
+   "snippet": {
+    "title": "Brad Pitt and Angelina  Jolie Are Back In  Business Together",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/QBjTYeDzP_w/default.jpg"
+     }
+    },
+    "channelTitle": "VIVIDPEDIA WORLD"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "TcDFFj9JlNI"
+   },
+   "snippet": {
+    "title": "Angelina Jolie, Brad Pitt Discuss Marriage, New Film, Cancer Fight | TODAY",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/TcDFFj9JlNI/default.jpg"
+     }
+    },
+    "channelTitle": "TODAY"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "j01wx15qRTE"
+   },
+   "snippet": {
+    "title": "Dax Shepard's Love for Brad Pitt",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/j01wx15qRTE/default.jpg"
+     }
+    },
+    "channelTitle": "TheEllenShow"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "InHrCnXydJU"
+   },
+   "snippet": {
+    "title": "Friends - The Rumor [ Brad Pitt ]",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/InHrCnXydJU/default.jpg"
+     }
+    },
+    "channelTitle": "Favorite Videos"
    }
   }
  ]
 }
 
-mar 10, 2017 2:47:36 FM com.google.api.client.http.HttpRequest execute
+mar 21, 2017 6:40:22 EM com.google.api.client.http.HttpRequest execute
 KONFIG: -------------- REQUEST  --------------
-GET https://www.googleapis.com/youtube/v3/videos?id=ccucF-ftCNM,OM-FUVJvleA,D9eGLz4jdZk,Wbbu4qzjRVg,CqcSEpf5i_k,PXVLtfJ5KQY,aPO87id0dbo,nZO9JGSScMQ,UzEXigbZT94,dvPUqgwa40I,TeNXXhMShTk,ZqnAk4oJz4M,fCXaJLGUvjo,HYv4jGM1Nq0,uC6bDdA-fzs,DapV-BOWhnc,hJiJsbZDNow,zYYwoM8-GVM,mhJRpI4sscc,MrKdZumLkPg,wFUAJtsKGoM,sIH9zF7w6Ow,JCjXaEbrLdw,Jlp94-C31cY,2oNDUh2y8es&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&part=snippet,%20contentDetails
+GET https://www.googleapis.com/youtube/v3/videos?id=b7dMF8CBwZw,PXVLtfJ5KQY,nZO9JGSScMQ,aPO87id0dbo,Ebrh9-WdowY,13j6cPAJ4i4,IGa16I12L48,dvPUqgwa40I,fpH2ZA7kTJg,Cr20XpsBwFY,fCXaJLGUvjo,MrKdZumLkPg,mhJRpI4sscc,vdC3qVFEV_Q,lwG5_sxFmhk,6GuWL3_YZ3g,Jlp94-C31cY,UE6iAjEv9dQ,JCjXaEbrLdw,Fq7NFDayA7k,GgCRBoL19Sc,QBjTYeDzP_w,TcDFFj9JlNI,j01wx15qRTE,InHrCnXydJU&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&part=snippet,%20contentDetails
 Accept-Encoding: gzip
 User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)
 
-mar 10, 2017 2:47:36 FM com.google.api.client.http.HttpRequest execute
-KONFIG: curl -v --compressed -H 'Accept-Encoding: gzip' -H 'User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)' -- 'https://www.googleapis.com/youtube/v3/videos?id=ccucF-ftCNM,OM-FUVJvleA,D9eGLz4jdZk,Wbbu4qzjRVg,CqcSEpf5i_k,PXVLtfJ5KQY,aPO87id0dbo,nZO9JGSScMQ,UzEXigbZT94,dvPUqgwa40I,TeNXXhMShTk,ZqnAk4oJz4M,fCXaJLGUvjo,HYv4jGM1Nq0,uC6bDdA-fzs,DapV-BOWhnc,hJiJsbZDNow,zYYwoM8-GVM,mhJRpI4sscc,MrKdZumLkPg,wFUAJtsKGoM,sIH9zF7w6Ow,JCjXaEbrLdw,Jlp94-C31cY,2oNDUh2y8es&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&part=snippet,%20contentDetails'
-mar 10, 2017 2:47:36 FM sun.net.www.protocol.http.HttpURLConnection writeRequests
-FIN: sun.net.www.MessageHeader@3754282a6 pairs: {GET /youtube/v3/videos?id=ccucF-ftCNM,OM-FUVJvleA,D9eGLz4jdZk,Wbbu4qzjRVg,CqcSEpf5i_k,PXVLtfJ5KQY,aPO87id0dbo,nZO9JGSScMQ,UzEXigbZT94,dvPUqgwa40I,TeNXXhMShTk,ZqnAk4oJz4M,fCXaJLGUvjo,HYv4jGM1Nq0,uC6bDdA-fzs,DapV-BOWhnc,hJiJsbZDNow,zYYwoM8-GVM,mhJRpI4sscc,MrKdZumLkPg,wFUAJtsKGoM,sIH9zF7w6Ow,JCjXaEbrLdw,Jlp94-C31cY,2oNDUh2y8es&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&part=snippet,%20contentDetails HTTP/1.1: null}{Accept-Encoding: gzip}{User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)}{Host: www.googleapis.com}{Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2}{Connection: keep-alive}
-mar 10, 2017 2:47:37 FM sun.net.www.protocol.http.HttpURLConnection getInputStream0
-FIN: sun.net.www.MessageHeader@409514215 pairs: {null: HTTP/1.1 200 OK}{Expires: Fri, 10 Mar 2017 01:47:38 GMT}{Date: Fri, 10 Mar 2017 01:47:38 GMT}{Cache-Control: private, max-age=300, must-revalidate, no-transform}{ETag: "uQc-MPTsstrHkQcRXL3IWLmeNsM/tEarXRZCsRfN6GMNf2AgeF3Ra80"}{Vary: Origin}{Vary: X-Origin}{Content-Type: application/json; charset=UTF-8}{Content-Encoding: gzip}{X-Content-Type-Options: nosniff}{X-Frame-Options: SAMEORIGIN}{X-XSS-Protection: 1; mode=block}{Server: GSE}{Alt-Svc: quic=":443"; ma=2592000; v="36,35,34"}{Transfer-Encoding: chunked}
-mar 10, 2017 2:47:37 FM com.google.api.client.http.HttpResponse <init>
+mar 21, 2017 6:40:22 EM com.google.api.client.http.HttpRequest execute
+KONFIG: curl -v --compressed -H 'Accept-Encoding: gzip' -H 'User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)' -- 'https://www.googleapis.com/youtube/v3/videos?id=b7dMF8CBwZw,PXVLtfJ5KQY,nZO9JGSScMQ,aPO87id0dbo,Ebrh9-WdowY,13j6cPAJ4i4,IGa16I12L48,dvPUqgwa40I,fpH2ZA7kTJg,Cr20XpsBwFY,fCXaJLGUvjo,MrKdZumLkPg,mhJRpI4sscc,vdC3qVFEV_Q,lwG5_sxFmhk,6GuWL3_YZ3g,Jlp94-C31cY,UE6iAjEv9dQ,JCjXaEbrLdw,Fq7NFDayA7k,GgCRBoL19Sc,QBjTYeDzP_w,TcDFFj9JlNI,j01wx15qRTE,InHrCnXydJU&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&part=snippet,%20contentDetails'
+mar 21, 2017 6:40:22 EM sun.net.www.protocol.http.HttpURLConnection writeRequests
+FIN: sun.net.www.MessageHeader@67170dac6 pairs: {GET /youtube/v3/videos?id=b7dMF8CBwZw,PXVLtfJ5KQY,nZO9JGSScMQ,aPO87id0dbo,Ebrh9-WdowY,13j6cPAJ4i4,IGa16I12L48,dvPUqgwa40I,fpH2ZA7kTJg,Cr20XpsBwFY,fCXaJLGUvjo,MrKdZumLkPg,mhJRpI4sscc,vdC3qVFEV_Q,lwG5_sxFmhk,6GuWL3_YZ3g,Jlp94-C31cY,UE6iAjEv9dQ,JCjXaEbrLdw,Fq7NFDayA7k,GgCRBoL19Sc,QBjTYeDzP_w,TcDFFj9JlNI,j01wx15qRTE,InHrCnXydJU&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&part=snippet,%20contentDetails HTTP/1.1: null}{Accept-Encoding: gzip}{User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)}{Host: www.googleapis.com}{Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2}{Connection: keep-alive}
+mar 21, 2017 6:40:22 EM sun.net.www.protocol.http.HttpURLConnection getInputStream0
+FIN: sun.net.www.MessageHeader@342405d15 pairs: {null: HTTP/1.1 200 OK}{Expires: Tue, 21 Mar 2017 17:40:24 GMT}{Date: Tue, 21 Mar 2017 17:40:24 GMT}{Cache-Control: private, max-age=300, must-revalidate, no-transform}{ETag: "uQc-MPTsstrHkQcRXL3IWLmeNsM/fMeaOzSjrKCPxS2140HAiIpqGU8"}{Vary: Origin}{Vary: X-Origin}{Content-Type: application/json; charset=UTF-8}{Content-Encoding: gzip}{X-Content-Type-Options: nosniff}{X-Frame-Options: SAMEORIGIN}{X-XSS-Protection: 1; mode=block}{Server: GSE}{Alt-Svc: quic=":443"; ma=2592000; v="37,36,35"}{Transfer-Encoding: chunked}
+mar 21, 2017 6:40:22 EM com.google.api.client.http.HttpResponse <init>
 KONFIG: -------------- RESPONSE --------------
 HTTP/1.1 200 OK
 Transfer-Encoding: chunked
-Alt-Svc: quic=":443"; ma=2592000; v="36,35,34"
+Alt-Svc: quic=":443"; ma=2592000; v="37,36,35"
 Server: GSE
 X-Content-Type-Options: nosniff
-Date: Fri, 10 Mar 2017 01:47:38 GMT
+Date: Tue, 21 Mar 2017 17:40:24 GMT
 X-Frame-Options: SAMEORIGIN
 Cache-Control: private, max-age=300, must-revalidate, no-transform
-ETag: "uQc-MPTsstrHkQcRXL3IWLmeNsM/tEarXRZCsRfN6GMNf2AgeF3Ra80"
+ETag: "uQc-MPTsstrHkQcRXL3IWLmeNsM/fMeaOzSjrKCPxS2140HAiIpqGU8"
 Content-Encoding: gzip
 Vary: X-Origin
 Vary: Origin
-Expires: Fri, 10 Mar 2017 01:47:38 GMT
+Expires: Tue, 21 Mar 2017 17:40:24 GMT
 X-XSS-Protection: 1; mode=block
 Content-Type: application/json; charset=UTF-8
 
-mar 10, 2017 2:47:37 FM com.google.api.client.util.LoggingByteArrayOutputStream close
-KONFIG: Total: 88ï¿½266 bytes (logging first 16ï¿½384 bytes)
-mar 10, 2017 2:47:37 FM com.google.api.client.util.LoggingByteArrayOutputStream close
+mar 21, 2017 6:40:22 EM com.google.api.client.util.LoggingByteArrayOutputStream close
+KONFIG: Total: 89 949 bytes (logging first 16 384 bytes)
+mar 21, 2017 6:40:22 EM com.google.api.client.util.LoggingByteArrayOutputStream close
 KONFIG: {
  "kind": "youtube#videoListResponse",
- "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/tEarXRZCsRfN6GMNf2AgeF3Ra80\"",
+ "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/fMeaOzSjrKCPxS2140HAiIpqGU8\"",
  "pageInfo": {
   "totalResults": 25,
   "resultsPerPage": 25
@@ -543,113 +496,76 @@ KONFIG: {
  "items": [
   {
    "kind": "youtube#video",
-   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/kgEnTqC7z0q7p7DGH9-jE3Q76xA\"",
-   "id": "ccucF-ftCNM",
+   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/Or75qJwJsRIgUk29iiphZdsD1v4\"",
+   "id": "b7dMF8CBwZw",
    "snippet": {
-    "publishedAt": "2017-03-08T21:14:25.000Z",
-    "channelId": "UCLs8z7b4Mc6jn4ddU9mURYw",
-    "title": "Bonus! - Car Chat With Lenny & Brad",
-    "description": "Scintillating, disturbing, entertaining, whimsical, demented, absurd, call it whatever you want but nothing quite tops a car ride between these two Misfits.",
+    "publishedAt": "2017-03-21T16:12:02.000Z",
+    "channelId": "UCqZyp3kA2JuRwQK7XTaO9jw",
+    "title": "Haircut Tutorial: Brad Pitt's Hairstyle in Fury",
+    "description": "In this video, MC will be demonstrating how to create the same hairstyle Brad Pitt has in the movie Fury.\n\nInterested in the hair cutting razor, MC uses in his videos? Check out this link: http://www.ebay.com/itm/-/122352285907",
     "thumbnails": {
      "default": {
-      "url": "https://i.ytimg.com/vi/ccucF-ftCNM/default.jpg",
+      "url": "https://i.ytimg.com/vi/b7dMF8CBwZw/default.jpg",
       "width": 120,
       "height": 90
      },
      "medium": {
-      "url": "https://i.ytimg.com/vi/ccucF-ftCNM/mqdefault.jpg",
+      "url": "https://i.ytimg.com/vi/b7dMF8CBwZw/mqdefault.jpg",
       "width": 320,
       "height": 180
      },
      "high": {
-      "url": "https://i.ytimg.com/vi/ccucF-ftCNM/hqdefault.jpg",
+      "url": "https://i.ytimg.com/vi/b7dMF8CBwZw/hqdefault.jpg",
       "width": 480,
       "height": 360
      },
      "standard": {
-      "url": "https://i.ytimg.com/vi/ccucF-ftCNM/sddefault.jpg",
+      "url": "https://i.ytimg.com/vi/b7dMF8CBwZw/sddefault.jpg",
       "width": 640,
       "height": 480
      },
      "maxres": {
-      "url": "https://i.ytimg.com/vi/ccucF-ftCNM/maxresdefault.jpg",
+      "url": "https://i.ytimg.com/vi/b7dMF8CBwZw/maxresdefault.jpg",
       "width": 1280,
       "height": 720
      }
     },
-    "channelTitle": "The Delray Misfits",
+    "channelTitle": "MC Barber",
     "tags": [
-     "jason genova",
-     "delray misfits",
-     "world gym",
-     "saul",
-     "big richard",
-     "weightlifting",
-     "Big Lenny"
+     "Haircut tutorial",
+     "Barber channel",
+     "Barber tutorial",
+     "Fade tutorial",
+     "How to do a fade",
+     "How to do a clipper fade",
+     "Brad Pitt",
+     "How to style men's hair",
+     "How to blow dry men's hair",
+     "How to cut hair with a razor",
+     "Men's fashion",
+     "Men's fashion 2017",
+     "Brad Pitt Hairstyles",
+     "Hairstyles for men",
+     "How to use a straight razor",
+     "How to do a shape up",
+     "How to do scissors over comb",
+     "Wahl clippers",
+     "Andis trimmers",
+     "Oster Clippers",
+     "How to cut a pompadour",
+     "How to do an undercut"
     ],
-    "categoryId": "24",
+    "categoryId": "26",
     "liveBroadcastContent": "none",
+    "defaultLanguage": "en",
     "localized": {
-     "title": "Bonus! - Car Chat With Lenny & Brad",
-     "description": "Scintillating, disturbing, entertaining, whimsical, demented, absurd, call it whatever you want but nothing quite tops a car ride between these two Misfits."
-    }
-   },
-   "contentDetails": {
-    "duration": "PT15M11S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": true,
-    "projection": "rectangular"
-   }
-  },
-  {
-   "kind": "youtube#video",
-   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/nEVdDtaySIVkjLpviMp3--soYF4\"",
-   "id": "OM-FUVJvleA",
-   "snippet": {
-    "publishedAt": "2017-03-08T22:58:32.000Z",
-    "channelId": "UC83JgNlgVNqSSFASAJcuAlw",
-    "title": "Angelina Jolieï¿½s secret texts to Brad Pitt: She wants him back!",
-    "description": "Angelina Jolieï¿½s secret texts to Brad Pitt: She wants him back! - https://youtu.be/OM-FUVJvleA\nSubscribe to watch for more upcoming videos: https://goo.gl/y764nt\nThanks for watching! Feel free to share this video.\n\nSource -- Read this article plus more interesting news at: http://www.celebsnow.co.uk/celebrity-news/angelina-jolie-brad-pitt-texts-643467\n\n\n\n\nKeywords:\nangelina jolie | bbc angelina jolie | angelina jolie divorce | bbc interview angelina jolie | angelina in cambodia | bbc news interview with angelina jolie | angelina jolie interview | cambodia | angelina family | angelina jolie interview 2017 | brad pitt | angelina jolie brad pitt divorce | news uk | brad angelina | angelina crying | angelina jolie crying |",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/OM-FUVJvleA/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/OM-FUVJvleA/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/OM-FUVJvleA/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     }
-    },
-    "channelTitle": "Vision On Open Air",
-    "tags": [
-     "Angelina Jolie and Brad Pitt twins Knox and Vivienne",
-     "Angelina Jolie Interview on Brad Pitt",
-     "&#39;First They Killed my Father&#39; | ABC News",
-     "Angelina Jolie - Mr and Mrs Smith",
-     "Angelina Jolie Speaks Out",
-     "Angelina Jolie Files for Divorce from Brad Pitt | TMZ",
-     "Angelina Jolie and Brad Pitt Best Moments - Short Montage from their movies",
-     "Angelina Jolie First 2017 Pictures With Children During Colorado Ski Trip"
-    ],
-    "categoryId": "24",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Angelina Jolieï¿½s secret texts to Brad Pitt: She wants him back!",
-     "description": "Angelina Jolieï¿½s secret texts to Brad Pitt: She wants him back! - https://youtu.be/OM-FUVJvleA\nSubscribe to watch for more upcoming videos: https://goo.gl/y764nt\nThanks for watching! Feel free to share this video.\n\nSource -- Read this article plus more interesting news at: http://www.celebsnow.co.uk/celebrity-news/angelina-jolie-brad-pitt-texts-643467\n\n\n\n\nKeywords:\nangelina jolie | bbc angelina jolie | angelina jolie divorce | bbc interview angelina jolie | angelina in cambodia | bbc news interview with angelina jolie | angelina jolie interview | cambodia | angelina family | angelina jolie interview 2017 | brad pitt | angelina jolie brad pitt divorce | news uk | brad angelina | angelina crying | angelina jolie crying |"
+     "title": "Haircut Tutorial: Brad Pitt's Hairstyle in Fury",
+     "description": "In this video, MC will be demonstrating how to create the same hairstyle Brad Pitt has in the movie Fury.\n\nInterested in the hair cutting razor, MC uses in his videos? Check out this link: http://www.ebay.com/itm/-/122352285907"
     },
     "defaultAudioLanguage": "en"
    },
    "contentDetails": {
-    "duration": "PT2M34S",
+    "duration": "PT23M4S",
     "dimension": "2d",
     "definition": "hd",
     "caption": "false",
@@ -659,240 +575,13 @@ KONFIG: {
   },
   {
    "kind": "youtube#video",
-   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/SPVIXW-cPZZaysuFGM9beeJS9W8\"",
-   "id": "D9eGLz4jdZk",
-   "snippet": {
-    "publishedAt": "2017-03-09T15:34:50.000Z",
-    "channelId": "UCIO689mgXeuzH4M5NS7wZwg",
-    "title": "Brad Tries Lay's Thailand",
-    "description": "Subscribe: http://www.youtube.com/stonedgremlinproductions\nWebsite: http://www.thecinemasnob.com\nTwitter: @thecinemasnob\nPatreon: http://www.patreon.com/thecinemasnob\n\nWith flavors such as Lobster, Chile Squid, and more!",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/D9eGLz4jdZk/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/D9eGLz4jdZk/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/D9eGLz4jdZk/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/D9eGLz4jdZk/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     }
-    },
-    "channelTitle": "Stoned Gremlin Productions",
-    "tags": [
-     "Brad Tries",
-     "Lay's Chips",
-     "Thailand",
-     "Brad jones"
-    ],
-    "categoryId": "1",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Brad Tries Lay's Thailand",
-     "description": "Subscribe: http://www.youtube.com/stonedgremlinproductions\nWebsite: http://www.thecinemasnob.com\nTwitter: @thecinemasnob\nPatreon: http://www.patreon.com/thecinemasnob\n\nWith flavors such as Lobster, Chile Squid, and more!"
-    }
-   },
-   "contentDetails": {
-    "duration": "PT16M27S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": true,
-    "projection": "rectangular"
-   }
-  },
-  {
-   "kind": "youtube#video",
-   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/ROnfgpMBatxVi4uocovU-r6TMuE\"",
-   "id": "Wbbu4qzjRVg",
-   "snippet": {
-    "publishedAt": "2017-03-09T18:46:52.000Z",
-    "channelId": "UCL7O6Onu0lBcwZ8t-YMgGcw",
-    "title": "Brad Plays Zelda: Breath of the Wild - Avoiding Main Story, Mild Spoilers",
-    "description": "Brad Journeys through Hyrule. (mild spoilers) (Streamed Mar 8, 2017) \n\nSupport us through Patreon: https://www.patreon.com/EasyAllies\nShows, Reviews, and More: https://www.youtube.com/easyallies\nSchedule: http://easyallies.com/\nMerchandise: http://shop.spreadshirt.com/easyallies\n\nhttps://www.twitch.tv/easyallies\nhttps://twitter.com/easyallies\nhttps://www.facebook.com/easyallies\nhttps://easyallies.tumblr.com/",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/Wbbu4qzjRVg/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/Wbbu4qzjRVg/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/Wbbu4qzjRVg/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/Wbbu4qzjRVg/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/Wbbu4qzjRVg/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
-    },
-    "channelTitle": "Easy Allies Plays",
-    "tags": [
-     "twitch",
-     "games",
-     "Easy Allies",
-     "Videogames",
-     "Nintendo",
-     "gaming",
-     "gameplay",
-     "The Legend of Zelda: Breath of the Wild",
-     "Zelda",
-     "Breath of the Wild",
-     "Switch",
-     "Open World",
-     "Adventure",
-     "Exploration",
-     "Brad Ellis"
-    ],
-    "categoryId": "20",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "Brad Plays Zelda: Breath of the Wild - Avoiding Main Story, Mild Spoilers",
-     "description": "Brad Journeys through Hyrule. (mild spoilers) (Streamed Mar 8, 2017) \n\nSupport us through Patreon: https://www.patreon.com/EasyAllies\nShows, Reviews, and More: https://www.youtube.com/easyallies\nSchedule: http://easyallies.com/\nMerchandise: http://shop.spreadshirt.com/easyallies\n\nhttps://www.twitch.tv/easyallies\nhttps://twitter.com/easyallies\nhttps://www.facebook.com/easyallies\nhttps://easyallies.tumblr.com/"
-    }
-   },
-   "contentDetails": {
-    "duration": "PT1H57M34S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": false,
-    "projection": "rectangular"
-   }
-  },
-  {
-   "kind": "youtube#video",
-   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/mJvizDlxvBC38mV-wNxas91ypLo\"",
-   "id": "CqcSEpf5i_k",
-   "snippet": {
-    "publishedAt": "2017-03-08T17:01:16.000Z",
-    "channelId": "UCc2EIdDCpheoPTr-E6e8GZg",
-    "title": "School Built in 1800 now Farm Field #112 That Brad Guy",
-    "description": "Metal detecting a farm field that held a school in 1800. This site has been detected hard in the past. It was a nasty cold rainy day, but that didn't stop us from saving some history and having some fun! Kurt has an embarrassing live dig and Brad digs saves a great piece of history. \n\nThe Hoover Boys Gear on eBay:\nhttp://www.ebay.com/sch/i.html?_from=R40&_trksid=p2050601.m570.l1313.TR0.TRC0.H0.Xthe+hoover+boys.TRS0&_nkw=the+hoover+boys&_sacat=0\n\nGear used:\nXP Deus\nGarrett AT Pro\nWhites MX Sport\nFisher F75 LTD\nNEL Tornado Coil\nNEL Thunder Coil\nNEL Storm Coil\nWhites TRX Pinpointer \nGarrett Propointer AT\nPredator Tools: Ranger model digger\n\nEnjoy FREE shipping at:\nhttp://www.kellycodetectors.com\nWith promo code: HOOVERBOYS",
-    "thumbnails": {
-     "default": {
-      "url": "https://i.ytimg.com/vi/CqcSEpf5i_k/default.jpg",
-      "width": 120,
-      "height": 90
-     },
-     "medium": {
-      "url": "https://i.ytimg.com/vi/CqcSEpf5i_k/mqdefault.jpg",
-      "width": 320,
-      "height": 180
-     },
-     "high": {
-      "url": "https://i.ytimg.com/vi/CqcSEpf5i_k/hqdefault.jpg",
-      "width": 480,
-      "height": 360
-     },
-     "standard": {
-      "url": "https://i.ytimg.com/vi/CqcSEpf5i_k/sddefault.jpg",
-      "width": 640,
-      "height": 480
-     },
-     "maxres": {
-      "url": "https://i.ytimg.com/vi/CqcSEpf5i_k/maxresdefault.jpg",
-      "width": 1280,
-      "height": 720
-     }
-    },
-    "channelTitle": "The Hoover Boys",
-    "tags": [
-     "George Washington",
-     "Inaugural button",
-     "Treasure",
-     "Treasure found",
-     "Treasure hunting",
-     "Incredible",
-     "Unbelievable",
-     "Lost",
-     "Best",
-     "Metal Detecting",
-     "Silver",
-     "Coins",
-     "Old",
-     "Deep",
-     "Large cent",
-     "Shield Nickel",
-     "School",
-     "Colonial",
-     "1700's",
-     "GW",
-     "Funeral urn",
-     "Button",
-     "Rare",
-     "Valuable",
-     "Never seen",
-     "History",
-     "Historical",
-     "Coin shooting",
-     "Relic hunting",
-     "Live dig",
-     "Embarrassing",
-     "Exploring",
-     "Adventure",
-     "Fun",
-     "Funny",
-     "The Hoover boys",
-     "Relic recoverist",
-     "Farm",
-     "Field",
-     "Metal detector",
-     "Garrett",
-     "AT Pro",
-     "XP Deus",
-     "Whites MX Sport",
-     "Wow",
-     "Gold",
-     "Coin",
-     "Maryland"
-    ],
-    "categoryId": "24",
-    "liveBroadcastContent": "none",
-    "localized": {
-     "title": "School Built in 1800 now Farm Field #112 That Brad Guy",
-     "description": "Metal detecting a farm field that held a school in 1800. This site has been detected hard in the past. It was a nasty cold rainy day, but that didn't stop us from saving some history and having some fun! Kurt has an embarrassing live dig and Brad digs saves a great piece of history. \n\nThe Hoover Boys Gear on eBay:\nhttp://www.ebay.com/sch/i.html?_from=R40&_trksid=p2050601.m570.l1313.TR0.TRC0.H0.Xthe+hoover+boys.TRS0&_nkw=the+hoover+boys&_sacat=0\n\nGear used:\nXP Deus\nGarrett AT Pro\nWhites MX Sport\nFisher F75 LTD\nNEL Tornado Coil\nNEL Thunder Coil\nNEL Storm Coil\nWhites TRX Pinpointer \nGarrett Propointer AT\nPredator Tools: Ranger model digger\n\nEnjoy FREE shipping at:\nhttp://www.kellycodetectors.com\nWith promo code: HOOVERBOYS"
-    }
-   },
-   "contentDetails": {
-    "duration": "PT32M53S",
-    "dimension": "2d",
-    "definition": "hd",
-    "caption": "false",
-    "licensedContent": true,
-    "projection": "rectangular"
-   }
-  },
-  {
-   "kind": "youtube#video",
-   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/6ShXcjD1hdpzFQvGGvRNpuoBacs\"",
+   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/NKRMHL-jvtUhvatYQ4gwGm9gSTk\"",
    "id": "PXVLtfJ5KQY",
    "snippet": {
     "publishedAt": "2016-10-07T13:38:01.000Z",
     "channelId": "UCxwcuOcJCJVDm_BRKYJ2Vdg",
     "title": "Brad Paisley - Today",
-    "description": "Brad Paisley's new single \"Today\" is available now: http://smarturl.it/bptoday",
+    "description": "Get the #1 hit “Today” instantly when you pre-order Brad Paisley’s new album, LOVE AND WAR, available 4/21: http://smarturl.it/bploveandwar",
     "thumbnails": {
      "default": {
       "url": "https://i.ytimg.com/vi/PXVLtfJ5KQY/default.jpg",
@@ -936,7 +625,7 @@ KONFIG: {
     "liveBroadcastContent": "none",
     "localized": {
      "title": "Brad Paisley - Today",
-     "description": "Brad Paisley's new single \"Today\" is available now: http://smarturl.it/bptoday"
+     "description": "Get the #1 hit “Today” instantly when you pre-order Brad Paisley’s new album, LOVE AND WAR, available 4/21: http://smarturl.it/bploveandwar"
     }
    },
    "contentDetails": {
@@ -947,120 +636,1575 @@ KONFIG: {
     "licensedContent": true,
     "regionRestriction": {
      "allowed": [
-      "KI",
-      "KN",
-      "KM",
-      "TZ",
-      "TR",
-      "IR",
-      "IS",
-      "IT",
-      "TV",
-      "TT",
-      "TK",
-      "TJ",
-      "TH",
-      "IL",
-      "IM",
-      "IN",
-      "IO",
-      "TC",
-      "DM",
-      "ID",
-      "IE",
-      "TD",
-      "AQ",
-      "AR",
-      "AS",
-      "AT",
       "AU",
-      "AW",
-      "AX",
-      "AZ",
-      "YE",
-      "AD",
-      "AE",
-      "AF",
-      "AG",
-      "AI",
-      "YT",
-      "AM",
-      "AO",
-      "QA",
-      "JE",
-      "LK",
-      "RU",
-      "NZ",
-      "JM",
-      "JO",
-      "JP",
-      "LV",
-      "UY",
-      "BY",
-      "MK",
-      "BZ",
-      "BS",
-      "BR",
-      "BT",
-      "BW",
-      "BV",
-      "BI",
-      "BH",
-      "BJ",
-      "BM",
-      "BL",
-      "BO",
-      "BN",
-      "BA",
+      "PS",
       "BB",
-      "BE",
-      "BD",
-      "BG",
-      "BF",
-      "RO",
-      "NL",
-      "RE",
-      "ZA",
-      "OM",
-      "RS",
-      "ZM",
-      "RW",
-      "GW",
-      "GT",
-      "GU",
-      "GR",
-      "GS",
-      "GP",
-      "GQ",
-      "MV",
-      "GY",
-      "GF",
-      "GG",
-      "GD",
-      "GE",
-      "GB",
-      "GA",
-      "GN",
-      "EH",
-      "GL",
+      "MQ",
       "GM",
+      "CU",
+      "CV",
+      "KH",
+      "KI",
+      "CR",
+      "MO",
+      "KE",
+      "KG",
+      "CX",
+      "CY",
+      "CZ",
+      "CD",
+      "CF",
+      "CG",
+      "CA",
+      "KZ",
+      "CC",
+      "CL",
+      "CM",
+      "CN",
+      "KW",
+      "CH",
+      "CI",
+      "KR",
+      "CK",
+      "FK",
+      "FJ",
+      "FI",
+      "FO",
+      "MH",
+      "FM",
+      "AE",
+      "MF",
+      "BT",
+      "IS",
+      "FR",
+      "MD",
+      "BR",
+      "NC",
+      "NA",
+      "QA",
+      "NG",
+      "NF",
+      "NE",
+      "NI",
+      "NO",
+      "NL",
+      "NR",
+      "NP",
+      "IT",
+      "NU",
+      "NZ",
+      "AM",
+      "IM",
+      "EG",
+      "EE",
+      "UM",
+      "EC",
+      "EH",
+      "ET",
+      "ER",
+      "ES",
+      "AO",
+      "IQ",
+      "MZ",
+      "MX",
+      "MY",
+      "MV",
+      "MW",
+      "MT",
+      "MU",
+      "MR",
+      "MS",
+      "MP",
+      "PR",
+      "MN",
+      "PL",
+      "ML",
+      "MM",
+      "MK",
+      "PK",
+      "AL",
+      "PE",
+      "MG",
+      "PG",
+      "ME",
+      "PA",
+      "MC",
+      "MA",
+      "KM",
+      "KN",
+      "UG",
+      "SD",
+      "SE",
+      "SG",
+      "SA",
+      "SB",
+      "SC",
+      "HM",
+      "SM",
+      "SN",
+      "HN",
+      "SH",
+      "SI",
+      "HK",
+      "SK",
+      "HU",
+      "HT",
+      "SV",
+      "SR",
+      "HR",
+      "BH",
+      "SY",
+      "SZ",
       "GH",
       "GI",
-      "WF",
+      "GL",
+      "PN",
+      "GN",
+      "GA",
+      "GB",
+      "GD",
+      "GE",
+      "GF",
+      "GG",
+      "GY",
+      "VU",
+      "GP",
+      "GQ",
+      "GR",
+      "GS",
+      "GT",
+      "GU",
+      "GW",
+      "RE",
+      "RO",
+      "OM",
+      "RW",
+      "RU",
+      "RS",
+      "PM",
+      "TT",
+      "KY",
+      "PH",
+      "ZW",
+      "VC",
+      "ZM",
+      "VI",
+      "VA",
+      "ZA",
+      "BW",
+      "BV",
+      "JM",
+      "CO",
+      "BS",
+      "US",
+      "VG",
+      "JE",
+      "UZ",
+      "BZ",
+      "BY",
+      "UY",
+      "BG",
+      "SL",
+      "BE",
+      "BD",
+      "VE",
+      "BA",
+      "UA",
+      "BO",
+      "BN",
+      "BM",
+      "BL",
+      "BJ",
+      "BI",
+      "JP",
+      "LR",
+      "ST",
+      "YT",
+      "SJ",
+      "LV",
+      "BF",
+      "AR",
+      "AS",
+      "AQ",
+      "IN",
+      "IO",
+      "IL",
+      "TV",
+      "AZ",
+      "AG",
+      "AX",
+      "TZ",
+      "VN",
+      "ID",
+      "IE",
+      "TC",
+      "AF",
+      "TD",
+      "TG",
+      "TF",
+      "IR",
+      "TH",
+      "TK",
+      "YE",
+      "TM",
+      "TL",
+      "TO",
+      "TN",
+      "DE",
+      "KP",
+      "AD",
+      "DK",
+      "DJ",
+      "DM",
+      "TJ",
+      "DO",
+      "JO",
+      "TR",
+      "AI",
+      "PY",
+      "DZ",
+      "AW",
+      "LY",
+      "TW",
+      "AT",
+      "LS",
+      "WS",
+      "LU",
+      "LT",
+      "SO",
+      "LI",
+      "LK",
+      "PF",
+      "PT",
+      "LA",
+      "LC",
+      "LB",
+      "PW",
+      "WF"
+     ]
+    },
+    "projection": "rectangular"
+   }
+  },
+  {
+   "kind": "youtube#video",
+   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/nGR8IA4iRHDc94-ih6-HGtSl4Ek\"",
+   "id": "nZO9JGSScMQ",
+   "snippet": {
+    "publishedAt": "2016-06-23T21:44:05.000Z",
+    "channelId": "UC4-LbBnefvtHpQgVKo7Edqw",
+    "title": "The EU Referendum!",
+    "description": "Can't decide on the EU referendum?  Let Jen help you decide!\n\nCheck out my:\nInstagram /// Bradholmes91 \nSnapchat /// brad-ley91 \nFacebook /// BradHolmesOfficial",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/nZO9JGSScMQ/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/nZO9JGSScMQ/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/nZO9JGSScMQ/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/nZO9JGSScMQ/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/nZO9JGSScMQ/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "Brad Holmes",
+    "tags": [
+     "Brad",
+     "Brad Holmes",
+     "Jen",
+     "Jen Davies",
+     "Silly",
+     "Funny",
+     "Hilarious",
+     "voting",
+     "remain",
+     "leave",
+     "EU",
+     "Referendum",
+     "stupid",
+     "laugh",
+     "euros",
+     "football",
+     "england",
+     "farmer",
+     "chicken",
+     "fried",
+     "egg",
+     "world",
+     "decision",
+     "reason",
+     "opinion",
+     "vote",
+     "chessington",
+     "immigrants",
+     "disney",
+     "disneyland",
+     "idiot",
+     "joke",
+     "dumb",
+     "english",
+     "couple",
+     "british",
+     "girlfriend",
+     "boyfriend",
+     "confused",
+     "surprised",
+     "World Cup",
+     "Europe",
+     "Border",
+     "borders",
+     "weirdo",
+     "shop",
+     "farm",
+     "soldiers",
+     "food",
+     "out",
+     "in",
+     "Brexit",
+     "reasons",
+     "paris",
+     "theme park",
+     "travel",
+     "visa",
+     "shut",
+     "understand",
+     "frustrating",
+     "frustration",
+     "refeyendum"
+    ],
+    "categoryId": "22",
+    "liveBroadcastContent": "none",
+    "defaultLanguage": "en-GB",
+    "localized": {
+     "title": "The EU Referendum!",
+     "description": "Can't decide on the EU referendum?  Let Jen help you decide!\n\nCheck out my:\nInstagram /// Bradholmes91 \nSnapchat /// brad-ley91 \nFacebook /// BradHolmesOfficial"
+    },
+    "defaultAudioLanguage": "en-GB"
+   },
+   "contentDetails": {
+    "duration": "PT3M27S",
+    "dimension": "2d",
+    "definition": "hd",
+    "caption": "false",
+    "licensedContent": true,
+    "projection": "rectangular"
+   }
+  },
+  {
+   "kind": "youtube#video",
+   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/SvUoQjmBE7FGylNlCMg4mv3LpCA\"",
+   "id": "aPO87id0dbo",
+   "snippet": {
+    "publishedAt": "2009-10-25T09:00:51.000Z",
+    "channelId": "UCDss2Rw5JewHMnqWw5vvv9g",
+    "title": "BRAD - Buttercup",
+    "description": "Music video by Brad performing Buttercup. (C) 1993 SONY BMG MUSIC ENTERTAINMENT",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/aPO87id0dbo/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/aPO87id0dbo/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/aPO87id0dbo/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/aPO87id0dbo/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/aPO87id0dbo/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "BradVEVO",
+    "tags": [
+     "Pop",
+     "Buttercup",
+     "Loosegroove",
+     "BRAD"
+    ],
+    "categoryId": "10",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "BRAD - Buttercup",
+     "description": "Music video by Brad performing Buttercup. (C) 1993 SONY BMG MUSIC ENTERTAINMENT"
+    }
+   },
+   "contentDetails": {
+    "duration": "PT4M13S",
+    "dimension": "2d",
+    "definition": "sd",
+    "caption": "false",
+    "licensedContent": true,
+    "regionRestriction": {
+     "allowed": [
+      "AU",
+      "PS",
+      "BB",
+      "MQ",
+      "GM",
+      "CU",
+      "CV",
+      "KH",
+      "KI",
+      "CR",
+      "MO",
+      "KE",
+      "KG",
+      "CX",
+      "CY",
+      "CZ",
+      "CD",
+      "CF",
+      "CG",
+      "CA",
+      "KZ",
+      "CC",
+      "CL",
+      "CM",
+      "CN",
+      "KW",
+      "CH",
+      "CI",
+      "KR",
+      "CK",
+      "FK",
+      "FJ",
+      "FI",
+      "FO",
+      "MH",
+      "FM",
+      "AE",
+      "MF",
+      "BT",
+      "IS",
+      "FR",
+      "MD",
+      "BR",
+      "NC",
+      "NA",
+      "QA",
+      "NG",
+      "NF",
+      "NE",
+      "NI",
+      "NO",
+      "NL",
+      "NR",
+      "NP",
+      "IT",
+      "NU",
+      "NZ",
+      "AM",
+      "IM",
+      "EG",
+      "EE",
+      "UM",
+      "EC",
+      "EH",
+      "ET",
+      "ER",
+      "ES",
+      "AO",
+      "IQ",
+      "MZ",
+      "MX",
+      "MY",
+      "MV",
+      "MW",
+      "MT",
+      "MU",
+      "MR",
+      "MS",
+      "MP",
+      "PR",
+      "MN",
+      "PL",
+      "ML",
+      "MM",
+      "MK",
+      "PK",
+      "AL",
+      "PE",
+      "MG",
+      "PG",
+      "ME",
+      "PA",
+      "MC",
+      "MA",
+      "KM",
+      "KN",
       "UG",
+      "SD",
+      "SE",
+      "SG",
+      "SA",
+      "SB",
+      "SC",
+      "HM",
+      "SM",
+      "SN",
       "HN",
-      
-mar 10, 2017 2:47:37 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: TableRow@5e005f1b[styleClass=cell indexed-cell table-row-cell]'null', name: focused, value: true] focused=true
-mar 10, 2017 2:47:37 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: TableRow@3cc2ccb0[styleClass=cell indexed-cell table-row-cell]'null', name: focused, value: true] focused=true
-mar 10, 2017 2:47:37 FM javafx.scene.Node$FocusedProperty markInvalid
+      "SH",
+      "SI",
+      "HK",
+      "SK",
+      "HU",
+      "HT",
+      "SV",
+      "SR",
+      "HR",
+      "BH",
+      "SY",
+      "SZ",
+      "GH",
+      "GI",
+      "GL",
+      "PN",
+      "GN",
+      "GA",
+      "GB",
+      "GD",
+      "GE",
+      "GF",
+      "GG",
+      "GY",
+      "VU",
+      "GP",
+      "GQ",
+      "GR",
+      "GS",
+      "GT",
+      "GU",
+      "GW",
+      "RE",
+      "RO",
+      "OM",
+      "RW",
+      "RU",
+      "RS",
+      "PM",
+      "TT",
+      "KY",
+      "PH",
+      "ZW",
+      "VC",
+      "ZM",
+      "VI",
+      "VA",
+      "ZA",
+      "BW",
+      "BV",
+      "JM",
+      "CO",
+      "BS",
+      "US",
+      "VG",
+      "JE",
+      "UZ",
+      "BZ",
+      "BY",
+      "UY",
+      "BG",
+      "SL",
+      "BE",
+      "BD",
+      "VE",
+      "BA",
+      "UA",
+      "BO",
+      "BN",
+      "BM",
+      "BL",
+      "BJ",
+      "BI",
+      "JP",
+      "LR",
+      "ST",
+      "YT",
+      "SJ",
+      "LV",
+      "BF",
+      "AR",
+      "AS",
+      "AQ",
+      "IN",
+      "IO",
+      "IL",
+      "TV",
+      "AZ",
+      "AG",
+      "AX",
+      "TZ",
+      "VN",
+      "ID",
+      "IE",
+      "TC",
+      "AF",
+      "TD",
+      "TG",
+      "TF",
+      "IR",
+      "TH",
+      "TK",
+      "YE",
+      "TM",
+      "TL",
+      "TO",
+      "TN",
+      "DE",
+      "KP",
+      "AD",
+      "DK",
+      "DJ",
+      "DM",
+      "TJ",
+      "DO",
+      "JO",
+      "TR",
+      "AI",
+      "PY",
+      "DZ",
+      "AW",
+      "LY",
+      "TW",
+      "AT",
+      "LS",
+      "WS",
+      "LU",
+      "LT",
+      "SO",
+      "LI",
+      "LK",
+      "PF",
+      "PT",
+      "LA",
+      "LC",
+      "LB",
+      "PW",
+      "WF"
+     ]
+    },
+    "projection": "rectangular"
+   }
+  },
+  {
+   "kind": "youtube#video",
+   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/QR7NdOqer1lwHXbS22_SeGtbu8M\"",
+   "id": "Ebrh9-WdowY",
+   "snippet": {
+    "publishedAt": "2017-03-18T23:00:48.000Z",
+    "channelId": "UCvgfXK4nTYKudb0rFR6noLA",
+    "title": "Fight Night London: Marlon Vera and Brad Pickett Octagon Interviews",
+    "description": "Feel the raw emotion from Marlon Vera and Brad Pickett after their emotional bout at UFC Fight Night London, which was the last of \"One Punch\" Pickett's MMA career.",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Ebrh9-WdowY/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/Ebrh9-WdowY/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/Ebrh9-WdowY/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/Ebrh9-WdowY/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/Ebrh9-WdowY/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "UFC - Ultimate Fighting Championship",
+    "tags": [
+     "ufc",
+     "fight",
+     "night",
+     "london",
+     "marlon",
+     "vera",
+     "brad",
+     "pickett",
+     "octagon",
+     "interviews",
+     "mma",
+     "pass",
+     "ultimate fighting championship"
+    ],
+    "cat
+mar 21, 2017 6:40:22 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableRow@af79a57[styleClass=cell indexed-cell table-row-cell]'null', name: focused, value: true] focused=true
+mar 21, 2017 6:40:22 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableRow@3c0c2cba[styleClass=cell indexed-cell table-row-cell]'null', name: focused, value: true] focused=true
+mar 21, 2017 6:40:30 EM javafx.scene.Node$FocusedProperty markInvalid
 FIN: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: false] focused=false
-mar 10, 2017 2:47:40 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: TableRow@3cc2ccb0[styleClass=cell indexed-cell table-row-cell]'null', name: focused, value: false] focused=false
-mar 10, 2017 2:47:41 FM javafx.scene.Node$FocusedProperty markInvalid
-FIN: ReadOnlyBooleanProperty [bean: TableRow@209fbeae[styleClass=cell indexed-cell table-row-cell]'null', name: focused, value: true] focused=true
-mar 10, 2017 2:47:43 FM javafx.scene.Node$FocusedProperty markInvalid
+mar 21, 2017 6:40:30 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: true] focused=true
+mar 21, 2017 6:40:30 EM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from Button[id=navSearchBtn, styleClass=button]'Search' to TableView[id=songList, styleClass=table-view]
+mar 21, 2017 6:40:33 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: false] focused=false
+mar 21, 2017 6:40:36 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: true] focused=true
+mar 21, 2017 6:40:36 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: false] focused=false
+mar 21, 2017 6:40:39 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: true] focused=true
+mar 21, 2017 6:40:39 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: false] focused=false
+mar 21, 2017 6:40:39 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: true] focused=true
+mar 21, 2017 6:40:39 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: false] focused=false
+mar 21, 2017 6:40:41 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: true] focused=true
+mar 21, 2017 6:40:41 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: false] focused=false
+mar 21, 2017 6:40:41 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: true] focused=true
+mar 21, 2017 6:40:42 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: false] focused=false
+mar 21, 2017 6:40:45 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: true] focused=true
+mar 21, 2017 6:40:45 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: false] focused=false
+mar 21, 2017 6:40:45 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: true] focused=true
+mar 21, 2017 6:40:45 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: false] focused=false
+mar 21, 2017 6:40:47 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: true] focused=true
+mar 21, 2017 6:40:47 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: false] focused=false
+mar 21, 2017 6:41:13 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: true] focused=true
+mar 21, 2017 6:41:14 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableView[id=songList, styleClass=table-view], name: focused, value: false] focused=false
+mar 21, 2017 6:41:14 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: true] focused=true
+mar 21, 2017 6:41:14 EM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from TableView[id=songList, styleClass=table-view] to TextField[id=navSearchField, styleClass=text-input text-field]
+mar 21, 2017 6:41:17 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: false] focused=false
+mar 21, 2017 6:41:18 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: true] focused=true
+mar 21, 2017 6:41:22 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TextField[id=navSearchField, styleClass=text-input text-field], name: focused, value: false] focused=false
+mar 21, 2017 6:41:22 EM javafx.scene.Node$FocusedProperty markInvalid
 FIN: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: true] focused=true
-mar 10, 2017 2:47:43 FM javafx.scene.Node$FocusedProperty markInvalid
+mar 21, 2017 6:41:22 EM javafx.scene.Scene$13 invalidated
+FIN: Changed focus from TextField[id=navSearchField, styleClass=text-input text-field] to Button[id=navSearchBtn, styleClass=button]'Search'
+mar 21, 2017 6:41:22 EM me.oskarmendel.player.search.YouTubeSearch search
+FIN: YouTube Search Initiated..
+mar 21, 2017 6:41:22 EM com.google.api.client.http.HttpRequest execute
+KONFIG: -------------- REQUEST  --------------
+GET https://www.googleapis.com/youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url,%20snippet/channelTitle)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=jimmy&type=video
+Accept-Encoding: gzip
+User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)
+
+mar 21, 2017 6:41:22 EM com.google.api.client.http.HttpRequest execute
+KONFIG: curl -v --compressed -H 'Accept-Encoding: gzip' -H 'User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)' -- 'https://www.googleapis.com/youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url,%20snippet/channelTitle)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=jimmy&type=video'
+mar 21, 2017 6:41:22 EM sun.net.www.protocol.http.HttpURLConnection writeRequests
+FIN: sun.net.www.MessageHeader@332fcc906 pairs: {GET /youtube/v3/search?fields=items(id/kind,id/videoId,snippet/title,snippet/thumbnails/default/url,%20snippet/channelTitle)&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&maxResults=25&part=id,%20snippet&q=jimmy&type=video HTTP/1.1: null}{Accept-Encoding: gzip}{User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)}{Host: www.googleapis.com}{Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2}{Connection: keep-alive}
+mar 21, 2017 6:41:23 EM sun.net.www.protocol.http.HttpURLConnection getInputStream0
+FIN: sun.net.www.MessageHeader@63bba47515 pairs: {null: HTTP/1.1 200 OK}{Expires: Tue, 21 Mar 2017 17:41:25 GMT}{Date: Tue, 21 Mar 2017 17:41:25 GMT}{Cache-Control: private, max-age=120, must-revalidate, no-transform}{ETag: "uQc-MPTsstrHkQcRXL3IWLmeNsM/tZSnxecDu7IkxPyH7lyxY35KLMI"}{Vary: Origin}{Vary: X-Origin}{Content-Type: application/json; charset=UTF-8}{Content-Encoding: gzip}{X-Content-Type-Options: nosniff}{X-Frame-Options: SAMEORIGIN}{X-XSS-Protection: 1; mode=block}{Server: GSE}{Alt-Svc: quic=":443"; ma=2592000; v="37,36,35"}{Transfer-Encoding: chunked}
+mar 21, 2017 6:41:23 EM com.google.api.client.http.HttpResponse <init>
+KONFIG: -------------- RESPONSE --------------
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Alt-Svc: quic=":443"; ma=2592000; v="37,36,35"
+Server: GSE
+X-Content-Type-Options: nosniff
+Date: Tue, 21 Mar 2017 17:41:25 GMT
+X-Frame-Options: SAMEORIGIN
+Cache-Control: private, max-age=120, must-revalidate, no-transform
+ETag: "uQc-MPTsstrHkQcRXL3IWLmeNsM/tZSnxecDu7IkxPyH7lyxY35KLMI"
+Content-Encoding: gzip
+Vary: X-Origin
+Vary: Origin
+Expires: Tue, 21 Mar 2017 17:41:25 GMT
+X-XSS-Protection: 1; mode=block
+Content-Type: application/json; charset=UTF-8
+
+mar 21, 2017 6:41:23 EM com.google.api.client.util.LoggingByteArrayOutputStream close
+KONFIG: Total: 8 534 bytes
+mar 21, 2017 6:41:23 EM com.google.api.client.util.LoggingByteArrayOutputStream close
+KONFIG: {
+ "items": [
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "qfqX8WNQFDg"
+   },
+   "snippet": {
+    "title": "Drinko with Taraji P. Henson",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/qfqX8WNQFDg/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "roaP3RCIRvA"
+   },
+   "snippet": {
+    "title": "Thank You Notes: March Madness, Little Girl Who Interrupted BBC Dad",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/roaP3RCIRvA/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "UQmFpJ0sB9Q"
+   },
+   "snippet": {
+    "title": "Wheel of Musical Impressions with Alicia Keys",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/UQmFpJ0sB9Q/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "NYvO9m0zoMQ"
+   },
+   "snippet": {
+    "title": "Priyanka Chopra and Jimmy Celebrate Holi with a Messy Paint Fight",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/NYvO9m0zoMQ/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "aSsH6tYBgD8"
+   },
+   "snippet": {
+    "title": "Jimmy Fallon and Nicole Kidman Have Another Awkward Interview",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/aSsH6tYBgD8/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "BrVfuDx4ET8"
+   },
+   "snippet": {
+    "title": "Robert Irwin and Jimmy Cuddle a Sloth",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/BrVfuDx4ET8/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "-I6BESbhof0"
+   },
+   "snippet": {
+    "title": "St. Patrick's Day Gave Taraji P. Henson and Jimmy a Great Flask Idea",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/-I6BESbhof0/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "PSVN4YZGaeU"
+   },
+   "snippet": {
+    "title": "Dance Battle with Jennifer Lopez",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/PSVN4YZGaeU/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "3UisZlztoT8"
+   },
+   "snippet": {
+    "title": "Elizabeth Banks' Sons Give Jimmy's Daughters a Compatibility Quiz",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/3UisZlztoT8/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "zVcaMXWS4dU"
+   },
+   "snippet": {
+    "title": "Jimmy Fallon, Ed Sheeran & The Roots Sing \"Shape of You\" (Classroom Instruments)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/zVcaMXWS4dU/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "0PRFAh602kU"
+   },
+   "snippet": {
+    "title": "Jimmy Fallon Models for a Kendall Jenner Photo Shoot",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/0PRFAh602kU/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "N0R8bH6V_VI"
+   },
+   "snippet": {
+    "title": "LABEEU - PETITE BALADE EN VOITURE 4",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/N0R8bH6V_VI/default.jpg"
+     }
+    },
+    "channelTitle": "Le Jimmy Labeeu"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "fDkXHWMNNmc"
+   },
+   "snippet": {
+    "title": "Jimmy Kimmel’s Oscars Monologue",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/fDkXHWMNNmc/default.jpg"
+     }
+    },
+    "channelTitle": "Jimmy Kimmel Live"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "ozVRGho-cZQ"
+   },
+   "snippet": {
+    "title": "Jimmy and Kevin Hart Visit a Haunted House",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/ozVRGho-cZQ/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "LIpuN5Y7p9Y"
+   },
+   "snippet": {
+    "title": "Booba - Jimmy (Clip Officiel)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/LIpuN5Y7p9Y/default.jpg"
+     }
+    },
+    "channelTitle": "B2ObaOfficiel"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "NSHg75yE2tM"
+   },
+   "snippet": {
+    "title": "Mike Myers and Jimmy Have a Dice Dance-Off",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/NSHg75yE2tM/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "hDuIovlDTGU"
+   },
+   "snippet": {
+    "title": "Sofia Vergara Chats with Jimmy While Sucking Helium",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/hDuIovlDTGU/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "CFEYw5-dBfA"
+   },
+   "snippet": {
+    "title": "JIMMY P - HANDZUP (video oficial)",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/CFEYw5-dBfA/default.jpg"
+     }
+    },
+    "channelTitle": "Jimmy P"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "PkjLMWS3U4Q"
+   },
+   "snippet": {
+    "title": "Jimmy Kimmel’s Tribute to Matt Damon at the Oscars",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/PkjLMWS3U4Q/default.jpg"
+     }
+    },
+    "channelTitle": "Jimmy Kimmel Live"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "giJzvOSHMH0"
+   },
+   "snippet": {
+    "title": "Password with Aaron Paul, Keri Russell, Gucci Mane and 2 Chainz",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/giJzvOSHMH0/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "Z8Ws4PEky28"
+   },
+   "snippet": {
+    "title": "David Blaine Shocks Jimmy and The Roots with Magic Tricks",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/Z8Ws4PEky28/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "lnbl94GZ6TM"
+   },
+   "snippet": {
+    "title": "Moriarty - Jimmy",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/lnbl94GZ6TM/default.jpg"
+     }
+    },
+    "channelTitle": "naive records"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "9PKmv3eaGdA"
+   },
+   "snippet": {
+    "title": "Kellyanne Conway's Microwave Surveillance, BBC Dad's Kids Interrupt Jimmy - Monologue",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/9PKmv3eaGdA/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "hkbGPfLjtp4"
+   },
+   "snippet": {
+    "title": "Colleen Ballinger Transforms into Miranda Sings to Interview Jimmy",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/hkbGPfLjtp4/default.jpg"
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon"
+   }
+  },
+  {
+   "id": {
+    "kind": "youtube#video",
+    "videoId": "0S8sA4ygEfc"
+   },
+   "snippet": {
+    "title": "9XM STARDUM | JIMMY CHOO | FAZILPURIA | PRIYANKA GOYAT - FULL SONG",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/0S8sA4ygEfc/default.jpg"
+     }
+    },
+    "channelTitle": "9XM"
+   }
+  }
+ ]
+}
+
+mar 21, 2017 6:41:23 EM com.google.api.client.http.HttpRequest execute
+KONFIG: -------------- REQUEST  --------------
+GET https://www.googleapis.com/youtube/v3/videos?id=qfqX8WNQFDg,roaP3RCIRvA,UQmFpJ0sB9Q,NYvO9m0zoMQ,aSsH6tYBgD8,BrVfuDx4ET8,-I6BESbhof0,PSVN4YZGaeU,3UisZlztoT8,zVcaMXWS4dU,0PRFAh602kU,N0R8bH6V_VI,fDkXHWMNNmc,ozVRGho-cZQ,LIpuN5Y7p9Y,NSHg75yE2tM,hDuIovlDTGU,CFEYw5-dBfA,PkjLMWS3U4Q,giJzvOSHMH0,Z8Ws4PEky28,lnbl94GZ6TM,9PKmv3eaGdA,hkbGPfLjtp4,0S8sA4ygEfc&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&part=snippet,%20contentDetails
+Accept-Encoding: gzip
+User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)
+
+mar 21, 2017 6:41:23 EM com.google.api.client.http.HttpRequest execute
+KONFIG: curl -v --compressed -H 'Accept-Encoding: gzip' -H 'User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)' -- 'https://www.googleapis.com/youtube/v3/videos?id=qfqX8WNQFDg,roaP3RCIRvA,UQmFpJ0sB9Q,NYvO9m0zoMQ,aSsH6tYBgD8,BrVfuDx4ET8,-I6BESbhof0,PSVN4YZGaeU,3UisZlztoT8,zVcaMXWS4dU,0PRFAh602kU,N0R8bH6V_VI,fDkXHWMNNmc,ozVRGho-cZQ,LIpuN5Y7p9Y,NSHg75yE2tM,hDuIovlDTGU,CFEYw5-dBfA,PkjLMWS3U4Q,giJzvOSHMH0,Z8Ws4PEky28,lnbl94GZ6TM,9PKmv3eaGdA,hkbGPfLjtp4,0S8sA4ygEfc&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&part=snippet,%20contentDetails'
+mar 21, 2017 6:41:23 EM sun.net.www.protocol.http.HttpURLConnection writeRequests
+FIN: sun.net.www.MessageHeader@4c1bf6bd6 pairs: {GET /youtube/v3/videos?id=qfqX8WNQFDg,roaP3RCIRvA,UQmFpJ0sB9Q,NYvO9m0zoMQ,aSsH6tYBgD8,BrVfuDx4ET8,-I6BESbhof0,PSVN4YZGaeU,3UisZlztoT8,zVcaMXWS4dU,0PRFAh602kU,N0R8bH6V_VI,fDkXHWMNNmc,ozVRGho-cZQ,LIpuN5Y7p9Y,NSHg75yE2tM,hDuIovlDTGU,CFEYw5-dBfA,PkjLMWS3U4Q,giJzvOSHMH0,Z8Ws4PEky28,lnbl94GZ6TM,9PKmv3eaGdA,hkbGPfLjtp4,0S8sA4ygEfc&key=AIzaSyAyNPlMNp6FuKU2wDM0q_j3B234sT7mo0I&part=snippet,%20contentDetails HTTP/1.1: null}{Accept-Encoding: gzip}{User-Agent: rapidtunes Google-API-Java-Client Google-HTTP-Java-Client/1.22.0 (gzip)}{Host: www.googleapis.com}{Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2}{Connection: keep-alive}
+mar 21, 2017 6:41:23 EM sun.net.www.protocol.http.HttpURLConnection getInputStream0
+FIN: sun.net.www.MessageHeader@1eb7c20115 pairs: {null: HTTP/1.1 200 OK}{Expires: Tue, 21 Mar 2017 17:41:25 GMT}{Date: Tue, 21 Mar 2017 17:41:25 GMT}{Cache-Control: private, max-age=300, must-revalidate, no-transform}{ETag: "uQc-MPTsstrHkQcRXL3IWLmeNsM/_DRAdAXdAc0bNeAATvecCwJKm9g"}{Vary: Origin}{Vary: X-Origin}{Content-Type: application/json; charset=UTF-8}{Content-Encoding: gzip}{X-Content-Type-Options: nosniff}{X-Frame-Options: SAMEORIGIN}{X-XSS-Protection: 1; mode=block}{Server: GSE}{Alt-Svc: quic=":443"; ma=2592000; v="37,36,35"}{Transfer-Encoding: chunked}
+mar 21, 2017 6:41:23 EM com.google.api.client.http.HttpResponse <init>
+KONFIG: -------------- RESPONSE --------------
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Alt-Svc: quic=":443"; ma=2592000; v="37,36,35"
+Server: GSE
+X-Content-Type-Options: nosniff
+Date: Tue, 21 Mar 2017 17:41:25 GMT
+X-Frame-Options: SAMEORIGIN
+Cache-Control: private, max-age=300, must-revalidate, no-transform
+ETag: "uQc-MPTsstrHkQcRXL3IWLmeNsM/_DRAdAXdAc0bNeAATvecCwJKm9g"
+Content-Encoding: gzip
+Vary: X-Origin
+Vary: Origin
+Expires: Tue, 21 Mar 2017 17:41:25 GMT
+X-XSS-Protection: 1; mode=block
+Content-Type: application/json; charset=UTF-8
+
+mar 21, 2017 6:41:23 EM com.google.api.client.util.LoggingByteArrayOutputStream close
+KONFIG: Total: 115 504 bytes (logging first 16 384 bytes)
+mar 21, 2017 6:41:23 EM com.google.api.client.util.LoggingByteArrayOutputStream close
+KONFIG: {
+ "kind": "youtube#videoListResponse",
+ "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/_DRAdAXdAc0bNeAATvecCwJKm9g\"",
+ "pageInfo": {
+  "totalResults": 25,
+  "resultsPerPage": 25
+ },
+ "items": [
+  {
+   "kind": "youtube#video",
+   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/U4VvgBJQYrQcPfk3NWkWUluqXGE\"",
+   "id": "qfqX8WNQFDg",
+   "snippet": {
+    "publishedAt": "2017-03-18T04:12:35.000Z",
+    "channelId": "UC8-Th83bH_thdKZDJCrn88g",
+    "title": "Drinko with Taraji P. Henson",
+    "description": "Jimmy and Taraji P. Henson take turns dropping discs into random cups filled with Shamrock Shake, cabbage juice and more, then force each other to drink the contents in a Plinko-like game.\n\nSubscribe NOW to The Tonight Show Starring Jimmy Fallon: http://bit.ly/1nwT1aN\n\nWatch The Tonight Show Starring Jimmy Fallon Weeknights 11:35/10:35c\nGet more Jimmy Fallon: \nFollow Jimmy: http://Twitter.com/JimmyFallon\nLike Jimmy: https://Facebook.com/JimmyFallon\n\nGet more The Tonight Show Starring Jimmy Fallon: \nFollow The Tonight Show: http://Twitter.com/FallonTonight\nLike The Tonight Show: https://Facebook.com/FallonTonight\nThe Tonight Show Tumblr: http://fallontonight.tumblr.com/\n\nGet more NBC: \nNBC YouTube: http://bit.ly/1dM1qBH\nLike NBC: http://Facebook.com/NBC\nFollow NBC: http://Twitter.com/NBC\nNBC Tumblr: http://nbctv.tumblr.com/\nNBC Google+: https://plus.google.com/+NBC/posts\n\nThe Tonight Show Starring Jimmy Fallon features hilarious highlights from the show including: comedy sketches, music parodies, celebrity interviews, ridiculous games, and, of course, Jimmy's Thank You Notes and hashtags! You'll also find behind the scenes videos and other great web exclusives.\n\nDrinko with Taraji P. Henson\nhttp://www.youtube.com/fallontonight",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/qfqX8WNQFDg/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/qfqX8WNQFDg/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/qfqX8WNQFDg/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/qfqX8WNQFDg/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/qfqX8WNQFDg/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon",
+    "tags": [
+     "The Tonight Show",
+     "Jimmy Fallon",
+     "Drinko",
+     "Taraji P. Henson",
+     "NBC",
+     "NBC TV",
+     "Television",
+     "Funny",
+     "Talk Show",
+     "comedic",
+     "humor",
+     "snl",
+     "Fallon Stand-up",
+     "Fallon monologue",
+     "tonight",
+     "show",
+     "jokes",
+     "funny video",
+     "interview",
+     "variety",
+     "comedy sketches",
+     "talent",
+     "celebrities",
+     "video",
+     "clip",
+     "highlight",
+     "game",
+     "games with guests",
+     "hidden figures",
+     "person of interest",
+     "the karate kid",
+     "empire",
+     "cookie",
+     "drinking game",
+     "drinks"
+    ],
+    "categoryId": "23",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Drinko with Taraji P. Henson",
+     "description": "Jimmy and Taraji P. Henson take turns dropping discs into random cups filled with Shamrock Shake, cabbage juice and more, then force each other to drink the contents in a Plinko-like game.\n\nSubscribe NOW to The Tonight Show Starring Jimmy Fallon: http://bit.ly/1nwT1aN\n\nWatch The Tonight Show Starring Jimmy Fallon Weeknights 11:35/10:35c\nGet more Jimmy Fallon: \nFollow Jimmy: http://Twitter.com/JimmyFallon\nLike Jimmy: https://Facebook.com/JimmyFallon\n\nGet more The Tonight Show Starring Jimmy Fallon: \nFollow The Tonight Show: http://Twitter.com/FallonTonight\nLike The Tonight Show: https://Facebook.com/FallonTonight\nThe Tonight Show Tumblr: http://fallontonight.tumblr.com/\n\nGet more NBC: \nNBC YouTube: http://bit.ly/1dM1qBH\nLike NBC: http://Facebook.com/NBC\nFollow NBC: http://Twitter.com/NBC\nNBC Tumblr: http://nbctv.tumblr.com/\nNBC Google+: https://plus.google.com/+NBC/posts\n\nThe Tonight Show Starring Jimmy Fallon features hilarious highlights from the show including: comedy sketches, music parodies, celebrity interviews, ridiculous games, and, of course, Jimmy's Thank You Notes and hashtags! You'll also find behind the scenes videos and other great web exclusives.\n\nDrinko with Taraji P. Henson\nhttp://www.youtube.com/fallontonight"
+    },
+    "defaultAudioLanguage": "en"
+   },
+   "contentDetails": {
+    "duration": "PT6M47S",
+    "dimension": "2d",
+    "definition": "hd",
+    "caption": "false",
+    "licensedContent": true,
+    "projection": "rectangular"
+   }
+  },
+  {
+   "kind": "youtube#video",
+   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/I5TizjYyUoHzp9gKrD0oUYpDts4\"",
+   "id": "roaP3RCIRvA",
+   "snippet": {
+    "publishedAt": "2017-03-18T10:00:07.000Z",
+    "channelId": "UC8-Th83bH_thdKZDJCrn88g",
+    "title": "Thank You Notes: March Madness, Little Girl Who Interrupted BBC Dad",
+    "description": "Jimmy pens thank you notes to the Guinness logo, Beauty and the Beast and other things.\n\nSubscribe NOW to The Tonight Show Starring Jimmy Fallon: http://bit.ly/1nwT1aN\n\nWatch The Tonight Show Starring Jimmy Fallon Weeknights 11:35/10:35c\nGet more Jimmy Fallon: \nFollow Jimmy: http://Twitter.com/JimmyFallon\nLike Jimmy: https://Facebook.com/JimmyFallon\n\nGet more The Tonight Show Starring Jimmy Fallon: \nFollow The Tonight Show: http://Twitter.com/FallonTonight\nLike The Tonight Show: https://Facebook.com/FallonTonight\nThe Tonight Show Tumblr: http://fallontonight.tumblr.com/\n\nGet more NBC: \nNBC YouTube: http://bit.ly/1dM1qBH\nLike NBC: http://Facebook.com/NBC\nFollow NBC: http://Twitter.com/NBC\nNBC Tumblr: http://nbctv.tumblr.com/\nNBC Google+: https://plus.google.com/+NBC/posts\n\nThe Tonight Show Starring Jimmy Fallon features hilarious highlights from the show including: comedy sketches, music parodies, celebrity interviews, ridiculous games, and, of course, Jimmy's Thank You Notes and hashtags! You'll also find behind the scenes videos and other great web exclusives.\n\nThank You Notes: March Madness, Little Girl Who Interrupted BBC Dad\nhttp://www.youtube.com/fallontonight",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/roaP3RCIRvA/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/roaP3RCIRvA/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/roaP3RCIRvA/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/roaP3RCIRvA/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/roaP3RCIRvA/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon",
+    "tags": [
+     "The Tonight Show",
+     "Jimmy Fallon",
+     "Thank You Notes",
+     "March Madness",
+     "Little Girl",
+     "Interrupted",
+     "BBC",
+     "Dad",
+     "NBC",
+     "NBC TV",
+     "Television",
+     "Funny",
+     "Talk Show",
+     "comedic",
+     "humor",
+     "snl",
+     "Fallon Stand-up",
+     "Fallon monologue",
+     "tonight",
+     "show",
+     "jokes",
+     "funny video",
+     "interview",
+     "variety",
+     "comedy sketches",
+     "talent",
+     "celebrities",
+     "video",
+     "clip",
+     "highlight",
+     "mcdonald's",
+     "shamrock shake",
+     "twerk",
+     "twerking",
+     "green",
+     "pub",
+     "crawls",
+     "drunk",
+     "drinking",
+     "irish",
+     "st patricks day",
+     "dinsey",
+     "beauty and the beast",
+     "new movie"
+    ],
+    "categoryId": "23",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Thank You Notes: March Madness, Little Girl Who Interrupted BBC Dad",
+     "description": "Jimmy pens thank you notes to the Guinness logo, Beauty and the Beast and other things.\n\nSubscribe NOW to The Tonight Show Starring Jimmy Fallon: http://bit.ly/1nwT1aN\n\nWatch The Tonight Show Starring Jimmy Fallon Weeknights 11:35/10:35c\nGet more Jimmy Fallon: \nFollow Jimmy: http://Twitter.com/JimmyFallon\nLike Jimmy: https://Facebook.com/JimmyFallon\n\nGet more The Tonight Show Starring Jimmy Fallon: \nFollow The Tonight Show: http://Twitter.com/FallonTonight\nLike The Tonight Show: https://Facebook.com/FallonTonight\nThe Tonight Show Tumblr: http://fallontonight.tumblr.com/\n\nGet more NBC: \nNBC YouTube: http://bit.ly/1dM1qBH\nLike NBC: http://Facebook.com/NBC\nFollow NBC: http://Twitter.com/NBC\nNBC Tumblr: http://nbctv.tumblr.com/\nNBC Google+: https://plus.google.com/+NBC/posts\n\nThe Tonight Show Starring Jimmy Fallon features hilarious highlights from the show including: comedy sketches, music parodies, celebrity interviews, ridiculous games, and, of course, Jimmy's Thank You Notes and hashtags! You'll also find behind the scenes videos and other great web exclusives.\n\nThank You Notes: March Madness, Little Girl Who Interrupted BBC Dad\nhttp://www.youtube.com/fallontonight"
+    },
+    "defaultAudioLanguage": "en"
+   },
+   "contentDetails": {
+    "duration": "PT3M51S",
+    "dimension": "2d",
+    "definition": "hd",
+    "caption": "false",
+    "licensedContent": true,
+    "projection": "rectangular"
+   }
+  },
+  {
+   "kind": "youtube#video",
+   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/BJTpnc_KhnIZVUl9satu3bi1RS0\"",
+   "id": "UQmFpJ0sB9Q",
+   "snippet": {
+    "publishedAt": "2017-03-01T05:23:00.000Z",
+    "channelId": "UC8-Th83bH_thdKZDJCrn88g",
+    "title": "Wheel of Musical Impressions with Alicia Keys",
+    "description": "Jimmy challenges Alicia Keys to a game of random musical impressions like Gwen Stefani singing \"Miss Mary Mack\" and Adele singing \"The Alphabet Song.\"\n\nSubscribe NOW to The Tonight Show Starring Jimmy Fallon: http://bit.ly/1nwT1aN\n\nWatch The Tonight Show Starring Jimmy Fallon Weeknights 11:35/10:35c\nGet more Jimmy Fallon: \nFollow Jimmy: http://Twitter.com/JimmyFallon\nLike Jimmy: https://Facebook.com/JimmyFallon\n\nGet more The Tonight Show Starring Jimmy Fallon: \nFollow The Tonight Show: http://Twitter.com/FallonTonight\nLike The Tonight Show: https://Facebook.com/FallonTonight\nThe Tonight Show Tumblr: http://fallontonight.tumblr.com/\n\nGet more NBC: \nNBC YouTube: http://bit.ly/1dM1qBH\nLike NBC: http://Facebook.com/NBC\nFollow NBC: http://Twitter.com/NBC\nNBC Tumblr: http://nbctv.tumblr.com/\nNBC Google+: https://plus.google.com/+NBC/posts\n\nThe Tonight Show Starring Jimmy Fallon features hilarious highlights from the show including: comedy sketches, music parodies, celebrity interviews, ridiculous games, and, of course, Jimmy's Thank You Notes and hashtags! You'll also find behind the scenes videos and other great web exclusives.\n\nWheel of Musical Impressions with Alicia Keys\nhttp://www.youtube.com/fallontonight",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/UQmFpJ0sB9Q/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/UQmFpJ0sB9Q/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/UQmFpJ0sB9Q/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/UQmFpJ0sB9Q/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/UQmFpJ0sB9Q/maxresdefault.jpg",
+      "width": 1280,
+      "height": 720
+     }
+    },
+    "channelTitle": "The Tonight Show Starring Jimmy Fallon",
+    "tags": [
+     "The Tonight Show",
+     "Jimmy Fallon",
+     "Wheel of Musical Impressions",
+     "Alicia Keys",
+     "NBC",
+     "NBC TV",
+     "Television",
+     "Funny",
+     "Talk Show",
+     "comedic",
+     "humor",
+     "snl",
+     "Fallon Stand-up",
+     "Fallon monologue",
+     "tonight",
+     "show",
+     "jokes",
+     "funny video",
+     "interview",
+     "variety",
+     "comedy sketches",
+     "talent",
+     "celebrities",
+     "video",
+     "clip",
+     "highlight",
+     "music",
+     "gwen stefani",
+     "the pointer sisters",
+     "adele",
+     "elvis",
+     "janis joplin",
+     "smokin' aces",
+     "the secret life of bees",
+     "empire"
+    ],
+    "categoryId": "23",
+    "liveBroadcastContent": "none",
+    "localized": {
+     "title": "Wheel of Musical Impressions with Alicia Keys",
+     "description": "Jimmy challenges Alicia Keys to a game of random musical impressions like Gwen Stefani singing \"Miss Mary Mack\" and Adele singing \"The Alphabet Song.\"\n\nSubscribe NOW to The Tonight Show Starring Jimmy Fallon: http://bit.ly/1nwT1aN\n\nWatch The Tonight Show Starring Jimmy Fallon Weeknights 11:35/10:35c\nGet more Jimmy Fallon: \nFollow Jimmy: http://Twitter.com/JimmyFallon\nLike Jimmy: https://Facebook.com/JimmyFallon\n\nGet more The Tonight Show Starring Jimmy Fallon: \nFollow The Tonight Show: http://Twitter.com/FallonTonight\nLike The Tonight Show: https://Facebook.com/FallonTonight\nThe Tonight Show Tumblr: http://fallontonight.tumblr.com/\n\nGet more NBC: \nNBC YouTube: http://bit.ly/1dM1qBH\nLike NBC: http://Facebook.com/NBC\nFollow NBC: http://Twitter.com/NBC\nNBC Tumblr: http://nbctv.tumblr.com/\nNBC Google+: https://plus.google.com/+NBC/posts\n\nThe Tonight Show Starring Jimmy Fallon features hilarious highlights from the show including: comedy sketches, music parodies, celebrity interviews, ridiculous games, and, of course, Jimmy's Thank You Notes and hashtags! You'll also find behind the scenes videos and other great web exclusives.\n\nWheel of Musical Impressions with Alicia Keys\nhttp://www.youtube.com/fallontonight"
+    },
+    "defaultAudioLanguage": "en"
+   },
+   "contentDetails": {
+    "duration": "PT6M45S",
+    "dimension": "2d",
+    "definition": "hd",
+    "caption": "false",
+    "licensedContent": true,
+    "projection": "rectangular"
+   }
+  },
+  {
+   "kind": "youtube#video",
+   "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/v3U0i5eRKXXOHq6hMHOe8Klta_U\"",
+   "id": "NYvO9m0zoMQ",
+   "snippet": {
+    "publishedAt": "2017-03-14T11:00:02.000Z",
+    "channelId": "UC8-Th83bH_thdKZDJCrn88g",
+    "title": "Priyanka Chopra and Jimmy Celebrate Holi with a Messy Paint Fight",
+    "description": "Jimmy and Priyanka Chopra toast to Holi Festival with a sip of thandai before going at each other's faces with paint to keep the Hindu tradition going.\n\nSubscribe NOW to The Tonight Show Starring Jimmy Fallon: http://bit.ly/1nwT1aN\n\nWatch The Tonight Show Starring Jimmy Fallon Weeknights 11:35/10:35c\nGet more Jimmy Fallon: \nFollow Jimmy: http://Twitter.com/JimmyFallon\nLike Jimmy: https://Facebook.com/JimmyFallon\n\nGet more The Tonight Show Starring Jimmy Fallon: \nFollow The Tonight Show: http://Twitter.com/FallonTonight\nLike The Tonight Show: https://Facebook.com/FallonTonight\nThe Tonight Show Tumblr: http://fallontonight.tumblr.com/\n\nGet more NBC: \nNBC YouTube: http://bit.ly/1dM1qBH\nLike NBC: http://Facebook.com/NBC\nFollow NBC: http://Twitter.com/NBC\nNBC Tumblr: http://nbctv.tumblr.com/\nNBC Google+: https://plus.google.com/+NBC/posts\n\nThe Tonight Show Starring Jimmy Fallon features hilarious highlights from the show including: comedy sketches, music parodies, celebrity interviews, ridiculous games, and, of course, Jimmy's Thank You Notes and hashtags! You'll also find behind the scenes videos and other great web exclusives.\n\nPriyanka Chopra and Jimmy Celebrate Holi with a Messy Paint Fight\nhttp://www.youtube.com/fallontonight",
+    "thumbnails": {
+     "default": {
+      "url": "https://i.ytimg.com/vi/NYvO9m0zoMQ/default.jpg",
+      "width": 120,
+      "height": 90
+     },
+     "medium": {
+      "url": "https://i.ytimg.com/vi/NYvO9m0zoMQ/mqdefault.jpg",
+      "width": 320,
+      "height": 180
+     },
+     "high": {
+      "url": "https://i.ytimg.com/vi/NYvO9m0zoMQ/hqdefault.jpg",
+      "width": 480,
+      "height": 360
+     },
+     "standard": {
+      "url": "https://i.ytimg.com/vi/NYvO9m0zoMQ/sddefault.jpg",
+      "width": 640,
+      "height": 480
+     },
+     "maxres": {
+      "url": "https://i.ytimg.com/vi/NYvO9m
+mar 21, 2017 6:41:23 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableRow@3c0c2cba[styleClass=cell indexed-cell table-row-cell]'null', name: focused, value: false] focused=false
+mar 21, 2017 6:41:23 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: TableRow@3c0c2cba[styleClass=cell indexed-cell table-row-cell]'null', name: focused, value: true] focused=true
+mar 21, 2017 6:41:29 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: false] focused=false
+mar 21, 2017 6:42:25 EM javafx.scene.Node$FocusedProperty markInvalid
+FIN: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: true] focused=true
+mar 21, 2017 6:42:26 EM javafx.scene.Node$FocusedProperty markInvalid
 FIN: ReadOnlyBooleanProperty [bean: Button[id=navSearchBtn, styleClass=button]'Search', name: focused, value: false] focused=false

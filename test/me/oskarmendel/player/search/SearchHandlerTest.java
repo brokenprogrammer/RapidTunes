@@ -69,7 +69,7 @@ public class SearchHandlerTest {
 
 		songList.addAll(sh.search("brad", "./demo"));
 
-		assertEquals("'brad' was searched for", "Brad Sucks - Total Breakdown.mp3", songList.get(0).getTitle());
+		assertEquals("'brad' was searched for", "Total Breakdown", songList.get(0).getTitle());
 		assertEquals("first object is a 'LocalSong'", "class me.oskarmendel.entities.LocalSong",
 				songList.get(0).getClass().toString());
 		assertEquals("second object is a 'YouTubeSong'", "class me.oskarmendel.entities.YouTubeSong",
