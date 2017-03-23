@@ -33,6 +33,7 @@ import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import me.oskarmendel.entities.Song;
@@ -88,6 +89,19 @@ public class SongBrowserController implements RapidTunesController {
 		songListPublisher.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getArtist()));
 		songListTime.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getLength()));
 		songListSource.setCellValueFactory(c -> new SimpleStringProperty("YT"));
+		
+		//Define an on-click for the table rows.
+		songList.setRowFactory(tv -> {
+			TableRow<Song> row = new TableRow<>();
+			row.setOnMouseClicked(event -> {
+				if(event.getClickCount() == 2 && (!row.isEmpty())) {
+					//Here we will call an even to start the song.
+					Song test = row.getItem();
+					System.out.println(test.getTitle());
+				}
+			});
+			return row;
+		});
 	}
 	
 	/**
