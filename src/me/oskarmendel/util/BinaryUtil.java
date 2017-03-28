@@ -229,10 +229,14 @@ public class BinaryUtil {
 	 * @param x2
 	 * @param x3
 	 * @param x4
+	 * @throws UnsupportedOperationException when number is too large to handle.
 	 * @return Integer constructed with all the byte values.
 	 */
 	public static long addBytesToInt(int x1, int x2, int x3, int x4) {
-		return (x4 << 32) | (x3 << 16) | (x2 << 8) | (x1 & 0xFF);
+		if(((x4 << 24) | (x3 << 16) | (x2 << 8) | (x1 & 0xFF)) < 0) {
+			throw new UnsupportedOperationException();
+		}
+		return ((x4 << 24) | (x3 << 16) | (x2 << 8) | (x1 & 0xFF));
 	}
 	
 	/**
@@ -265,10 +269,14 @@ public class BinaryUtil {
 	 * @param x2
 	 * @param x3
 	 * @param x4
+	 * @throws UnsupportedOperationException when number is too large to handle.
 	 * @return long constructed with all the byte values.
 	 */
 	public static long addBytesToIntBE(int x1, int x2, int x3, int x4) {
-		return (x1 << 32) | (x2 << 16) | (x3 << 8) | (x4 & 0xFF);
+		if(((x1 << 24) | (x2 << 16) | (x3 << 8) | (x4 & 0xFF)) < 0) {
+			throw new UnsupportedOperationException();
+		}
+		return (x1 << 24) | (x2 << 16) | (x3 << 8) | (x4 & 0xFF);
 	}
 	
 	

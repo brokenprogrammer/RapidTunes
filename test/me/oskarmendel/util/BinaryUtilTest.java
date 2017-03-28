@@ -316,19 +316,21 @@ public class BinaryUtilTest {
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToInt(int, int, int, int)}.
 	 */
-	@Test
+	@Test(expected = UnsupportedOperationException.class)
 	public final void testAddBytesToIntIntIntIntInt() {
 		int b1 = 15;
 		int b2 = 255;
 		int b3 = 3;
 		int b4 = 60;
 		
-		// 0011 1100 0000 0011 1111 1111 0000 1111 = 261951
-		assertEquals("Adding bytes of '60', '3', '255' and '15'.", BinaryUtil.addBytesToInt(b1, b2, b3, b4), 261951);
-		//0000 1111 0011 1100 0000 0011 1111 1111 = 3933183
-		assertEquals("Adding bytes of '15', '60', '3' and '255'.", BinaryUtil.addBytesToInt(b2, b3, b4, b1), 3933183);
-		//1111 1111 0000 1111 0011 1100 0000 0011 = 998655
-		assertEquals("Adding bytes of '255', '15', '60' and '3'.", BinaryUtil.addBytesToInt(b3, b4, b1, b2), 998655);
+		// 0011 1100 0000 0011 1111 1111 0000 1111 = 1006894863
+		assertEquals("Adding bytes of '60', '3', '255' and '15'.", BinaryUtil.addBytesToInt(b1, b2, b3, b4), 1006894863);
+		//0000 1111 0011 1100 0000 0011 1111 1111 = 255591423
+		assertEquals("Adding bytes of '15', '60', '3' and '255'.", BinaryUtil.addBytesToInt(b2, b3, b4, b1), 255591423);
+		
+		//1111 1111 0000 1111 0011 1100 0000 0011 = 4279188483
+		//Force exception
+		BinaryUtil.addBytesToInt(b3, b4, b1, b2);
 	}
 
 	/**
@@ -370,77 +372,86 @@ public class BinaryUtilTest {
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToIntBE(int, int, int, int)}.
 	 */
-	@Test
+	@Test(expected = UnsupportedOperationException.class)
 	public final void testAddBytesToIntBEIntIntIntInt() {
 		int b1 = 15;
 		int b2 = 255;
 		int b3 = 3;
 		int b4 = 60;
 		
-		//0000 1111 1111 1111 0000 0011 0011 1100 = 16712511
-		assertEquals("Adding bytes of '15', '255', '3' and '60'.", BinaryUtil.addBytesToIntBE(b1, b2, b3, b4), 16712511);
-		
-		//1111 1111 0000 0011 0011 1100 0000 1111 = 212223
-		assertEquals("Adding bytes of '255', '3', '60' and '15'.", BinaryUtil.addBytesToIntBE(b2, b3, b4, b1), 212223);
+		//0000 1111 1111 1111 0000 0011 0011 1100 = 268370748
+		assertEquals("Adding bytes of '15', '255', '3' and '60'.", BinaryUtil.addBytesToIntBE(b1, b2, b3, b4), 268370748);
 		
 		//0000 0011 0011 1100 0000 1111 1111 1111 = 3936255
-		assertEquals("Adding bytes of '3', '60', '15' and '255'.", BinaryUtil.addBytesToIntBE(b3, b4, b1, b2), 3936255);
+		assertEquals("Adding bytes of '3', '60', '15' and '255'.", BinaryUtil.addBytesToIntBE(b3, b4, b1, b2), 54267903);
+		
+		//Force exception
+		//1111 1111 0000 0011 0011 1100 0000 1111 = 4278402063
+		BinaryUtil.addBytesToIntBE(b2, b3, b4, b1);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToInt4(byte[])}.
 	 */
-	@Test
+	@Test(expected = UnsupportedOperationException.class)
 	public final void testAddBytesToInt4ByteArray() {
 		byte[] b1 = {15, (byte) 255, 3, 60};
 		byte[] b2 = {(byte) 255, 3, 60, 15};
 		byte[] b3 = {3, 60, 15, (byte) 255};
 		
-		assertEquals("Adding bytes of '60', '3', '255' and '15'.", BinaryUtil.addBytesToInt4(b1), 261951);
-		assertEquals("Adding bytes of '15', '60', '3' and '255'.", BinaryUtil.addBytesToInt4(b2), 3933183);
-		assertEquals("Adding bytes of '255', '15', '60' and '3'.", BinaryUtil.addBytesToInt4(b3), 998655);
+		assertEquals("Adding bytes of '60', '3', '255' and '15'.", BinaryUtil.addBytesToInt4(b1), 1006894863);
+		assertEquals("Adding bytes of '15', '60', '3' and '255'.", BinaryUtil.addBytesToInt4(b2), 255591423);
+		
+		//Force exception
+		BinaryUtil.addBytesToInt4(b3);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToInt4(byte[], int)}.
 	 */
-	@Test
+	@Test(expected = UnsupportedOperationException.class)
 	public final void testAddBytesToInt4ByteArrayInt() {
 		byte[] b1 = {15, (byte) 255, 3, 60, 1, 127};
 		byte[] b2 = {1, 44, 82, (byte) 255, 3, 60, 15};
 		byte[] b3 = {111, 32, (byte) 222, (byte) 210, 3, 60, 15, (byte) 255};
 		
-		assertEquals("Adding bytes of '60', '3', '255' and '15'.", BinaryUtil.addBytesToInt4(b1, 0), 261951);
-		assertEquals("Adding bytes of '15', '60', '3' and '255'.", BinaryUtil.addBytesToInt4(b2, 3), 3933183);
-		assertEquals("Adding bytes of '255', '15', '60' and '3'.", BinaryUtil.addBytesToInt4(b3, 4), 998655);
+		assertEquals("Adding bytes of '60', '3', '255' and '15'.", BinaryUtil.addBytesToInt4(b1, 0), 1006894863);
+		assertEquals("Adding bytes of '15', '60', '3' and '255'.", BinaryUtil.addBytesToInt4(b2, 3), 255591423);
+		
+		//Force exception
+		BinaryUtil.addBytesToInt4(b3, 4);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToInt4BE(byte[])}.
 	 */
-	@Test
+	@Test(expected = UnsupportedOperationException.class)
 	public final void testAddBytesToInt4BEByteArray() {
 		byte[] b1 = {15, (byte) 255, 3, 60};
 		byte[] b2 = {(byte) 255, 3, 60, 15};
 		byte[] b3 = {3, 60, 15, (byte) 255};
 		
-		assertEquals("Adding bytes of '15', '255', '3' and '60'.", BinaryUtil.addBytesToInt4BE(b1), 16712511);
-		assertEquals("Adding bytes of '255', '3', '60' and '15'.", BinaryUtil.addBytesToInt4BE(b2), 212223);
-		assertEquals("Adding bytes of '3', '60', '15' and '255'.", BinaryUtil.addBytesToInt4BE(b3), 3936255);
+		assertEquals("Adding bytes of '15', '255', '3' and '60'.", BinaryUtil.addBytesToInt4BE(b1), 268370748);
+		assertEquals("Adding bytes of '3', '60', '15' and '255'.", BinaryUtil.addBytesToInt4BE(b3), 54267903);
+		
+		//Force exception
+		BinaryUtil.addBytesToInt4BE(b2);
 	}
 
 	/**
 	 * Test method for {@link me.oskarmendel.util.BinaryUtil#addBytesToInt4BE(byte[], int)}.
 	 */
-	@Test
+	@Test(expected = UnsupportedOperationException.class)
 	public final void testAddBytesToInt4BEByteArrayInt() {
 		byte[] b1 = {15, (byte) 255, 3, 60, 1, 127};
 		byte[] b2 = {1, 44, 82, (byte) 255, 3, 60, 15};
 		byte[] b3 = {111, 32, (byte) 222, (byte) 210, 3, 60, 15, (byte) 255};
 		
-		assertEquals("Adding bytes of '15', '255', '3' and '60'.", BinaryUtil.addBytesToInt4BE(b1, 0), 16712511);
-		assertEquals("Adding bytes of '255', '3', '60' and '15'.", BinaryUtil.addBytesToInt4BE(b2, 3), 212223);
-		assertEquals("Adding bytes of '3', '60', '15' and '255'.", BinaryUtil.addBytesToInt4BE(b3, 4), 3936255);
+		assertEquals("Adding bytes of '15', '255', '3' and '60'.", BinaryUtil.addBytesToInt4BE(b1, 0), 268370748);
+		assertEquals("Adding bytes of '3', '60', '15' and '255'.", BinaryUtil.addBytesToInt4BE(b3, 4), 54267903);
+		
+		//Force exception
+		BinaryUtil.addBytesToInt4BE(b2, 3);
 	}
 
 	/**
