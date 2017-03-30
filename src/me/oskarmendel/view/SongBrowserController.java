@@ -37,6 +37,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import me.oskarmendel.entities.Song;
+import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.model.SearchResultModel;
 
 /**
@@ -62,6 +63,7 @@ public class SongBrowserController implements RapidTunesController {
 	private static final Logger LOGGER = Logger.getLogger(SongBrowserController.class.getName());
 	
 	private SearchResultModel searchResultModel;
+	private CurrentlyPlayingModel currentlyPlayingModel;
 	
 	@FXML 
 	public void initialize() {
@@ -96,8 +98,8 @@ public class SongBrowserController implements RapidTunesController {
 			row.setOnMouseClicked(event -> {
 				if(event.getClickCount() == 2 && (!row.isEmpty())) {
 					//Here we will call an even to start the song.
-					Song test = row.getItem();
-					System.out.println(test.getTitle());
+					Song s = row.getItem();
+					currentlyPlayingModel.setCurrentSong(s);
 				}
 			});
 			return row;
@@ -134,7 +136,20 @@ public class SongBrowserController implements RapidTunesController {
 				}
 			}
 		});*/
+	}
+	
+	/**
+	 * Initializes the CurrentlyPlayingModel which this class will send data to when a song is 
+	 * clicked within the SongBrowser. 
+	 * 
+	 * @param currentlyPlayingModel - currentlyPlayingModel object to send data to.
+	 */
+	public void initCurrentlyPlayingModel(CurrentlyPlayingModel currentlyPlayingModel) {
+		//Make sure model is only set once.
+		if (this.currentlyPlayingModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
 		
-		
+		this.currentlyPlayingModel = currentlyPlayingModel;
 	}
 }

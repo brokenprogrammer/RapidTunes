@@ -27,43 +27,60 @@
 
 package me.oskarmendel.model;
 
-import java.util.List;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import me.oskarmendel.entities.Song;
 
 /**
- * Model that manages search results for the application.
- * This allows multiple controllers have access to the search results.
+ * Model that manages the currently played song for the application.
+ * This allows mulitple controllers have access to the currently played song.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name SearchResultModel.java
+ * @name CurrentlyPlayingModel.java
  */
-public class SearchResultModel {
+public class CurrentlyPlayingModel {
 	
-	private final ObservableList<Song> searchResultList = FXCollections.observableArrayList();
+	private ObjectProperty<Song> currentSong = new SimpleObjectProperty<>();
+	private final StringProperty songTitle = new SimpleStringProperty();
+	private final StringProperty songArtist = new SimpleStringProperty();
 	
 	/**
-	 * 
-	 * @return
+	 * Gets the ObjectProperty current song.
+	 * @return An ObjectProperty for the current song.
 	 */
-	public ObservableList<Song> getSearchResultList() {
-		return searchResultList;
+	public ObjectProperty<Song> getCurrentSong() {
+		return currentSong;
 	}
 	
 	/**
+	 * Sets the currently playing song.
 	 * 
-	 * @param searchResultList
+	 * @param s - Song object to be played.
 	 */
-	public void setSearchResultList(List<Song> searchResultList) {
-		this.searchResultList.clear();
-		
-		// TODO: Temp til i know how to add all List elements to ObservableList
-		for (int x = 0; x <= searchResultList.size()-1; x++) {
-			this.searchResultList.add(searchResultList.get(x));
-		}
+	public void setCurrentSong(Song s) {
+		currentSong.set(s);
+		songTitle.set(s.getTitle());
+		songArtist.set(s.getArtist());
 	}
-
+	
+	/**
+	 * Returns a StringProperty for the current song title.
+	 * 
+	 * @return StringProperty of current song title.
+	 */
+	public StringProperty getCurrentSongTitle() {
+		return songTitle;
+	}
+	
+	/**
+	 * Returns a StringProperty for the current song artist.
+	 * 
+	 * @return StringProperty of current song artist.
+	 */
+	public StringProperty getCurrentSongArtist() {
+		return songArtist;
+	}
 }

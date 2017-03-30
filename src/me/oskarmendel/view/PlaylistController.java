@@ -31,20 +31,47 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import me.oskarmendel.model.CurrentlyPlayingModel;
 
 /**
  * 
- * @author Oskar
+ * @author Oskar Mendel
  * @version 0.00.00
  * @name PlaylistController.java
  */
 public class PlaylistController implements RapidTunesController {
 	
+	@FXML private ImageView playlistImg;
+	@FXML private Label playlistSong;
+	@FXML private Label playlistArtist;
+	
 	private static final Logger LOGGER = Logger.getLogger(PlaylistController.class.getName());
+	
+	private CurrentlyPlayingModel currentlyPlayingModel;
 	
 	@FXML 
 	public void initialize() {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
 	}
 	
+	/**
+	 * Initializes the CurrentlyPlayingModel which this class will get data from when a song is 
+	 * clicked within the SongBrowser and this class will display the title and artist for the song. 
+	 * 
+	 * @param currentlyPlayingModel - currentlyPlayingModel object to send data to.
+	 */
+	public void initCurrentlyPlayingModel(CurrentlyPlayingModel currentlyPlayingModel) {
+		//Make sure model is only set once.
+		if (this.currentlyPlayingModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
+		
+		this.currentlyPlayingModel = currentlyPlayingModel;
+		
+		//Bind currently playing song strings to the song title and artist label.
+		this.playlistSong.textProperty().bind(currentlyPlayingModel.getCurrentSongTitle());
+		this.playlistArtist.textProperty().bind(currentlyPlayingModel.getCurrentSongArtist());
+	}
 }
