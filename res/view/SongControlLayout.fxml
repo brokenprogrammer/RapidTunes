@@ -8,17 +8,17 @@
 
 <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.oskarmendel.view.SongController">
    <children>
-      <Button mnemonicParsing="false" text="&lt;">
+      <Button fx:id="songPrev" mnemonicParsing="false" text="&lt;">
          <HBox.margin>
             <Insets left="10.0" />
          </HBox.margin>
       </Button>
-      <Button mnemonicParsing="false" text="Play">
+      <Button fx:id="songPlay" mnemonicParsing="false" text="Play">
          <HBox.margin>
             <Insets left="10.0" />
          </HBox.margin>
       </Button>
-      <Button mnemonicParsing="false" text="&gt;">
+      <Button fx:id="songNext" mnemonicParsing="false" text="&gt;">
          <HBox.margin>
             <Insets left="10.0" />
          </HBox.margin>

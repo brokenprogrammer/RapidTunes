@@ -65,6 +65,8 @@ class FileStripper {
 			song = stripMp3ID3v2(mp3)
 		}
 		
+		song.setPath(mp3File.toURI().toString())
+		
 		return song
 	}
 	
@@ -85,6 +87,7 @@ class FileStripper {
 		song.setTitle(flac.getTitle())
 		song.setArtist(flac.getArtist())
 		song.setAlbum(flac.getAlbum())
+		song.setPath(flacFile.toURI().toString())
 		song.setLength("")
 		
 		return song

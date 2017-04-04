@@ -122,6 +122,7 @@ public class StageManager {
 		
 		getPlaylistController().initCurrentlyPlayingModel(currentlyPlayingModel);
 		getSongBrowserController().initCurrentlyPlayingModel(currentlyPlayingModel);
+		getSongController().initCurrentlyPlayingModel(currentlyPlayingModel);
 		
 		rootLayout.setTop(navigationLayout);
 		rootLayout.setLeft(playlistControlLayout);
