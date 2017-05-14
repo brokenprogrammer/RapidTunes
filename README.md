@@ -10,10 +10,10 @@ To set up the project and work on it you simply clone this repository to your ma
 # Contributing
 RapidTunes happily accepts contributions to make the project improve and evolve. The development of RapidTunes will happen here on GitHub as an open source project. We are grateful for all contributions through issues found or using RapidTunes or enhancements to the software.
 
-####**Getting started contributing**
+### **Getting started contributing**
 If you want to contribute code, fork this repository and then commit your changes to your fork. When you are finished please provide a pull request and it will be reviewed as soon as possible.
 
-####**Coding conventions**
+### **Coding conventions**
 To keep the quality of our code as good as possible we try to follow the [Oracle Coding Conventions](http://www.oracle.com/technetwork/java/codeconvtoc-136057.html).
 
 ## Reporting issues
