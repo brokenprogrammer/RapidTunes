@@ -27,54 +27,39 @@
 
 package me.oskarmendel.util;
 
-import static org.junit.Assert.*;
-
 import java.io.File;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
 /**
- * 
+ * Class to perform various types of assertions of data or values of this application.
+ * This class is constructed using the bouncer pattern.
+ * TODO: throw exceptions instead of using groovy asserts.
  *
  * @author Oskar Mendel
  * @version 0.00.00
- * @name AssertsTest.java
+ * @name Asserts.java
  */
-public class AssertsTest {
-
+public class Asserts {
+	
 	/**
-	 * @throws java.lang.Exception
+	 * Validates provided value by asserting that the specified value is not null.
+	 * 
+	 * @param value - a value to be tested.
+	 * @param message - short description of the assertion.
+	 * 
+	 * @return - True if values are equal; False otherwise.
 	 */
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
+	public static boolean isEqual(String value, String message) {
+		return value.equals(message);
 	}
 	
 	/**
-	 * Test method for {@link me.oskarmendel.util.Asserts#isExists(Object, String)}.
+	 * Validates provided file by asserting that it exists.
+	 * 
+	 * @param file - file to be tested.
+	 * 
+	 * @return - True if file exists; False otherwise.
 	 */
-	@Test
-	public final void testIsExists() {
-		Asserts.isEqual("Sample", "A message");
-		assertTrue("Does not throw an error for a valid value.", true);
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.util.Asserts#isFile(java.io.File, String)}.
-	 */
-	@Test
-	public final void testIsFile() {
-		File flacFile = new File("./demo/Jimmy Pengiun - Untitled Star.flac");
-		assertEquals("Does not throw an error for a valid value.", Asserts.isFile(flacFile), true);
-		
-		assertEquals("Assertion error message is correct.", Asserts.isFile(new File("")), false);
+	public static boolean isFile(File file) {
+		return file.exists();
 	}
 }
