@@ -25,74 +25,66 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.util.song.flac
+package me.oskarmendel.util.song.mp4;
 
-import me.oskarmendel.util.song.MusicFile
+import java.io.File;
+
+import me.oskarmendel.util.song.MusicFile;
 
 /**
- * Object to represent files of the Flac format.
- * Implemented using the formatting for Flac files represented here:
- * https://xiph.org/flac/format.html
+ * Object to represent files of the MP4 format.
+ * Implemented using the formatting for MP4 files represented here:
+ * http://xhelmboyx.tripod.com/formats/mp4-layout.txt
+ * TODO: Tests
  *
  * @author Oskar Mendel
  * @version 0.00.00
- * @name FlacFile.groovy
+ * @name Mp4File.java
  */
-class FlacFile extends MusicFile{
+public class Mp4File extends MusicFile{
 	
-	int minimumBlockSize	//Represented as 16 bits
-	int maximumBlockSize	//Represented as 16 bits
-	int minimumFrameSize	//Represented as 24 bits
-	int maximumFrameSize	//Represented as 24 bits
-	
-	int sampleRate			//Represented as 20 bits
-	int numChannels		//Represented as 3 bits
-	int bitsPerSample		//Represented as 5 bits
-	int numSamples			//Represented as 36 bits
-	
-	//Data from the Vorbis Comments within the Flac file.
-	String vendor
-	
-	FlacFile() {
+	public Mp4File() {
 		
 	}
 	
 	/**
-	 * Constructs a new FlacFile object and directly populates it with data
+	 * Constructs a new Mp4File object and directly populates it with data
 	 * from the specified file at the target file path.
-	 * 
-	 * @param path - Path of the Flac file.
+	 *
+	 * @param path - Path of the Mp4 file.
 	 */
-	FlacFile(String path) {
-		this.filePath = path
-		this.file = new File(this.filePath)
+	public Mp4File(String path) {
+		this.filePath = path;
+		this.file = new File(this.filePath);
 		
-		parse()
+		parse();
 	}
 	
 	/**
-	 * Constructs a new FlacFile object and directly populates it with data
+	 * Constructs a new Mp4File object and directly populates it with data
 	 * from the specified file object.
-	 * 
+	 *
 	 * @param file - File object to retrieve data from.
 	 */
-	FlacFile(File file) {
-		this.file = file
-		this.filePath = "$file"
+	public Mp4File(File file) {
+		this.file = file;
+		this.filePath = file.getAbsolutePath();
 		
-		parse()
+		parse();
 	}
-
+	
 	/**
-	 * Initializes the parsing of data using the FlacParser class.
-	 * 
-	 * @throws IllegalArgumentException - When the FlacFile doesn't have an initialized file and filepath.
+	 * Initializes the parsing of data using the Mp4Parser class.
+	 *
+	 * @throws IllegalArgumentException - When the Mp4File doesn't have an initialized file and filepath.
 	 */
 	@Override
-	def parse() {
-		if(this.file == null || this.filePath == null) {
-			throw new IllegalArgumentException("File and file path is not initialized!");
+	public void parse() {
+		if (this.file == null || this.filePath == null) {
+			throw new IllegalArgumentException("File and file path is not initialzied.");
 		}
-		FlacParser.parseFlacFile(this.file, this)
+		
+		//TODO: Implement.
 	}
+
 }

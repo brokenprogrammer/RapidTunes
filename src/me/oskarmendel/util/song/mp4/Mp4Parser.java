@@ -25,33 +25,18 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.util.song
+package me.oskarmendel.util.song.mp4;
 
 /**
- * Abstract Music File object that holds common data and methods for all the music
- * files.
+ * Class to parse files of the Mp4 format retrieving data such as meta tags.
+ * Implemented using the formatting for Mp4 files represented here:
+ * http://xhelmboyx.tripod.com/formats/mp4-layout.txt
+ * TODO: Tests
  *
  * @author Oskar Mendel
  * @version 0.00.00
- * @name MusicFile.groovy
+ * @name Mp4Parser.java
  */
-abstract class MusicFile {
-	
-	File file
-	String filePath
-	
-	//Music file meta data.
-	String artist
-	String album
-	String title
-	String genre
-	String trackNumber
-	String date
-	
-	/**
-	 * Initializes the parsing for the MusicFile.
-	 * This method is abstract to let the children of this class decide themselves
-	 * how their data should be parsed.
-	 */
-	abstract def parse()
+public class Mp4Parser {
+
 }
