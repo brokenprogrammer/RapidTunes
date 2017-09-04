@@ -25,14 +25,19 @@
  * SOFTWARE.
  */
 
- package me.oskarmendel.util.song
+package me.oskarmendel.util.song;
 
- import com.mpatric.mp3agic.ID3v1
- import com.mpatric.mp3agic.ID3v2
- import com.mpatric.mp3agic.Mp3File
-import me.oskarmendel.entities.LocalSong
-import me.oskarmendel.entities.Song;
-import me.oskarmendel.util.song.flac.FlacFile
+import java.io.File;
+import java.io.IOException;
+
+import com.mpatric.mp3agic.ID3v1;
+import com.mpatric.mp3agic.ID3v2;
+import com.mpatric.mp3agic.InvalidDataException;
+import com.mpatric.mp3agic.Mp3File;
+import com.mpatric.mp3agic.UnsupportedTagException;
+
+import me.oskarmendel.entities.LocalSong;
+import me.oskarmendel.util.song.flac.FlacFile;
 
 /**
  * File stripper that attempts to strip tags from song files.
@@ -41,9 +46,9 @@ import me.oskarmendel.util.song.flac.FlacFile
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name FileStripper.groovy
+ * @name FileStripper.java
  */
-class FileStripper {
+public class FileStripper {
 	
 	/**
 	 * Strips the tags from a mp3 file and places them within a Song object.
@@ -51,23 +56,32 @@ class FileStripper {
 	 * @param mp3File - Target File to strip the tags from.
 	 * @return A Song object containing all the tags from the mp3 file.
 	 */
-	LocalSong stripMp3Song(File mp3File) {
-		if(!mp3File.exists()) {
-			throw new IllegalArgumentException("No such file exists!")
+	public LocalSong stripMp3Song(File mp3File) {
+		if (!mp3File.exists()) {
+			throw new IllegalArgumentException("No such file exists!");
 		}
 		
-		Mp3File mp3 = new Mp3File(mp3File)
-		LocalSong song = new LocalSong()
-		
-		if(mp3.hasId3v1Tag()) {
-			song = stripMp3ID3v1(mp3)
-		} else if(mp3.hasId3v2Tag()) {
-			song = stripMp3ID3v2(mp3)
+		Mp3File mp3;
+		LocalSong song = new LocalSong();
+		try {
+			mp3 = new Mp3File(mp3File);
+			
+			if(mp3.hasId3v1Tag()) {
+				song = stripMp3ID3v1(mp3);
+			} else if(mp3.hasId3v2Tag()) {
+				song = stripMp3ID3v2(mp3);
+			}
+			
+			song.setPath(mp3File.toURI().toString());
+		} catch (UnsupportedTagException e) {
+			e.printStackTrace();
+		} catch (InvalidDataException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
-		song.setPath(mp3File.toURI().toString())
-		
-		return song
+		return song;
 	}
 	
 	/**
@@ -76,21 +90,21 @@ class FileStripper {
 	 * @param flacFile - Target File to strip the tags from.
 	 * @return A Song object containing all the tags from the Flac file.
 	 */
-	LocalSong stripFlacSong(File flacFile) {
+	public LocalSong stripFlacSong(File flacFile) {
 		if(!flacFile.exists()) {
-			throw new IllegalArgumentException("No such file exists!")
+			throw new IllegalArgumentException("No such file exists!");
 		}
 		
-		FlacFile flac = new FlacFile(flacFile)
-		LocalSong song = new LocalSong()
+		FlacFile flac = new FlacFile(flacFile);
+		LocalSong song = new LocalSong();
 		
-		song.setTitle(flac.getTitle())
-		song.setArtist(flac.getArtist())
-		song.setAlbum(flac.getAlbum())
-		song.setPath(flacFile.toURI().toString())
-		song.setLength("")
+		song.setTitle(flac.getTitle());
+		song.setArtist(flac.getArtist());
+		song.setAlbum(flac.getAlbum());
+		song.setPath(flacFile.toURI().toString());
+		song.setLength("");
 		
-		return song
+		return song;
 	}
 	
 	/**
@@ -101,18 +115,18 @@ class FileStripper {
 	 */
 	private LocalSong stripMp3ID3v1(Mp3File mp3File) {
 		if(!mp3File.hasId3v1Tag()) {
-			throw new IllegalArgumentException("No such file exists!")
+			throw new IllegalArgumentException("No such file exists!");
 		}
 		
-		ID3v1 id3v1Tags = mp3File.getId3v1Tag()
-		LocalSong mp3Song = new LocalSong()
+		ID3v1 id3v1Tags = mp3File.getId3v1Tag();
+		LocalSong mp3Song = new LocalSong();
 		
-		mp3Song.setTitle(id3v1Tags.getTitle())
-		mp3Song.setArtist(id3v1Tags.getArtist())
-		mp3Song.setAlbum(id3v1Tags.getAlbum())
-		mp3Song.setLength(mp3File.getLengthInSeconds().toString())
+		mp3Song.setTitle(id3v1Tags.getTitle());
+		mp3Song.setArtist(id3v1Tags.getArtist());
+		mp3Song.setAlbum(id3v1Tags.getAlbum());
+		mp3Song.setLength("" + mp3File.getLengthInSeconds());
 		
-		return mp3Song
+		return mp3Song;
 	}
 	
 	/**
@@ -123,17 +137,17 @@ class FileStripper {
 	 */
 	private LocalSong stripMp3ID3v2(Mp3File mp3File) {
 		if(!mp3File.hasId3v2Tag()) {
-			throw new IllegalArgumentException("No such file exists!")
+			throw new IllegalArgumentException("No such file exists!");
 		}
 		
-		ID3v2 id3v2Tags = mp3File.getId3v2Tag()
-		LocalSong mp3Song = new LocalSong()
+		ID3v2 id3v2Tags = mp3File.getId3v2Tag();
+		LocalSong mp3Song = new LocalSong();
 		
-		mp3Song.setTitle(id3v2Tags.getTitle())
-		mp3Song.setArtist(id3v2Tags.getArtist())
-		mp3Song.setAlbum(id3v2Tags.getAlbum())
-		mp3Song.setLength(mp3File.getLengthInSeconds().toString())
+		mp3Song.setTitle(id3v2Tags.getTitle());
+		mp3Song.setArtist(id3v2Tags.getArtist());
+		mp3Song.setAlbum(id3v2Tags.getAlbum());
+		mp3Song.setLength("" + mp3File.getLengthInSeconds());
 		
-		return mp3Song
+		return mp3Song;
 	}
 }

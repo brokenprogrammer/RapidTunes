@@ -25,33 +25,41 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.util.song
+package me.oskarmendel.util;
+
+import java.io.File;
 
 /**
- * Abstract Music File object that holds common data and methods for all the music
- * files.
+ * Class to perform various types of assertions of data or values of this application.
+ * This class is constructed using the bouncer pattern.
+ * TODO: throw exceptions instead of using groovy asserts.
  *
  * @author Oskar Mendel
  * @version 0.00.00
- * @name MusicFile.groovy
+ * @name Asserts.java
  */
-abstract class MusicFile {
-	
-	File file
-	String filePath
-	
-	//Music file meta data.
-	String artist
-	String album
-	String title
-	String genre
-	String trackNumber
-	String date
+public class Asserts {
 	
 	/**
-	 * Initializes the parsing for the MusicFile.
-	 * This method is abstract to let the children of this class decide themselves
-	 * how their data should be parsed.
+	 * Validates provided value by asserting that the specified value is not null.
+	 * 
+	 * @param value - a value to be tested.
+	 * @param message - short description of the assertion.
+	 * 
+	 * @return - True if values are equal; False otherwise.
 	 */
-	abstract def parse()
+	public static boolean isEqual(String value, String message) {
+		return value.equals(message);
+	}
+	
+	/**
+	 * Validates provided file by asserting that it exists.
+	 * 
+	 * @param file - file to be tested.
+	 * 
+	 * @return - True if file exists; False otherwise.
+	 */
+	public static boolean isFile(File file) {
+		return file.exists();
+	}
 }

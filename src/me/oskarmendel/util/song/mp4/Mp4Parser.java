@@ -25,36 +25,18 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.util
+package me.oskarmendel.util.song.mp4;
 
 /**
- * Class to perform various types of assertions of data or values of this application.
- * This class is constructed using the bouncer pattern.
- * TODO: throw exceptions instead of using groovy asserts.
+ * Class to parse files of the Mp4 format retrieving data such as meta tags.
+ * Implemented using the formatting for Mp4 files represented here:
+ * http://xhelmboyx.tripod.com/formats/mp4-layout.txt
+ * TODO: Tests
  *
  * @author Oskar Mendel
  * @version 0.00.00
- * @name Asserts.groovy
+ * @name Mp4Parser.java
  */
-class Asserts {
-	
-	/**
-	 * Validates provided value by asserting that the specified value is not null.
-	 * 
-	 * @param value - a value to be tested.
-	 * @param message - short description of the assertion.
-	 */
-	public static void isExists(def value, String message) {
-		assert value != null, message
-	}
-	
-	/**
-	 * Validates provided file by asserting that it exists.
-	 * 
-	 * @param file - file to be tested.
-	 * @param message - short description of the assertion.
-	 */
-	public static void isFile(File file, String message) {
-		assert file.exists() !=false, message
-	}
+public class Mp4Parser {
+
 }

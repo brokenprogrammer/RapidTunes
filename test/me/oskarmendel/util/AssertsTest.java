@@ -63,14 +63,8 @@ public class AssertsTest {
 	 */
 	@Test
 	public final void testIsExists() {
-		Asserts.isExists("Sample", "A message");
+		Asserts.isEqual("Sample", "A message");
 		assertTrue("Does not throw an error for a valid value.", true);
-		
-		try {
-			Asserts.isExists(null, "isNull");
-		} catch(AssertionError e) {
-			assertEquals("Assertion error message is correct.", "isNull. Expression: (value != null). Values: value = null", e.getMessage());
-		}
 	}
 
 	/**
@@ -79,13 +73,8 @@ public class AssertsTest {
 	@Test
 	public final void testIsFile() {
 		File flacFile = new File("./demo/Jimmy Pengiun - Untitled Star.flac");
-		Asserts.isFile(flacFile, "message");
-		assertTrue("Does not throw an error for a valid value.", true);
+		assertEquals("Does not throw an error for a valid value.", Asserts.isFile(flacFile), true);
 		
-		try {
-			Asserts.isFile(new File(""), "File does not exist");
-		} catch(AssertionError e) {
-			assertEquals("Assertion error message is correct.", "File does not exist. Expression: (file.exists() != false)", e.getMessage());
-		}
+		assertEquals("Assertion error message is correct.", Asserts.isFile(new File("")), false);
 	}
 }

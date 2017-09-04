@@ -25,18 +25,66 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.util.song.mp4
+package me.oskarmendel.util.song.mp4;
+
+import java.io.File;
+
+import me.oskarmendel.util.song.MusicFile;
 
 /**
- * Class to parse files of the Mp4 format retrieving data such as meta tags.
- * Implemented using the formatting for Mp4 files represented here:
+ * Object to represent files of the MP4 format.
+ * Implemented using the formatting for MP4 files represented here:
  * http://xhelmboyx.tripod.com/formats/mp4-layout.txt
  * TODO: Tests
  *
  * @author Oskar Mendel
  * @version 0.00.00
- * @name Mp4Parser.groovy
+ * @name Mp4File.java
  */
-class Mp4Parser {
+public class Mp4File extends MusicFile{
+	
+	public Mp4File() {
+		
+	}
+	
+	/**
+	 * Constructs a new Mp4File object and directly populates it with data
+	 * from the specified file at the target file path.
+	 *
+	 * @param path - Path of the Mp4 file.
+	 */
+	public Mp4File(String path) {
+		this.filePath = path;
+		this.file = new File(this.filePath);
+		
+		parse();
+	}
+	
+	/**
+	 * Constructs a new Mp4File object and directly populates it with data
+	 * from the specified file object.
+	 *
+	 * @param file - File object to retrieve data from.
+	 */
+	public Mp4File(File file) {
+		this.file = file;
+		this.filePath = file.getAbsolutePath();
+		
+		parse();
+	}
+	
+	/**
+	 * Initializes the parsing of data using the Mp4Parser class.
+	 *
+	 * @throws IllegalArgumentException - When the Mp4File doesn't have an initialized file and filepath.
+	 */
+	@Override
+	public void parse() {
+		if (this.file == null || this.filePath == null) {
+			throw new IllegalArgumentException("File and file path is not initialzied.");
+		}
+		
+		//TODO: Implement.
+	}
 
 }
