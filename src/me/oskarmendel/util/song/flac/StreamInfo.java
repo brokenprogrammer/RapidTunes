@@ -27,6 +27,8 @@
 
 package me.oskarmendel.util.song.flac;
 
+import me.oskarmendel.util.BinaryUtil;
+
 /**
  * Represents the stream info metadata block.
  * 
@@ -122,6 +124,33 @@ public class StreamInfo {
 			throw new IllegalArgumentException("Invalid length of the metadata block.");
 		}
 		
-		// TODO: Read metadata..
+		int bitOffset = 0;
+		//TODO: Value checks so values are in range, for example: minimumBlockSize < 16 is error..
+		this.minimumBlockSize = BinaryUtil.addBytesToIntBE(
+				BinaryUtil.byteToInt(data[bitOffset++]), 
+				BinaryUtil.byteToInt(data[bitOffset++]));
+		
+		this.maximumBlockSize = BinaryUtil.addBytesToIntBE(
+				BinaryUtil.byteToInt(data[bitOffset++]), 
+				BinaryUtil.byteToInt(data[bitOffset++]));
+		
+		this.minimumFrameSize = (int)BinaryUtil.addBytesToIntBE(
+				BinaryUtil.byteToInt(data[bitOffset++]), 
+				BinaryUtil.byteToInt(data[bitOffset++]),
+				BinaryUtil.byteToInt(data[bitOffset++]));
+		
+		this.maximumFrameSize = (int)BinaryUtil.addBytesToIntBE(
+				BinaryUtil.byteToInt(data[bitOffset++]), 
+				BinaryUtil.byteToInt(data[bitOffset++]),
+				BinaryUtil.byteToInt(data[bitOffset++]));
+		
+		//TODO: numChannels, bitsPerSample & numSamples.
+		
+		this.sampleRate = 0;
+		this.sampleRate += (BinaryUtil.byteToInt(data[bitOffset++]) << 12); // Shift with 12 to make place for 8 + 4 bits.
+		this.sampleRate += (BinaryUtil.byteToInt(data[bitOffset++]) << 4); // Shift with 4 to make place for the rest 4 bits.
+		this.sampleRate += (BinaryUtil.getTopNibble(data[bitOffset]));
+		
+		System.out.println("Sample rate StreamInfo: " + this.sampleRate);
 	}
 }
