@@ -71,7 +71,7 @@ X-XSS-Protection: 1; mode=block
 Content-Type: application/json; charset=UTF-8
 
 mar 21, 2017 6:40:21 EM com.google.api.client.util.LoggingByteArrayOutputStream close
-KONFIG: Total: 8�086 bytes
+KONFIG: Total: 8 086 bytes
 mar 21, 2017 6:40:21 EM com.google.api.client.util.LoggingByteArrayOutputStream close
 KONFIG: {
  "items": [
@@ -276,7 +276,7 @@ KONFIG: {
     "videoId": "vdC3qVFEV_Q"
    },
    "snippet": {
-    "title": "Brad Pitt  is glad  it�s over!",
+    "title": "Brad Pitt  is glad  its over!",
     "thumbnails": {
      "default": {
       "url": "https://i.ytimg.com/vi/vdC3qVFEV_Q/default.jpg"
@@ -381,7 +381,7 @@ KONFIG: {
     "videoId": "GgCRBoL19Sc"
    },
    "snippet": {
-    "title": "O, brad frumos - C�ntece de iarn? pentru copii | TraLaLa",
+    "title": "O, brad frumos - Cântece de iarn? pentru copii | TraLaLa",
     "thumbnails": {
      "default": {
       "url": "https://i.ytimg.com/vi/GgCRBoL19Sc/default.jpg"
@@ -484,7 +484,7 @@ X-XSS-Protection: 1; mode=block
 Content-Type: application/json; charset=UTF-8
 
 mar 21, 2017 6:40:22 EM com.google.api.client.util.LoggingByteArrayOutputStream close
-KONFIG: Total: 89�949 bytes (logging first 16�384 bytes)
+KONFIG: Total: 89 949 bytes (logging first 16 384 bytes)
 mar 21, 2017 6:40:22 EM com.google.api.client.util.LoggingByteArrayOutputStream close
 KONFIG: {
  "kind": "youtube#videoListResponse",
@@ -581,7 +581,7 @@ KONFIG: {
     "publishedAt": "2016-10-07T13:38:01.000Z",
     "channelId": "UCxwcuOcJCJVDm_BRKYJ2Vdg",
     "title": "Brad Paisley - Today",
-    "description": "Get the #1 hit �Today� instantly when you pre-order Brad Paisley�s new album, LOVE AND WAR, available 4/21: http://smarturl.it/bploveandwar",
+    "description": "Get the #1 hit Today instantly when you pre-order Brad Paisleys new album, LOVE AND WAR, available 4/21: http://smarturl.it/bploveandwar",
     "thumbnails": {
      "default": {
       "url": "https://i.ytimg.com/vi/PXVLtfJ5KQY/default.jpg",
@@ -625,7 +625,7 @@ KONFIG: {
     "liveBroadcastContent": "none",
     "localized": {
      "title": "Brad Paisley - Today",
-     "description": "Get the #1 hit �Today� instantly when you pre-order Brad Paisley�s new album, LOVE AND WAR, available 4/21: http://smarturl.it/bploveandwar"
+     "description": "Get the #1 hit Today instantly when you pre-order Brad Paisleys new album, LOVE AND WAR, available 4/21: http://smarturl.it/bploveandwar"
     }
    },
    "contentDetails": {
@@ -1461,7 +1461,7 @@ X-XSS-Protection: 1; mode=block
 Content-Type: application/json; charset=UTF-8
 
 mar 21, 2017 6:41:23 EM com.google.api.client.util.LoggingByteArrayOutputStream close
-KONFIG: Total: 8�534 bytes
+KONFIG: Total: 8 534 bytes
 mar 21, 2017 6:41:23 EM com.google.api.client.util.LoggingByteArrayOutputStream close
 KONFIG: {
  "items": [
@@ -1651,7 +1651,8 @@ KONFIG: {
     "videoId": "fDkXHWMNNmc"
    },
    "snippet": {
-    "title": "Jimmy Kimmel�s Oscars Monologue",
+
+    "title": "Jimmy Kimmels Oscars Monologue",
     "thumbnails": {
      "default": {
       "url": "https://i.ytimg.com/vi/fDkXHWMNNmc/default.jpg"
@@ -1741,7 +1742,8 @@ KONFIG: {
     "videoId": "PkjLMWS3U4Q"
    },
    "snippet": {
-    "title": "Jimmy Kimmel�s Tribute to Matt Damon at the Oscars",
+    "title": "Jimmy Kimmels Tribute to Matt Damon at the Oscars",
+    
     "thumbnails": {
      "default": {
       "url": "https://i.ytimg.com/vi/PkjLMWS3U4Q/default.jpg"
@@ -1874,7 +1876,8 @@ X-XSS-Protection: 1; mode=block
 Content-Type: application/json; charset=UTF-8
 
 mar 21, 2017 6:41:23 EM com.google.api.client.util.LoggingByteArrayOutputStream close
-KONFIG: Total: 115�504 bytes (logging first 16�384 bytes)
+
+KONFIG: Total: 115 504 bytes (logging first 16 384 bytes)
 mar 21, 2017 6:41:23 EM com.google.api.client.util.LoggingByteArrayOutputStream close
 KONFIG: {
  "kind": "youtube#videoListResponse",

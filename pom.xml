@@ -36,13 +36,12 @@
 	    <version>2.4.9</version>
 	</dependency>
 	
-	<!-- https://mvnrepository.com/artifact/net.sf.javamusictag/jid3lib -->
+	<!-- https://mvnrepository.com/artifact/com.mpatric/mp3agic -->
 	<dependency>
-	    <groupId>net.sf.javamusictag</groupId>
-	    <artifactId>jid3lib</artifactId>
-	    <version>0.5.4</version>
+	    <groupId>com.mpatric</groupId>
+	    <artifactId>mp3agic</artifactId>
+	    <version>0.9.0</version>
 	</dependency>
-	
   	
   	<!-- Google Client API -->
   	<dependency>

@@ -27,6 +27,7 @@
 
 package me.oskarmendel;
 
+import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.model.SearchResultModel;
 import me.oskarmendel.view.*;
 import java.io.IOException;
@@ -58,6 +59,7 @@ public class StageManager {
 	private static StageManager instance;
 	
 	private SearchResultModel searchResultModel;
+	private CurrentlyPlayingModel currentlyPlayingModel;
 	private Stage mainStage;
 	
 	/**
@@ -113,8 +115,14 @@ public class StageManager {
 		BorderPane rootLayout = (BorderPane) loadLayout(RapidTunesController.ROOT_LAYOUT);
 		
 		searchResultModel = new SearchResultModel();
+		currentlyPlayingModel = new CurrentlyPlayingModel();
+		
 		getNavigationController().initSearchResultModel(searchResultModel);
 		getSongBrowserController().initSearchResultModel(searchResultModel);
+		
+		getPlaylistController().initCurrentlyPlayingModel(currentlyPlayingModel);
+		getSongBrowserController().initCurrentlyPlayingModel(currentlyPlayingModel);
+		getSongController().initCurrentlyPlayingModel(currentlyPlayingModel);
 		
 		rootLayout.setTop(navigationLayout);
 		rootLayout.setLeft(playlistControlLayout);

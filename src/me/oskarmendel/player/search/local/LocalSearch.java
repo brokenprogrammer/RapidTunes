@@ -33,6 +33,7 @@ import java.util.List;
 
 import me.oskarmendel.entities.LocalSong;
 import me.oskarmendel.entities.Song;
+import me.oskarmendel.util.song.FileStripper;
 
 /**
  * Class for searching a local directory for sound files.
@@ -47,8 +48,10 @@ import me.oskarmendel.entities.Song;
 public class LocalSearch {
 
 	private ArrayList<Song> list = new ArrayList<Song>();
-	private final String[] format = { ".mp3", ".flac", ".wav" };
-
+	private static final String[] format = { ".mp3", ".flac", ".wav" };
+	
+	private FileStripper fileStripper = new FileStripper();
+	
 	public LocalSearch() {
 
 	}
@@ -82,9 +85,16 @@ public class LocalSearch {
 
 					if (directory.getName().endsWith(format[i])) {
 
-						LocalSong s = new LocalSong();
-
-						s.setTitle(directory.getName());
+						LocalSong s;
+						
+						if (i == 0) { //.mp3 format
+							s = fileStripper.stripMp3Song(directory);
+						} else if (i == 1) { //flac format
+							s = fileStripper.stripFlacSong(directory);
+						} else {
+							s = new LocalSong();
+							s.setTitle(directory.getName());
+						}
 
 						list.add(s);
 					}

@@ -35,9 +35,9 @@ import me.oskarmendel.entities.Song;
 
 /**
  * Model that manages search results for the application.
- * This allows mulitple controllers have access to the search results.
+ * This allows multiple controllers have access to the search results.
  * 
- * @author Oskar
+ * @author Oskar Mendel
  * @version 0.00.00
  * @name SearchResultModel.java
  */
