@@ -239,8 +239,6 @@ public class FlacParser {
 		int numberOfSamples = ((lastEight[3]&0x0f)<<30) + (lastEight[4]<<24) + 
         		(lastEight[5]<<16) + (lastEight[6]<<8) + lastEight[7];
         
-		System.out.println("Sample rate FlacParser: " + sampleRate);
-		
         flac.setSampleRate(sampleRate);
         flac.setNumChannels(numChannels);
         flac.setBitsPerSample(bitsPerSample);
