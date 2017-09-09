@@ -49,7 +49,7 @@ import me.oskarmendel.util.BinaryUtil;
 public class FlacParser {
 	
 	//The different blocks of content in the Flac file.
-	private static final byte STREAMINFO = 0;
+	private static final int STREAMINFO = 0;
 	private static final byte PADDING = 1;
 	private static final byte APPLICATION = 2;
 	private static final byte SEEKTABLE = 3;
