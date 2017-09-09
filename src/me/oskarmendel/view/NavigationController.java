@@ -29,14 +29,20 @@ package me.oskarmendel.view;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.IOException;
 import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import me.oskarmendel.entities.Song;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import me.oskarmendel.entities.songs.Song;
 import me.oskarmendel.model.SearchResultModel;
 import me.oskarmendel.player.search.SearchHandler;
 
@@ -55,6 +61,7 @@ public class NavigationController implements RapidTunesController {
 	@FXML private Button navFrontBtn;
 	@FXML private TextField navSearchField;
 	@FXML private Button navSearchBtn;
+	@FXML private MenuItem navEditSettings;
 	
 	private static final Logger LOGGER = Logger.getLogger(NavigationController.class.getName());
 	
@@ -111,6 +118,20 @@ public class NavigationController implements RapidTunesController {
 		        //populates the searchResultModel with results.
 		        searchResultModel.setSearchResultList(songList);
 		    }
+		});
+		
+		//Settings Button listener
+		navEditSettings.setOnAction(c -> {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/window/SettingsWindow.fxml"));
+				Stage stage = new Stage();
+	            stage.initModality(Modality.APPLICATION_MODAL);
+	            stage.setResizable(false);
+	            stage.setScene(new Scene(loader.load()));  
+	            stage.show();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			} 
 		});
 	}
 	

@@ -25,65 +25,67 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.entities;
+package me.oskarmendel.entities.playlist;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import me.oskarmendel.entities.songs.Song;
 
 /**
- * Object representing a song from the local hard drive
+ * Represents a playlist. A playlist is a collection of
+ * songs that can be created by the user.
  * 
- * @author Jesper Bergström
+ * @author Jesper Bergstrom
  * @version 0.00.00
- * @name Song.java
+ * @name Playlist.java
  */
-public class LocalSong extends Song{
+public class Playlist {
+	
+	private ArrayList<Song> songs;
+	private String name;
 	
 	/**
-	 * Set song title
+	 * Constructor that initializes a playlist. Sets name from parameter.
 	 * 
-	 * @param title
+	 * @param name
 	 */
-	@Override
-	public void setTitle(String title) {
-		this.title = title;
+	public Playlist(String name){
+		songs = new ArrayList<Song>();
+		this.name = name;
+	}
+	
+	
+	/**
+	 * Constructor that initializes a playlist.
+	 */
+	public Playlist(){
+		songs = new ArrayList<Song>();
 	}
 	
 	/**
-	 * Set song artist
+	 * Returns a list with all songs in the playlist.
 	 * 
-	 * @param artist
+	 * @return songs
 	 */
-	@Override
-	public void setArtist(String artist) {
-		this.artist = artist;
+	public List<Song> getSongs(){
+		return songs;
 	}
 	
 	/**
-	 * Set song album
+	 * Returns the name of the playlist.
 	 * 
-	 * @param album
+	 * @return name
 	 */
-	@Override
-	public void setAlbum(String album) {
-		this.album = album;
+	public String getName(){
+		return name;
 	}
 	
-	/**
-	 * Set song length
-	 * 
-	 * @param length
-	 */
-	@Override
-	public void setLength(String length) {
-		this.length = length;
-	}
-	
-	/**
-	 * Set song path
-	 * 
-	 * @param path
-	 */
-	@Override
-	public void setPath(String path) {
-		this.path = path;
-	}
+	public void loadPlaylist(){
 		
+	}
+	
+	public void savePlaylist(){
+		
+	}
 }

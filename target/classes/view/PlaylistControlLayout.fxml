@@ -25,7 +25,7 @@
          </VBox.margin>
       </Separator>
       <Label text="Playlists" />
-      <Button mnemonicParsing="false" text="New Playlist" />
+      <Button fx:id="playlistNew" mnemonicParsing="false" text="New Playlist" />
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
             <ImageView fx:id="playlistImg" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="NEVER" />

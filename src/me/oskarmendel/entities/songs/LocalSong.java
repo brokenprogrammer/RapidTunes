@@ -25,55 +25,65 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.player.search;
-
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import me.oskarmendel.entities.songs.Song;
+package me.oskarmendel.entities.songs;
 
 /**
- * Testing the SearchHandler class.
+ * Object representing a song from the local hard drive
  * 
  * @author Jesper Bergström
  * @version 0.00.00
- * @name SearchHandlerTest.java
+ * @name Song.java
  */
-public class SearchHandlerTest {
-
-	SearchHandler sh;
-
-	@Before
-	public void setUp() throws Exception {
-		sh = SearchHandler.getInstance();
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
+public class LocalSong extends Song{
+	
 	/**
-	 * Test method for
-	 * {@link me.oskarmendel.player.search.SearchHandler#search()}.
+	 * Set song title
+	 * 
+	 * @param title
 	 */
-	@Test
-	public final void testSearch() {
-
-		List<Song> songList = new ArrayList<Song>();
-
-		songList.addAll(sh.search("brad", "./demo"));
-
-		assertEquals("'brad' was searched for", "Total Breakdown", songList.get(0).getTitle());
-		assertEquals("first object is a 'LocalSong'", "class me.oskarmendel.entities.LocalSong",
-				songList.get(0).getClass().toString());
-		assertEquals("second object is a 'YouTubeSong'", "class me.oskarmendel.entities.YouTubeSong",
-				songList.get(1).getClass().toString());
+	@Override
+	public void setTitle(String title) {
+		this.title = title;
 	}
-
+	
+	/**
+	 * Set song artist
+	 * 
+	 * @param artist
+	 */
+	@Override
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+	
+	/**
+	 * Set song album
+	 * 
+	 * @param album
+	 */
+	@Override
+	public void setAlbum(String album) {
+		this.album = album;
+	}
+	
+	/**
+	 * Set song length
+	 * 
+	 * @param length
+	 */
+	@Override
+	public void setLength(String length) {
+		this.length = length;
+	}
+	
+	/**
+	 * Set song path
+	 * 
+	 * @param path
+	 */
+	@Override
+	public void setPath(String path) {
+		this.path = path;
+	}
+		
 }

@@ -35,7 +35,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import me.oskarmendel.entities.Song;
+import me.oskarmendel.entities.songs.Song;
 
 /**
  * 

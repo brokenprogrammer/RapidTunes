@@ -36,7 +36,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
-import me.oskarmendel.entities.Song;
+import me.oskarmendel.entities.songs.Song;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.model.SearchResultModel;
 

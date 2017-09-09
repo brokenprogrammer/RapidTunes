@@ -32,8 +32,8 @@ import java.util.List;
 
 import com.google.api.services.youtube.model.Video;
 
-import me.oskarmendel.entities.Song;
-import me.oskarmendel.entities.YouTubeSong;
+import me.oskarmendel.entities.songs.Song;
+import me.oskarmendel.entities.songs.YouTubeSong;
 import me.oskarmendel.player.search.local.LocalSearch;
 
 /**

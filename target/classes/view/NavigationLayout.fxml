@@ -57,7 +57,7 @@
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
-                  <MenuItem id="navEditSettings" text="Settings">
+                  <MenuItem fx:id="navEditSettings" text="Settings">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>

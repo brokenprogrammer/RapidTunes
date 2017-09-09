@@ -31,7 +31,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import me.oskarmendel.entities.Song;
+import me.oskarmendel.entities.songs.Song;
 
 /**
  * Model that manages search results for the application.

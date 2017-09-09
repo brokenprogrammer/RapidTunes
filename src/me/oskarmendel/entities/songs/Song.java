@@ -25,7 +25,7 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.entities;
+package me.oskarmendel.entities.songs;
 
 /**
  * Object representing a song

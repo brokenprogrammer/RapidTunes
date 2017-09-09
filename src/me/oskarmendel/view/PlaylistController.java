@@ -31,6 +31,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import me.oskarmendel.model.CurrentlyPlayingModel;
@@ -46,6 +47,7 @@ public class PlaylistController implements RapidTunesController {
 	@FXML private ImageView playlistImg;
 	@FXML private Label playlistSong;
 	@FXML private Label playlistArtist;
+	@FXML private Button playlistNew;
 	
 	private static final Logger LOGGER = Logger.getLogger(PlaylistController.class.getName());
 	
@@ -54,6 +56,11 @@ public class PlaylistController implements RapidTunesController {
 	@FXML 
 	public void initialize() {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
+		
+		// "New playlist" button listener.
+		playlistNew.setOnAction(c -> {
+			System.out.println("New playlist");
+		});
 	}
 	
 	/**

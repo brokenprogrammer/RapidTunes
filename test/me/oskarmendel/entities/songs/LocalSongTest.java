@@ -25,13 +25,16 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.entities;
+package me.oskarmendel.entities.songs;
 
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import me.oskarmendel.entities.songs.LocalSong;
+import me.oskarmendel.entities.songs.Song;
 
 
 /**
@@ -54,7 +57,7 @@ public class LocalSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.LocalSong#getTitle()}.
+	 * Test method for {@link me.oskarmendel.entities.songs.LocalSong#getTitle()}.
 	 */
 	@Test
 	public void testGetTitle() {
@@ -65,7 +68,7 @@ public class LocalSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.LocalSong#setTitle()}.
+	 * Test method for {@link me.oskarmendel.entities.songs.LocalSong#setTitle()}.
 	 */
 	@Test
 	public void testSetTitle() {
@@ -76,7 +79,7 @@ public class LocalSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.LocalSong#getArtist()}.
+	 * Test method for {@link me.oskarmendel.entities.songs.LocalSong#getArtist()}.
 	 */
 	@Test
 	public void testGetArtist() {
@@ -87,7 +90,7 @@ public class LocalSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.LocalSong#setArtist()}.
+	 * Test method for {@link me.oskarmendel.entities.songs.LocalSong#setArtist()}.
 	 */
 	@Test
 	public void testSetArtist() {
@@ -98,7 +101,7 @@ public class LocalSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.LocalSong#getAlbum()}.
+	 * Test method for {@link me.oskarmendel.entities.songs.LocalSong#getAlbum()}.
 	 */
 	@Test
 	public void testGetAlbum() {
@@ -109,7 +112,7 @@ public class LocalSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.LocalSong#setAlbum()}.
+	 * Test method for {@link me.oskarmendel.entities.songs.LocalSong#setAlbum()}.
 	 */
 	@Test
 	public void testSetAlbum() {
@@ -120,7 +123,7 @@ public class LocalSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.LocalSong#getLength()}.
+	 * Test method for {@link me.oskarmendel.entities.songs.LocalSong#getLength()}.
 	 */
 	@Test
 	public void testGetLength() {
@@ -131,7 +134,7 @@ public class LocalSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.LocalSong#setLength()}.
+	 * Test method for {@link me.oskarmendel.entities.songs.LocalSong#setLength()}.
 	 */
 	@Test
 	public void testSetLength() {
@@ -142,7 +145,7 @@ public class LocalSongTest {
 	}
 	
 	/**
-	 * Test method for {@link me.oskarmendel.entities.LocalSong#getPath()}.
+	 * Test method for {@link me.oskarmendel.entities.songs.LocalSong#getPath()}.
 	 */
 	@Test
 	public void testGetPath() {
@@ -153,7 +156,7 @@ public class LocalSongTest {
 	}
 	
 	/**
-	 * Test method for {@link me.oskarmendel.entities.LocalSong#setPath()}.
+	 * Test method for {@link me.oskarmendel.entities.songs.LocalSong#setPath()}.
 	 */
 	@Test
 	public void testSetPath() {

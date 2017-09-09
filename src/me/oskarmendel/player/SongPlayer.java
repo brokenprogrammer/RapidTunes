@@ -29,7 +29,7 @@ package me.oskarmendel.player;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import me.oskarmendel.entities.Song;
+import me.oskarmendel.entities.songs.Song;
 
 /**
  * Handles the playing of songs within the application. 
