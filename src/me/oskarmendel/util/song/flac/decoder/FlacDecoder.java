@@ -143,7 +143,7 @@ public class FlacDecoder {
 				} else if (blockType == FlacMetadataBlockType.APPLICATION.getType()) {
 					
 				} else if (blockType == FlacMetadataBlockType.SEEKTABLE.getType()) {
-					
+					this.seekTable = new SeekTable(data);
 				} else if (blockType == FlacMetadataBlockType.VORBIS_COMMENT.getType()) {
 					this.vorbisComments = new VorbisComments(data);
 				} else if (blockType == FlacMetadataBlockType.CUESHEET.getType()) {
@@ -154,6 +154,8 @@ public class FlacDecoder {
 				
 			} else {
 				finished = true;
+				
+				// Metadata end?
 			}
 		}
 	}

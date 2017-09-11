@@ -27,73 +27,74 @@
 
 package me.oskarmendel.util.song.flac;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-
 /**
- * Represents the seek table metadata block.
+ * Represents a seek point within a SeekTable.
+ * TODO: Javadoc for getters & setters.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name SeekTable.java
+ * @name SeekPoint.java
  */
-public class SeekTable {
-	
-	private ArrayList<SeekPoint> seekPoints;
+public class SeekPoint {
 	
 	/**
-	 * 
+	 * The sample number of the first sample in the target frame.
+	 * A value of 0xFFFFFFFFFFFFFFFF indicates a placeholder point.
+	 * Represented as 64 bit unsigned integer.
 	 */
-	public SeekTable() {
-		this.seekPoints = new ArrayList<>();
+	private long sampleNumber;
+	
+	/**
+	 * Offset specified in bytes from the start of the first frame.
+	 * Represented as 64 bit unsigned integer.
+	 */
+	private long byteOffset;
+	
+	/**
+	 * Number of samples in the target frame.
+	 * Represented as 16 bit unsigned integer.
+	 */
+	private int numberSamples;
+
+	/**
+	 * @return the sampleNumber
+	 */
+	public long getSampleNumber() {
+		return sampleNumber;
 	}
-	
+
 	/**
-	 * 
-	 * @param data
-	 * 
-	 * @throws IllegalArgumentException - 
+	 * @return the byteOffset
 	 */
-	public SeekTable(byte[] data) {
-		this.seekPoints = new ArrayList<>();
-		
-		// According to the Flac format specification:
-		// The number of seek points is implied by the metadata 
-		// header 'length' field, i.e. equal to length / 18.
-		if (data.length % 18 != 0) {
-			throw new IllegalArgumentException("Data contains invalid length of seekpoints.");
-		}
-		
-		try {
-		DataInput input = new DataInputStream(new ByteArrayInputStream(data));
-		
-		for (int i = 0; i < data.length; i+= 18) {
-			SeekPoint point = new SeekPoint();
-			point.setSampleNumber(input.readLong());
-			point.setByteOffset(input.readLong());
-			point.setNumberSamples(input.readInt());
-			this.seekPoints.add(point);
-		}
-		
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
+	public long getByteOffset() {
+		return byteOffset;
 	}
-	
+
 	/**
-	 * 
+	 * @return the numberSamples
 	 */
-	public void checkValues() {
-		//TODO: Implement..
+	public int getNumberSamples() {
+		return numberSamples;
 	}
-	
+
 	/**
-	 * Writes seek table metadata..
+	 * @param sampleNumber the sampleNumber to set
 	 */
-	public void write() {
-		//TODO: Implement..
+	public void setSampleNumber(long sampleNumber) {
+		this.sampleNumber = sampleNumber;
+	}
+
+	/**
+	 * @param byteOffset the byteOffset to set
+	 */
+	public void setByteOffset(long byteOffset) {
+		this.byteOffset = byteOffset;
+	}
+
+	/**
+	 * @param numberSamples the numberSamples to set
+	 */
+	public void setNumberSamples(int numberSamples) {
+		this.numberSamples = numberSamples;
 	}
 }

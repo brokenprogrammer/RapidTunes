@@ -27,73 +27,36 @@
 
 package me.oskarmendel.util.song.flac;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-
 /**
- * Represents the seek table metadata block.
+ * Represents a Frame from the Flac format.
+ * TODO: Javadoc..
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name SeekTable.java
+ * @name Frame.java
  */
-public class SeekTable {
+public class Frame {
 	
-	private ArrayList<SeekPoint> seekPoints;
+	private int frameIndex;
 	
-	/**
-	 * 
-	 */
-	public SeekTable() {
-		this.seekPoints = new ArrayList<>();
-	}
 	
-	/**
-	 * 
-	 * @param data
-	 * 
-	 * @throws IllegalArgumentException - 
-	 */
-	public SeekTable(byte[] data) {
-		this.seekPoints = new ArrayList<>();
-		
-		// According to the Flac format specification:
-		// The number of seek points is implied by the metadata 
-		// header 'length' field, i.e. equal to length / 18.
-		if (data.length % 18 != 0) {
-			throw new IllegalArgumentException("Data contains invalid length of seekpoints.");
-		}
-		
-		try {
-		DataInput input = new DataInputStream(new ByteArrayInputStream(data));
-		
-		for (int i = 0; i < data.length; i+= 18) {
-			SeekPoint point = new SeekPoint();
-			point.setSampleNumber(input.readLong());
-			point.setByteOffset(input.readLong());
-			point.setNumberSamples(input.readInt());
-			this.seekPoints.add(point);
-		}
-		
-		} catch(IOException e) {
-			e.printStackTrace();
-		}
-	}
+	private int syncCode;
+	private int blockingStrategy;
+	private int blockSize;
+	private int sampleRate;
+	private int channelAssignment;
+	private int sampleSize;
 	
 	/**
 	 * 
 	 */
-	public void checkValues() {
-		//TODO: Implement..
-	}
-	
-	/**
-	 * Writes seek table metadata..
-	 */
-	public void write() {
-		//TODO: Implement..
+	public Frame() {
+		this.frameIndex = -1;
+		this.syncCode = -1;
+		this.blockingStrategy = -1;
+		this.blockSize = -1;
+		this.sampleRate = -1;
+		this.channelAssignment = -1;
+		this.sampleRate = -1;
 	}
 }
