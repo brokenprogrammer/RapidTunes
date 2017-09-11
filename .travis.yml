@@ -2,5 +2,5 @@ language: java
 jdk: oraclejdk8
 
 script:
-	- mvn clean verify
-	- bash <(curl -s https://codecov.io/bash)
+- mvn clean verify
+- bash <(curl -s https://codecov.io/bash)
