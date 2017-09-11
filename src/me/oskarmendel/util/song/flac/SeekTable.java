@@ -27,6 +27,17 @@
 
 package me.oskarmendel.util.song.flac;
 
+/**
+ * Represents the seek table metadata block.
+ * 
+ * @author Oskar Mendel
+ * @version 0.00.00
+ * @name SeekTable.java
+ */
 public class SeekTable {
-
+	
+	public SeekTable() {
+		
+	}
+	
 }

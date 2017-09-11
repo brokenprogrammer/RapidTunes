@@ -36,7 +36,9 @@ import java.io.InputStream;
 
 import me.oskarmendel.util.BinaryUtil;
 import me.oskarmendel.util.song.flac.FlacFile;
+import me.oskarmendel.util.song.flac.SeekTable;
 import me.oskarmendel.util.song.flac.StreamInfo;
+import me.oskarmendel.util.song.flac.VorbisComments;
 import me.oskarmendel.util.song.flac.structure.FlacMetadataBlockType;
 
 /**
@@ -51,6 +53,8 @@ public class FlacDecoder {
 	private File file;
 	private FlacFile flacFile;
 	private StreamInfo streamInfo;
+	private SeekTable seekTable;
+	private VorbisComments vorbisComments;
 	
 	private FlacDecoder() {
 		
@@ -141,7 +145,7 @@ public class FlacDecoder {
 				} else if (blockType == FlacMetadataBlockType.SEEKTABLE.getType()) {
 					
 				} else if (blockType == FlacMetadataBlockType.VORBIS_COMMENT.getType()) {
-					
+					this.vorbisComments = new VorbisComments(data);
 				} else if (blockType == FlacMetadataBlockType.CUESHEET.getType()) {
 					
 				} else if (blockType == FlacMetadataBlockType.PICTURE.getType()) {
