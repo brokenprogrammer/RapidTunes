@@ -45,14 +45,14 @@ import com.google.api.services.youtube.model.Video;
  */
 public class YouTubeSearchTest {
 	
-	YouTubeSearch youtubeSearch;
+	//YouTubeSearch youtubeSearch;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		youtubeSearch = new YouTubeSearch();
+		//youtubeSearch = new YouTubeSearch();
 	}
 
 	/**
