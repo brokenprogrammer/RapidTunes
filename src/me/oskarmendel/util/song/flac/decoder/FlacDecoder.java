@@ -36,6 +36,7 @@ import java.io.InputStream;
 
 import me.oskarmendel.util.BinaryUtil;
 import me.oskarmendel.util.song.flac.FlacFile;
+import me.oskarmendel.util.song.flac.Frame;
 import me.oskarmendel.util.song.flac.SeekTable;
 import me.oskarmendel.util.song.flac.StreamInfo;
 import me.oskarmendel.util.song.flac.VorbisComments;
@@ -55,6 +56,8 @@ public class FlacDecoder {
 	private StreamInfo streamInfo;
 	private SeekTable seekTable;
 	private VorbisComments vorbisComments;
+	
+	private FrameDecoder frameDecoder;
 	
 	private FlacDecoder() {
 		
@@ -155,13 +158,34 @@ public class FlacDecoder {
 			} else {
 				finished = true;
 				
+				
 				// Metadata end?
+				//TODO: Initialize frame decoder here.. Then continue making a decoder 
+				// for the frames.
+				//TODO: Add SubFrame and SubFrameType classes and add functionality for decoding them as well.
+				//TODO: 1. Finalize Frame.java
+				//TODO: 2. Add FrameDecoder and functionality to decode frames.
+				//TODO: 3. Add SubFrame and SubFrameType then functionality for it in FrameDecoder.
+				
+				this.frameDecoder = new FrameDecoder(input, this.streamInfo.getBitsPerSample());
 			}
 		}
 	}
 	
 	public int readAudioBlock(int[][] samples, int offset) {
+		// 1. Check if FrameDecoder is not null.
+		// 2. Get next frame from FrameDecoder.
+		// 3. Return the frame blocksize, the samples are manipulated when reading the frame.
+		if (this.frameDecoder == null) {
+			throw new IllegalStateException("FrameDecoder has not yet been initialized. Needs to read Metadata Blocks first.");
+		}
 		
-		return 0;
+		Frame frame = this.frameDecoder.readFrame(samples, offset);
+		
+		if (frame == null) {
+			return 0;
+		} else {
+			return 0;//frame.getBlockSize();
+		}
 	}
 }

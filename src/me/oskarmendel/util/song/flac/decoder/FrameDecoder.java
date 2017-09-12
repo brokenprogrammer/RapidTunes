@@ -25,50 +25,42 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.util.song.flac;
+package me.oskarmendel.util.song.flac.decoder;
 
-import java.io.IOException;
 import java.io.InputStream;
 
+import me.oskarmendel.util.song.flac.Frame;
+
 /**
- * Represents a Frame from the Flac format.
- * TODO: Javadoc..
+ * Class to decode frames within a Flac format file.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name Frame.java
+ * @name FrameDecoder.java
  */
-public class Frame {
-	
-	private int frameIndex;
-	
-	
-	private int syncCode;
-	private int blockingStrategy;
-	private int blockSize;
-	private int sampleRate;
-	private int channelAssignment;
-	private int sampleSize;
+public class FrameDecoder {
 	
 	/**
 	 * 
 	 */
-	public Frame() {
-		this.frameIndex = -1;
-		this.syncCode = -1;
-		this.blockingStrategy = -1;
-		this.blockSize = -1;
-		this.sampleRate = -1;
-		this.channelAssignment = -1;
-		this.sampleRate = -1;
+	private InputStream input;
+	
+	/**
+	 * 
+	 */
+	private int bitsPerSample;
+	
+	/**
+	 * 
+	 * @param input
+	 * @param bitsPerSample
+	 */
+	public FrameDecoder(InputStream input, int bitsPerSample) {
+		this.input = input;
+		this.bitsPerSample = bitsPerSample;
 	}
 	
-	public Frame(InputStream input) throws IOException {
-		//TODO: Read an initialize Frame.
-		int temp = input.read();
-		
-		if (temp == -1) {
-			//TODO: Make this an invalid state.. return null;
-		}
+	public Frame readFrame(int[][] samples, int offset) {
+		return new Frame(); //TODO: Implement..
 	}
 }
