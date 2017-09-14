@@ -30,6 +30,8 @@ package me.oskarmendel.util.song.flac;
 import java.io.IOException;
 import java.io.InputStream;
 
+import me.oskarmendel.util.BinaryUtil;
+
 /**
  * Represents a Frame from the Flac format.
  * TODO: Javadoc..
@@ -64,11 +66,39 @@ public class Frame {
 	}
 	
 	public Frame(InputStream input) throws IOException {
-		//TODO: Read an initialize Frame.
+		//TODO: Add frame crc here as well.
 		int temp = input.read();
+		int n = input.read();
 		
 		if (temp == -1) {
 			//TODO: Make this an invalid state.. return null;
+			System.out.println("First byte was -1, Invalid state.");
 		}
+		
+		// FrameSize = -1
+		
+		
+		// Read sync code.
+		this.syncCode = (temp << 6) | (n >> 2);
+		if (this.syncCode != 0x3FFE) {
+			// TODO: Throw new error / exception.
+			System.out.println("Sync code didn't match");
+		}
+		
+		// Read next fields
+		if (BinaryUtil.getBitAtBE((byte) n, 7) != 0) {
+			//TODO: Throw exception, Reserved bit
+		}
+		
+		this.blockingStrategy = BinaryUtil.getBitAtBE((byte) n, 8);
+		
+		n = input.read();
+		
+		this.blockSize = (n >> 4);
+		this.sampleRate = (n & 0x0F);
+		
+		n = input.read();
+		
+		// Continue at: channelAssignment...
 	}
 }

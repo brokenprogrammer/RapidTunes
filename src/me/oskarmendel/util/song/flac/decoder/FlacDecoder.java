@@ -127,7 +127,7 @@ public class FlacDecoder {
 			int blockInt = input.read();
 			byte blockType = BinaryUtil.intToByte(blockInt);
 			
-			if (BinaryUtil.getBitAtBE(blockType,  0) == 0) {
+			if (BinaryUtil.getBitAtBE(blockType, 0) == 0) {
 				byte[] len = new byte[3];
 				BinaryUtil.readBytes(input, len);
 				
@@ -168,6 +168,7 @@ public class FlacDecoder {
 				//TODO: 3. Add SubFrame and SubFrameType then functionality for it in FrameDecoder.
 				
 				this.frameDecoder = new FrameDecoder(input, this.streamInfo.getBitsPerSample());
+				this.frameDecoder.readFrame(new int[12][12], 123);
 			}
 		}
 	}

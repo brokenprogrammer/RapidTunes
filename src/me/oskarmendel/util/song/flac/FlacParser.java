@@ -36,6 +36,7 @@ import java.io.InputStream;
 import java.util.Arrays;
 
 import me.oskarmendel.util.BinaryUtil;
+import me.oskarmendel.util.song.flac.decoder.FrameDecoder;
 
 /**
  * Class to parse files of the Flac format retrieving data such as meta tags.
@@ -131,14 +132,20 @@ public class FlacParser {
 	 */
 	private static void readMetadataBlocks(InputStream input, FlacFile flac) throws IOException {
 		boolean finished = false;
-		
+		boolean last = false;
 		while (!finished) {
 			int blockInt = input.read();
 			byte blockType = BinaryUtil.intToByte(blockInt);
 			
 			//Check the first bit in the block header to retrieve the 
 			//Last-metadata-block flag. If the flag is 1 then it is the last block.
-			if (BinaryUtil.getBitAtBE(blockType, 0) == 0) {
+			//if (BinaryUtil.getBitAtBE(blockType, 0) == 0) {
+				
+				if (BinaryUtil.getBitAtBE(blockType, 0) == 1) {
+					finished = true;
+					last = true;
+				}
+				
 				byte[] len = new byte[3]; //length of the data to be parsed.
 				BinaryUtil.readBytes(input, len);
 				
@@ -173,9 +180,23 @@ public class FlacParser {
 					readUnhandledMetadata();
 					break;
 				}
-			} else {
-				finished = true;
-			}
+			} //else {
+//				finished = true;
+//				
+//				System.out.println(Integer.toBinaryString(t));
+//				System.out.println(Integer.toBinaryString(input.read()));
+//				
+//				//TESTING CODE.
+//				//FrameDecoder frameDecoder = new FrameDecoder(input, 123);
+//				//frameDecoder.readFrame(new int[12][12], 123);
+//			}
+			
+		if (last) {
+			//System.out.println(Integer.toBinaryString(input.read()));
+			//System.out.println(Integer.toBinaryString(input.read()));
+			
+			FrameDecoder frameDecoder = new FrameDecoder(input, 123);
+			frameDecoder.readFrame(new int[12][12], 123);
 		}
 	}
 	

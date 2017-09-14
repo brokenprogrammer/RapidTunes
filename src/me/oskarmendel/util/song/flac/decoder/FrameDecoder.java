@@ -27,6 +27,7 @@
 
 package me.oskarmendel.util.song.flac.decoder;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import me.oskarmendel.util.song.flac.Frame;
@@ -61,6 +62,12 @@ public class FrameDecoder {
 	}
 	
 	public Frame readFrame(int[][] samples, int offset) {
+		try {
+			Frame frame = new Frame(this.input);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return new Frame(); //TODO: Implement..
 	}
 }
