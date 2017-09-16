@@ -43,7 +43,7 @@ import me.oskarmendel.util.BinaryUtil;
 public class Frame {
 	
 	private int frameIndex;
-	
+	private long sampleOffset;
 	
 	private int syncCode;
 	private int blockingStrategy;
@@ -62,7 +62,7 @@ public class Frame {
 		this.blockSize = -1;
 		this.sampleRate = -1;
 		this.channelAssignment = -1;
-		this.sampleRate = -1;
+		this.sampleSize = -1;
 	}
 	
 	public Frame(InputStream input) throws IOException {
@@ -99,6 +99,40 @@ public class Frame {
 		
 		n = input.read();
 		
-		// Continue at: channelAssignment...
+		this.channelAssignment = (n >> 4);
+		if (this.channelAssignment < 8) {
+			
+		} else if (8 <= this.channelAssignment && this.channelAssignment <= 10) {
+			
+		} else {
+			
+		}
+		
+		// Next 3 bits = sampleDepth = sampleSize?
+		this.sampleSize = (n & 0x0E);
+		
+		if (BinaryUtil.getBitAtBE((byte) n, 8) != 0) {
+			// Throw new exception, Reserved bit.
+		}
+		
+		long position = BinaryUtil.readUtf8Integer(input);
+		
+		if (this.blockingStrategy == 0) {
+			if ((position >>> 31) != 0) {
+				// Exception, Frame index is too large.
+			}
+			
+			this.frameIndex = (int) position;
+			this.sampleOffset = -1;
+		} else if (this.blockingStrategy == 1) {
+			this.sampleOffset = position;
+			this.frameIndex = -1;
+		} else {
+			// Assertion error.
+		}
+		
+		//TODO: Decode blockSize
+		//TODO: Decode sampleRate
+		//TODO: Get crc8
 	}
 }
