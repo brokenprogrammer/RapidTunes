@@ -29,7 +29,10 @@ package me.oskarmendel.player;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.web.WebView;
+import me.oskarmendel.entities.LocalSong;
 import me.oskarmendel.entities.Song;
+import me.oskarmendel.entities.YouTubeSong;
 
 /**
  * Handles the playing of songs within the application. 
@@ -43,12 +46,14 @@ public class SongPlayer {
 	
 	private Song currentSong;
 	
+	private WebView browserPlayer;
 	private MediaPlayer playerFX;
 	private Media currentSongFX;
 	
 	public SongPlayer() {
 		//currentSongFX = new Media("");
 		//playerFX = new MediaPlayer(currentSongFX);
+		browserPlayer = new WebView();
 	}
 	
 	/**
@@ -57,10 +62,18 @@ public class SongPlayer {
 	 * @throws - 
 	 */
 	public void play() {
-		if (this.playerFX != null && this.playerFX.getMedia() != null) {
-			playerFX.play();
-		} else {
-			//Throw exception, trying to play non existing song.
+		if (currentSong instanceof LocalSong) {
+			if (this.playerFX != null && this.playerFX.getMedia() != null) {
+				playerFX.play();
+			} else {
+				//Throw exception, trying to play non existing song.
+			}
+		} else if (currentSong instanceof YouTubeSong) {
+			this.browserPlayer.getEngine().load("https://www.youtube.com/embed/" + this.currentSong.getPath() + "?autoplay=1");
+			
+			//TODO: 1. Pause?
+			//TODO: 2. Volume?
+			//TODO: 3. Limit search to embeddable videos ?
 		}
 	}
 	
@@ -81,15 +94,20 @@ public class SongPlayer {
 	public void setSong(Song s) {
 		this.currentSong = s;
 		
-		//Disposes and handles old player.
+		// Disposes and handles old player.
 		if (this.playerFX != null) {
 			this.playerFX.stop();
 			this.playerFX.dispose();
 		}
 		
+		// Disposes the browser player.
+		this.browserPlayer.getEngine().load(null);
 		
-		this.currentSongFX = new Media(currentSong.getPath());
-		this.playerFX = new MediaPlayer(this.currentSongFX);
+		// If this is a local song object we initiate the media and mediaplayer accordingly
+		if (s instanceof LocalSong) {
+			this.currentSongFX = new Media(currentSong.getPath());
+			this.playerFX = new MediaPlayer(this.currentSongFX);
+		}
 	}
 	
 	/**
