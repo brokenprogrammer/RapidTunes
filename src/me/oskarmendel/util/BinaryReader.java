@@ -105,7 +105,7 @@ public class BinaryReader implements LowLevelInput{
 			this.readBytes++;
 			
 			if (t == -1) {
-				// End of file?
+				throw new IllegalStateException("Reached EOF.");
 			}
 			
 			this.bitBuffer = (this.bitBuffer << 8) | t;
@@ -117,7 +117,7 @@ public class BinaryReader implements LowLevelInput{
 		if (n != 32) {
 			res &= (1 << n) - 1;
 			if ((res >>> n) != 0) {
-				// Throw exception.
+				throw new IllegalStateException("Invalid result recieved when reading bits.");
 			}
 		}
 			
