@@ -142,8 +142,11 @@ public class YouTubeSearch {
             	
             	// Merge video IDs
                 for (SearchResult searchResult : searchResultList) {
-                    videoIds.add(searchResult.getId().getVideoId());
+                	if (searchResult.getId().getVideoId() != null) {
+                		videoIds.add(searchResult.getId().getVideoId());
+                	}
                 }
+                
                 Joiner stringJoiner = Joiner.on(',');
                 String videoId = stringJoiner.join(videoIds);
                 
