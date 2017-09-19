@@ -50,6 +50,10 @@ public class SongPlayer {
 	private MediaPlayer playerFX;
 	private Media currentSongFX;
 	
+	// TODO: Place this JS script at a better location?
+	String js = "var x = document.getElementsByClassName(\"ytp-play-button\");"
+			+   "x[0].click();";
+	
 	public SongPlayer() {
 		//currentSongFX = new Media("");
 		//playerFX = new MediaPlayer(currentSongFX);
@@ -69,11 +73,15 @@ public class SongPlayer {
 				//Throw exception, trying to play non existing song.
 			}
 		} else if (currentSong instanceof YouTubeSong) {
-			this.browserPlayer.getEngine().load("https://www.youtube.com/embed/" + this.currentSong.getPath() + "?autoplay=1");
+			//this.browserPlayer.getEngine().load("https://www.youtube.com/embed/" + this.currentSong.getPath() + "?autoplay=1");
+			if (this.browserPlayer.getEngine().getDocument() != null) {
+				this.browserPlayer.getEngine().executeScript(js);
+			} else {
+				// Throw exception trying to play non initialized web player.
+			}
 			
-			//TODO: 1. Pause?
-			//TODO: 2. Volume?
-			//TODO: 3. Limit search to embeddable videos ?
+			//TODO: 1. Volume?
+			//TODO: 2. Limit search to embeddable videos ?
 		}
 	}
 	
@@ -81,8 +89,14 @@ public class SongPlayer {
 	 * Pauses the current song if the player is is playing.
 	 */
 	public void pause() {
-		if (this.playerFX.getStatus() == MediaPlayer.Status.PLAYING) {
-			this.playerFX.pause();
+		if (this.currentSong instanceof LocalSong) {
+			if (this.playerFX.getStatus() == MediaPlayer.Status.PLAYING) {
+				this.playerFX.pause();
+			}
+		} else if (this.currentSong instanceof YouTubeSong) {
+			if (this.browserPlayer.getEngine().getDocument() != null) {
+				this.browserPlayer.getEngine().executeScript(js);
+			}
 		}
 	}
 	
@@ -107,6 +121,8 @@ public class SongPlayer {
 		if (s instanceof LocalSong) {
 			this.currentSongFX = new Media(currentSong.getPath());
 			this.playerFX = new MediaPlayer(this.currentSongFX);
+		} else if (s instanceof YouTubeSong) { // If the song is a Youtube song object we initiate the web player.
+			this.browserPlayer.getEngine().load("https://www.youtube.com/embed/" + this.currentSong.getPath() + "?autoplay=1");
 		}
 	}
 	
