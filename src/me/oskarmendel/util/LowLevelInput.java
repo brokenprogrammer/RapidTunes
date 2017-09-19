@@ -108,5 +108,5 @@ public interface LowLevelInput {
 	 * 
 	 * @return - Total number of bytes within the current input stream.
 	 */
-	public long getLength();
+	public int getLength();
 }
