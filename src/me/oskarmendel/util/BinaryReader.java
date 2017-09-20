@@ -167,6 +167,7 @@ public class BinaryReader implements LowLevelInput{
 	@Override
 	public void close() throws IOException {
 		input.close();
+		this.input = null;
 		this.bitBuffer = -1;
 		this.bitBufferLen = -1;
 		this.readBytes = -1;
@@ -202,12 +203,17 @@ public class BinaryReader implements LowLevelInput{
 	/**
 	 * Getter for the current bit position within the input stream.
 	 * This returns the number of read bits in the current byte.
+	 * If the BinaryReader is invalidated (closed) this will return -1 instead.
 	 * 
 	 * @return - Current bit position within the input stream.
 	 */
 	@Override
 	public int getBitPosition() {
-		return (this.bitBufferLen) % 8;
+		if (this.bitBufferLen != -1) {
+			return (-this.bitBufferLen) & 7;
+		} else {
+			return -1;
+		}
 	}
 
 	/**
@@ -220,10 +226,12 @@ public class BinaryReader implements LowLevelInput{
 	public int getLength() {
 		int len = -1;
 		
-		try {
-			len = input.available();
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (this.input != null) {
+			try {
+				len = input.available();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return len;
