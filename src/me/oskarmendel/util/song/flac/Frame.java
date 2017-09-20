@@ -30,17 +30,20 @@ package me.oskarmendel.util.song.flac;
 import java.io.IOException;
 import java.io.InputStream;
 
+import me.oskarmendel.util.BinaryReader;
 import me.oskarmendel.util.BinaryUtil;
 
 /**
  * Represents a Frame from the Flac format.
- * TODO: Javadoc..
+ * TODO: Javadoc.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
  * @name Frame.java
  */
 public class Frame {
+	
+	BinaryReader reader;
 	
 	private int frameIndex;
 	private long sampleOffset;
@@ -51,6 +54,20 @@ public class Frame {
 	private int sampleRate;
 	private int channelAssignment;
 	private int sampleSize;
+	
+	private static final int[] BLOCK_SIZE_CODES = {
+		-1, 192, 576, 1152, 2304, 4608, -1, -1, 256, 
+		512, 1024, 2048, 4096, 8192, 16384, 32768
+	};
+	
+	private static final int[] SAMPLE_SIZE_CODES = {
+		-1, 8, 12, -1, 16, 20, 24, -1 
+	};
+	
+	private static final int[] SAMPLE_RATE_CODES = {
+		-1, 88200, 176400, 192000, 8000, 16000, 
+		22050, 24000, 32000, 44100, 48000, 96000
+	};
 	
 	/**
 	 * 
@@ -67,8 +84,10 @@ public class Frame {
 	
 	public Frame(InputStream input) throws IOException {
 		//TODO: Add frame crc here as well.
-		int temp = input.read();
-		int n = input.read();
+		reader = new BinaryReader(input);
+		
+		int temp = reader.readByte();
+		//int n = input.read();
 		
 		if (temp == -1) {
 			//TODO: Make this an invalid state.. return null;
@@ -77,41 +96,34 @@ public class Frame {
 		
 		// FrameSize = -1
 		
-		
 		// Read sync code.
-		this.syncCode = (temp << 6) | (n >> 2);
+		this.syncCode = (temp << 6) | reader.readUnsignedInt(6);
 		if (this.syncCode != 0x3FFE) {
 			// TODO: Throw new error / exception.
 			System.out.println("Sync code didn't match");
 		}
 		
 		// Read next fields
-		if (BinaryUtil.getBitAtBE((byte) n, 7) != 0) {
+		if (reader.readUnsignedInt(1) != 0) {
 			//TODO: Throw exception, Reserved bit
 		}
 		
-		this.blockingStrategy = BinaryUtil.getBitAtBE((byte) n, 8);
+		this.blockingStrategy  = reader.readUnsignedInt(1);
+		this.blockSize 		   = reader.readUnsignedInt(4);
+		this.sampleRate 	   = reader.readUnsignedInt(4);
+		this.channelAssignment = reader.readUnsignedInt(4);
 		
-		n = input.read();
-		
-		this.blockSize = (n >> 4);
-		this.sampleRate = (n & 0x0F);
-		
-		n = input.read();
-		
-		this.channelAssignment = (n >> 4);
 		if (this.channelAssignment < 8) {
-			
+			//TODO
 		} else if (8 <= this.channelAssignment && this.channelAssignment <= 10) {
-			
+			//TODO
 		} else {
-			
+			//TODO
 		}
 		
-		// Next 3 bits = sampleDepth = sampleSize?
-		this.sampleSize = (n & 0x0E);
+		this.sampleSize = decodeSampleSize(reader.readUnsignedInt(3));
 		
-		if (BinaryUtil.getBitAtBE((byte) n, 8) != 0) {
+		if (reader.readUnsignedInt(1) != 0) {
 			// Throw new exception, Reserved bit.
 		}
 		
@@ -131,8 +143,100 @@ public class Frame {
 			// Assertion error.
 		}
 		
-		//TODO: Decode blockSize
-		//TODO: Decode sampleRate
+		this.blockSize = decodeBlockSize(this.blockSize);
+		this.sampleRate = decodeSampleRate(this.sampleRate);
+		
+		int crc8 = getCrc8();
+		if (reader.readUnsignedInt(8) != crc8) {
+			//Throw error, CRC8 missmatch.
+		}
+		
 		//TODO: Get crc8
+	}
+	
+	private int getCrc8() {
+		
+		return 0;
+	}
+	
+	/**
+	 * 
+	 * @param code
+	 * @return
+	 */
+	private int decodeSampleSize(int code) {
+		if ((code >>> 3) != 0)  {
+			// Throw illegalargumentexception
+		}
+		
+		if (code == 0) {
+			return -1;
+		} else {
+			int res = SAMPLE_SIZE_CODES[code];
+			
+			if (res == -1) {
+				// Throw error.
+			}
+			
+			return res;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param code
+	 * @return
+	 * @throws IOException
+	 */
+	private int decodeBlockSize(int code) throws IOException {
+		if ((code >>> 4) != 0) {
+			// Throw illegalargumentexception.
+		}
+		
+		switch (code) {
+		case 0:
+			// Throw error, Reserved bit.
+		case 6:
+			return reader.readUnsignedInt(8);
+		case 7:
+			return reader.readUnsignedInt(16);
+		default:
+			int res = BLOCK_SIZE_CODES[code];
+			
+			// TODO: Maybe check the res value?
+			
+			return res;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param code
+	 * @return
+	 * @throws IOException
+	 */
+	private int decodeSampleRate(int code) throws IOException {
+		if ((code >>> 4) != 0) {
+			// Throw illegalargumentexception.
+		}
+		
+		switch (code) {
+		case 0:
+			return -1;
+		case 12:
+			return reader.readUnsignedInt(8);
+		case 13:
+			return reader.readUnsignedInt(16);
+		case 14:
+			return reader.readUnsignedInt(16) * 10;
+		case 15:
+			// Throw error, invalid sample rate.
+		default:
+			int res = SAMPLE_RATE_CODES[code];
+			
+			// TODO: Maybe check the res value?
+			
+			return res;
+		}
 	}
 }
