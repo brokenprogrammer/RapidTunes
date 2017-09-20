@@ -146,17 +146,12 @@ public class Frame {
 		this.blockSize = decodeBlockSize(this.blockSize);
 		this.sampleRate = decodeSampleRate(this.sampleRate);
 		
-		int crc8 = getCrc8();
+		int crc8 = 0;
 		if (reader.readUnsignedInt(8) != crc8) {
 			//Throw error, CRC8 missmatch.
 		}
 		
 		//TODO: Get crc8
-	}
-	
-	private int getCrc8() {
-		
-		return 0;
 	}
 	
 	/**
@@ -238,5 +233,61 @@ public class Frame {
 			
 			return res;
 		}
+	}
+
+	/**
+	 * @return the frameIndex
+	 */
+	public int getFrameIndex() {
+		return frameIndex;
+	}
+
+	/**
+	 * @return the sampleOffset
+	 */
+	public long getSampleOffset() {
+		return sampleOffset;
+	}
+
+	/**
+	 * @return the syncCode
+	 */
+	public int getSyncCode() {
+		return syncCode;
+	}
+
+	/**
+	 * @return the blockingStrategy
+	 */
+	public int getBlockingStrategy() {
+		return blockingStrategy;
+	}
+
+	/**
+	 * @return the blockSize
+	 */
+	public int getBlockSize() {
+		return blockSize;
+	}
+
+	/**
+	 * @return the sampleRate
+	 */
+	public int getSampleRate() {
+		return sampleRate;
+	}
+
+	/**
+	 * @return the channelAssignment
+	 */
+	public int getChannelAssignment() {
+		return channelAssignment;
+	}
+
+	/**
+	 * @return the sampleSize
+	 */
+	public int getSampleSize() {
+		return sampleSize;
 	}
 }

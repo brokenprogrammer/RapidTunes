@@ -30,6 +30,7 @@ package me.oskarmendel.util.song.flac.decoder;
 import java.io.IOException;
 import java.io.InputStream;
 
+import me.oskarmendel.util.BinaryReader;
 import me.oskarmendel.util.song.flac.Frame;
 
 /**
@@ -53,21 +54,61 @@ public class FrameDecoder {
 	
 	/**
 	 * 
+	 */
+	private int currentBlockSize;
+	
+	/**
+	 * 
 	 * @param input
 	 * @param bitsPerSample
 	 */
 	public FrameDecoder(InputStream input, int bitsPerSample) {
 		this.input = input;
 		this.bitsPerSample = bitsPerSample;
+		this.currentBlockSize = -1;
 	}
 	
-	public Frame readFrame(int[][] samples, int offset) {
+	/**
+	 * 
+	 * @param outSamples
+	 * @param outOffset
+	 * 
+	 * @return
+	 */
+	public Frame readFrame(int[][] outSamples, int outOffset) {
+		Frame frame = null;
+		
 		try {
-			Frame frame = new Frame(this.input);
+			BinaryReader reader = new BinaryReader(this.input);
+			
+			long startByte = reader.getPosition(); //TODO: Will return 0 since we just created the BinaryReader..
+			frame = new Frame(this.input);
+			
+			if (frame == null) {
+				return null;
+			}
+			
+			if (frame.getSampleSize() != -1 && frame.getSampleSize() != this.bitsPerSample) {
+				//Throw error, Depth missmatch.
+			}
+			
+			// Check arguments.
+			this.currentBlockSize = frame.getBlockSize();
+			
+			//TODO: Check outSamples is not null and stuff..
+			
+			// Decode Subframes
+			
+			// Read padding and footer.
+			
+			// Handle frame size and misc.....
+			
+			return frame;
+			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new Frame(); //TODO: Implement..
+		
+		return frame;
 	}
 }
