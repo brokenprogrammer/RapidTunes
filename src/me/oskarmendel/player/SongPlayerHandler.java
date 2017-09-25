@@ -27,6 +27,11 @@
 
 package me.oskarmendel.player;
 
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.SourceDataLine;
+
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.web.WebView;
@@ -43,7 +48,7 @@ import me.oskarmendel.entities.YouTubeSong;
  * @version 0.00.00
  * @name SongPlayer.java
  */
-public class SongPlayer {
+public class SongPlayerHandler {
 	
 	private Song currentSong;
 	
@@ -55,7 +60,7 @@ public class SongPlayer {
 	String js = "var x = document.getElementsByClassName(\"ytp-play-button\");"
 			+   "x[0].click();";
 	
-	public SongPlayer() {
+	public SongPlayerHandler() {
 		//currentSongFX = new Media("");
 		//playerFX = new MediaPlayer(currentSongFX);
 		browserPlayer = new WebView();
@@ -120,9 +125,23 @@ public class SongPlayer {
 		
 		// If this is a local song object we initiate the media and mediaplayer accordingly
 		if (s instanceof LocalSong) {
-			
-			if (((LocalSong) s).getSongFormat() == LocalSongFormat.FLAC) {
+			LocalSong localSong = (LocalSong)s;
+			if (localSong.getSongFormat() == LocalSongFormat.FLAC) {
 				System.out.println("Flac song is being handled.");
+				System.out.println("Sample Rate: " + localSong.getSampleRate());
+				System.out.println("Num Channels: " + localSong.getNumChannels());
+				System.out.println("Bits per sample: " + localSong.getBitsPerSample());
+				
+				//TODO: Own player class for the individual players..
+				AudioFormat format = new AudioFormat(localSong.getSampleRate(), localSong.getBitsPerSample(), 
+						localSong.getNumChannels(), true, false);
+				
+				DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+				//SourceDataLine line = (SourceDataLine)AudioSystem.getLine(info);
+				
+				//line.open(format);
+				//line.start();
+				
 			} else {
 				this.currentSongFX = new Media(currentSong.getPath());
 				this.playerFX = new MediaPlayer(this.currentSongFX);

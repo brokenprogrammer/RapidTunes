@@ -39,7 +39,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import me.oskarmendel.entities.Song;
 import me.oskarmendel.model.CurrentlyPlayingModel;
-import me.oskarmendel.player.SongPlayer;
+import me.oskarmendel.player.SongPlayerHandler;
 
 /**
  * 
@@ -58,7 +58,7 @@ public class SongController implements RapidTunesController {
 	private static final Logger LOGGER = Logger.getLogger(SongController.class.getName());
 	
 	private CurrentlyPlayingModel currentlyPlayingModel;
-	private SongPlayer player;
+	private SongPlayerHandler player;
 	
 	@FXML 
 	public void initialize() {
@@ -135,6 +135,6 @@ public class SongController implements RapidTunesController {
 	 * Initializes the songPlayer connected to this controller.
 	 */
 	private void initSongPlayer() {
-		this.player = new SongPlayer();
+		this.player = new SongPlayerHandler();
 	}
 }
