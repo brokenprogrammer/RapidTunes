@@ -28,82 +28,13 @@
 package me.oskarmendel.entities;
 
 /**
- * Object representing a song from the local hard drive.
+ * Enum for the different types of supported local song formats.
  * 
- * @author Jesper Bergström
+ * @author Oskar Mendel
  * @version 0.00.00
- * @name LocalSong.java
+ * @name LocalSongFormat.java
  */
-public class LocalSong extends Song{
-	
-	private LocalSongFormat songFormat;
-	
-	/**
-	 * Setter for the song format of this local song.
-	 * 
-	 * @param songFormat - Target song format to set.
-	 */
-	public void setSongFormat(LocalSongFormat songFormat) {
-		this.songFormat = songFormat;
-	}
-	
-	/**
-	 * Getter for the song format of this local song.
-	 * 
-	 * @return - Song format of this local song.
-	 */
-	public LocalSongFormat getSongFormat() {
-		return this.songFormat;
-	}
-	
-	/**
-	 * Set song title
-	 * 
-	 * @param title
-	 */
-	@Override
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	
-	/**
-	 * Set song artist
-	 * 
-	 * @param artist
-	 */
-	@Override
-	public void setArtist(String artist) {
-		this.artist = artist;
-	}
-	
-	/**
-	 * Set song album
-	 * 
-	 * @param album
-	 */
-	@Override
-	public void setAlbum(String album) {
-		this.album = album;
-	}
-	
-	/**
-	 * Set song length
-	 * 
-	 * @param length
-	 */
-	@Override
-	public void setLength(String length) {
-		this.length = length;
-	}
-	
-	/**
-	 * Set song path
-	 * 
-	 * @param path
-	 */
-	@Override
-	public void setPath(String path) {
-		this.path = path;
-	}
-		
+public enum LocalSongFormat {
+	MP3,
+	FLAC
 }

@@ -31,6 +31,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.web.WebView;
 import me.oskarmendel.entities.LocalSong;
+import me.oskarmendel.entities.LocalSongFormat;
 import me.oskarmendel.entities.Song;
 import me.oskarmendel.entities.YouTubeSong;
 
@@ -119,8 +120,14 @@ public class SongPlayer {
 		
 		// If this is a local song object we initiate the media and mediaplayer accordingly
 		if (s instanceof LocalSong) {
-			this.currentSongFX = new Media(currentSong.getPath());
-			this.playerFX = new MediaPlayer(this.currentSongFX);
+			
+			if (((LocalSong) s).getSongFormat() == LocalSongFormat.FLAC) {
+				System.out.println("Flac song is being handled.");
+			} else {
+				this.currentSongFX = new Media(currentSong.getPath());
+				this.playerFX = new MediaPlayer(this.currentSongFX);
+			}
+			
 		} else if (s instanceof YouTubeSong) { // If the song is a Youtube song object we initiate the web player.
 			this.browserPlayer.getEngine().load("https://www.youtube.com/embed/" + this.currentSong.getPath() + "?autoplay=1");
 		}
