@@ -36,30 +36,64 @@ import me.oskarmendel.player.Player;
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name YoutubePlayer.java
+ * @name YouTubePlayer.java
  */
-public class YoutubePlayer extends Player{
+public class YouTubePlayer extends Player{
+	
+	// TODO: Place this JS script at a better location?
+	String js = "var x = document.getElementsByClassName(\"ytp-play-button\");"
+			+   "x[0].click();";
 	
 	/**
 	 * Enumeration describing the different statuses of {@link YoutubePlayer}}.
 	 */
 	public enum Status {
+		READY,
 		PAUSED,
 		PLAYING
 	};
 	
 	private WebView browserPlayer;
+	private Status status;
 	
+	/**
+	 * Default constructor for the YouTubePlayer initializing all 
+	 * fields to default values.
+	 */
+	public YouTubePlayer() {
+		browserPlayer = new WebView();
+		
+		this.status = Status.READY;
+		//TODO: Set volume, Set current time.. 
+	}
+	
+	/**
+	 * Starts playing the song or media. If the song was previously 
+	 * paused the song will resume the playback at where it was paused.
+	 */
 	@Override
 	public void play() {
-		// TODO Auto-generated method stub
-		
+		if (this.getStatus() == Status.READY || this.getStatus() == Status.PAUSED) {
+			if (this.browserPlayer.getEngine().getDocument() != null) {
+				this.browserPlayer.getEngine().executeScript(js);
+			} else {
+				// TODO: Throw exception trying to play non initialized web player.
+			}
+		}
 	}
 
+	/**
+	 * Pauses the playing of the song or media.
+	 */
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
-		
+		if (this.getStatus() == Status.PLAYING) {
+			if (this.browserPlayer.getEngine().getDocument() != null) {
+				this.browserPlayer.getEngine().executeScript(js);
+			} else {
+				// TODO: Throw exception trying to play non initialized web player.
+			}
+		}
 	}
 
 	@Override
@@ -91,5 +125,13 @@ public class YoutubePlayer extends Player{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
+	/**
+	 * Getter for the current status of the YouTubePlayer.
+	 * 
+	 * @return - Current status of the YouTubePlayer.
+	 */
+	public Status getStatus() {
+		return this.status;
+	}
 }
