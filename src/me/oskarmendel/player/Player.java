@@ -67,7 +67,7 @@ public abstract class Player {
 	 * 
 	 * @param seekTime - Requested playback time.
 	 */
-	public abstract void seek(long seekTime);
+	public abstract void seek(double seekTime);
 	
 	/**
 	 * Getter for the current playback time for the currently playing song
@@ -75,7 +75,7 @@ public abstract class Player {
 	 * 
 	 * @return - Current playback time of the currently playing media or song.
 	 */
-	public abstract long getCurrentTime();
+	public abstract double getCurrentTime();
 	
 	/**
 	 * Setter for the volume value of this player. Accepts a value between

@@ -103,13 +103,13 @@ public class YouTubePlayer extends Player{
 	}
 
 	@Override
-	public void seek(long seekTime) {
+	public void seek(double seekTime) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public long getCurrentTime() {
+	public double getCurrentTime() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

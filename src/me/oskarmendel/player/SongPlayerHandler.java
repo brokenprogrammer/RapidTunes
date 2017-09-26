@@ -46,7 +46,7 @@ import me.oskarmendel.entities.YouTubeSong;
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name SongPlayer.java
+ * @name SongPlayerHandler.java
  */
 public class SongPlayerHandler {
 	

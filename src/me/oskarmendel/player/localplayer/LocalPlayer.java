@@ -1,0 +1,207 @@
+/**
+ * RapidTunes.
+ * The music application to help you use all your music sources in one place.
+ *
+ * The MIT License (MIT)
+ *
+ * Copyright (C) 2016 The RapidTunes
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+package me.oskarmendel.player.localplayer;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.SourceDataLine;
+
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
+import me.oskarmendel.entities.LocalSong;
+import me.oskarmendel.entities.LocalSongFormat;
+import me.oskarmendel.entities.Song;
+import me.oskarmendel.player.Player;
+
+/**
+ * LocalPlayer that controls the playing of local content.
+ * TODO: Separate player for FLAC, handle the separate player in 
+ * 	play / pause etc..
+ * 
+ * @author Oskar Mendel
+ * @version 0.00.00
+ * @name LocalPlayer.java
+ */
+public class LocalPlayer extends Player {
+
+	/**
+	 * Enumeration describing the different statuses of {@link YoutubePlayer}}.
+	 */
+	public enum Status {
+		READY,
+		PAUSED,
+		PLAYING
+	};
+	
+	private MediaPlayer fxPlayer;
+	private Media currentMedia;
+	private Status status;
+	
+	/**
+	 * Default constructor for the LocalPlayer initializing all 
+	 * fields to default values.
+	 */
+	public LocalPlayer() {
+		this.status = Status.READY;
+	}
+	
+	/**
+	 * Starts playing the song or media. If the song was previously 
+	 * paused the song will resume the playback at where it was paused.
+	 */
+	@Override
+	public void play() {
+		if (this.getStatus() == Status.READY || this.getStatus() == Status.PAUSED) {
+			if (this.fxPlayer != null && this.fxPlayer.getMedia() != null) {
+				fxPlayer.play();
+			} else {
+				//Throw exception, trying to play non existing song.
+			}
+		}
+	}
+
+	/**
+	 * Pauses the playing of the song or media.
+	 */
+	@Override
+	public void pause() {
+		if (this.getStatus() == Status.PLAYING) {
+			if (this.fxPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+				this.fxPlayer.pause();
+			}
+		}
+	}
+
+	/**
+	 * Sets the currently playing song to the specified Song object.
+	 * 
+	 * @param song - Requested Song to play.
+	 */
+	@Override
+	public void setSong(Song song) {
+		LocalSong localSong = (LocalSong)song;
+		
+		// Disposes and handles old player.
+		if (this.fxPlayer != null) {
+			this.fxPlayer.stop();
+			this.fxPlayer.dispose();
+		}
+		
+		if (localSong.getSongFormat() == LocalSongFormat.FLAC) {
+			// Handle flac separately.
+			System.out.println("Flac song is being handled.");
+			System.out.println("Sample Rate: " + localSong.getSampleRate());
+			System.out.println("Num Channels: " + localSong.getNumChannels());
+			System.out.println("Bits per sample: " + localSong.getBitsPerSample());
+			
+			//TODO: Own player class for the individual players..
+			AudioFormat format = new AudioFormat(localSong.getSampleRate(), localSong.getBitsPerSample(), 
+					localSong.getNumChannels(), true, false);
+			
+			DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+			//SourceDataLine line = (SourceDataLine)AudioSystem.getLine(info);
+			
+			//line.open(format);
+			//line.start();
+		} else {
+			this.currentMedia = new Media(localSong.getPath());
+			this.fxPlayer = new MediaPlayer(this.currentMedia);
+		}
+	}
+
+	/**
+	 * Seeks the player to a new target time in seconds within the song or media. 
+	 * 
+	 * @param seekTime - Requested playback time in seconds.
+	 */
+	@Override
+	public void seek(double seekTime) {
+		if (this.fxPlayer != null) {
+			//TODO: Check that seekTime is in range.
+			this.fxPlayer.seek(Duration.seconds(seekTime));
+		} else {
+			// TODO: Create own RT exception type for this.
+		}
+	}
+
+	/**
+	 * Getter for the current playback time in seconds for the 
+	 * currently playing song or media.
+	 * 
+	 * @return - Current playback time of the currently playing media or song in seconds.
+	 */
+	@Override
+	public double getCurrentTime() {
+		if (this.fxPlayer != null) {
+			return this.fxPlayer.getCurrentTime().toSeconds();
+		} else {
+			// TODO: Create own RT exception type for this.
+			throw new IllegalStateException("fxPlayer not initialized.");
+		}
+	}
+
+	/**
+	 * Setter for the volume value of this player. Accepts a value between
+	 * 0 - 100.
+	 * 
+	 * @param volume - Target volume to set the player to.
+	 */
+	@Override
+	public void setVolume(int volume) {
+		if (volume < 0 || volume > 100) {
+			throw new IllegalArgumentException("Invalid volume value, specify a volume between 0-100.");
+		}
+		
+		if (this.fxPlayer != null) {
+			this.volume = volume;
+			this.fxPlayer.setVolume(this.volume / 100);
+		} else {
+			// Throw error trying to use non existing media player.
+		}
+	}
+
+	/**
+	 * Getter for the volume value of this player. 
+	 * 
+	 * @return - Current volume of this player.
+	 */
+	@Override
+	public int getVolume() {
+		return this.volume;
+	}
+	
+	/**
+	 * Getter for the current status of the LocalPlayer.
+	 * 
+	 * @return - Current status of the LocalPlayer.
+	 */
+	public Status getStatus() {
+		return this.status;
+	}
+}
