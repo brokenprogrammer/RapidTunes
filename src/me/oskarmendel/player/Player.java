@@ -56,6 +56,11 @@ public abstract class Player {
 	public abstract void pause();
 	
 	/**
+	 * Stops this player completley disposing media used by this player.
+	 */
+	public abstract void stop();
+	
+	/**
 	 * Sets the currently playing song to the specified Song object.
 	 * 
 	 * @param song - Requested Song to play.

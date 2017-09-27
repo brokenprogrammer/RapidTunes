@@ -29,6 +29,7 @@ package me.oskarmendel.player.youtubeplayer;
 
 import javafx.scene.web.WebView;
 import me.oskarmendel.entities.Song;
+import me.oskarmendel.entities.YouTubeSong;
 import me.oskarmendel.player.Player;
 
 /**
@@ -50,7 +51,8 @@ public class YouTubePlayer extends Player{
 	public enum Status {
 		READY,
 		PAUSED,
-		PLAYING
+		PLAYING,
+		STOPPED
 	};
 	
 	private WebView browserPlayer;
@@ -95,11 +97,28 @@ public class YouTubePlayer extends Player{
 			}
 		}
 	}
-
+	
+	/**
+	 * Stops this player completley disposing media used by this player.
+	 */
+	@Override
+	public void stop() {
+		// Disposes the browser player.
+		this.browserPlayer.getEngine().load(null);
+		
+		this.status = Status.STOPPED;
+	}
+	
+	/**
+	 * Sets the currently playing song to the specified Song object.
+	 * 
+	 * @param song - Requested Song to play.
+	 */
 	@Override
 	public void setSong(Song song) {
-		// TODO Auto-generated method stub
+		YouTubeSong youtubeSong = (YouTubeSong)song;
 		
+		this.browserPlayer.getEngine().load("https://www.youtube.com/embed/" + youtubeSong.getPath() + "?autoplay=1");
 	}
 
 	@Override

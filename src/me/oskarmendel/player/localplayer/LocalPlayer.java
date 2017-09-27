@@ -56,7 +56,8 @@ public class LocalPlayer extends Player {
 	public enum Status {
 		READY,
 		PAUSED,
-		PLAYING
+		PLAYING,
+		STOPPED
 	};
 	
 	private MediaPlayer fxPlayer;
@@ -96,6 +97,20 @@ public class LocalPlayer extends Player {
 				this.fxPlayer.pause();
 			}
 		}
+	}
+	
+	/**
+	 * Stops this player completley disposing media used by this player.
+	 */
+	@Override
+	public void stop() {
+		// Disposes and handles old player.
+		if (this.fxPlayer != null) {
+			this.fxPlayer.stop();
+			this.fxPlayer.dispose();
+		}
+		
+		this.status = Status.STOPPED;
 	}
 
 	/**
