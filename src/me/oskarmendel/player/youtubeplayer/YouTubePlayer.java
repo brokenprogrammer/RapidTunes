@@ -78,6 +78,8 @@ public class YouTubePlayer extends Player{
 		if (this.getStatus() == Status.READY || this.getStatus() == Status.PAUSED) {
 			if (this.browserPlayer.getEngine().getDocument() != null) {
 				this.browserPlayer.getEngine().executeScript(js);
+				
+				this.status = Status.PLAYING;
 			} else {
 				// TODO: Throw exception trying to play non initialized web player.
 			}
@@ -92,6 +94,8 @@ public class YouTubePlayer extends Player{
 		if (this.getStatus() == Status.PLAYING) {
 			if (this.browserPlayer.getEngine().getDocument() != null) {
 				this.browserPlayer.getEngine().executeScript(js);
+				
+				this.status = Status.PAUSED;
 			} else {
 				// TODO: Throw exception trying to play non initialized web player.
 			}
@@ -119,6 +123,8 @@ public class YouTubePlayer extends Player{
 		YouTubeSong youtubeSong = (YouTubeSong)song;
 		
 		this.browserPlayer.getEngine().load("https://www.youtube.com/embed/" + youtubeSong.getPath() + "?autoplay=1");
+		
+		this.status = Status.PLAYING;
 	}
 
 	@Override

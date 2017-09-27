@@ -81,6 +81,8 @@ public class LocalPlayer extends Player {
 		if (this.getStatus() == Status.READY || this.getStatus() == Status.PAUSED) {
 			if (this.fxPlayer != null && this.fxPlayer.getMedia() != null) {
 				fxPlayer.play();
+				
+				this.status = Status.PLAYING;
 			} else {
 				//Throw exception, trying to play non existing song.
 			}
@@ -95,6 +97,8 @@ public class LocalPlayer extends Player {
 		if (this.getStatus() == Status.PLAYING) {
 			if (this.fxPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
 				this.fxPlayer.pause();
+				
+				this.status = Status.PAUSED;
 			}
 		}
 	}
@@ -147,7 +151,10 @@ public class LocalPlayer extends Player {
 		} else {
 			this.currentMedia = new Media(localSong.getPath());
 			this.fxPlayer = new MediaPlayer(this.currentMedia);
+			this.fxPlayer.play();
 		}
+		
+		this.status = Status.PLAYING;
 	}
 
 	/**

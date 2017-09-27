@@ -53,6 +53,7 @@ public class SongPlayerHandler {
 	 * currently using.
 	 */
 	public enum Source {
+		NONE,
 		LOCAL,
 		YOUTUBE,
 		SPOTIFY,
@@ -79,6 +80,8 @@ public class SongPlayerHandler {
 //		browserPlayer = new WebView();
 		this.localPlayer = new LocalPlayer();
 		this.youtubePlayer = new YouTubePlayer();
+		
+		this.currentSource = Source.NONE;
 	}
 	
 	/**
@@ -131,8 +134,11 @@ public class SongPlayerHandler {
 //		}
 		
 		switch(this.currentSource) {
+		case NONE:
+			break;
 		case LOCAL:
 			this.localPlayer.pause();
+			System.out.println("Paused");
 			break;
 		case YOUTUBE:
 			this.youtubePlayer.pause();
@@ -154,6 +160,8 @@ public class SongPlayerHandler {
 		
 		// Pause currently used player.
 		switch(this.currentSource) {
+		case NONE:
+			break;
 		case LOCAL:
 			this.localPlayer.pause();
 			break;
@@ -167,12 +175,14 @@ public class SongPlayerHandler {
 		}
 		
 		// Set song and source for player to be used.
-		if (this.currentSong instanceof LocalSong) {
+		if (s instanceof LocalSong) {
 			this.currentSource = Source.LOCAL;
+			System.out.println("Setting localsong");
 			this.localPlayer.setSong(this.currentSong);
 			
-		} else if (this.currentSong instanceof YouTubeSong) {
+		} else if (s instanceof YouTubeSong) {
 			this.currentSource = Source.YOUTUBE;
+			System.out.println("Setting youtube song");
 			this.youtubePlayer.setSong(this.currentSong);
 		}
 		
