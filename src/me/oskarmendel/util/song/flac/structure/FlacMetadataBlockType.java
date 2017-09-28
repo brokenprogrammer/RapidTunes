@@ -25,55 +25,44 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.player.search;
-
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import me.oskarmendel.entities.Song;
+package me.oskarmendel.util.song.flac.structure;
 
 /**
- * Testing the SearchHandler class.
+ * Enum for the different types of metadata blocks within a file using 
+ * the Flac file format.
  * 
- * @author Jesper Bergström
+ * @author Oskar Mendel
  * @version 0.00.00
- * @name SearchHandlerTest.java
+ * @name FlacMetadataBlockType.java
  */
-public class SearchHandlerTest {
-
-	SearchHandler sh;
-
-	@Before
-	public void setUp() throws Exception {
-		sh = SearchHandler.getInstance();
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
+public enum FlacMetadataBlockType {
+	STREAMINFO(0),
+	PADDING(1),
+	APPLICATION(2),
+	SEEKTABLE(3),
+	VORBIS_COMMENT(4),
+	CUESHEET(5),
+	PICTURE(6);
+	
+	private final byte type;
+	
 	/**
-	 * Test method for
-	 * {@link me.oskarmendel.player.search.SearchHandler#search()}.
+	 * Creates a new Enum that should contain the specified
+	 * integer as it's type.
+	 * 
+	 * @param type - Metadata block identifier, later 
+	 * 				 converted from int to byte.
 	 */
-	@Test
-	public final void testSearch() {
-
-		//List<Song> songList = new ArrayList<Song>();
-
-		//songList.addAll(sh.search("brad", "./demo"));
-
-		//assertEquals("'brad' was searched for", "Total Breakdown", songList.get(0).getTitle());
-		//assertEquals("first object is a 'LocalSong'", "class me.oskarmendel.entities.LocalSong",
-		//		songList.get(0).getClass().toString());
-		//assertEquals("second object is a 'YouTubeSong'", "class me.oskarmendel.entities.YouTubeSong",
-				//songList.get(1).getClass().toString());
+	private FlacMetadataBlockType(int type) {
+		this.type = (byte)type;
 	}
-
+	
+	/**
+	 * Getter for the metadata block type.
+	 * 
+	 * @return - Metadata block type.
+	 */
+	public byte getType() {
+		return this.type;
+	}
 }

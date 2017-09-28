@@ -25,55 +25,42 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.player.search;
-
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import me.oskarmendel.entities.Song;
+package me.oskarmendel.util.song.flac.structure;
 
 /**
- * Testing the SearchHandler class.
+ * Enum for the different types of fields within the vorbis comment
+ * metadata block within a Flac file.
  * 
- * @author Jesper Bergström
+ * @author Oskar Mendel
  * @version 0.00.00
- * @name SearchHandlerTest.java
+ * @name FlacVorbisCommentFields.java
  */
-public class SearchHandlerTest {
-
-	SearchHandler sh;
-
-	@Before
-	public void setUp() throws Exception {
-		sh = SearchHandler.getInstance();
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
+public enum FlacVorbisCommentFields {
+	TITLE("TITLE"),
+	ALBUM("ALBUM"),
+	TRACKNUMBER("TRACKNUMBER"),
+	ARTIST("ARTIST"),
+	GENRE("GENRE"),
+	DATE("DATE");
+	
+	private final String name;
+	
 	/**
-	 * Test method for
-	 * {@link me.oskarmendel.player.search.SearchHandler#search()}.
+	 * Creates a new Enum that should contain the name of the
+	 * VorbisComment field.
+	 * 
+	 * @param name - Name identifier of the VorbisComment field.
 	 */
-	@Test
-	public final void testSearch() {
-
-		//List<Song> songList = new ArrayList<Song>();
-
-		//songList.addAll(sh.search("brad", "./demo"));
-
-		//assertEquals("'brad' was searched for", "Total Breakdown", songList.get(0).getTitle());
-		//assertEquals("first object is a 'LocalSong'", "class me.oskarmendel.entities.LocalSong",
-		//		songList.get(0).getClass().toString());
-		//assertEquals("second object is a 'YouTubeSong'", "class me.oskarmendel.entities.YouTubeSong",
-				//songList.get(1).getClass().toString());
+	private FlacVorbisCommentFields(String name) {
+		this.name = name;
 	}
-
+	
+	/**
+	 * Getter for the name of the VorbisComment field.
+	 * 
+	 * @return - Name of the VorbisComment field.
+	 */
+	public String getName() {
+		return this.name;
+	}
 }

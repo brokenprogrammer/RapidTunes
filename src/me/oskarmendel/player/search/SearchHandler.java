@@ -103,6 +103,7 @@ public class SearchHandler {
 			s.setTitle(ytList.get(i).getSnippet().getTitle());
 			s.setArtist(ytList.get(i).getSnippet().getChannelTitle());
 			s.setLength(ytList.get(i).getContentDetails().getDuration());
+			s.setPath(ytList.get(i).getId());
 			songList.add(s);
 		}
 

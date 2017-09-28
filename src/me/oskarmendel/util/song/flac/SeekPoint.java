@@ -25,51 +25,76 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.player.search;
-
-import static org.junit.Assert.*;
-
-import java.util.List;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import com.google.api.services.youtube.model.Video;
+package me.oskarmendel.util.song.flac;
 
 /**
+ * Represents a seek point within a SeekTable.
+ * TODO: Javadoc for getters & setters.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name YouTubeSearchTest.java
+ * @name SeekPoint.java
  */
-public class YouTubeSearchTest {
+public class SeekPoint {
 	
-	//YouTubeSearch youtubeSearch;
+	/**
+	 * The sample number of the first sample in the target frame.
+	 * A value of 0xFFFFFFFFFFFFFFFF indicates a placeholder point.
+	 * Represented as 64 bit unsigned integer.
+	 */
+	private long sampleNumber;
+	
+	/**
+	 * Offset specified in bytes from the start of the first frame.
+	 * Represented as 64 bit unsigned integer.
+	 */
+	private long byteOffset;
+	
+	/**
+	 * Number of samples in the target frame.
+	 * Represented as 16 bit unsigned integer.
+	 */
+	private int numberSamples;
 
 	/**
-	 * @throws java.lang.Exception
+	 * @return the sampleNumber
 	 */
-	@Before
-	public void setUp() throws Exception {
-		//youtubeSearch = new YouTubeSearch();
+	public long getSampleNumber() {
+		return sampleNumber;
 	}
 
 	/**
-	 * @throws java.lang.Exception
+	 * @return the byteOffset
 	 */
-	@After
-	public void tearDown() throws Exception {
+	public long getByteOffset() {
+		return byteOffset;
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.player.search.YouTubeSearch#search(java.lang.String)}.
+	 * @return the numberSamples
 	 */
-	@Test
-	public final void testSearch() {
-		//List<Video> youtubeResults = youtubeSearch.search("Jimmy Eat World");
-		//assertTrue("There were results from the youtube search.", youtubeResults.size() > 0);
-		//assertTrue("There were results from the youtube search.", youtubeResults.isEmpty() != true);
+	public int getNumberSamples() {
+		return numberSamples;
 	}
 
+	/**
+	 * @param sampleNumber the sampleNumber to set
+	 */
+	public void setSampleNumber(long sampleNumber) {
+		this.sampleNumber = sampleNumber;
+	}
+
+	/**
+	 * @param byteOffset the byteOffset to set
+	 */
+	public void setByteOffset(long byteOffset) {
+		this.byteOffset = byteOffset;
+	}
+
+	/**
+	 * @param numberSamples the numberSamples to set
+	 */
+	public void setNumberSamples(int numberSamples) {
+		this.numberSamples = numberSamples;
+	}
 }

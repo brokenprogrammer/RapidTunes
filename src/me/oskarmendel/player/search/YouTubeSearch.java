@@ -125,6 +125,8 @@ public class YouTubeSearch {
 			// Restrict the search results to only include videos. See:
             // https://developers.google.com/youtube/v3/docs/search/list#type
 			search.setType("video");
+            search.setVideoEmbeddable("true");
+            search.setVideoSyndicated("true");
 			
 			// To increase efficiency, only retrieve the fields that the
             // application uses.
@@ -142,8 +144,11 @@ public class YouTubeSearch {
             	
             	// Merge video IDs
                 for (SearchResult searchResult : searchResultList) {
-                    videoIds.add(searchResult.getId().getVideoId());
+                	if (searchResult.getId().getVideoId() != null) {
+                		videoIds.add(searchResult.getId().getVideoId());
+                	}
                 }
+                
                 Joiner stringJoiner = Joiner.on(',');
                 String videoId = stringJoiner.join(videoIds);
                 

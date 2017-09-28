@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.oskarmendel.entities.LocalSong;
+import me.oskarmendel.entities.LocalSongFormat;
 import me.oskarmendel.entities.Song;
 import me.oskarmendel.util.song.FileStripper;
 
@@ -89,8 +90,10 @@ public class LocalSearch {
 						
 						if (i == 0) { //.mp3 format
 							s = fileStripper.stripMp3Song(directory);
+							s.setSongFormat(LocalSongFormat.MP3);
 						} else if (i == 1) { //flac format
 							s = fileStripper.stripFlacSong(directory);
+							s.setSongFormat(LocalSongFormat.FLAC);
 						} else {
 							s = new LocalSong();
 							s.setTitle(directory.getName());

@@ -27,6 +27,166 @@
 
 package me.oskarmendel.util.song.flac.decoder;
 
-public class FlacDecoder {
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
+import me.oskarmendel.util.BinaryUtil;
+import me.oskarmendel.util.song.flac.FlacFile;
+import me.oskarmendel.util.song.flac.Frame;
+import me.oskarmendel.util.song.flac.SeekTable;
+import me.oskarmendel.util.song.flac.StreamInfo;
+import me.oskarmendel.util.song.flac.VorbisComments;
+import me.oskarmendel.util.song.flac.structure.FlacMetadataBlockType;
+
+/**
+ * Class to decode files using the Flac format.
+ * 
+ * @author Oskar Mendel
+ * @version 0.00.00
+ * @name FlacDecoder.java
+ */
+public class FlacDecoder {
+	
+	private File file;
+	private FlacFile flacFile;
+	private StreamInfo streamInfo;
+	private SeekTable seekTable;
+	private VorbisComments vorbisComments;
+	
+	private FrameDecoder frameDecoder;
+	
+	private FlacDecoder() {
+		
+	}
+	
+	/**
+	 * 
+	 * @param file
+	 * @param flac
+	 * @throws IOException 
+	 */
+	public FlacDecoder(File file, FlacFile flacFile) throws IOException {
+		this.file = file;
+		this.flacFile = flacFile;
+		
+		if (!isFlacFile(this.file)) {
+			throw new IllegalArgumentException("File type is not recognized as flac!");
+		}
+		
+		InputStream input = new BufferedInputStream(new FileInputStream(this.file));
+		
+		//Read the first block which is a 32 bit FLAC stream marker.
+		byte[] streamTag = new byte[4];
+		BinaryUtil.readBytes(input, streamTag);
+		
+		readMetadataBlocks(input);
+		
+		input.close();
+	}
+	
+
+	/**
+	 * 
+	 * @param file
+	 * @return
+	 * @throws IOException
+	 * @throws FileNotFoundException 
+	 */
+	public static boolean isFlacFile(File file) throws IOException, FileNotFoundException {
+		if(!file.exists()){
+			throw new IllegalArgumentException("Specified file doesn't exist!");
+		}
+		InputStream input = new BufferedInputStream(new FileInputStream(file)); //JAVADOC why this can give IOException
+		byte[] STREAMTAG = new byte[4];
+		input.read(STREAMTAG, 0, 4);
+		input.close();
+		
+		if(STREAMTAG[0] == (byte)'f' && STREAMTAG[1] == (byte)'L' &&
+		   STREAMTAG[2] == (byte)'a' && STREAMTAG[3] == (byte)'C') {
+			if (new String(STREAMTAG).equals("fLaC")) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * 
+	 * @param input
+	 * @throws IOException
+	 */
+	private void readMetadataBlocks(InputStream input) throws IOException {
+		boolean finished = false;
+		
+		while (!finished) {
+			int blockInt = input.read();
+			byte blockType = BinaryUtil.intToByte(blockInt);
+			
+			if (BinaryUtil.getBitAtBE(blockType, 0) == 0) {
+				byte[] len = new byte[3];
+				BinaryUtil.readBytes(input, len);
+				
+				//Parse the length of the data to an integer so array can be constructed.
+				int dataLength = (int)BinaryUtil.addBytesToIntBE(len[0], len[1], len[2]);
+				
+				//Create array to store data and read the data into it.
+				byte[] data =  new byte[dataLength];
+				BinaryUtil.readBytes(input, data);
+				
+				//Act depending on what type of block it is.
+				if (blockType == FlacMetadataBlockType.STREAMINFO.getType()) {
+					this.streamInfo = new StreamInfo(data);
+				} else if (blockType == FlacMetadataBlockType.PADDING.getType()) {
+					
+				} else if (blockType == FlacMetadataBlockType.APPLICATION.getType()) {
+					
+				} else if (blockType == FlacMetadataBlockType.SEEKTABLE.getType()) {
+					this.seekTable = new SeekTable(data);
+				} else if (blockType == FlacMetadataBlockType.VORBIS_COMMENT.getType()) {
+					this.vorbisComments = new VorbisComments(data);
+				} else if (blockType == FlacMetadataBlockType.CUESHEET.getType()) {
+					
+				} else if (blockType == FlacMetadataBlockType.PICTURE.getType()) {
+					
+				}
+				
+			} else {
+				finished = true;
+				
+				
+				// Metadata end?
+				//TODO: Initialize frame decoder here.. Then continue making a decoder 
+				// for the frames.
+				//TODO: Add SubFrame and SubFrameType classes and add functionality for decoding them as well.
+				//TODO: 1. Finalize Frame.java
+				//TODO: 2. Add FrameDecoder and functionality to decode frames.
+				//TODO: 3. Add SubFrame and SubFrameType then functionality for it in FrameDecoder.
+				
+				this.frameDecoder = new FrameDecoder(input, this.streamInfo.getBitsPerSample());
+				this.frameDecoder.readFrame(new int[12][12], 123);
+			}
+		}
+	}
+	
+	public int readAudioBlock(int[][] samples, int offset) {
+		// 1. Check if FrameDecoder is not null.
+		// 2. Get next frame from FrameDecoder.
+		// 3. Return the frame blocksize, the samples are manipulated when reading the frame.
+		if (this.frameDecoder == null) {
+			throw new IllegalStateException("FrameDecoder has not yet been initialized. Needs to read Metadata Blocks first.");
+		}
+		
+		Frame frame = this.frameDecoder.readFrame(samples, offset);
+		
+		if (frame == null) {
+			return 0;
+		} else {
+			return 0;//frame.getBlockSize();
+		}
+	}
 }

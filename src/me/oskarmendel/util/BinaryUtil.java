@@ -374,4 +374,41 @@ public class BinaryUtil {
 	public static String getBytesToString(byte[] b, int offset, int length) {
 		return new String(b, offset, length, Charset.forName("UTF-8"));
 	}
+	
+	/**
+	 * TODO: REIMPLEMENT THIS.
+	 * TODO: Add tests for this.
+	 * 
+	 * @param input
+	 * @return
+	 * @throws IOException
+	 */
+	public static long readUtf8Integer(InputStream input) throws IOException {
+		int head =  input.read();
+		int n = Integer.numberOfLeadingZeros(~(head << 24));
+		
+		//assert 0 <= n && n <=8
+		
+		if (n == 0) {
+			return head;
+		} else if (n == 1 || n == 8) {
+			// Throw new exception, Invalid UTF-8 number.
+			throw new IOException(); //TODO: Temp.
+		} else {
+			long res = head & (0x7F >>> n);
+			for (int i = 0; i < n - 1; i++) {
+				int t = input.read();
+				if ((t & 0xC0) != 0x80) {
+					// Throw exception, Invalid UTF-8 number.
+				}
+				res = (res << 6) | (t & 0x3F);
+			}
+			
+			if ((res >>> 36) != 0) {
+				// Throw new assertion error.
+			}
+			
+			return res;
+		}
+	}
 }

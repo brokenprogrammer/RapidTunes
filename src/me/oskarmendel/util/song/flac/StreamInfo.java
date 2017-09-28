@@ -33,6 +33,7 @@ import me.oskarmendel.util.BinaryUtil;
 
 /**
  * Represents the stream info metadata block.
+ * TODO: Javadoc for getters & setters.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
@@ -243,5 +244,131 @@ public class StreamInfo {
 	 */
 	public void write() {
 		//TODO: Implement.
+	}
+
+	/**
+	 * @return the minimumBlockSize
+	 */
+	public int getMinimumBlockSize() {
+		return minimumBlockSize;
+	}
+
+	/**
+	 * @return the maximumBlockSize
+	 */
+	public int getMaximumBlockSize() {
+		return maximumBlockSize;
+	}
+
+	/**
+	 * @return the minimumFrameSize
+	 */
+	public int getMinimumFrameSize() {
+		return minimumFrameSize;
+	}
+
+	/**
+	 * @return the maximumFrameSize
+	 */
+	public int getMaximumFrameSize() {
+		return maximumFrameSize;
+	}
+
+	/**
+	 * @return the sampleRate
+	 */
+	public int getSampleRate() {
+		return sampleRate;
+	}
+
+	/**
+	 * @return the numChannels
+	 */
+	public int getNumChannels() {
+		return numChannels;
+	}
+
+	/**
+	 * @return the bitsPerSample
+	 */
+	public int getBitsPerSample() {
+		return bitsPerSample;
+	}
+
+	/**
+	 * @return the numSamples
+	 */
+	public long getNumSamples() {
+		return numSamples;
+	}
+
+	/**
+	 * @return the md5Sig
+	 */
+	public byte[] getMd5Sig() {
+		return md5Sig;
+	}
+
+	/**
+	 * @param minimumBlockSize the minimumBlockSize to set
+	 */
+	public void setMinimumBlockSize(int minimumBlockSize) {
+		this.minimumBlockSize = minimumBlockSize;
+	}
+
+	/**
+	 * @param maximumBlockSize the maximumBlockSize to set
+	 */
+	public void setMaximumBlockSize(int maximumBlockSize) {
+		this.maximumBlockSize = maximumBlockSize;
+	}
+
+	/**
+	 * @param minimumFrameSize the minimumFrameSize to set
+	 */
+	public void setMinimumFrameSize(int minimumFrameSize) {
+		this.minimumFrameSize = minimumFrameSize;
+	}
+
+	/**
+	 * @param maximumFrameSize the maximumFrameSize to set
+	 */
+	public void setMaximumFrameSize(int maximumFrameSize) {
+		this.maximumFrameSize = maximumFrameSize;
+	}
+
+	/**
+	 * @param sampleRate the sampleRate to set
+	 */
+	public void setSampleRate(int sampleRate) {
+		this.sampleRate = sampleRate;
+	}
+
+	/**
+	 * @param numChannels the numChannels to set
+	 */
+	public void setNumChannels(int numChannels) {
+		this.numChannels = numChannels;
+	}
+
+	/**
+	 * @param bitsPerSample the bitsPerSample to set
+	 */
+	public void setBitsPerSample(int bitsPerSample) {
+		this.bitsPerSample = bitsPerSample;
+	}
+
+	/**
+	 * @param numSamples the numSamples to set
+	 */
+	public void setNumSamples(long numSamples) {
+		this.numSamples = numSamples;
+	}
+
+	/**
+	 * @param md5Sig the md5Sig to set
+	 */
+	public void setMd5Sig(byte[] md5Sig) {
+		this.md5Sig = md5Sig;
 	}
 }

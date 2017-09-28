@@ -25,55 +25,16 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.player.search;
-
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import me.oskarmendel.entities.Song;
+package me.oskarmendel.entities;
 
 /**
- * Testing the SearchHandler class.
+ * Enum for the different types of supported local song formats.
  * 
- * @author Jesper Bergström
+ * @author Oskar Mendel
  * @version 0.00.00
- * @name SearchHandlerTest.java
+ * @name LocalSongFormat.java
  */
-public class SearchHandlerTest {
-
-	SearchHandler sh;
-
-	@Before
-	public void setUp() throws Exception {
-		sh = SearchHandler.getInstance();
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	/**
-	 * Test method for
-	 * {@link me.oskarmendel.player.search.SearchHandler#search()}.
-	 */
-	@Test
-	public final void testSearch() {
-
-		//List<Song> songList = new ArrayList<Song>();
-
-		//songList.addAll(sh.search("brad", "./demo"));
-
-		//assertEquals("'brad' was searched for", "Total Breakdown", songList.get(0).getTitle());
-		//assertEquals("first object is a 'LocalSong'", "class me.oskarmendel.entities.LocalSong",
-		//		songList.get(0).getClass().toString());
-		//assertEquals("second object is a 'YouTubeSong'", "class me.oskarmendel.entities.YouTubeSong",
-				//songList.get(1).getClass().toString());
-	}
-
+public enum LocalSongFormat {
+	MP3,
+	FLAC
 }

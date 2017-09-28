@@ -104,6 +104,10 @@ public class FileStripper {
 		song.setPath(flacFile.toURI().toString());
 		song.setLength("");
 		
+		song.setSampleRate(flac.getSampleRate());
+		song.setNumChannels(flac.getNumChannels());
+		song.setBitsPerSample(flac.getBitsPerSample());
+		
 		return song;
 	}
 	

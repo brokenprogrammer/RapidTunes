@@ -28,13 +28,93 @@
 package me.oskarmendel.entities;
 
 /**
- * Object representing a song from the local hard drive
+ * Object representing a song from the local hard drive.
  * 
  * @author Jesper Bergström
  * @version 0.00.00
- * @name Song.java
+ * @name LocalSong.java
  */
 public class LocalSong extends Song{
+	
+	private LocalSongFormat songFormat;
+	
+	private int sampleRate;
+	
+	private int numChannels;
+	
+	private int bitsPerSample;
+	
+	/**
+	 * Setter for the song format of this local song.
+	 * 
+	 * @param songFormat - Target song format to set.
+	 */
+	public void setSongFormat(LocalSongFormat songFormat) {
+		this.songFormat = songFormat;
+	}
+	
+	/**
+	 * Getter for the song format of this local song.
+	 * 
+	 * @return - Song format of this local song.
+	 */
+	public LocalSongFormat getSongFormat() {
+		return this.songFormat;
+	}
+	
+	/**
+	 * Setter for the SampleRate of this local song.
+	 * 
+	 * @param sampleRate - Target SampleRate to set.
+	 */
+	public void setSampleRate(int sampleRate) {
+		this.sampleRate = sampleRate;
+	}
+	
+	/**
+	 * Getter for the SampleRate of this local song.
+	 * 
+	 * @return - SampleRate of this local song.
+	 */
+	public int getSampleRate() {
+		return this.sampleRate;
+	}
+	
+	/**
+	 * Setter for the Number of channels of this local song.
+	 * 
+	 * @param numChannels - Target number of channels to set.
+	 */
+	public void setNumChannels(int numChannels) {
+		this.numChannels = numChannels;
+	}
+	
+	/**
+	 * Getter for the number of channels in this local song.
+	 * 
+	 * @return - Number of channels in this local song.
+	 */
+	public int getNumChannels() {
+		return this.numChannels;
+	}
+	
+	/**
+	 * Setter for the bits per sample in this local song.
+	 * 
+	 * @param bitsPerSample - Target bits per sample to set.
+	 */
+	public void setBitsPerSample(int bitsPerSample) {
+		this.bitsPerSample = bitsPerSample;
+	}
+	
+	/**
+	 * Getter for the bits per sample in this local song.
+	 * 
+	 * @return - Bits per sample in this local song.
+	 */
+	public int getBitsPerSample() {
+		return this.bitsPerSample;
+	}
 	
 	/**
 	 * Set song title
