@@ -81,7 +81,6 @@ public class NavigationController implements RapidTunesController {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
 		
 		searchHistoryIterator = searchHistory.getIterator(true);
-		
 		this.navLogoIco.size(25.0);
 		this.navAccountBtnIco.size(20.0);
 		

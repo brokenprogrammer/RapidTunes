@@ -56,3 +56,40 @@
 #navAccountBtnIco {
 	-fx-text-fill: #FFF;
 }
+
+#playlistSelected {
+	-fx-background-color: #393e41;
+	-fx-fill: #c3c7ca; 
+	-fx-text-fill: #c3c7ca;
+	
+	-fx-padding: 10;
+}
+
+#playlistExploreIco {
+	-fx-text-fill: #c3c7ca;
+}
+
+#playlistSelectedText {
+	-fx-fill: #c3c7ca; 
+	-fx-text-fill: #c3c7ca;
+}
+
+#playlistNewBtnBG {
+	-fx-background-color: #393e41;
+	-fx-fill: #c3c7ca; 
+	-fx-text-fill: #c3c7ca;
+	
+	-fx-padding: 10;
+}
+
+#playlistNewBtn {
+	-fx-background-color: #393e41;
+	-fx-fill: #c3c7ca; 
+	-fx-text-fill: #c3c7ca;
+	
+	-fx-padding: 10;
+}
+
+#playlistNewBtnIco {
+	-fx-text-fill: #c3c7ca;
+}

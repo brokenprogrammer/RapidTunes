@@ -12,7 +12,7 @@
 <?import org.controlsfx.glyphfont.Glyph?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxWidth="Infinity" prefHeight="125.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.oskarmendel.view.NavigationController">
+<VBox maxWidth="Infinity" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.oskarmendel.view.NavigationController">
    <children>
       <MenuBar maxWidth="Infinity">
         <menus>
@@ -122,12 +122,7 @@
       </MenuBar>
       <HBox id="darkBG" prefWidth="200.0">
          <children>
-            <!-- <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/RTLOGO.png" />
-               </image>
-            </ImageView> -->
-            <HBox id="logoBG" prefWidth="150.0" prefHeight="80.0">
+            <HBox id="logoBG" prefWidth="200.0" prefHeight="80.0">
             	<VBox id="logoContainer" alignment="CENTER">
 	            	<children>
 			            <Text id="logoText" text="RapidTunes">
@@ -137,6 +132,9 @@
 			            </Text>
 			            <Glyph fx:id="navLogoIco" fontFamily="FontAwesome" icon="BOLT"/>
 	            	</children>
+	            	<HBox.margin>
+		                 <Insets left="25.0" />
+	                 </HBox.margin>
 	            </VBox>
             </HBox>
             <HBox>

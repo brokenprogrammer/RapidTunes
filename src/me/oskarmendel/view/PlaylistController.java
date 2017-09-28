@@ -30,7 +30,12 @@ package me.oskarmendel.view;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.controlsfx.glyphfont.Glyph;
+
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import me.oskarmendel.model.CurrentlyPlayingModel;
@@ -43,6 +48,9 @@ import me.oskarmendel.model.CurrentlyPlayingModel;
  */
 public class PlaylistController implements RapidTunesController {
 	
+	@FXML private Glyph playlistExploreIco;
+	@FXML private Button playlistNewBtn;
+	@FXML private Glyph playlistNewBtnIco;
 	@FXML private ImageView playlistImg;
 	@FXML private Label playlistSong;
 	@FXML private Label playlistArtist;
@@ -54,6 +62,16 @@ public class PlaylistController implements RapidTunesController {
 	@FXML 
 	public void initialize() {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
+		
+		this.playlistExploreIco.size(25);
+		this.playlistNewBtnIco.size(15);
+		
+		this.playlistNewBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e){
+				System.out.println("New Playlist");
+			}
+		});
 	}
 	
 	/**
