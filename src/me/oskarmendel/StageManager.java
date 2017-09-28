@@ -131,8 +131,8 @@ public class StageManager {
 		
 		Scene mainScene = new Scene(rootLayout);
 		
-		LOGGER.log(Level.FINE, "Loading stylesheet: " + RapidTunesController.DARK_STYLING);
-		mainScene.getStylesheets().add(getClass().getResource(RapidTunesController.DARK_STYLING).toString());
+		LOGGER.log(Level.FINE, "Loading stylesheet: " + RapidTunesController.DEFAULT_STYLING);
+		mainScene.getStylesheets().add(getClass().getResource(RapidTunesController.DEFAULT_STYLING).toString());
 		
 		mainStage.setScene(mainScene);
 		mainStage.setMinWidth(800);

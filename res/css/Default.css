@@ -1,0 +1,58 @@
+#logoBG {
+	-fx-background-color: #454a4d;
+	-fx-text-fill: #FFFFFF;
+}
+
+#logoContainer {
+	-fx-padding: 10;
+}
+
+#logoText {
+	-fx-fill: #FFFFFF;
+	-fx-text-fill: #FFFFFF;
+	
+	-fx-font-family: "Verdana";
+	-fx-font-weight: bold;
+}
+
+#navLogoIco {
+	-fx-text-fill: #FFF;
+}
+
+#darkBG {
+	-fx-background-color: #646b6f;
+	-fx-text-fill: #FFFFFF;
+}
+
+#navSearchField {
+	-fx-background-color: #454a4d;
+	-fx-text-fill: #5e6669;
+}
+
+#navSearchBtn {
+	-fx-background-color: #FFFFFF;
+	-fx-text-fill: #5e6669;
+}
+
+#navAccountName {
+	-fx-fill: #FFF; 
+	-fx-text-fill: #FFF;
+}
+
+#navAccountNameText {
+	-fx-fill: #FFF; 
+	-fx-text-fill: #FFF;
+}
+
+#navAccountBtn {
+	-fx-background-radius: 40px;
+	-fx-min-width: 40px;
+	-fx-max-width: 40px;
+	-fx-max-height: 40px;
+	
+	-fx-background-color: #454a4d;
+}
+
+#navAccountBtnIco {
+	-fx-text-fill: #FFF;
+}

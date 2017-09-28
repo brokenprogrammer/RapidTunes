@@ -29,6 +29,9 @@ package me.oskarmendel.view;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.controlsfx.glyphfont.Glyph;
+
 import java.util.List;
 
 import javafx.event.ActionEvent;
@@ -36,6 +39,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import me.oskarmendel.entities.Song;
 import me.oskarmendel.model.SearchResultModel;
 import me.oskarmendel.player.search.SearchHandler;
@@ -51,10 +56,14 @@ import me.oskarmendel.util.DoublyLinkedList;
  */
 public class NavigationController implements RapidTunesController {
 	
-	@FXML private Button navBackBtn;
-	@FXML private Button navFrontBtn;
+	//@FXML private Button navBackBtn;
+	//@FXML private Button navFrontBtn;
+	@FXML private Glyph navLogoIco;
 	@FXML private TextField navSearchField;
 	@FXML private Button navSearchBtn;
+	@FXML private Text navAccountName;
+	@FXML private Button navAccountBtn;
+	@FXML private Glyph navAccountBtnIco;
 	
 	private static final Logger LOGGER = Logger.getLogger(NavigationController.class.getName());
 	
@@ -73,27 +82,30 @@ public class NavigationController implements RapidTunesController {
 		
 		searchHistoryIterator = searchHistory.getIterator(true);
 		
-		//Back Button in the search bar.
-		navBackBtn.setOnAction(new EventHandler<ActionEvent>() {
-			@Override 
-			public void handle(ActionEvent e){
-				if (searchHistoryIterator.hasPrevious()) {
-					searchHistoryIterator.previous();
-					navSearchField.setText(searchHistoryIterator.current());
-				}
-			}
-		});
+		this.navLogoIco.size(25.0);
+		this.navAccountBtnIco.size(20.0);
 		
-		//Forward Button in the search bar.
-		navFrontBtn.setOnAction(new EventHandler<ActionEvent>() {
-			@Override 
-			public void handle(ActionEvent e){
-				if (searchHistoryIterator.hasNext()) {
-					searchHistoryIterator.next();
-					navSearchField.setText(searchHistoryIterator.current());
-				}
-			}
-		});
+		//Back Button in the search bar.
+//		navBackBtn.setOnAction(new EventHandler<ActionEvent>() {
+//			@Override 
+//			public void handle(ActionEvent e){
+//				if (searchHistoryIterator.hasPrevious()) {
+//					searchHistoryIterator.previous();
+//					navSearchField.setText(searchHistoryIterator.current());
+//				}
+//			}
+//		});
+//		
+//		//Forward Button in the search bar.
+//		navFrontBtn.setOnAction(new EventHandler<ActionEvent>() {
+//			@Override 
+//			public void handle(ActionEvent e){
+//				if (searchHistoryIterator.hasNext()) {
+//					searchHistoryIterator.next();
+//					navSearchField.setText(searchHistoryIterator.current());
+//				}
+//			}
+//		});
 		
 		//Search Button in the search bar.
 		navSearchBtn.setOnAction(new EventHandler<ActionEvent>() {
