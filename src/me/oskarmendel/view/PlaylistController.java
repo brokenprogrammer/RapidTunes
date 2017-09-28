@@ -32,11 +32,14 @@ import java.util.logging.Logger;
 
 import org.controlsfx.glyphfont.Glyph;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 
@@ -91,5 +94,14 @@ public class PlaylistController implements RapidTunesController {
 		//Bind currently playing song strings to the song title and artist label.
 		this.playlistSong.textProperty().bind(currentlyPlayingModel.getCurrentSongTitle());
 		this.playlistArtist.textProperty().bind(currentlyPlayingModel.getCurrentSongArtist());
+		
+		// Bind the playlistImage to the current thumbnail value.
+		currentlyPlayingModel.getCurrentSongThumbnail().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				playlistImg.setImage(new Image(newValue));
+			}
+			
+		});
 	}
 }

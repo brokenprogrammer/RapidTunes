@@ -104,6 +104,7 @@ public class SearchHandler {
 			s.setArtist(ytList.get(i).getSnippet().getChannelTitle());
 			s.setLength(ytList.get(i).getContentDetails().getDuration());
 			s.setPath(ytList.get(i).getId());
+			s.setThumbnailURL(ytList.get(i).getSnippet().getThumbnails().getDefault().getUrl());
 			songList.add(s);
 		}
 

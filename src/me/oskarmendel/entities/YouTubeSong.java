@@ -35,7 +35,9 @@ package me.oskarmendel.entities;
  * @name Song.java
  */
 public class YouTubeSong extends Song{
-
+	
+	private String thumbnailURL;
+	
 	/**
 	 * Set song title
 	 * 
@@ -86,4 +88,17 @@ public class YouTubeSong extends Song{
 		this.path = path;
 	}
 
+	/**
+	 * @return the thumbnailURL
+	 */
+	public String getThumbnailURL() {
+		return thumbnailURL;
+	}
+
+	/**
+	 * @param thumbnailURL the thumbnailURL to set
+	 */
+	public void setThumbnailURL(String thumbnailURL) {
+		this.thumbnailURL = thumbnailURL;
+	}
 }
