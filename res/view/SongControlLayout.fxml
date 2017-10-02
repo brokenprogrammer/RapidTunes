@@ -1,26 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.oskarmendel.view.SongController">
+<?import org.controlsfx.glyphfont.Glyph?>
+
+<HBox alignment="CENTER" prefHeight="50.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.oskarmendel.view.SongController">
    <children>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label fx:id="songSong" text="Song Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="songArtist" text="Artist Name" />
+         </children>
+      </VBox>
       <Button fx:id="songPrev" mnemonicParsing="false" text="&lt;">
          <HBox.margin>
-            <Insets left="10.0" />
+            <Insets />
          </HBox.margin>
       </Button>
-      <Button fx:id="songPlay" mnemonicParsing="false" text="Play">
+      <Button fx:id="songPlay" mnemonicParsing="false">
+      	<graphic>
+        	<Glyph fx:id="songPlayIco" fontFamily="FontAwesome" icon="PLAY"/>
+        </graphic>
          <HBox.margin>
-            <Insets left="10.0" />
+            <Insets />
          </HBox.margin>
       </Button>
       <Button fx:id="songNext" mnemonicParsing="false" text="&gt;">
          <HBox.margin>
-            <Insets left="10.0" />
+            <Insets />
          </HBox.margin>
       </Button>
       <Label text=" 0:00">
@@ -28,9 +44,9 @@
             <Insets left="10.0" />
          </HBox.margin>
       </Label>
-      <ProgressBar prefHeight="18.0" prefWidth="400.0" progress="0.0">
+      <ProgressBar prefHeight="18.0" prefWidth="200.0" progress="0.0">
          <HBox.margin>
-            <Insets left="10.0" />
+            <Insets />
          </HBox.margin>
       </ProgressBar>
       <Label text="9:99">

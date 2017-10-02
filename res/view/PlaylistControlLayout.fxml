@@ -44,8 +44,6 @@
             		<Image url="@../img/RTLogo.png"></Image>
             	</image>
             </ImageView>
-            <Label fx:id="playlistSong" text="Song Name" />
-            <Label fx:id="playlistArtist" text="Artist Name" />
          </children>
       </VBox>
    </children>

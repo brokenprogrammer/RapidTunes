@@ -55,8 +55,6 @@ public class PlaylistController implements RapidTunesController {
 	@FXML private Button playlistNewBtn;
 	@FXML private Glyph playlistNewBtnIco;
 	@FXML private ImageView playlistImg;
-	@FXML private Label playlistSong;
-	@FXML private Label playlistArtist;
 	
 	private static final Logger LOGGER = Logger.getLogger(PlaylistController.class.getName());
 	
@@ -90,10 +88,6 @@ public class PlaylistController implements RapidTunesController {
 		}
 		
 		this.currentlyPlayingModel = currentlyPlayingModel;
-		
-		//Bind currently playing song strings to the song title and artist label.
-		this.playlistSong.textProperty().bind(currentlyPlayingModel.getCurrentSongTitle());
-		this.playlistArtist.textProperty().bind(currentlyPlayingModel.getCurrentSongArtist());
 		
 		// Bind the playlistImage to the current thumbnail value.
 		currentlyPlayingModel.getCurrentSongThumbnail().addListener(new ChangeListener<String>() {
