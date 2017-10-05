@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3d96f2e8-6990-42a7-82d7-58160fb761ef" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/view/MenuBarLayout.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/oskarmendel/view/MenuBarController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/oskarmendel/RapidTunes.class" afterPath="$PROJECT_DIR$/target/classes/me/oskarmendel/RapidTunes.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/oskarmendel/StageManager.class" afterPath="$PROJECT_DIR$/target/classes/me/oskarmendel/StageManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/oskarmendel/util/SongParser.class" afterPath="$PROJECT_DIR$/target/classes/me/oskarmendel/util/SongParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/oskarmendel/view/NavigationController$1.class" afterPath="$PROJECT_DIR$/target/classes/me/oskarmendel/view/NavigationController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/oskarmendel/view/NavigationController.class" afterPath="$PROJECT_DIR$/target/classes/me/oskarmendel/view/NavigationController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/oskarmendel/view/PlaylistController.class" afterPath="$PROJECT_DIR$/target/classes/me/oskarmendel/view/PlaylistController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/oskarmendel/view/RapidTunesController.class" afterPath="$PROJECT_DIR$/target/classes/me/oskarmendel/view/RapidTunesController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/me/oskarmendel/view/SongController.class" afterPath="$PROJECT_DIR$/target/classes/me/oskarmendel/view/SongController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RapidTunes-log.txt" afterPath="$PROJECT_DIR$/RapidTunes-log.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/view/NavigationLayout.fxml" afterPath="$PROJECT_DIR$/res/view/NavigationLayout.fxml" />
-    </list>
+    <list default="true" id="3d96f2e8-6990-42a7-82d7-58160fb761ef" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -360,12 +347,12 @@
       <option name="presentableId" value="Default" />
       <updated>1507215810183</updated>
       <workItem from="1507215815710" duration="1271000" />
-      <workItem from="1507226760311" duration="1676000" />
+      <workItem from="1507226760311" duration="2139000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2947000" />
+    <option name="totallyTimeSpent" value="3410000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1046" extended-state="6" />
