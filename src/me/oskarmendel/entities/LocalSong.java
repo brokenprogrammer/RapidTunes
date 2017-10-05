@@ -27,6 +27,10 @@
 
 package me.oskarmendel.entities;
 
+import org.controlsfx.glyphfont.Glyph;
+
+import javafx.scene.paint.Color;
+
 /**
  * Object representing a song from the local hard drive.
  * 
@@ -43,6 +47,15 @@ public class LocalSong extends Song{
 	private int numChannels;
 	
 	private int bitsPerSample;
+	
+	/**
+	 * Default constructor for a LocalSong. Initializes the graphic
+	 * object needed for a displaying a LocalSong.
+	 */
+	public LocalSong() {
+		this.graphic = Glyph.create("FontAwesome|HDD_ALT");
+		this.graphic.size(20);
+	}
 	
 	/**
 	 * Setter for the song format of this local song.

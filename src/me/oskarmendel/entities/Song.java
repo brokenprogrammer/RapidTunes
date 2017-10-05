@@ -27,6 +27,8 @@
 
 package me.oskarmendel.entities;
 
+import org.controlsfx.glyphfont.Glyph;
+
 /**
  * Object representing a song
  * 
@@ -41,6 +43,8 @@ public abstract class Song {
 	protected String album;
 	protected String length;
 	protected String path;
+	
+	protected Glyph graphic;
 	
 	public Song(){
 		
@@ -125,4 +129,22 @@ public abstract class Song {
 	 * @param path
 	 */
 	abstract void setPath(String path);
+	
+	/**
+	 * Setter for the Graphic of this Song.
+	 * 
+	 * @param glyph - Glyph graphic to set for this Song.
+	 */
+	public void setGraphic(Glyph glyph) {
+		this.graphic = glyph;
+	}
+	
+	/**
+	 * Getter for the Graphic of this Song.
+	 * 
+	 * @return - Glyph graphic for this Song.
+	 */
+	public Glyph getGraphic() {
+		return this.graphic;
+	}
 }

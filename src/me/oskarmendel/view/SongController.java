@@ -50,7 +50,7 @@ import me.oskarmendel.player.SongPlayerHandler;
 
 /**
  * 
- * @author Oskar
+ * @author Oskar Mendel
  * @version 0.00.00
  * @name SongController.java
  */

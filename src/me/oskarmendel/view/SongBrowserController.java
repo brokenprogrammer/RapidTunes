@@ -30,12 +30,17 @@ package me.oskarmendel.view;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.controlsfx.glyphfont.Glyph;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Callback;
 import me.oskarmendel.entities.Song;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.model.SearchResultModel;
@@ -47,7 +52,7 @@ import me.oskarmendel.model.SearchResultModel;
  * TODO: http://stackoverflow.com/questions/11180884/how-to-populate-a-tableview-that-is-defined-in-an-fxml-file-that-is-designed-in
  * TODO: https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/table-view.htm#CJAGAAEE
  * 
- * @author Oskar
+ * @author Oskar Mendel
  * @version 0.00.00
  * @name SongBrowserController.java
  */
@@ -58,7 +63,7 @@ public class SongBrowserController implements RapidTunesController {
 	@FXML private TableColumn<Song, String> songListSong;
 	@FXML private TableColumn<Song, String> songListPublisher;
 	@FXML private TableColumn<Song, String> songListTime;
-	@FXML private TableColumn<Song, String> songListSource;
+	@FXML private TableColumn<Song, Glyph> songListSource;
 	
 	private static final Logger LOGGER = Logger.getLogger(SongBrowserController.class.getName());
 	
@@ -90,7 +95,25 @@ public class SongBrowserController implements RapidTunesController {
 		songListSong.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getTitle()));
 		songListPublisher.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getArtist()));
 		songListTime.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getLength()));
-		songListSource.setCellValueFactory(c -> new SimpleStringProperty("YT"));
+		songListSource.setCellValueFactory(new PropertyValueFactory<>("graphic"));
+		songListSource.setCellFactory(new Callback<TableColumn<Song, Glyph>, TableCell<Song, Glyph>>() {
+			@Override
+			public TableCell<Song, Glyph> call(TableColumn<Song, Glyph> param) {
+				TableCell<Song, Glyph> cell = new TableCell<Song, Glyph>() {
+					@Override
+					public void updateItem(Glyph item, boolean empty) {
+						if (item == null || empty) {
+							this.setGraphic(null);
+						} else {
+							this.setGraphic(item);
+							this.setStyle("-fx-text-fill: #FF0000;");
+						}
+					}
+				};
+				return cell;
+			}
+			
+		});
 		
 		//Define an on-click for the table rows.
 		songList.setRowFactory(tv -> {
