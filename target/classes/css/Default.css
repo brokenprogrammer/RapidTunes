@@ -93,3 +93,14 @@
 #playlistNewBtnIco {
 	-fx-text-fill: #c3c7ca;
 }
+
+#songSong {
+	-fx-fill: #FFFFFF;
+	-fx-text-fill: #FFFFFF;
+	-fx-font-weight: bold;
+}
+
+#songArtist {
+	-fx-fill: #FFFFFF;
+	-fx-text-fill: #FFFFFF;
+}

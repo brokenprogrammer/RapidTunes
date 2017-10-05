@@ -11,7 +11,7 @@
 
 <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.oskarmendel.view.SongController">
    <children>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+      <VBox id="logoBG" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
          <children>
             <Label fx:id="songSong" text="Song Name">
                <font>
@@ -21,7 +21,16 @@
             <Label fx:id="songArtist" text="Artist Name" />
          </children>
       </VBox>
-      <Button fx:id="songPrev" mnemonicParsing="false" text="&lt;">
+      <HBox prefHeight="50.0">
+		  <HBox.margin>
+		      <Insets left="25.0" />
+		      <Insets right="25.0" />
+	      </HBox.margin>
+	  </HBox>
+      <Button fx:id="songPrev" mnemonicParsing="false">
+      	<graphic>
+      		<Glyph fx:id="songPrevIco" fontFamily="FontAwesome" icon="BACKWARD"/>
+      	</graphic>
          <HBox.margin>
             <Insets />
          </HBox.margin>
@@ -34,36 +43,50 @@
             <Insets />
          </HBox.margin>
       </Button>
-      <Button fx:id="songNext" mnemonicParsing="false" text="&gt;">
+      <Button fx:id="songNext" mnemonicParsing="false">
+      	<graphic>
+      		<Glyph fx:id="songNextIco" fontFamily="FontAwesome" icon="FORWARD"/>
+      	</graphic>
          <HBox.margin>
             <Insets />
          </HBox.margin>
       </Button>
-      <Label text=" 0:00">
+      <Label fx:id="songCurrentTime" text=" 0:00">
          <HBox.margin>
             <Insets left="10.0" />
          </HBox.margin>
       </Label>
-      <ProgressBar prefHeight="18.0" prefWidth="200.0" progress="0.0">
+      <ProgressBar fx:id="songProgressBar" HBox.hgrow="ALWAYS" prefHeight="18.0" prefWidth="200.0" progress="0.0">
          <HBox.margin>
             <Insets />
          </HBox.margin>
       </ProgressBar>
-      <Label text="9:99">
+      <Label fx:id="songTotalTime" text="9:99">
          <HBox.margin>
             <Insets left="10.0" />
          </HBox.margin>
       </Label>
-      <CheckBox mnemonicParsing="false" text="Shfl">
-         <HBox.margin>
-            <Insets left="10.0" />
-         </HBox.margin>
-      </CheckBox>
-      <CheckBox mnemonicParsing="false" text="Rept" />
-      <Slider prefHeight="14.0" prefWidth="80.0">
-         <HBox.margin>
-            <Insets left="10.0" />
-         </HBox.margin>
-      </Slider>
+      <HBox alignment="CENTER" prefHeight="50.0">
+      	<children>
+	      <CheckBox fx:id="songShuffle" mnemonicParsing="false">
+	         <graphic>
+	      		<Glyph fx:id="songShuffleIco" fontFamily="FontAwesome" icon="RANDOM"/>
+	      	 </graphic>
+	         <HBox.margin>
+	            <Insets left="10.0" />
+	         </HBox.margin>
+	      </CheckBox>
+	      <CheckBox fx:id="songRepeat" mnemonicParsing="false">
+	      	 <graphic>
+	      		<Glyph fx:id="songRepeatIco" fontFamily="FontAwesome" icon="REPEAT"/>
+	      	 </graphic>
+	      </CheckBox>
+	      <Slider fx:id="songVolume" prefHeight="14.0" prefWidth="80.0">
+	         <HBox.margin>
+	            <Insets left="10.0" />
+	         </HBox.margin>
+	      </Slider>
+      	</children>
+      </HBox>
    </children>
 </HBox>

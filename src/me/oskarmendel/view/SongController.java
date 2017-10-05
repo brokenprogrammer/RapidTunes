@@ -40,7 +40,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Slider;
 import me.oskarmendel.entities.Song;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.player.SongPlayerHandler;
@@ -55,10 +58,27 @@ public class SongController implements RapidTunesController {
 	
 	@FXML private Label songSong;
 	@FXML private Label songArtist;
+	
 	@FXML private Button songPrev;
+	@FXML private Glyph songPrevIco;
+	
 	@FXML private Button songPlay;
 	@FXML private Glyph songPlayIco;
+	
 	@FXML private Button songNext;
+	@FXML private Glyph songNextIco;
+	
+	@FXML private Label songCurrentTime;
+	@FXML private ProgressBar songProgressBar;
+	@FXML private Label songTotalTime;
+	
+	@FXML private CheckBox songShuffle;
+	@FXML private Glyph songShuffleIco;
+	
+	@FXML private CheckBox songRepeat;
+	@FXML private Glyph songRepeatIco;
+	
+	@FXML private Slider songVolume;
 	
 	private boolean playing = false;
 	
@@ -70,6 +90,8 @@ public class SongController implements RapidTunesController {
 	@FXML 
 	public void initialize() {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
+		
+		songProgressBar.setMaxWidth(Double.MAX_VALUE);
 		
 		initSongPlayer();
 		
