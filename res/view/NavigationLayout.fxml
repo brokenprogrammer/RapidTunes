@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.input.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<VBox maxWidth="Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.oskarmendel.view.NavigationController">
+<?import org.controlsfx.glyphfont.Glyph?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxWidth="Infinity" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.oskarmendel.view.NavigationController">
    <children>
       <MenuBar maxWidth="Infinity">
         <menus>
@@ -114,12 +120,67 @@
           </Menu>
         </menus>
       </MenuBar>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox id="darkBG" prefWidth="200.0">
          <children>
-            <Button fx:id="navBackBtn" mnemonicParsing="false" text="&lt;" />
-            <Button fx:id="navFrontBtn" mnemonicParsing="false" text="&gt;" />
-            <TextField fx:id="navSearchField" text="Search.." />
-            <Button fx:id="navSearchBtn" mnemonicParsing="false" text="Search" />
+            <HBox id="logoBG" prefWidth="200.0" prefHeight="80.0">
+            	<VBox id="logoContainer" alignment="CENTER">
+	            	<children>
+			            <Text id="logoText" text="RapidTunes">
+				            <font>
+			                	<Font size="20.0" />
+			                </font>
+			            </Text>
+			            <Glyph fx:id="navLogoIco" fontFamily="FontAwesome" icon="BOLT"/>
+	            	</children>
+	            	<HBox.margin>
+		                 <Insets left="25.0" />
+	                 </HBox.margin>
+	            </VBox>
+            </HBox>
+            <HBox>
+            	<HBox.margin>
+                  <Insets left="25.0" />
+                  <Insets right="25.0" />
+               </HBox.margin>
+            </HBox>
+            <TextField fx:id="navSearchField" text="Search..">
+               <HBox.margin>
+                  <Insets left="25.0" />
+                  <Insets top="25.0" />
+               </HBox.margin></TextField>
+            <Button fx:id="navSearchBtn" mnemonicParsing="false" text="Search">
+            	<graphic>
+            		<Glyph fontFamily="FontAwesome" icon="SEARCH"/>
+            	</graphic>
+               <HBox.margin>
+                  <Insets left="15.0" />
+                  <Insets top="25.0" />
+               </HBox.margin></Button>
+               <Pane HBox.hgrow="ALWAYS" />
+            <HBox id="darkBG" prefHeight="50.0">
+               <children>
+                  <Text fx:id="navAccountName" strokeType="OUTSIDE" strokeWidth="0.0" text="Unknown">
+                     <HBox.margin>
+                        <Insets top="25.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="navAccountBtn" mnemonicParsing="false">
+                  	<graphic>
+            			<Glyph fx:id="navAccountBtnIco" fontFamily="FontAwesome" icon="USER"/>
+            		</graphic>
+            		<HBox.margin>
+            			<Insets left="5.0" />
+                  		<Insets top="15.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets right="5.0"/>
+               </HBox.margin>
+            </HBox>
          </children>
       </HBox>
    </children>

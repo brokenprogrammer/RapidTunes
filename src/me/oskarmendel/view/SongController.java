@@ -30,6 +30,9 @@ package me.oskarmendel.view;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.controlsfx.glyphfont.FontAwesome;
+import org.controlsfx.glyphfont.Glyph;
+
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.property.ObjectProperty;
@@ -37,21 +40,45 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Slider;
 import me.oskarmendel.entities.Song;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.player.SongPlayerHandler;
 
 /**
  * 
- * @author Oskar
+ * @author Oskar Mendel
  * @version 0.00.00
  * @name SongController.java
  */
 public class SongController implements RapidTunesController {
 	
+	@FXML private Label songSong;
+	@FXML private Label songArtist;
+	
 	@FXML private Button songPrev;
+	@FXML private Glyph songPrevIco;
+	
 	@FXML private Button songPlay;
+	@FXML private Glyph songPlayIco;
+	
 	@FXML private Button songNext;
+	@FXML private Glyph songNextIco;
+	
+	@FXML private Label songCurrentTime;
+	@FXML private ProgressBar songProgressBar;
+	@FXML private Label songTotalTime;
+	
+	@FXML private CheckBox songShuffle;
+	@FXML private Glyph songShuffleIco;
+	
+	@FXML private CheckBox songRepeat;
+	@FXML private Glyph songRepeatIco;
+	
+	@FXML private Slider songVolume;
 	
 	private boolean playing = false;
 	
@@ -63,6 +90,8 @@ public class SongController implements RapidTunesController {
 	@FXML 
 	public void initialize() {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
+		
+		songProgressBar.setMaxWidth(Double.MAX_VALUE);
 		
 		initSongPlayer();
 		
@@ -88,11 +117,11 @@ public class SongController implements RapidTunesController {
 			@Override
 			public void handle(ActionEvent event) {
 				if (playing) {
-					songPlay.setText("Play");
+					songPlayIco.setIcon(FontAwesome.Glyph.PLAY);
 					player.pause();
 					playing = false;
 				} else {
-					songPlay.setText("Pause");
+					songPlayIco.setIcon(FontAwesome.Glyph.PAUSE);
 					player.play();
 					playing = true;
 				}
@@ -114,6 +143,10 @@ public class SongController implements RapidTunesController {
 		
 		this.currentlyPlayingModel = currentlyPlayingModel;
 		
+		//Bind currently playing song strings to the song title and artist label.
+		this.songSong.textProperty().bind(currentlyPlayingModel.getCurrentSongTitle());
+		this.songArtist.textProperty().bind(currentlyPlayingModel.getCurrentSongArtist());
+		
 		currentlyPlayingModel.getCurrentSong().addListener(new InvalidationListener() {
 			@Override
 			public void invalidated(Observable observable) {
@@ -125,7 +158,7 @@ public class SongController implements RapidTunesController {
 				player.play();
 				
 				playing = true;
-				songPlay.setText("Pause");
+				songPlayIco.setIcon(FontAwesome.Glyph.PAUSE);
 			}
 			
 		});

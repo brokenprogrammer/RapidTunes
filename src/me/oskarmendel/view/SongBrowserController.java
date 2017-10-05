@@ -30,12 +30,18 @@ package me.oskarmendel.view;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.controlsfx.glyphfont.Glyph;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.util.Callback;
 import me.oskarmendel.entities.Song;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.model.SearchResultModel;
@@ -47,7 +53,7 @@ import me.oskarmendel.model.SearchResultModel;
  * TODO: http://stackoverflow.com/questions/11180884/how-to-populate-a-tableview-that-is-defined-in-an-fxml-file-that-is-designed-in
  * TODO: https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/table-view.htm#CJAGAAEE
  * 
- * @author Oskar
+ * @author Oskar Mendel
  * @version 0.00.00
  * @name SongBrowserController.java
  */
@@ -90,7 +96,31 @@ public class SongBrowserController implements RapidTunesController {
 		songListSong.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getTitle()));
 		songListPublisher.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getArtist()));
 		songListTime.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getLength()));
-		songListSource.setCellValueFactory(c -> new SimpleStringProperty("YT"));
+		songListSource.setCellValueFactory(new PropertyValueFactory<>("graphic"));
+		songListSource.setCellFactory(new Callback<TableColumn<Song, String>, TableCell<Song, String>>() {
+			@Override
+			public TableCell<Song, String> call(TableColumn<Song, String> param) {
+				
+				TableCell<Song, String> cell = new TableCell<Song, String>() {
+					@Override
+					public void updateItem(String item, boolean empty) {
+						if (item == null || empty) {
+							this.setGraphic(null);
+						} else {
+							Glyph graphic = Glyph.create(item);
+							
+							if (item.contains("YOUTUBE")) {
+								graphic.setColor(Color.RED);
+							}
+							
+							graphic.size(20);
+							this.setGraphic(graphic);
+						}
+					}
+				};	
+				return cell;
+			}
+		});
 		
 		//Define an on-click for the table rows.
 		songList.setRowFactory(tv -> {

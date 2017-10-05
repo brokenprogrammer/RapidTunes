@@ -32,6 +32,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import me.oskarmendel.entities.Song;
+import me.oskarmendel.entities.YouTubeSong;
 
 /**
  * Model that manages the currently played song for the application.
@@ -46,6 +47,7 @@ public class CurrentlyPlayingModel {
 	private ObjectProperty<Song> currentSong = new SimpleObjectProperty<>();
 	private final StringProperty songTitle = new SimpleStringProperty();
 	private final StringProperty songArtist = new SimpleStringProperty();
+	private final StringProperty songThumbnail = new SimpleStringProperty();
 	
 	/**
 	 * Gets the ObjectProperty current song.
@@ -64,6 +66,12 @@ public class CurrentlyPlayingModel {
 		currentSong.set(s);
 		songTitle.set(s.getTitle());
 		songArtist.set(s.getArtist());
+		
+		if (s instanceof YouTubeSong) {
+			songThumbnail.set(((YouTubeSong) s).getThumbnailURL());
+		} else {
+			songThumbnail.set("file:res/img/RTLogo.png");
+		}
 	}
 	
 	/**
@@ -82,5 +90,14 @@ public class CurrentlyPlayingModel {
 	 */
 	public StringProperty getCurrentSongArtist() {
 		return songArtist;
+	}
+	
+	/**
+	 * Returns a StringProperty for the current song thumbnail.
+	 * 
+	 * @return StringProperty of current song thumbnail.
+	 */
+	public StringProperty getCurrentSongThumbnail() {
+		return songThumbnail;
 	}
 }

@@ -45,6 +45,14 @@ public class LocalSong extends Song{
 	private int bitsPerSample;
 	
 	/**
+	 * Default constructor for a LocalSong. Initializes the graphic
+	 * object needed for a displaying a LocalSong.
+	 */
+	public LocalSong() {
+		this.graphic = "FontAwesome|HDD_ALT";
+	}
+	
+	/**
 	 * Setter for the song format of this local song.
 	 * 
 	 * @param songFormat - Target song format to set.

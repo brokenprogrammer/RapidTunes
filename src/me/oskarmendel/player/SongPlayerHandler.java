@@ -116,6 +116,8 @@ public class SongPlayerHandler {
 			break;
 		case SOUNDCLOUD:
 			break;
+		default:
+			break;
 		}
 	}
 	
@@ -244,6 +246,8 @@ public class SongPlayerHandler {
 		case SPOTIFY:
 			break;
 		case SOUNDCLOUD:
+			break;
+		default:
 			break;
 		}
 	}

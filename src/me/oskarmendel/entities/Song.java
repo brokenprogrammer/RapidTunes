@@ -42,6 +42,8 @@ public abstract class Song {
 	protected String length;
 	protected String path;
 	
+	protected String graphic;
+	
 	public Song(){
 		
 	}
@@ -125,4 +127,22 @@ public abstract class Song {
 	 * @param path
 	 */
 	abstract void setPath(String path);
+	
+	/**
+	 * Setter for the Graphic of this Song.
+	 * 
+	 * @param glyph - Glyph graphic to set for this Song.
+	 */
+	public void setGraphic(String glyph) {
+		this.graphic = glyph;
+	}
+	
+	/**
+	 * Getter for the Graphic of this Song.
+	 * 
+	 * @return - Glyph graphic for this Song.
+	 */
+	public String getGraphic() {
+		return this.graphic;
+	}
 }

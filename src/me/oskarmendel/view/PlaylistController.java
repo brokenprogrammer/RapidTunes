@@ -30,8 +30,15 @@ package me.oskarmendel.view;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.controlsfx.glyphfont.Glyph;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 
@@ -43,9 +50,10 @@ import me.oskarmendel.model.CurrentlyPlayingModel;
  */
 public class PlaylistController implements RapidTunesController {
 	
+	@FXML private Glyph playlistExploreIco;
+	@FXML private Button playlistNewBtn;
+	@FXML private Glyph playlistNewBtnIco;
 	@FXML private ImageView playlistImg;
-	@FXML private Label playlistSong;
-	@FXML private Label playlistArtist;
 	
 	private static final Logger LOGGER = Logger.getLogger(PlaylistController.class.getName());
 	
@@ -54,6 +62,16 @@ public class PlaylistController implements RapidTunesController {
 	@FXML 
 	public void initialize() {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
+		
+		this.playlistExploreIco.size(25);
+		this.playlistNewBtnIco.size(15);
+		
+		this.playlistNewBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e){
+				System.out.println("New Playlist");
+			}
+		});
 	}
 	
 	/**
@@ -70,8 +88,13 @@ public class PlaylistController implements RapidTunesController {
 		
 		this.currentlyPlayingModel = currentlyPlayingModel;
 		
-		//Bind currently playing song strings to the song title and artist label.
-		this.playlistSong.textProperty().bind(currentlyPlayingModel.getCurrentSongTitle());
-		this.playlistArtist.textProperty().bind(currentlyPlayingModel.getCurrentSongArtist());
+		// Bind the playlistImage to the current thumbnail value.
+		currentlyPlayingModel.getCurrentSongThumbnail().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				playlistImg.setImage(new Image(newValue));
+			}
+			
+		});
 	}
 }
