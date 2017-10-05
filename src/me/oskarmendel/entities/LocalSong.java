@@ -27,10 +27,6 @@
 
 package me.oskarmendel.entities;
 
-import org.controlsfx.glyphfont.Glyph;
-
-import javafx.scene.paint.Color;
-
 /**
  * Object representing a song from the local hard drive.
  * 
@@ -53,8 +49,7 @@ public class LocalSong extends Song{
 	 * object needed for a displaying a LocalSong.
 	 */
 	public LocalSong() {
-		this.graphic = Glyph.create("FontAwesome|HDD_ALT");
-		this.graphic.size(20);
+		this.graphic = "FontAwesome|HDD_ALT";
 	}
 	
 	/**

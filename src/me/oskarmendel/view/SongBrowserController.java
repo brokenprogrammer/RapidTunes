@@ -40,6 +40,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.util.Callback;
 import me.oskarmendel.entities.Song;
 import me.oskarmendel.model.CurrentlyPlayingModel;
@@ -63,7 +64,7 @@ public class SongBrowserController implements RapidTunesController {
 	@FXML private TableColumn<Song, String> songListSong;
 	@FXML private TableColumn<Song, String> songListPublisher;
 	@FXML private TableColumn<Song, String> songListTime;
-	@FXML private TableColumn<Song, Glyph> songListSource;
+	@FXML private TableColumn<Song, String> songListSource;
 	
 	private static final Logger LOGGER = Logger.getLogger(SongBrowserController.class.getName());
 	
@@ -96,23 +97,29 @@ public class SongBrowserController implements RapidTunesController {
 		songListPublisher.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getArtist()));
 		songListTime.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getLength()));
 		songListSource.setCellValueFactory(new PropertyValueFactory<>("graphic"));
-		songListSource.setCellFactory(new Callback<TableColumn<Song, Glyph>, TableCell<Song, Glyph>>() {
+		songListSource.setCellFactory(new Callback<TableColumn<Song, String>, TableCell<Song, String>>() {
 			@Override
-			public TableCell<Song, Glyph> call(TableColumn<Song, Glyph> param) {
-				TableCell<Song, Glyph> cell = new TableCell<Song, Glyph>() {
+			public TableCell<Song, String> call(TableColumn<Song, String> param) {
+				
+				TableCell<Song, String> cell = new TableCell<Song, String>() {
 					@Override
-					public void updateItem(Glyph item, boolean empty) {
+					public void updateItem(String item, boolean empty) {
 						if (item == null || empty) {
 							this.setGraphic(null);
 						} else {
-							this.setGraphic(item);
-							this.setStyle("-fx-text-fill: #FF0000;");
+							Glyph graphic = Glyph.create(item);
+							
+							if (item.contains("YOUTUBE")) {
+								graphic.setColor(Color.RED);
+							}
+							
+							graphic.size(20);
+							this.setGraphic(graphic);
 						}
 					}
-				};
+				};	
 				return cell;
 			}
-			
 		});
 		
 		//Define an on-click for the table rows.

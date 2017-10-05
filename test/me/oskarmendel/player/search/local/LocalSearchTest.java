@@ -32,6 +32,8 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.controlsfx.glyphfont.GlyphFont;
+import org.controlsfx.glyphfont.GlyphFontRegistry;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -51,6 +53,7 @@ public class LocalSearchTest {
 	@Before
 	public void setUp() throws Exception {
 		search = new LocalSearch();
+		GlyphFontRegistry.font("FontAwesome");
 	}
 
 	@After

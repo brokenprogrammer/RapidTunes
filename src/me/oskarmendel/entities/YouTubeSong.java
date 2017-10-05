@@ -27,10 +27,6 @@
 
 package me.oskarmendel.entities;
 
-import org.controlsfx.glyphfont.Glyph;
-
-import javafx.scene.paint.Color;
-
 /**
  * Object representing a song from the youtube
  * 
@@ -47,9 +43,7 @@ public class YouTubeSong extends Song{
 	 * object needed for a displaying a YouTubeSong.
 	 */
 	public YouTubeSong() {
-		this.graphic = Glyph.create("FontAwesome|YOUTUBE_PLAY");
-		this.graphic.setColor(Color.RED);
-		this.graphic.size(20);
+		this.graphic = "FontAwesome|YOUTUBE_PLAY";
 	}
 	
 	/**
