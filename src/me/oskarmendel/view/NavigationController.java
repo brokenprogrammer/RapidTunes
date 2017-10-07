@@ -39,6 +39,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import me.oskarmendel.entities.Song;
 import me.oskarmendel.model.SearchResultModel;
@@ -49,14 +50,14 @@ import me.oskarmendel.util.DoublyLinkedList;
 /**
  * Controller class for the navigation menu of the application.
  * 
- * @author Oskar
+ * @author Oskar Mendel
  * @version 0.00.00
  * @name NavigationController.java
  */
 public class NavigationController implements RapidTunesController {
 	
-	//@FXML private Button navBackBtn;
-	//@FXML private Button navFrontBtn;
+	@FXML private AnchorPane menu;
+	@FXML private MenuBarController menuBarController;
 	@FXML private Glyph navLogoIco;
 	@FXML private TextField navSearchField;
 	@FXML private Button navSearchBtn;
@@ -83,28 +84,6 @@ public class NavigationController implements RapidTunesController {
 		this.navLogoIco.size(25.0);
 		this.navAccountBtnIco.size(20.0);
 		
-		//Back Button in the search bar.
-//		navBackBtn.setOnAction(new EventHandler<ActionEvent>() {
-//			@Override 
-//			public void handle(ActionEvent e){
-//				if (searchHistoryIterator.hasPrevious()) {
-//					searchHistoryIterator.previous();
-//					navSearchField.setText(searchHistoryIterator.current());
-//				}
-//			}
-//		});
-//		
-//		//Forward Button in the search bar.
-//		navFrontBtn.setOnAction(new EventHandler<ActionEvent>() {
-//			@Override 
-//			public void handle(ActionEvent e){
-//				if (searchHistoryIterator.hasNext()) {
-//					searchHistoryIterator.next();
-//					navSearchField.setText(searchHistoryIterator.current());
-//				}
-//			}
-//		});
-		
 		//Search Button in the search bar.
 		navSearchBtn.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override 
@@ -117,6 +96,7 @@ public class NavigationController implements RapidTunesController {
 		        SearchHandler sh = SearchHandler.getInstance();
 		        List<Song> songList = sh.search(navSearchField.getText(), "./demo");
 		        
+		        //TODO: Make on change event / observable instead of changing entire list each time?
 		        //Performs the search for the keywords in the YouTube data API and 
 		        //populates the searchResultModel with results.
 		        searchResultModel.setSearchResultList(songList);
@@ -139,5 +119,7 @@ public class NavigationController implements RapidTunesController {
 		
 		this.searchResultModel = searchResultModel;
 		
+		// Initialize the SearchResultModel for the controller of the MenuBar.
+		this.menuBarController.initSearchResultModel(searchResultModel);
 	}
 }
