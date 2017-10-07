@@ -127,6 +127,14 @@ public class SongController implements RapidTunesController {
 				}
 			}
 		});
+		
+		songVolume.valueProperty().addListener(new InvalidationListener() {
+			public void invalidated(Observable ov) {
+				if (songVolume.isValueChanging()) {
+					player.setVolume((int)songVolume.getValue());
+				}
+			}
+		});
 	}
 	
 	/**
