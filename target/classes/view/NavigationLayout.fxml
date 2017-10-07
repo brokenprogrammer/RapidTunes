@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- 
  RapidTunes.
  The music application to help you use all your music sources in one place.
@@ -25,7 +26,6 @@
  SOFTWARE.
 -->
 
-<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>

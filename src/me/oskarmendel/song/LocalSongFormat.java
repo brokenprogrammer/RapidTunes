@@ -25,7 +25,7 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.entities;
+package me.oskarmendel.song;
 
 /**
  * Enum for the different types of supported local song formats.

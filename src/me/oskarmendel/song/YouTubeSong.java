@@ -25,36 +25,25 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.entities;
+package me.oskarmendel.song;
 
 /**
- * Object representing a song
+ * Object representing a song from the youtube
  * 
- * @author Jesper Bergstrï¿½m
+ * @author Jesper Bergström
  * @version 0.00.00
  * @name Song.java
  */
-public abstract class Song {
+public class YouTubeSong extends Song{
 	
-	protected String title;
-	protected String artist;
-	protected String album;
-	protected String length;
-	protected String path;
-	
-	protected String graphic;
-	
-	public Song(){
-		
-	}
+	private String thumbnailURL;
 	
 	/**
-	 * Get song title
-	 * 
-	 * @return title
+	 * Default constructor for a YouTubeSong. Initializes the graphic
+	 * object needed for a displaying a YouTubeSong.
 	 */
-	public String getTitle(){
-		return title;
+	public YouTubeSong() {
+		this.graphic = "FontAwesome|YOUTUBE_PLAY";
 	}
 	
 	/**
@@ -62,47 +51,29 @@ public abstract class Song {
 	 * 
 	 * @param title
 	 */
-	abstract void setTitle(String title);
-	
-	/**
-	 * Get artist
-	 * 
-	 * @return artist
-	 */
-	public String getArtist(){
-		return artist;
+	@Override
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	/**
-	 * Set artist
+	 * Set song artist
 	 * 
 	 * @param artist
 	 */
-	abstract void setArtist(String artist);
-	
-	/**
-	 * Get album
-	 * 
-	 * @return album
-	 */
-	public String getAlbum(){
-		return album;
+	@Override
+	public void setArtist(String artist) {
+		this.artist = artist;
 	}
 	
 	/**
-	 * Set album
+	 * Set song album
 	 * 
 	 * @param album
 	 */
-	abstract void setAlbum(String album);
-	
-	/**
-	 * Get song length
-	 * 
-	 * @return length
-	 */
-	public String getLength(){
-		return length;
+	@Override
+	public void setAlbum(String album) {
+		this.album = album;
 	}
 	
 	/**
@@ -110,15 +81,9 @@ public abstract class Song {
 	 * 
 	 * @param length
 	 */
-	abstract void setLength(String length);
-	
-	/**
-	 * Get song path
-	 * 
-	 * @return path
-	 */
-	public String getPath(){
-		return path;
+	@Override
+	public void setLength(String length) {
+		this.length = length;
 	}
 	
 	/**
@@ -126,23 +91,22 @@ public abstract class Song {
 	 * 
 	 * @param path
 	 */
-	abstract void setPath(String path);
-	
-	/**
-	 * Setter for the Graphic of this Song.
-	 * 
-	 * @param glyph - Glyph graphic to set for this Song.
-	 */
-	public void setGraphic(String glyph) {
-		this.graphic = glyph;
+	@Override
+	public void setPath(String path) {
+		this.path = path;
 	}
-	
+
 	/**
-	 * Getter for the Graphic of this Song.
-	 * 
-	 * @return - Glyph graphic for this Song.
+	 * @return the thumbnailURL
 	 */
-	public String getGraphic() {
-		return this.graphic;
+	public String getThumbnailURL() {
+		return thumbnailURL;
+	}
+
+	/**
+	 * @param thumbnailURL the thumbnailURL to set
+	 */
+	public void setThumbnailURL(String thumbnailURL) {
+		this.thumbnailURL = thumbnailURL;
 	}
 }

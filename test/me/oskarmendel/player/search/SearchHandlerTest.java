@@ -36,7 +36,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import me.oskarmendel.entities.Song;
+import me.oskarmendel.song.Song;
 
 /**
  * Testing the SearchHandler class.

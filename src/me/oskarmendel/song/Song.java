@@ -25,25 +25,36 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.entities;
+package me.oskarmendel.song;
 
 /**
- * Object representing a song from the youtube
+ * Object representing a song
  * 
- * @author Jesper Bergström
+ * @author Jesper Bergstrï¿½m
  * @version 0.00.00
  * @name Song.java
  */
-public class YouTubeSong extends Song{
+public abstract class Song {
 	
-	private String thumbnailURL;
+	protected String title;
+	protected String artist;
+	protected String album;
+	protected String length;
+	protected String path;
+	
+	protected String graphic;
+	
+	public Song(){
+		
+	}
 	
 	/**
-	 * Default constructor for a YouTubeSong. Initializes the graphic
-	 * object needed for a displaying a YouTubeSong.
+	 * Get song title
+	 * 
+	 * @return title
 	 */
-	public YouTubeSong() {
-		this.graphic = "FontAwesome|YOUTUBE_PLAY";
+	public String getTitle(){
+		return title;
 	}
 	
 	/**
@@ -51,29 +62,47 @@ public class YouTubeSong extends Song{
 	 * 
 	 * @param title
 	 */
-	@Override
-	public void setTitle(String title) {
-		this.title = title;
+	abstract void setTitle(String title);
+	
+	/**
+	 * Get artist
+	 * 
+	 * @return artist
+	 */
+	public String getArtist(){
+		return artist;
 	}
 	
 	/**
-	 * Set song artist
+	 * Set artist
 	 * 
 	 * @param artist
 	 */
-	@Override
-	public void setArtist(String artist) {
-		this.artist = artist;
+	abstract void setArtist(String artist);
+	
+	/**
+	 * Get album
+	 * 
+	 * @return album
+	 */
+	public String getAlbum(){
+		return album;
 	}
 	
 	/**
-	 * Set song album
+	 * Set album
 	 * 
 	 * @param album
 	 */
-	@Override
-	public void setAlbum(String album) {
-		this.album = album;
+	abstract void setAlbum(String album);
+	
+	/**
+	 * Get song length
+	 * 
+	 * @return length
+	 */
+	public String getLength(){
+		return length;
 	}
 	
 	/**
@@ -81,9 +110,15 @@ public class YouTubeSong extends Song{
 	 * 
 	 * @param length
 	 */
-	@Override
-	public void setLength(String length) {
-		this.length = length;
+	abstract void setLength(String length);
+	
+	/**
+	 * Get song path
+	 * 
+	 * @return path
+	 */
+	public String getPath(){
+		return path;
 	}
 	
 	/**
@@ -91,22 +126,23 @@ public class YouTubeSong extends Song{
 	 * 
 	 * @param path
 	 */
-	@Override
-	public void setPath(String path) {
-		this.path = path;
-	}
-
+	abstract void setPath(String path);
+	
 	/**
-	 * @return the thumbnailURL
+	 * Setter for the Graphic of this Song.
+	 * 
+	 * @param glyph - Glyph graphic to set for this Song.
 	 */
-	public String getThumbnailURL() {
-		return thumbnailURL;
+	public void setGraphic(String glyph) {
+		this.graphic = glyph;
 	}
-
+	
 	/**
-	 * @param thumbnailURL the thumbnailURL to set
+	 * Getter for the Graphic of this Song.
+	 * 
+	 * @return - Glyph graphic for this Song.
 	 */
-	public void setThumbnailURL(String thumbnailURL) {
-		this.thumbnailURL = thumbnailURL;
+	public String getGraphic() {
+		return this.graphic;
 	}
 }

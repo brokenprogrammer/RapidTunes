@@ -27,11 +27,11 @@
 
 package me.oskarmendel.player;
 
-import me.oskarmendel.entities.LocalSong;
-import me.oskarmendel.entities.Song;
-import me.oskarmendel.entities.YouTubeSong;
 import me.oskarmendel.player.localplayer.LocalPlayer;
 import me.oskarmendel.player.youtubeplayer.YouTubePlayer;
+import me.oskarmendel.song.LocalSong;
+import me.oskarmendel.song.Song;
+import me.oskarmendel.song.YouTubeSong;
 
 /**
  * Handles the playing of songs within the application. 

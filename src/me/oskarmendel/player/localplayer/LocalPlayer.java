@@ -34,10 +34,10 @@ import javax.sound.sampled.SourceDataLine;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-import me.oskarmendel.entities.LocalSong;
-import me.oskarmendel.entities.LocalSongFormat;
-import me.oskarmendel.entities.Song;
 import me.oskarmendel.player.Player;
+import me.oskarmendel.song.LocalSong;
+import me.oskarmendel.song.LocalSongFormat;
+import me.oskarmendel.song.Song;
 
 /**
  * LocalPlayer that controls the playing of local content.

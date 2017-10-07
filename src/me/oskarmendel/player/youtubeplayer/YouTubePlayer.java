@@ -30,9 +30,9 @@ package me.oskarmendel.player.youtubeplayer;
 import java.io.File;
 
 import javafx.scene.web.WebView;
-import me.oskarmendel.entities.Song;
-import me.oskarmendel.entities.YouTubeSong;
 import me.oskarmendel.player.Player;
+import me.oskarmendel.song.Song;
+import me.oskarmendel.song.YouTubeSong;
 
 /**
  * YoutubePlayer that controls the playing of YouTube content.

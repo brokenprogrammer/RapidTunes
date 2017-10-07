@@ -27,7 +27,7 @@
 
 package me.oskarmendel.player;
 
-import me.oskarmendel.entities.Song;
+import me.oskarmendel.song.Song;
 
 /**
  * Abstract Player class that holds common data and methods for all music players.
