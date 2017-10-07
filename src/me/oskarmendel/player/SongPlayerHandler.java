@@ -160,12 +160,10 @@ public class SongPlayerHandler {
 		// Set song and source for player to be used.
 		if (s instanceof LocalSong) {
 			this.currentSource = Source.LOCAL;
-			System.out.println("Setting localsong");
 			this.localPlayer.setSong(this.currentSong);
 			
 		} else if (s instanceof YouTubeSong) {
 			this.currentSource = Source.YOUTUBE;
-			System.out.println("Setting youtube song");
 			this.youtubePlayer.setSong(this.currentSong);
 		}
 	}
