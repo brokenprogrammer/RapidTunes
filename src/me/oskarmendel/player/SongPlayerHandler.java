@@ -37,9 +37,7 @@ import me.oskarmendel.player.youtubeplayer.YouTubePlayer;
  * Handles the playing of songs within the application. 
  * Also determines which player to use depending on file format.
  * 
- * TODO: REMOVE COMMENTS.
- * //TODO: 1. Volume?
- * //TODO: 2. Limit search to embeddable videos ?
+ * //TODO: 1. Limit search to embeddable videos ?
  * TODO: WHAT IF NO SOURCE? Initialize source to something..
  * 
  * @author Oskar Mendel
@@ -66,18 +64,7 @@ public class SongPlayerHandler {
 	private LocalPlayer localPlayer;
 	private YouTubePlayer youtubePlayer;
 	
-//	private WebView browserPlayer;
-//	private MediaPlayer playerFX;
-//	private Media currentSongFX;
-	
-	// TODO: Place this JS script at a better location?
-//	String js = "var x = document.getElementsByClassName(\"ytp-play-button\");"
-//			+   "x[0].click();";
-	
 	public SongPlayerHandler() {
-		//currentSongFX = new Media("");
-		//playerFX = new MediaPlayer(currentSongFX);
-//		browserPlayer = new WebView();
 		this.localPlayer = new LocalPlayer();
 		this.youtubePlayer = new YouTubePlayer();
 		
@@ -90,21 +77,6 @@ public class SongPlayerHandler {
 	 * @throws - 
 	 */
 	public void play() {
-//		if (currentSong instanceof LocalSong) {
-//			if (this.playerFX != null && this.playerFX.getMedia() != null) {
-//				playerFX.play();
-//			} else {
-//				//Throw exception, trying to play non existing song.
-//			}
-//		} else if (currentSong instanceof YouTubeSong) {
-//			//this.browserPlayer.getEngine().load("https://www.youtube.com/embed/" + this.currentSong.getPath() + "?autoplay=1");
-//			if (this.browserPlayer.getEngine().getDocument() != null) {
-//				this.browserPlayer.getEngine().executeScript(js);
-//			} else {
-//				// Throw exception trying to play non initialized web player.
-//			}
-//		}
-		
 		switch(this.currentSource) {
 		case LOCAL:
 			this.localPlayer.play();
@@ -125,25 +97,34 @@ public class SongPlayerHandler {
 	 * Pauses the current song if the player is is playing.
 	 */
 	public void pause() {
-//		if (this.currentSong instanceof LocalSong) {
-//			if (this.playerFX.getStatus() == MediaPlayer.Status.PLAYING) {
-//				this.playerFX.pause();
-//			}
-//		} else if (this.currentSong instanceof YouTubeSong) {
-//			if (this.browserPlayer.getEngine().getDocument() != null) {
-//				this.browserPlayer.getEngine().executeScript(js);
-//			}
-//		}
-		
 		switch(this.currentSource) {
 		case NONE:
 			break;
 		case LOCAL:
 			this.localPlayer.pause();
-			System.out.println("Paused");
 			break;
 		case YOUTUBE:
 			this.youtubePlayer.pause();
+			break;
+		case SPOTIFY:
+			break;
+		case SOUNDCLOUD:
+			break;
+		}
+	}
+	
+	/**
+	 * Stops this player completley disposing media used by this player.
+	 */
+	public void stop ( ) {
+		switch(this.currentSource) {
+		case NONE:
+			break;
+		case LOCAL:
+			this.localPlayer.stop();
+			break;
+		case YOUTUBE:
+			this.youtubePlayer.stop();
 			break;
 		case SPOTIFY:
 			break;
@@ -187,43 +168,28 @@ public class SongPlayerHandler {
 			System.out.println("Setting youtube song");
 			this.youtubePlayer.setSong(this.currentSong);
 		}
-		
-		// Disposes and handles old player.
-//		if (this.playerFX != null) {
-//			this.playerFX.stop();
-//			this.playerFX.dispose();
-//		}
-		
-//		// Disposes the browser player.
-//		this.browserPlayer.getEngine().load(null);
-//		
-//		// If this is a local song object we initiate the media and mediaplayer accordingly
-//		if (s instanceof LocalSong) {
-//			LocalSong localSong = (LocalSong)s;
-//			if (localSong.getSongFormat() == LocalSongFormat.FLAC) {
-//				System.out.println("Flac song is being handled.");
-//				System.out.println("Sample Rate: " + localSong.getSampleRate());
-//				System.out.println("Num Channels: " + localSong.getNumChannels());
-//				System.out.println("Bits per sample: " + localSong.getBitsPerSample());
-//				
-//				//TODO: Own player class for the individual players..
-//				AudioFormat format = new AudioFormat(localSong.getSampleRate(), localSong.getBitsPerSample(), 
-//						localSong.getNumChannels(), true, false);
-//				
-//				DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
-//				//SourceDataLine line = (SourceDataLine)AudioSystem.getLine(info);
-//				
-//				//line.open(format);
-//				//line.start();
-//				
-//			} else {
-//				this.currentSongFX = new Media(currentSong.getPath());
-//				this.playerFX = new MediaPlayer(this.currentSongFX);
-//			}
-//			
-//		} else if (s instanceof YouTubeSong) { // If the song is a Youtube song object we initiate the web player.
-//			this.browserPlayer.getEngine().load("https://www.youtube.com/embed/" + this.currentSong.getPath() + "?autoplay=1");
-//		}
+	}
+	
+	/**
+	 * Seeks the player to a new target time in seconds within the song or media. 
+	 * 
+	 * @param seekTime - Requested playback time in seconds.
+	 */
+	public void seek(int seekTime) {
+		switch(this.currentSource) {
+		case NONE:
+			break;
+		case LOCAL:
+			this.localPlayer.seek(seekTime);
+			break;
+		case YOUTUBE:
+			this.youtubePlayer.seek(seekTime);
+			break;
+		case SPOTIFY:
+			break;
+		case SOUNDCLOUD:
+			break;
+		}
 	}
 	
 	/**

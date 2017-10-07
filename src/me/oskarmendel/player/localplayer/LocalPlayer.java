@@ -163,7 +163,7 @@ public class LocalPlayer extends Player {
 	 * @param seekTime - Requested playback time in seconds.
 	 */
 	@Override
-	public void seek(double seekTime) {
+	public void seek(int seekTime) {
 		if (this.fxPlayer != null) {
 			//TODO: Check that seekTime is in range.
 			this.fxPlayer.seek(Duration.seconds(seekTime));
@@ -202,7 +202,7 @@ public class LocalPlayer extends Player {
 		
 		if (this.fxPlayer != null) {
 			this.volume = volume;
-			this.fxPlayer.setVolume(this.volume / 100);
+			this.fxPlayer.setVolume(this.volume * 0.01);
 		} else {
 			// Throw error trying to use non existing media player.
 		}
