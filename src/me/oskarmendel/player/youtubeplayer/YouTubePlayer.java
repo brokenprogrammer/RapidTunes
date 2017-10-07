@@ -27,6 +27,8 @@
 
 package me.oskarmendel.player.youtubeplayer;
 
+import java.io.File;
+
 import javafx.scene.web.WebView;
 import me.oskarmendel.entities.Song;
 import me.oskarmendel.entities.YouTubeSong;
@@ -40,10 +42,6 @@ import me.oskarmendel.player.Player;
  * @name YouTubePlayer.java
  */
 public class YouTubePlayer extends Player{
-	
-	// TODO: Place this JS script at a better location?
-	String js = "var x = document.getElementsByClassName(\"ytp-play-button\");"
-			+   "x[0].click();";
 	
 	/**
 	 * Enumeration describing the different statuses of {@link YoutubePlayer}}.
@@ -64,8 +62,11 @@ public class YouTubePlayer extends Player{
 	 */
 	public YouTubePlayer() {
 		browserPlayer = new WebView();
+		File localHtml = new File("res/view/player/YouTube.html");
 		
+		this.browserPlayer.getEngine().load(localHtml.toURI().toString());
 		this.status = Status.READY;
+		
 		//TODO: Set volume, Set current time.. 
 	}
 	
@@ -77,7 +78,7 @@ public class YouTubePlayer extends Player{
 	public void play() {
 		if (this.getStatus() == Status.READY || this.getStatus() == Status.PAUSED) {
 			if (this.browserPlayer.getEngine().getDocument() != null) {
-				this.browserPlayer.getEngine().executeScript(js);
+				this.browserPlayer.getEngine().executeScript("startVideo()");
 				
 				this.status = Status.PLAYING;
 			} else {
@@ -93,7 +94,7 @@ public class YouTubePlayer extends Player{
 	public void pause() {
 		if (this.getStatus() == Status.PLAYING) {
 			if (this.browserPlayer.getEngine().getDocument() != null) {
-				this.browserPlayer.getEngine().executeScript(js);
+				this.browserPlayer.getEngine().executeScript("pauseVideo()");
 				
 				this.status = Status.PAUSED;
 			} else {
@@ -121,15 +122,12 @@ public class YouTubePlayer extends Player{
 	@Override
 	public void setSong(Song song) {
 		YouTubeSong youtubeSong = (YouTubeSong)song;
-		
-		this.browserPlayer.getEngine().load("https://www.youtube.com/embed/" + youtubeSong.getPath() + "?autoplay=1");
-		
+		this.browserPlayer.getEngine().executeScript("setSong('" + youtubeSong.getPath() + "')");
 		this.status = Status.PLAYING;
 	}
 
 	@Override
-	public void seek(double seekTime) {
-		// TODO Auto-generated method stub
+	public void seek(int seekTime) {
 		
 	}
 
@@ -141,8 +139,7 @@ public class YouTubePlayer extends Player{
 
 	@Override
 	public void setVolume(int volume) {
-		// TODO Auto-generated method stub
-		
+		this.browserPlayer.getEngine().executeScript("setVolume(" + volume + ")");
 	}
 
 	@Override
