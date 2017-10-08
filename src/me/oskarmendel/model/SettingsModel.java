@@ -25,23 +25,15 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.settings;
+package me.oskarmendel.model;
 
 /**
- * RapidTunesSettings class that stores and controls settings handling
- * RapidTunes.
+ * Model that manages the currently used settings for the application.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name RapidTunesSettings.java
+ * @name SettingsModel.java
  */
-public class RapidTunesSettings extends Settings {
-	
-	private String country;
-	private String playListPath;
-	private String theme;
-	
-	public RapidTunesSettings() {
-		
-	}
+public class SettingsModel {
+
 }
