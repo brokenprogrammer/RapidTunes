@@ -27,11 +27,13 @@
 
 package me.oskarmendel;
 
+import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import me.oskarmendel.settings.GeneralSettings;
@@ -76,20 +78,29 @@ public class SettingsManager {
 	}
 	
 	/**
+	 * Loads settings from the path within the specified Settings object
+	 * then attempts to load the settings. If no such settings file exist a new one is created
+	 * and populated with default settings.
 	 * 
-	 * @param path
-	 * @return
+	 * @param settings - Settings object to gather default data from and populate with properties.
+	 * 
+	 * @return - Populated Settings object.
 	 */
 	public Settings loadSettings(Settings settings) {
-		//TODO: Use logger..
+		LOGGER.log(Level.FINE, "Loading settings: " + settings.getPath());
 		
-		//TODO: Check which type of Settings object to use.
+		File settingsFile = new File(settings.getPath());
+		
+		if (!settingsFile.exists()) {
+			LOGGER.log(Level.FINE, "Settings not found, Creating settings for: " + settings.getPath());
+			return createSettings(settingsFile, settings);
+		}
+		
 		Properties properties = new Properties();
 		InputStream input = null;
 		
-		
 		try {
-			//TODO: Use file object instead, check if exists. If not create the file & dir.
+			LOGGER.log(Level.FINE, "Reading: " + settings.getPath());
 			input = new FileInputStream(settings.getPath());
 			
 			// Load properties from file.
@@ -110,6 +121,55 @@ public class SettingsManager {
 					e.printStackTrace();
 				}
 			}
+		}
+		
+		return settings;
+	}
+	
+	/**
+	 * Creates a new default Settings file using the specified File and Settings object
+	 * and populates it with the default settings for that Settings type.
+	 * 
+	 * @param settingsFile - File object for the settings file to create.
+	 * @param settings - Settings object to use to get default data from.
+	 * 
+	 * @return - Populated Settings object using default properties.
+	 */
+	private Settings createSettings(File settingsFile, Settings settings) {
+		try {
+			// Create the directory and file if they do not exist.
+			if (!settingsFile.exists()) {
+				settingsFile.getParentFile().mkdirs();
+				settingsFile.createNewFile();
+				
+				LOGGER.log(Level.FINE, "Created settings for: " + settings.getPath());
+			}
+			
+			Properties properties = settings.getDefaultProperties();
+			FileOutputStream output = null;
+			
+			try {
+				LOGGER.log(Level.FINE, "Preparing to write default properties to: " + settings.getPath());
+				output = new FileOutputStream(settings.getPath());
+				
+				LOGGER.log(Level.FINE, "Writing default properties to: " + settings.getPath());
+				properties.store(output, null);
+				
+				// Populate settings depending on settings type.
+				if (settings instanceof GeneralSettings) {
+					settings = new GeneralSettings(properties);
+				}
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (output != null) {
+					output.close();
+				}
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
 		return settings;

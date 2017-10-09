@@ -40,6 +40,9 @@ import java.util.Properties;
 public class GeneralSettings extends Settings {
 	
 	private static final String PATH = "settings/general.properties";
+	private static final String DEFAULT_THEME = "";
+	private static final String DEFAULT_LANGUAGE = "";
+	private static final boolean DEFAULT_NOTIFICATIONS = true;
 	
 	private String theme;
 	private String language;
@@ -107,5 +110,16 @@ public class GeneralSettings extends Settings {
 	@Override
 	public String getPath() {
 		return GeneralSettings.PATH;
+	}
+
+	@Override
+	public Properties getDefaultProperties() {
+		Properties properties = new Properties();
+		
+		properties.setProperty("theme", DEFAULT_THEME);
+		properties.setProperty("language", DEFAULT_LANGUAGE);
+		properties.setProperty("notifications", String.valueOf(DEFAULT_NOTIFICATIONS));
+		
+		return properties;
 	}
 }

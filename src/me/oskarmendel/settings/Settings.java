@@ -27,6 +27,8 @@
 
 package me.oskarmendel.settings;
 
+import java.util.Properties;
+
 /**
  * Abstract Settings class that defines abstract behavior shared 
  * between different types of Settings.
@@ -46,4 +48,6 @@ public abstract class Settings {
 	 * @return
 	 */
 	public abstract String getPath();
+	
+	public abstract Properties getDefaultProperties();
 }
