@@ -40,4 +40,10 @@ public abstract class Settings {
 	public Settings() {
 		
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public abstract String getPath();
 }

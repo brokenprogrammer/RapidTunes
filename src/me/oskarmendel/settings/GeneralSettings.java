@@ -27,6 +27,8 @@
 
 package me.oskarmendel.settings;
 
+import java.util.Properties;
+
 /**
  * GeneralSettings class that stores and controls settings handling
  * RapidTunes.
@@ -37,12 +39,26 @@ package me.oskarmendel.settings;
  */
 public class GeneralSettings extends Settings {
 	
+	private static final String PATH = "settings/general.properties";
+	
 	private String theme;
 	private String language;
 	private boolean notifications;
 	//TODO: More UI settings goes here.
 	
+	/**
+	 * 
+	 */
 	public GeneralSettings() {
+		super();
+	}
+	
+	/**
+	 * 
+	 * @param properties
+	 */
+	public GeneralSettings(Properties properties) {
+		super();
 		
 	}
 
@@ -86,5 +102,10 @@ public class GeneralSettings extends Settings {
 	 */
 	public void setNotifications(boolean notifications) {
 		this.notifications = notifications;
+	}
+
+	@Override
+	public String getPath() {
+		return GeneralSettings.PATH;
 	}
 }

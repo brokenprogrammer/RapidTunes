@@ -27,8 +27,14 @@
 
 package me.oskarmendel;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.logging.Logger;
 
+import me.oskarmendel.settings.GeneralSettings;
 import me.oskarmendel.settings.Settings;
 
 /**
@@ -74,8 +80,38 @@ public class SettingsManager {
 	 * @param path
 	 * @return
 	 */
-	public Settings loadSettings(String path) {
+	public Settings loadSettings(Settings settings) {
 		//TODO: Use logger..
-		return null;
+		
+		//TODO: Check which type of Settings object to use.
+		Properties properties = new Properties();
+		InputStream input = null;
+		
+		
+		try {
+			//TODO: Use file object instead, check if exists. If not create the file & dir.
+			input = new FileInputStream(settings.getPath());
+			
+			// Load properties from file.
+			properties.load(input);
+			
+			// Populate settings depending on settings type.
+			if (settings instanceof GeneralSettings) {
+				settings = new GeneralSettings(properties);
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (input != null) {
+				try {
+					input.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return settings;
 	}
 }
