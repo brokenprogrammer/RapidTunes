@@ -39,16 +39,33 @@ import java.util.Properties;
  */
 public class SourceSettings extends Settings {
 
+	private static final String PATH = "settings/source.properties";
+	
+	/**
+	 * 
+	 */
+	public SourceSettings() {
+		super();
+	}
+	
+	/**
+	 * 
+	 * @param properties
+	 */
+	public SourceSettings(Properties properties) {
+		super();
+	}
+	
 	@Override
 	public String getPath() {
-		// TODO Auto-generated method stub
-		return null;
+		return SourceSettings.PATH;
 	}
 
 	@Override
 	public Properties getDefaultProperties() {
-		// TODO Auto-generated method stub
-		return null;
+		Properties properties = new Properties();
+		
+		return properties;
 	}
 
 }

@@ -38,17 +38,135 @@ import java.util.Properties;
  * @name SongSettings.java
  */
 public class SongSettings extends Settings {
+	
+	private static final String PATH = "settings/song.properties";
+	
+	private static final boolean DEFAULT_CROSSFADE = false;
+	private static final int 	 DEFAULT_CROSSFADE_SECONDS = 6;
+	
+	private static final boolean DEFAULT_SOUNDENHANCER = false;
+	private static final int	 DEFAULT_SOUNDENHANCER_VALUE = 50;
+	
+	private static final PlaybackQuality DEFAULT_PLAYBACKQUALITY = PlaybackQuality.BEST_AVAILABLE;
+	
+	/**
+	 * 
+	 */
+	public enum PlaybackQuality {
+		BAD,
+		GOOD,
+		BEST_AVAILABLE
+	}
+	
+	private boolean crossfade;					//
+	private int 	crossfadeSeconds;			//
+	
+	private boolean soundEnhancer;				//
+	private int 	soundEnhancerValue;			//
+	
+	private PlaybackQuality playbackQuality;	//
+	
+	/**
+	 * 
+	 */
+	public SongSettings() {
+		super();
+	}
+	
+	/**
+	 * 
+	 * @param properties
+	 */
+	public SongSettings(Properties properties) {
+		super();
+	}
+	
+	/**
+	 * @return the crossfade
+	 */
+	public boolean isCrossfade() {
+		return crossfade;
+	}
+
+	/**
+	 * @return the crossfadeSeconds
+	 */
+	public int getCrossfadeSeconds() {
+		return crossfadeSeconds;
+	}
+
+	/**
+	 * @return the soundEnhancer
+	 */
+	public boolean isSoundEnhancer() {
+		return soundEnhancer;
+	}
+
+	/**
+	 * @return the soundEnhancerValue
+	 */
+	public int getSoundEnhancerValue() {
+		return soundEnhancerValue;
+	}
+
+	/**
+	 * @return the playbackQuality
+	 */
+	public PlaybackQuality getPlaybackQuality() {
+		return playbackQuality;
+	}
+
+	/**
+	 * @param crossfade the crossfade to set
+	 */
+	public void setCrossfade(boolean crossfade) {
+		this.crossfade = crossfade;
+	}
+
+	/**
+	 * @param crossfadeSeconds the crossfadeSeconds to set
+	 */
+	public void setCrossfadeSeconds(int crossfadeSeconds) {
+		this.crossfadeSeconds = crossfadeSeconds;
+	}
+
+	/**
+	 * @param soundEnhancer the soundEnhancer to set
+	 */
+	public void setSoundEnhancer(boolean soundEnhancer) {
+		this.soundEnhancer = soundEnhancer;
+	}
+
+	/**
+	 * @param soundEnhancerValue the soundEnhancerValue to set
+	 */
+	public void setSoundEnhancerValue(int soundEnhancerValue) {
+		this.soundEnhancerValue = soundEnhancerValue;
+	}
+
+	/**
+	 * @param playbackQuality the playbackQuality to set
+	 */
+	public void setPlaybackQuality(PlaybackQuality playbackQuality) {
+		this.playbackQuality = playbackQuality;
+	}
 
 	@Override
 	public String getPath() {
-		// TODO Auto-generated method stub
-		return null;
+		return SongSettings.PATH;
 	}
 
 	@Override
 	public Properties getDefaultProperties() {
-		// TODO Auto-generated method stub
-		return null;
+		Properties properties = new Properties();
+		
+		properties.setProperty("crossfade", String.valueOf(DEFAULT_CROSSFADE));
+		properties.setProperty("crossfade-seconds", String.valueOf(DEFAULT_CROSSFADE_SECONDS));
+		properties.setProperty("soundEnhancer", String.valueOf(DEFAULT_SOUNDENHANCER));
+		properties.setProperty("soundEnhancer", String.valueOf(DEFAULT_SOUNDENHANCER_VALUE));
+		properties.setProperty("playbackQuality", String.valueOf(DEFAULT_PLAYBACKQUALITY));
+		
+		return properties;
 	}
 
 }

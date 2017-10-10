@@ -39,16 +39,33 @@ import java.util.Properties;
  */
 public class HotkeySettings extends Settings {
 
+	private static final String PATH = "settings/hotkey.properties";
+	
+	/**
+	 * 
+	 */
+	public HotkeySettings() {
+		super();
+	}
+	
+	/**
+	 * 
+	 * @param properties
+	 */
+	public HotkeySettings(Properties properties) {
+		super();
+	}
+	
 	@Override
 	public String getPath() {
-		// TODO Auto-generated method stub
-		return null;
+		return HotkeySettings.PATH;
 	}
 
 	@Override
 	public Properties getDefaultProperties() {
-		// TODO Auto-generated method stub
-		return null;
+		Properties properties = new Properties();
+		
+		return properties;
 	}
 
 }

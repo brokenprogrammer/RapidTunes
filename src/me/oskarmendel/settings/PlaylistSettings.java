@@ -38,17 +38,90 @@ import java.util.Properties;
  * @name PlaylistSettings.java
  */
 public class PlaylistSettings extends Settings {
+	
+	private static final String PATH = "settings/playlist.properties";
+	
+	private static final String DEFAULT_PLAYLISTDIRECTORY = "playlists/";
+	
+	private static final boolean DEFAULT_AUTOEXPORT_YOUTUBE = false;
+	private static final boolean DEFAULT_AUTOEXPORT_SOUNDCLOUD = false;
+	
+	private String playlistDirectory;			//
+	
+	private boolean autoExportYouTube;			//
+	private boolean autoExportSoundCloud;		//
+	
+	/**
+	 * 
+	 */
+	public PlaylistSettings() {
+		super();
+	}
+	
+	/**
+	 * 
+	 * @param properties
+	 */
+	public PlaylistSettings(Properties properties) {
+		super();
+	}
+	
+	/**
+	 * @return the playlistDirectory
+	 */
+	public String getPlaylistDirectory() {
+		return playlistDirectory;
+	}
+
+	/**
+	 * @return the autoExportYouTube
+	 */
+	public boolean isAutoExportYouTube() {
+		return autoExportYouTube;
+	}
+
+	/**
+	 * @return the autoExportSoundCloud
+	 */
+	public boolean isAutoExportSoundCloud() {
+		return autoExportSoundCloud;
+	}
+
+	/**
+	 * @param playlistDirectory the playlistDirectory to set
+	 */
+	public void setPlaylistDirectory(String playlistDirectory) {
+		this.playlistDirectory = playlistDirectory;
+	}
+
+	/**
+	 * @param autoExportYouTube the autoExportYouTube to set
+	 */
+	public void setAutoExportYouTube(boolean autoExportYouTube) {
+		this.autoExportYouTube = autoExportYouTube;
+	}
+
+	/**
+	 * @param autoExportSoundCloud the autoExportSoundCloud to set
+	 */
+	public void setAutoExportSoundCloud(boolean autoExportSoundCloud) {
+		this.autoExportSoundCloud = autoExportSoundCloud;
+	}
 
 	@Override
 	public String getPath() {
-		// TODO Auto-generated method stub
-		return null;
+		return PlaylistSettings.PATH;
 	}
 
 	@Override
 	public Properties getDefaultProperties() {
-		// TODO Auto-generated method stub
-		return null;
+		Properties properties = new Properties();
+		
+		properties.setProperty("playlistDirectory", DEFAULT_PLAYLISTDIRECTORY);
+		properties.setProperty("autoExportYouTube", String.valueOf(DEFAULT_AUTOEXPORT_YOUTUBE));
+		properties.setProperty("autoExportSoundCloud", String.valueOf(DEFAULT_AUTOEXPORT_SOUNDCLOUD));
+		
+		return properties;
 	}
 
 }

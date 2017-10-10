@@ -29,6 +29,8 @@ package me.oskarmendel.settings;
 
 import java.util.Properties;
 
+import me.oskarmendel.view.RapidTunesController;
+
 /**
  * GeneralSettings class that stores and controls settings handling
  * RapidTunes.
@@ -40,13 +42,14 @@ import java.util.Properties;
 public class GeneralSettings extends Settings {
 	
 	private static final String PATH = "settings/general.properties";
-	private static final String DEFAULT_THEME = "";
+	
+	private static final String DEFAULT_THEME = RapidTunesController.DEFAULT_STYLING;
 	private static final String DEFAULT_LANGUAGE = "";
 	private static final boolean DEFAULT_NOTIFICATIONS = true;
 	
-	private String theme;
-	private String language;
-	private boolean notifications;
+	private String theme;				//
+	private String language;			//
+	private boolean notifications;		//
 	//TODO: More UI settings goes here.
 	
 	/**

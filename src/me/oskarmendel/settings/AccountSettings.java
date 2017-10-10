@@ -39,16 +39,33 @@ import java.util.Properties;
  */
 public class AccountSettings extends Settings {
 
+	private static final String PATH = "settings/account.properties";
+	
+	/**
+	 * 
+	 */
+	public AccountSettings() {
+		super();
+	}
+	
+	/**
+	 * 
+	 * @param properties
+	 */
+	public AccountSettings(Properties properties) {
+		super();
+	}
+	
 	@Override
 	public String getPath() {
-		// TODO Auto-generated method stub
-		return null;
+		return AccountSettings.PATH;
 	}
 
 	@Override
 	public Properties getDefaultProperties() {
-		// TODO Auto-generated method stub
-		return null;
+		Properties properties = new Properties();
+		
+		return properties;
 	}
 
 }
