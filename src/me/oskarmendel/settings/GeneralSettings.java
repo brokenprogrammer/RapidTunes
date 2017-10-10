@@ -66,6 +66,9 @@ public class GeneralSettings extends Settings {
 	public GeneralSettings(Properties properties) {
 		super();
 		
+		this.theme = properties.getProperty("theme");
+		this.language = properties.getProperty("language");
+		this.notifications = Boolean.getBoolean(properties.getProperty("notifications"));
 	}
 
 	/**
@@ -115,6 +118,17 @@ public class GeneralSettings extends Settings {
 		return GeneralSettings.PATH;
 	}
 
+	@Override
+	public Properties toProperties() {
+		Properties properties = new Properties();
+		
+		properties.setProperty("theme", this.theme);
+		properties.setProperty("language", this.language);
+		properties.setProperty("notifications", String.valueOf(this.notifications));
+		
+		return properties;
+	}
+	
 	@Override
 	public Properties getDefaultProperties() {
 		Properties properties = new Properties();

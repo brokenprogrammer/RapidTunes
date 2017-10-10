@@ -27,6 +27,16 @@
 
 package me.oskarmendel.model;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import me.oskarmendel.SettingsManager;
+import me.oskarmendel.settings.AccountSettings;
+import me.oskarmendel.settings.GeneralSettings;
+import me.oskarmendel.settings.HotkeySettings;
+import me.oskarmendel.settings.PlaylistSettings;
+import me.oskarmendel.settings.SongSettings;
+import me.oskarmendel.settings.SourceSettings;
+
 /**
  * Model that manages the currently used settings for the application.
  * 
@@ -35,5 +45,27 @@ package me.oskarmendel.model;
  * @name SettingsModel.java
  */
 public class SettingsModel {
-
+	
+	private SettingsManager settingsManager;
+	
+	private final ObjectProperty<GeneralSettings> generalSettings = new SimpleObjectProperty<>();
+	private final ObjectProperty<SongSettings> songSettings = new SimpleObjectProperty<>();
+	private final ObjectProperty<PlaylistSettings> playlistSettings = new SimpleObjectProperty<>();
+	private final ObjectProperty<SourceSettings> sourceSettings = new SimpleObjectProperty<>();
+	private final ObjectProperty<HotkeySettings> hotkeySettings = new SimpleObjectProperty<>();
+	private final ObjectProperty<AccountSettings> accountSettings = new SimpleObjectProperty<>();
+	
+	/**
+	 * 
+	 */
+	public SettingsModel() {
+		settingsManager = SettingsManager.getInstance();
+		
+		generalSettings.set((GeneralSettings) settingsManager.loadSettings(new GeneralSettings()));
+		songSettings.set((SongSettings) settingsManager.loadSettings(new SongSettings()));
+		playlistSettings.set((PlaylistSettings) settingsManager.loadSettings(new PlaylistSettings()));
+		sourceSettings.set((SourceSettings) settingsManager.loadSettings(new SourceSettings()));
+		hotkeySettings.set((HotkeySettings) settingsManager.loadSettings(new HotkeySettings()));
+		accountSettings.set((AccountSettings) settingsManager.loadSettings(new AccountSettings()));
+	}
 }

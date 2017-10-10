@@ -62,10 +62,16 @@ public class AccountSettings extends Settings {
 	}
 
 	@Override
+	public Properties toProperties() {
+		Properties properties = new Properties();
+		
+		return properties;
+	}
+	
+	@Override
 	public Properties getDefaultProperties() {
 		Properties properties = new Properties();
 		
 		return properties;
 	}
-
 }

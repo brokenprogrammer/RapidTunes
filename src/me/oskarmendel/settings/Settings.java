@@ -49,5 +49,7 @@ public abstract class Settings {
 	 */
 	public abstract String getPath();
 	
+	public abstract Properties toProperties();
+	
 	public abstract Properties getDefaultProperties();
 }

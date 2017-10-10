@@ -157,6 +157,19 @@ public class SongSettings extends Settings {
 	}
 
 	@Override
+	public Properties toProperties() {
+		Properties properties = new Properties();
+		
+		properties.setProperty("crossfade", String.valueOf(this.crossfade));
+		properties.setProperty("crossfade-seconds", String.valueOf(this.crossfadeSeconds));
+		properties.setProperty("soundEnhancer", String.valueOf(this.soundEnhancer));
+		properties.setProperty("soundEnhancer", String.valueOf(this.soundEnhancerValue));
+		properties.setProperty("playbackQuality", String.valueOf(this.playbackQuality));
+		
+		return properties;
+	}
+	
+	@Override
 	public Properties getDefaultProperties() {
 		Properties properties = new Properties();
 		
@@ -168,5 +181,4 @@ public class SongSettings extends Settings {
 		
 		return properties;
 	}
-
 }

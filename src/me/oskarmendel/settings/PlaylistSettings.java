@@ -114,6 +114,17 @@ public class PlaylistSettings extends Settings {
 	}
 
 	@Override
+	public Properties toProperties() {
+		Properties properties = new Properties();
+		
+		properties.setProperty("playlistDirectory", this.playlistDirectory);
+		properties.setProperty("autoExportYouTube", String.valueOf(this.autoExportYouTube));
+		properties.setProperty("autoExportSoundCloud", String.valueOf(this.autoExportSoundCloud));
+		
+		return properties;
+	}
+	
+	@Override
 	public Properties getDefaultProperties() {
 		Properties properties = new Properties();
 		
@@ -123,5 +134,4 @@ public class PlaylistSettings extends Settings {
 		
 		return properties;
 	}
-
 }
