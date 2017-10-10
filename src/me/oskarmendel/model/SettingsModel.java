@@ -56,7 +56,8 @@ public class SettingsModel {
 	private final ObjectProperty<AccountSettings> accountSettings = new SimpleObjectProperty<>();
 	
 	/**
-	 * 
+	 * Default constructor for the {@link SettingsModel} that initializes all the different {@link Settings}
+	 * by loading them from the file system using {@link SettingsManager}.
 	 */
 	public SettingsModel() {
 		settingsManager = SettingsManager.getInstance();
@@ -67,5 +68,95 @@ public class SettingsModel {
 		sourceSettings.set((SourceSettings) settingsManager.loadSettings(new SourceSettings()));
 		hotkeySettings.set((HotkeySettings) settingsManager.loadSettings(new HotkeySettings()));
 		accountSettings.set((AccountSettings) settingsManager.loadSettings(new AccountSettings()));
+	}
+
+	/**
+	 * @return the generalSettings
+	 */
+	public ObjectProperty<GeneralSettings> getGeneralSettingsProperty() {
+		return this.generalSettings;
+	}
+	
+	public GeneralSettings getGeneralSettings() {
+		return this.generalSettings.get();
+	}
+	
+	public void setGeneralSettings(GeneralSettings settings) {
+		this.generalSettings.set(settings);
+	}
+
+	/**
+	 * @return the songSettings
+	 */
+	public ObjectProperty<SongSettings> getSongSettingsProperty() {
+		return this.songSettings;
+	}
+	
+	public SongSettings getSongSettings() {
+		return this.songSettings.get();
+	}
+	
+	public void setSongSettings(SongSettings settings) {
+		this.songSettings.set(settings);
+	}
+
+	/**
+	 * @return the playlistSettings
+	 */
+	public ObjectProperty<PlaylistSettings> getPlaylistSettingsProperty() {
+		return this.playlistSettings;
+	}
+	
+	public PlaylistSettings getPlaylistSettings() {
+		return this.playlistSettings.get();
+	}
+	
+	public void setPlaylistSettings(PlaylistSettings settings) {
+		this.playlistSettings.set(settings);
+	}
+
+	/**
+	 * @return the sourceSettings
+	 */
+	public ObjectProperty<SourceSettings> getSourceSettingsProperty() {
+		return this.sourceSettings;
+	}
+
+	public SourceSettings getSourceSettings() {
+		return this.sourceSettings.get();
+	}
+	
+	public void setSourceSettings(SourceSettings settings) {
+		this.sourceSettings.set(settings);
+	}
+	
+	/**
+	 * @return the hotkeySettings
+	 */
+	public ObjectProperty<HotkeySettings> getHotkeySettingsProperty() {
+		return this.hotkeySettings;
+	}
+	
+	public HotkeySettings getHotkeySettings() {
+		return this.hotkeySettings.get();
+	}
+	
+	public void setHotkeySettings(HotkeySettings settings) {
+		this.hotkeySettings.set(settings);
+	}
+
+	/**
+	 * @return the accountSettings
+	 */
+	public ObjectProperty<AccountSettings> getAccountSettingsProperty() {
+		return this.accountSettings;
+	}
+	
+	public AccountSettings getAccountSettings() {
+		return this.accountSettings.get();
+	}
+	
+	public void setAccountSettings(AccountSettings settings) {
+		this.accountSettings.set(settings);
 	}
 }
