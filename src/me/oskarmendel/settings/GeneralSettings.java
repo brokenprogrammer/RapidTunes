@@ -44,24 +44,27 @@ public class GeneralSettings extends Settings {
 	private static final String PATH = "settings/general.properties";
 	
 	private static final String DEFAULT_THEME = RapidTunesController.DEFAULT_STYLING;
-	private static final String DEFAULT_LANGUAGE = "";
+	private static final String DEFAULT_LANGUAGE = ""; //TODO: Specify default language.
 	private static final boolean DEFAULT_NOTIFICATIONS = true;
 	
-	private String theme;				//
-	private String language;			//
-	private boolean notifications;		//
+	private String theme;				// Path of the CSS theme to be used for styling of the application.
+	private String language;			// Language to be used by the application.
+	private boolean notifications;		// Boolean toggle for turning notifications on / off.
 	//TODO: More UI settings goes here.
 	
 	/**
-	 * 
+	 * Default constructor for the GeneralSettings that simply calls
+	 * the parent constructor and leaves all members uninitialized.
 	 */
 	public GeneralSettings() {
 		super();
 	}
 	
 	/**
+	 * Constructor that initializes all members using the specified Properties
+	 * object.
 	 * 
-	 * @param properties
+	 * @param properties - Properties object to retrieve data from.
 	 */
 	public GeneralSettings(Properties properties) {
 		super();
@@ -72,52 +75,75 @@ public class GeneralSettings extends Settings {
 	}
 
 	/**
-	 * @return the theme
+	 * Getter for the theme of this GeneralSettings.
+	 * 
+	 * @return - Theme of this GeneralSettings.
 	 */
 	public String getTheme() {
 		return theme;
 	}
 
 	/**
-	 * @return the language
+	 * Getter for the language of this GeneralSettings.
+	 * 
+	 * @return - Language of this GeneralSettings.
 	 */
 	public String getLanguage() {
 		return language;
 	}
 
 	/**
-	 * @return the notifications
+	 * Getter for the notifications of this GeneralSettings.
+	 * 
+	 * @return - Notifications value of this GeneralSettings.
 	 */
 	public boolean isNotifications() {
 		return notifications;
 	}
 
 	/**
-	 * @param theme the theme to set
+	 * Setter for the theme of this GeneralSettings.
+	 * 
+	 * @param theme - Theme value to set.
 	 */
 	public void setTheme(String theme) {
 		this.theme = theme;
 	}
 
 	/**
-	 * @param language the language to set
+	 * Setter for the language of this GeneralSettings.
+	 * 
+	 * @param language - Language value to set.
 	 */
 	public void setLanguage(String language) {
 		this.language = language;
 	}
 
 	/**
-	 * @param notifications the notifications to set
+	 * Setter for the notifications of this GeneralSettings.
+	 * 
+	 * @param notifications - Notifications value to set.
 	 */
 	public void setNotifications(boolean notifications) {
 		this.notifications = notifications;
 	}
 
+	/**
+	 * Returns the path for the settings file.
+	 * This path is used when saving / loading setting files.
+	 * 
+	 * @return - Path of the Settings file.
+	 */
 	@Override
 	public String getPath() {
 		return GeneralSettings.PATH;
 	}
 
+	/**
+	 * Returns a Settings object converted into a Properties object.
+	 * 
+	 * @return - Properties object with all the Settings defined by the target Settings object.
+	 */
 	@Override
 	public Properties toProperties() {
 		Properties properties = new Properties();
@@ -129,6 +155,11 @@ public class GeneralSettings extends Settings {
 		return properties;
 	}
 	
+	/**
+	 * Returns the default Properties object defined by the target Settings object.
+	 * 
+	 * @return - Properties object with all the default properties.
+	 */
 	@Override
 	public Properties getDefaultProperties() {
 		Properties properties = new Properties();

@@ -42,25 +42,39 @@ public class SourceSettings extends Settings {
 	private static final String PATH = "settings/source.properties";
 	
 	/**
-	 * 
+	 * Default constructor for the SourceSettings that simply calls
+	 * the parent constructor and leaves all members uninitialized.
 	 */
 	public SourceSettings() {
 		super();
 	}
 	
 	/**
+	 * Constructor that initializes all members using the specified Properties
+	 * object.
 	 * 
-	 * @param properties
+	 * @param properties - Properties object to retrieve data from.
 	 */
 	public SourceSettings(Properties properties) {
 		super();
 	}
 	
+	/**
+	 * Returns the path for the settings file.
+	 * This path is used when saving / loading setting files.
+	 * 
+	 * @return - Path of the Settings file.
+	 */
 	@Override
 	public String getPath() {
 		return SourceSettings.PATH;
 	}
 
+	/**
+	 * Returns a Settings object converted into a Properties object.
+	 * 
+	 * @return - Properties object with all the Settings defined by the target Settings object.
+	 */
 	@Override
 	public Properties toProperties() {
 		Properties properties = new Properties();
@@ -68,6 +82,11 @@ public class SourceSettings extends Settings {
 		return properties;
 	}
 	
+	/**
+	 * Returns the default Properties object defined by the target Settings object.
+	 * 
+	 * @return - Properties object with all the default properties.
+	 */
 	@Override
 	public Properties getDefaultProperties() {
 		Properties properties = new Properties();

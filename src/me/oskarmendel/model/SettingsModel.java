@@ -71,91 +71,169 @@ public class SettingsModel {
 	}
 
 	/**
-	 * @return the generalSettings
+	 * Getter for the GeneralSettings ObjectProperty object.
+	 * 
+	 * @return - The generalSettings ObjectProperty.
 	 */
 	public ObjectProperty<GeneralSettings> getGeneralSettingsProperty() {
 		return this.generalSettings;
 	}
 	
+	/**
+	 * Returns a GeneralSettings object for the currently used 
+	 * GeneralSettings contained within the generalSettings ObjectProperty.
+	 * 
+	 * @return - The GeneralSettings that is currently in use.
+	 */
 	public GeneralSettings getGeneralSettings() {
 		return this.generalSettings.get();
 	}
 	
+	/**
+	 * Setter for the GeneralSettings to be currently used.
+	 * 
+	 * @param settings - GeneralSettings object to set to active.
+	 */
 	public void setGeneralSettings(GeneralSettings settings) {
 		this.generalSettings.set(settings);
 	}
 
 	/**
-	 * @return the songSettings
+	 * Getter for the SongSettings ObjectProperty object.
+	 * 
+	 * @return - The songSettings ObjectProperty.
 	 */
 	public ObjectProperty<SongSettings> getSongSettingsProperty() {
 		return this.songSettings;
 	}
 	
+	/**
+	 * Returns a SongSettings object for the currently used 
+	 * SongSettings contained within the songSettings ObjectProperty.
+	 * 
+	 * @return - The SongSettings that is currently in use.
+	 */
 	public SongSettings getSongSettings() {
 		return this.songSettings.get();
 	}
 	
+	/**
+	 * Setter for the SongSettings to be currently used.
+	 * 
+	 * @param settings - SongSettings object to set to active.
+	 */
 	public void setSongSettings(SongSettings settings) {
 		this.songSettings.set(settings);
 	}
 
 	/**
-	 * @return the playlistSettings
+	 * Getter for the PlaylistSettings ObjectProperty object.
+	 * 
+	 * @return - The playlistSettings ObjectProperty.
 	 */
 	public ObjectProperty<PlaylistSettings> getPlaylistSettingsProperty() {
 		return this.playlistSettings;
 	}
 	
+	/**
+	 * Returns a PlaylistSettings object for the currently used 
+	 * PlaylistSettings contained within the playlistSettings ObjectProperty.
+	 * 
+	 * @return - The PlaylistSettings that is currently in use.
+	 */
 	public PlaylistSettings getPlaylistSettings() {
 		return this.playlistSettings.get();
 	}
 	
+	/**
+	 * Setter for the PlaylistSettings to be currently used.
+	 * 
+	 * @param settings - PlaylistSettings object to set to active.
+	 */
 	public void setPlaylistSettings(PlaylistSettings settings) {
 		this.playlistSettings.set(settings);
 	}
 
 	/**
-	 * @return the sourceSettings
+	 * Getter for the SourceSettings ObjectProperty object.
+	 * 
+	 * @return - The sourceSettings ObjectProperty.
 	 */
 	public ObjectProperty<SourceSettings> getSourceSettingsProperty() {
 		return this.sourceSettings;
 	}
 
+	/**
+	 * Returns a SourceSettings object for the currently used 
+	 * SourceSettings contained within the sourceSettings ObjectProperty.
+	 * 
+	 * @return - The SourceSettings that is currently in use.
+	 */
 	public SourceSettings getSourceSettings() {
 		return this.sourceSettings.get();
 	}
 	
+	/**
+	 * Setter for the SourceSettings to be currently used.
+	 * 
+	 * @param settings - SourceSettings object to set to active.
+	 */
 	public void setSourceSettings(SourceSettings settings) {
 		this.sourceSettings.set(settings);
 	}
 	
 	/**
-	 * @return the hotkeySettings
+	 * Getter for the HotkeySettings ObjectProperty object.
+	 * 
+	 * @return - The hotkeySettings ObjectProperty.
 	 */
 	public ObjectProperty<HotkeySettings> getHotkeySettingsProperty() {
 		return this.hotkeySettings;
 	}
 	
+	/**
+	 * Returns a HotkeySettings object for the currently used 
+	 * HotkeySettings contained within the hotkeySettings ObjectProperty.
+	 * 
+	 * @return - The HotkeySettings that is currently in use.
+	 */
 	public HotkeySettings getHotkeySettings() {
 		return this.hotkeySettings.get();
 	}
 	
+	/**
+	 * Setter for the HotkeySettings to be currently used.
+	 * 
+	 * @param settings - HotkeySettings object to set to active.
+	 */
 	public void setHotkeySettings(HotkeySettings settings) {
 		this.hotkeySettings.set(settings);
 	}
 
 	/**
-	 * @return the accountSettings
+	 * Getter for the AccountSettings ObjectProperty object.
+	 * 
+	 * @return - The accountSettings ObjectProperty.
 	 */
 	public ObjectProperty<AccountSettings> getAccountSettingsProperty() {
 		return this.accountSettings;
 	}
 	
+	/**
+	 * Returns a AccountSettings object for the currently used 
+	 * AccountSettings contained within the accountSettings ObjectProperty.
+	 * 
+	 * @return - The AccountSettings that is currently in use.
+	 */
 	public AccountSettings getAccountSettings() {
 		return this.accountSettings.get();
 	}
 	
+	/**
+	 * Setter for the AccountSettings to be currently used.
+	 * 
+	 * @param settings - AccountSettings object to set to active.
+	 */
 	public void setAccountSettings(AccountSettings settings) {
 		this.accountSettings.set(settings);
 	}

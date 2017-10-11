@@ -46,73 +46,103 @@ public class PlaylistSettings extends Settings {
 	private static final boolean DEFAULT_AUTOEXPORT_YOUTUBE = false;
 	private static final boolean DEFAULT_AUTOEXPORT_SOUNDCLOUD = false;
 	
-	private String playlistDirectory;			//
+	private String playlistDirectory;			// Path for the directory to store the users playlists in.
 	
-	private boolean autoExportYouTube;			//
-	private boolean autoExportSoundCloud;		//
+	private boolean autoExportYouTube;			// Toggle to enable exporting playlists to YouTube.
+	private boolean autoExportSoundCloud;		// Toggle to enable exporting playlists to SoundCloud.
 	
 	/**
-	 * 
+	 * Default constructor for the PlaylistSettings that simply calls
+	 * the parent constructor and leaves all members uninitialized.
 	 */
 	public PlaylistSettings() {
 		super();
 	}
 	
 	/**
+	 * Constructor that initializes all members using the specified Properties
+	 * object.
 	 * 
-	 * @param properties
+	 * @param properties - Properties object to retrieve data from.
 	 */
 	public PlaylistSettings(Properties properties) {
 		super();
+		
+		this.playlistDirectory = properties.getProperty("playlistDirectory");
+		this.autoExportYouTube = Boolean.getBoolean(properties.getProperty("autoExportYouTube"));
+		this.autoExportSoundCloud = Boolean.getBoolean(properties.getProperty("autoExportSoundCloud"));
 	}
 	
 	/**
-	 * @return the playlistDirectory
+	 * Getter for the playlistDirectory value of this PlaylistSettings.
+	 * 
+	 * @return - PlaylistDirectory value of this PlaylistSettings.
 	 */
 	public String getPlaylistDirectory() {
 		return playlistDirectory;
 	}
 
 	/**
-	 * @return the autoExportYouTube
+	 * Getter for the autoExportYouTube value of this PlaylistSettings.
+	 * 
+	 * @return - AutoExportYouTube value of this PlaylistSettings.
 	 */
 	public boolean isAutoExportYouTube() {
 		return autoExportYouTube;
 	}
 
 	/**
-	 * @return the autoExportSoundCloud
+	 * Getter for the autoExportSoundCloud value of this PlaylistSettings.
+	 * 
+	 * @return - AutoExportSoundCloud value of this PlaylistSettings.
 	 */
 	public boolean isAutoExportSoundCloud() {
 		return autoExportSoundCloud;
 	}
 
 	/**
-	 * @param playlistDirectory the playlistDirectory to set
+	 * Setter for the playlistDirectory value of this PlaylistSettings.
+	 * 
+	 * @param playlistDirectory - PlaylistDirectory value to set.
 	 */
 	public void setPlaylistDirectory(String playlistDirectory) {
 		this.playlistDirectory = playlistDirectory;
 	}
 
 	/**
-	 * @param autoExportYouTube the autoExportYouTube to set
+	 * Setter for the autoExportYouTube value of this PlaylistSettings.
+	 * 
+	 * @param autoExportYouTube - AutoExportYouTube value to set.
 	 */
 	public void setAutoExportYouTube(boolean autoExportYouTube) {
 		this.autoExportYouTube = autoExportYouTube;
 	}
 
 	/**
-	 * @param autoExportSoundCloud the autoExportSoundCloud to set
+	 * Setter for the autoExportSoundCloud value of this PlaylistSettings.
+	 * 
+	 * @param autoExportSoundCloud - AutoExportSoundCloud value to set.
 	 */
 	public void setAutoExportSoundCloud(boolean autoExportSoundCloud) {
 		this.autoExportSoundCloud = autoExportSoundCloud;
 	}
 
+	/**
+	 * Returns the path for the settings file.
+	 * This path is used when saving / loading setting files.
+	 * 
+	 * @return - Path of the Settings file.
+	 */
 	@Override
 	public String getPath() {
 		return PlaylistSettings.PATH;
 	}
 
+	/**
+	 * Returns a Settings object converted into a Properties object.
+	 * 
+	 * @return - Properties object with all the Settings defined by the target Settings object.
+	 */
 	@Override
 	public Properties toProperties() {
 		Properties properties = new Properties();
@@ -124,6 +154,11 @@ public class PlaylistSettings extends Settings {
 		return properties;
 	}
 	
+	/**
+	 * Returns the default Properties object defined by the target Settings object.
+	 * 
+	 * @return - Properties object with all the default properties.
+	 */
 	@Override
 	public Properties getDefaultProperties() {
 		Properties properties = new Properties();
