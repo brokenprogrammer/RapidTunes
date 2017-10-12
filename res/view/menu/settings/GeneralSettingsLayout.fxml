@@ -26,6 +26,8 @@
  SOFTWARE.
 -->
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -33,6 +35,68 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RapidTunes" AnchorPane.topAnchor="1.0" />
+      <VBox AnchorPane.leftAnchor="10.0">
+         <children>
+            <HBox>
+               <children>
+                  <Label fx:id="generalSettingsThemeLabel" text="Theme location:">
+                     <HBox.margin>
+                        <Insets right="5.0" top="2.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="generalSettingsThemeTextField">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="generalSettingsThemeBtn" mnemonicParsing="false" text="Change..." />
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox>
+               <children>
+                  <Label fx:id="generalSettingsLanguageLabel" text="Choose Language:">
+                     <HBox.margin>
+                        <Insets right="5.0" top="2.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ChoiceBox fx:id="generalSettingsLanguageChoiceBox">
+                  </ChoiceBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </Separator>
+            <VBox>
+               <children>
+                  <HBox>
+                     <children>
+                        <CheckBox fx:id="generalSettingsNotificationsToggle" mnemonicParsing="false" text="Notifications" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="generalSettingsNotificationsInfoLabel" text="Toggles notifications for the application.">
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
