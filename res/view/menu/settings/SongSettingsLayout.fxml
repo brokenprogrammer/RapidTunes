@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.collections.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<VBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.leftAnchor="10.0">
+			<children>
+				<HBox>
+					<children>
+						<CheckBox fx:id="songSettingsCrossfadeCheckBox" mnemonicParsing="false" text="Crossfade Songs:" />
+						<Slider fx:id="songSettingsCrossfadeSlider" blockIncrement="1.0" majorTickUnit="6.0" max="12.0" minorTickCount="5" prefHeight="38.0" prefWidth="158.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+					</children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+				</HBox>
+            <Separator>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </Separator>
+				<HBox>
+					<children>
+						<CheckBox fx:id="songSettingsSoundEnhancerCheckBox" mnemonicParsing="false" text="Sound Enhancer:" />
+						<Slider fx:id="songSettingsSoundEnhancerSlider" blockIncrement="1.0" majorTickUnit="50.0" minorTickCount="10" prefHeight="38.0" prefWidth="158.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="50.0" />
+					</children>
+				</HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </Separator>
+				<HBox>
+					<children>
+						<Label fx:id="songSettingsPlaybackQualityLabel" text="Playback Quality: ">
+                     <HBox.margin>
+                        <Insets top="2.0" />
+                     </HBox.margin></Label>
+						<ChoiceBox fx:id="songSettingsPlaybackQualityChoiceBox" value="Good">
+							<items>
+								<FXCollections fx:factory="observableArrayList">
+									<String fx:value="Bad" />
+									<String fx:value="Good" />
+									<String fx:value="Best Available" />
+								</FXCollections>
+							</items>
+						</ChoiceBox>
+					</children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+				</HBox>
+			</children>
+		</VBox>
+	</children>
+</AnchorPane>
