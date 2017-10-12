@@ -32,12 +32,18 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import me.oskarmendel.settings.AccountSettings;
 import me.oskarmendel.settings.GeneralSettings;
+import me.oskarmendel.settings.HotkeySettings;
+import me.oskarmendel.settings.PlaylistSettings;
 import me.oskarmendel.settings.Settings;
+import me.oskarmendel.settings.SongSettings;
+import me.oskarmendel.settings.SourceSettings;
 
 /**
  * Singleton that manages the loading and changes of settings.
@@ -53,7 +59,7 @@ public class SettingsManager {
 	private static SettingsManager INSTANCE;
 	
 	/**
-	 * 
+	 * Private constructor to enforce the Singleton pattern.
 	 */
 	private SettingsManager() {	}
 	
@@ -70,11 +76,44 @@ public class SettingsManager {
 	}
 	
 	/**
+	 * Saves settings using the path bound to the specified Settings object, if no
+	 * such settings file already exists then a new one is created and written to and 
+	 * populated with the settings stored within the Settings object.
 	 * 
-	 * @param settings
+	 * @param settings - Settings object to gather data and populate the settings file with.
 	 */
 	public void saveSettings(Settings settings) {
-		//TODO: Use logger..
+		LOGGER.log(Level.FINE, "Saving settings: " + settings.getPath());
+		
+		File settingsFile = new File(settings.getPath());
+		OutputStream output = null;
+		
+		try {
+			if (!settingsFile.exists()) {
+				LOGGER.log(Level.FINE, "Settings not found, Creating new file for: " + settings.getPath());
+				
+				settingsFile.getParentFile().mkdirs();
+				settingsFile.createNewFile();
+				
+				LOGGER.log(Level.FINE, "Created settings for: " + settings.getPath());
+			}
+			
+			output = new FileOutputStream(settings.getPath());
+			
+			Properties properties = settings.toProperties();
+			properties.store(output, null);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (output != null) {
+					output.close();
+				}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	/**
@@ -109,6 +148,16 @@ public class SettingsManager {
 			// Populate settings depending on settings type.
 			if (settings instanceof GeneralSettings) {
 				settings = new GeneralSettings(properties);
+			} else if (settings instanceof SongSettings) {
+				settings = new SongSettings(properties);
+			} else if (settings instanceof PlaylistSettings) {
+				settings = new PlaylistSettings(properties);
+			} else if (settings instanceof SourceSettings) {
+				settings = new SourceSettings(properties);
+			} else if (settings instanceof HotkeySettings) {
+				settings = new HotkeySettings(properties);
+			} else if (settings instanceof AccountSettings) {
+				settings = new AccountSettings(properties);
 			}
 			
 		} catch (IOException e) {
@@ -122,7 +171,6 @@ public class SettingsManager {
 				}
 			}
 		}
-		
 		return settings;
 	}
 	

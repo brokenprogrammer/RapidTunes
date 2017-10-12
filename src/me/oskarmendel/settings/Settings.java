@@ -39,15 +39,31 @@ import java.util.Properties;
  */
 public abstract class Settings {
 	
-	public Settings() {
-		
-	}
+	/**
+	 * Default constructor for the Abstract Settings object managing 
+	 * all the common parts of constructing a Settings child object.
+	 */
+	public Settings() { }
 	
 	/**
+	 * Returns the path for the settings file.
+	 * This path is used when saving / loading setting files.
 	 * 
-	 * @return
+	 * @return - Path of the Settings file.
 	 */
 	public abstract String getPath();
 	
+	/**
+	 * Returns a Settings object converted into a Properties object.
+	 * 
+	 * @return - Properties object with all the Settings defined by the target Settings object.
+	 */
+	public abstract Properties toProperties();
+	
+	/**
+	 * Returns the default Properties object defined by the target Settings object.
+	 * 
+	 * @return - Properties object with all the default properties.
+	 */
 	public abstract Properties getDefaultProperties();
 }
