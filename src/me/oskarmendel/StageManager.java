@@ -27,15 +27,18 @@
 
 package me.oskarmendel;
 
-import me.oskarmendel.model.CurrentlyPlayingModel;
-import me.oskarmendel.model.SearchResultModel;
-import me.oskarmendel.view.*;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -44,6 +47,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import me.oskarmendel.model.CurrentlyPlayingModel;
+import me.oskarmendel.model.SearchResultModel;
+import me.oskarmendel.view.NavigationController;
+import me.oskarmendel.view.PlaylistController;
+import me.oskarmendel.view.RapidTunesController;
+import me.oskarmendel.view.SongBrowserController;
+import me.oskarmendel.view.SongController;
 
 /**
  * Singleton that manages the loading and changes of a stage.
@@ -153,12 +163,70 @@ public class StageManager {
 		
 		LOGGER.log(Level.FINE, "Loading Layout: " + layout);
 		loader.setLocation(getClass().getResource(layout));
-		
+		loader.setResources(getResourseBundle(System.getProperty("user.language")));
 		Parent nodeLayout = loader.load();
 		
 		//Store controller of target layout
 		controllers.put(layout, loader.getController());
 		
 		return nodeLayout;
+	}
+
+	/**
+	 *  Return correct strings depend on user language. May be extended for language-location (etc en-GB, en-US).
+	 *  case en just for better human reading
+	 *
+	 * @param language
+	 * @return ResourceBundle for entire application
+	 */
+	private ResourceBundle getResourseBundle(String language) {
+		switch (language) {
+			case "se":
+			case "ru":
+				return ResourceBundle.getBundle("bundle.strings",
+						new Locale(language), new UTF8Control());
+			case "en":
+			default:
+				return ResourceBundle.getBundle("bundle.strings", Locale.ROOT, new UTF8Control());
+		}
+	}
+
+	/**
+	 * Override default ResourceBundle.Control class, since it use antic ISO charset
+	 * Only this line is changed to make it to read properties files as UTF-8.
+	 * Stack says that bug marked as resolved in Java 9.
+	 */
+	private class UTF8Control extends ResourceBundle.Control {
+		public ResourceBundle newBundle
+				(String baseName, Locale locale, String format, ClassLoader loader, boolean reload)
+				throws IllegalAccessException, InstantiationException, IOException
+		{
+			// The below is a copy of the default implementation.
+			String bundleName = toBundleName(baseName, locale);
+			String resourceName = toResourceName(bundleName, "properties");
+			ResourceBundle bundle = null;
+			InputStream stream = null;
+			if (reload) {
+				URL url = loader.getResource(resourceName);
+				if (url != null) {
+					URLConnection connection = url.openConnection();
+					if (connection != null) {
+						connection.setUseCaches(false);
+						stream = connection.getInputStream();
+					}
+				}
+			} else {
+				stream = loader.getResourceAsStream(resourceName);
+			}
+			if (stream != null) {
+				try {
+					// Only this line is changed to make it to read properties files as UTF-8.
+					bundle = new PropertyResourceBundle(new InputStreamReader(stream, "UTF-8"));
+				} finally {
+					stream.close();
+				}
+			}
+			return bundle;
+		}
 	}
 }

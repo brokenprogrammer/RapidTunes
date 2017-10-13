@@ -16,7 +16,7 @@
 		    <menus>
 		        <Menu mnemonicParsing="false" text="File">
 		            <items>
-		                <MenuItem fx:id="menuFileNewPlaylist" text="New playlist">
+		                <MenuItem fx:id="menuFileNewPlaylist" text="%menu.bar.newPlaylist">
 		                    <accelerator>
 		                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
 		                    </accelerator></MenuItem>
@@ -29,7 +29,7 @@
 		        </Menu>
 		        <Menu mnemonicParsing="false" text="Edit">
 		            <items>
-		                <MenuItem fx:id="menuEditUndo" text="Undo">
+		                <MenuItem fx:id="menuEditUndo" text="%menu.bar.undo">
 		                    <accelerator>
 		                        <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
 		                    </accelerator></MenuItem>
@@ -37,7 +37,7 @@
 		                    <accelerator>
 		                        <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
 		                    </accelerator></MenuItem>
-		                <MenuItem fx:id="menuEditCut" text="Cut">
+		                <MenuItem fx:id="menuEditCut" text="%menu.bar.cut">
 		                    <accelerator>
 		                        <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
 		                    </accelerator></MenuItem>
