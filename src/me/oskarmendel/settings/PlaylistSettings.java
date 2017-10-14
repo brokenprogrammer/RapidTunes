@@ -69,8 +69,8 @@ public class PlaylistSettings extends Settings {
 		super();
 		
 		this.playlistDirectory = properties.getProperty("playlistDirectory");
-		this.autoExportYouTube = Boolean.getBoolean(properties.getProperty("autoExportYouTube"));
-		this.autoExportSoundCloud = Boolean.getBoolean(properties.getProperty("autoExportSoundCloud"));
+		this.autoExportYouTube = Boolean.valueOf(properties.getProperty("autoExportYouTube"));
+		this.autoExportSoundCloud = Boolean.valueOf(properties.getProperty("autoExportSoundCloud"));
 	}
 	
 	/**

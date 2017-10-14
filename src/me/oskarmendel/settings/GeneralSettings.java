@@ -71,7 +71,7 @@ public class GeneralSettings extends Settings {
 		
 		this.theme = properties.getProperty("theme");
 		this.language = properties.getProperty("language");
-		this.notifications = Boolean.getBoolean(properties.getProperty("notifications"));
+		this.notifications = Boolean.valueOf(properties.getProperty("notifications"));
 	}
 
 	/**

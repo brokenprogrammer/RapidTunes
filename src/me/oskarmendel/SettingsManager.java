@@ -171,6 +171,7 @@ public class SettingsManager {
 				}
 			}
 		}
+		
 		return settings;
 	}
 	
@@ -206,6 +207,16 @@ public class SettingsManager {
 				// Populate settings depending on settings type.
 				if (settings instanceof GeneralSettings) {
 					settings = new GeneralSettings(properties);
+				} else if (settings instanceof SongSettings) {
+					settings = new SongSettings(properties);
+				} else if (settings instanceof PlaylistSettings) {
+					settings = new PlaylistSettings(properties);
+				} else if (settings instanceof SourceSettings) {
+					settings = new SourceSettings(properties);
+				} else if (settings instanceof HotkeySettings) {
+					settings = new HotkeySettings(properties);
+				} else if (settings instanceof AccountSettings) {
+					settings = new AccountSettings(properties);
 				}
 				
 			} catch (IOException e) {

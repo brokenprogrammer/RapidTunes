@@ -84,10 +84,10 @@ public class SongSettings extends Settings {
 	public SongSettings(Properties properties) {
 		super();
 		
-		this.crossfade = Boolean.getBoolean(properties.getProperty("crossfade"));
+		this.crossfade = Boolean.valueOf(properties.getProperty("crossfade"));
 		this.crossfadeSeconds = Integer.parseInt(properties.getProperty("crossfade-seconds"));
 		
-		this.soundEnhancer = Boolean.getBoolean(properties.getProperty("soundEnhancer"));
+		this.soundEnhancer = Boolean.valueOf(properties.getProperty("soundEnhancer"));
 		this.soundEnhancerValue = Integer.parseInt(properties.getProperty("soundEnhancer-value"));
 		
 		this.playbackQuality = toPlaybackQuality(properties.getProperty("playbackQuality"));
