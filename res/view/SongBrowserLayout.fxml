@@ -13,10 +13,10 @@
 	<!-- <children> -->
 		<TableView fx:id="songList" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
 			<columns>
-				<TableColumn fx:id="songListSong" prefWidth="75.0" text="Song"/>
-				<TableColumn fx:id="songListPublisher" prefWidth="75.0" text="Publisher"/>
-				<TableColumn fx:id="songListTime" prefWidth="75.0" text="Time"/>
-				<TableColumn fx:id="songListSource" prefWidth="75.0" text="Source"/>
+				<TableColumn fx:id="songListSong" prefWidth="75.0" text="%song.song"/>
+				<TableColumn fx:id="songListPublisher" prefWidth="75.0" text="%song.publisher"/>
+				<TableColumn fx:id="songListTime" prefWidth="75.0" text="%song.time"/>
+				<TableColumn fx:id="songListSource" prefWidth="75.0" text="%song.source"/>
 			</columns>
 		</TableView>
 		<!--<ListView fx:id="songList" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" /> -->

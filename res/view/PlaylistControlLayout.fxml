@@ -17,7 +17,7 @@
             <HBox id="playlistSelected" alignment="CENTER" prefWidth="200.0">
                <children>
                	  <Glyph fx:id="playlistExploreIco" fontFamily="FontAwesome" icon="MUSIC"/>
-                  <Text id="playlistSelectedText" strokeType="OUTSIDE" strokeWidth="0.0" text="Explore" textAlignment="CENTER">
+                  <Text id="playlistSelectedText" strokeType="OUTSIDE" strokeWidth="0.0" text="%playlist.control.explore" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -31,7 +31,7 @@
       </VBox>
       <Pane VBox.vgrow="ALWAYS" />
       <HBox id="playlistNewBtnBG" alignment="BOTTOM_CENTER">
-	      <Button fx:id="playlistNewBtn" mnemonicParsing="false" text="New Playlist">
+	      <Button fx:id="playlistNewBtn" mnemonicParsing="false" text="%common.newPlaylist">
 	      	<graphic>
 	        	<Glyph fx:id="playlistNewBtnIco" fontFamily="FontAwesome" icon="PLUS"/>
 	        </graphic>

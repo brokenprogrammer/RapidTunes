@@ -181,7 +181,7 @@ public class StageManager {
 	 */
 	private ResourceBundle getResourseBundle(String language) {
 		switch (language) {
-			case "se":
+			case "sv":
 			case "ru":
 				return ResourceBundle.getBundle("bundle.strings",
 						new Locale(language), new UTF8Control());
@@ -193,7 +193,7 @@ public class StageManager {
 
 	/**
 	 * Override default ResourceBundle.Control class, since it use antic ISO charset
-	 * Only this line is changed to make it to read properties files as UTF-8.
+	 * Only one line is changed to make it to read properties files as UTF-8.
 	 * Stack says that bug marked as resolved in Java 9.
 	 */
 	private class UTF8Control extends ResourceBundle.Control {
