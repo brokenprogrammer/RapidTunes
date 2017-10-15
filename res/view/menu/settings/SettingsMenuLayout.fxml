@@ -53,17 +53,17 @@
             </Tab>
             <Tab text="Source">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              	<fx:include fx:id="settingsMenuSource" source="SourceSettingsLayout.fxml" />
               </content>
             </Tab>
             <Tab text="Hotkeys">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              	<fx:include fx:id="settingsMenuHotkeys" source="HotkeysSettingsLayout.fxml" />
               </content>
             </Tab>
             <Tab text="Account">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              	<fx:include fx:id="settingsMenuAccount" source="AccountSettingsLayout.fxml" />
               </content>
             </Tab>
         </tabs>
