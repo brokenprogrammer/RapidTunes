@@ -44,7 +44,7 @@ public class GeneralSettings extends Settings {
 	private static final String PATH = "settings/general.properties";
 	
 	private static final String DEFAULT_THEME = RapidTunesController.DEFAULT_STYLING;
-	private static final String DEFAULT_LANGUAGE = ""; //TODO: Specify default language.
+	private static final String DEFAULT_LANGUAGE = "en";
 	private static final boolean DEFAULT_NOTIFICATIONS = true;
 	
 	private String theme;				// Path of the CSS theme to be used for styling of the application.

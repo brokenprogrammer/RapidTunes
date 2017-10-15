@@ -96,6 +96,7 @@ public class SettingsManagerTest {
 		playlistSettings = (PlaylistSettings) settingsManager.loadSettings(playlistSettings);
 		
 		assertTrue("Current theme is: \"/css/Default.css\"", generalSettings.getTheme().equals("/css/Default.css"));
+		assertTrue("Current language is: \"en\"", generalSettings.getLanguage().equals("en"));
 		
 		assertTrue("Current crossfade is toggled to false.", !songSettings.isCrossfade());
 		assertTrue("Current crossfade seconds is set to 6.", songSettings.getCrossfadeSeconds() == 6);
@@ -202,6 +203,7 @@ public class SettingsManagerTest {
 		generalSettings = (GeneralSettings) settingsManager.loadSettings(generalSettings);
 		
 		assertTrue("Current theme is: \"/css/Default.css\"", generalSettings.getTheme().equals("/css/Default.css"));
+		assertTrue("Current language is: \"en\"", generalSettings.getLanguage().equals("en"));
 		
 		generalSettings.setTheme("TestingTheme");
 		generalSettings.setLanguage("TestingLanguage");
