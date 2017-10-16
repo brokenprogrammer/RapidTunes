@@ -42,6 +42,6 @@ public class SettingsMenuController {
 	
 	@FXML
 	public void initialize() {
-		System.out.println("SettingsMenuController has been Initialized.");
+		
 	}
 }

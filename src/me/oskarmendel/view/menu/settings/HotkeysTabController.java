@@ -28,31 +28,16 @@
 package me.oskarmendel.view.menu.settings;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 /**
- * Controller class for the General tab in the Settings Menu.
+ * Controller class for the Hotkeys tab in the Settings Menu.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name GeneralTabController.java
+ * @name HotkeysTabController.java
  */
-public class GeneralTabController {
-	
-	@FXML private Label generalSettingsThemeLabel;
-	@FXML private TextField generalSettingsThemeTextField;
-	@FXML private Button generalSettingsThemeBtn;
-	
-	@FXML private Label generalSettingsLanguageLabel;
-	@FXML private ChoiceBox generalSettingsLanguageChoiceBox;
-	
-	@FXML private CheckBox generalSettingsNotificationsToggle;
-	@FXML private Label generalSettingsNotificationsInfoLabel;
-	
+public class HotkeysTabController {
+
 	@FXML
 	public void initialize() {
 		

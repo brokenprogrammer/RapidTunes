@@ -28,7 +28,7 @@
 
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.oskarmendel.view.menu.settings.SourceTabController">
 	<!-- TODO Add Nodes -->
 </AnchorPane>
 

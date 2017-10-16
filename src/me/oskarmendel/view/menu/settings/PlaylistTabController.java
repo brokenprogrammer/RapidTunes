@@ -30,28 +30,24 @@ package me.oskarmendel.view.menu.settings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
- * Controller class for the General tab in the Settings Menu.
+ * Controller class for the Playlist tab in the Settings Menu.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name GeneralTabController.java
+ * @name PlaylistTabController.java
  */
-public class GeneralTabController {
+public class PlaylistTabController {
 	
-	@FXML private Label generalSettingsThemeLabel;
-	@FXML private TextField generalSettingsThemeTextField;
-	@FXML private Button generalSettingsThemeBtn;
+	@FXML private Label playlistSettingsDirectoryLabel;
+	@FXML private TextField playlistSettingsDirectoryTextField;
+	@FXML private Button playlistSettingsDirectoryButton;
 	
-	@FXML private Label generalSettingsLanguageLabel;
-	@FXML private ChoiceBox generalSettingsLanguageChoiceBox;
-	
-	@FXML private CheckBox generalSettingsNotificationsToggle;
-	@FXML private Label generalSettingsNotificationsInfoLabel;
+	@FXML private CheckBox playlistSettingsExportYouTubeCheckBox;
+	@FXML private CheckBox playlistSettingsExportSoundCloudCheckBox;
 	
 	@FXML
 	public void initialize() {

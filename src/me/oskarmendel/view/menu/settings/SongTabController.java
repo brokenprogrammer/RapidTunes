@@ -28,30 +28,28 @@
 package me.oskarmendel.view.menu.settings;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Slider;
 
 /**
- * Controller class for the General tab in the Settings Menu.
+ * Controller class for the Song tab in the Settings Menu.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name GeneralTabController.java
+ * @name SongTabController.java
  */
-public class GeneralTabController {
+public class SongTabController {
 	
-	@FXML private Label generalSettingsThemeLabel;
-	@FXML private TextField generalSettingsThemeTextField;
-	@FXML private Button generalSettingsThemeBtn;
+	@FXML private CheckBox songSettingsCrossfadeCheckBox;
+	@FXML private Slider songSettingsCrossfadeSlider;
 	
-	@FXML private Label generalSettingsLanguageLabel;
-	@FXML private ChoiceBox generalSettingsLanguageChoiceBox;
+	@FXML private CheckBox songSettingsSoundEnhancerCheckBox;
+	@FXML private Slider songSettingsSoundEnhancerSlider;
 	
-	@FXML private CheckBox generalSettingsNotificationsToggle;
-	@FXML private Label generalSettingsNotificationsInfoLabel;
+	@FXML private Label songSettingsPlaybackQualityLabel;
+	@FXML private ChoiceBox songSettingsPlaybackQualityChoiceBox;
 	
 	@FXML
 	public void initialize() {
