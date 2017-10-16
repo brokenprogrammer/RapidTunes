@@ -27,7 +27,7 @@
 
 package me.oskarmendel.player;
 
-import me.oskarmendel.entities.Song;
+import me.oskarmendel.song.Song;
 
 /**
  * Abstract Player class that holds common data and methods for all music players.
@@ -70,9 +70,9 @@ public abstract class Player {
 	/**
 	 * Seeks the player to a new target time within the song or media. 
 	 * 
-	 * @param seekTime - Requested playback time.
+	 * @param seekTime - Requested playback time in seconds.
 	 */
-	public abstract void seek(double seekTime);
+	public abstract void seek(int seekTime);
 	
 	/**
 	 * Getter for the current playback time for the currently playing song

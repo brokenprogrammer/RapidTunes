@@ -27,12 +27,22 @@
 
 package me.oskarmendel.view;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
 import me.oskarmendel.model.SearchResultModel;
 
 /**
@@ -87,10 +97,24 @@ public class MenuBarController implements RapidTunesController {
 	@FXML 
 	public void initialize() {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
-	}
-	
-	public void foo() {
-		System.out.println("Tudelou");
+		
+		this.menuEditSettings.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				Parent root;
+				
+				try {
+					URI location = new File("res/view/menu/settings/SettingsMenuLayout.fxml").toURI();
+					root = FXMLLoader.load(location.toURL());
+					Stage stage = new Stage();
+					stage.setTitle("Settings");
+					stage.setScene(new Scene(root, 325, 250));
+					stage.show();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 	
 	/**

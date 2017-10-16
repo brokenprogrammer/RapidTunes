@@ -36,7 +36,7 @@ import com.mpatric.mp3agic.InvalidDataException;
 import com.mpatric.mp3agic.Mp3File;
 import com.mpatric.mp3agic.UnsupportedTagException;
 
-import me.oskarmendel.entities.LocalSong;
+import me.oskarmendel.song.LocalSong;
 import me.oskarmendel.util.song.flac.FlacFile;
 
 /**

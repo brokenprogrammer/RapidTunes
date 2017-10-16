@@ -25,88 +25,36 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.entities;
+package me.oskarmendel.view.menu.settings;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
- * Object representing a song from the youtube
+ * Controller class for the General tab in the Settings Menu.
  * 
- * @author Jesper Bergström
+ * @author Oskar Mendel
  * @version 0.00.00
- * @name Song.java
+ * @name GeneralTabController.java
  */
-public class YouTubeSong extends Song{
+public class GeneralTabController {
 	
-	private String thumbnailURL;
+	@FXML private Label generalSettingsThemeLabel;
+	@FXML private TextField generalSettingsThemeTextField;
+	@FXML private Button generalSettingsThemeBtn;
 	
-	/**
-	 * Default constructor for a YouTubeSong. Initializes the graphic
-	 * object needed for a displaying a YouTubeSong.
-	 */
-	public YouTubeSong() {
-		this.graphic = "FontAwesome|YOUTUBE_PLAY";
-	}
+	@FXML private Label generalSettingsLanguageLabel;
+	@FXML private ChoiceBox generalSettingsLanguageChoiceBox;
 	
-	/**
-	 * Set song title
-	 * 
-	 * @param title
-	 */
-	@Override
-	public void setTitle(String title) {
-		this.title = title;
-	}
+	@FXML private CheckBox generalSettingsNotificationsToggle;
+	@FXML private Label generalSettingsNotificationsInfoLabel;
 	
-	/**
-	 * Set song artist
-	 * 
-	 * @param artist
-	 */
-	@Override
-	public void setArtist(String artist) {
-		this.artist = artist;
-	}
-	
-	/**
-	 * Set song album
-	 * 
-	 * @param album
-	 */
-	@Override
-	public void setAlbum(String album) {
-		this.album = album;
-	}
-	
-	/**
-	 * Set song length
-	 * 
-	 * @param length
-	 */
-	@Override
-	public void setLength(String length) {
-		this.length = length;
-	}
-	
-	/**
-	 * Set song path
-	 * 
-	 * @param path
-	 */
-	@Override
-	public void setPath(String path) {
-		this.path = path;
-	}
-
-	/**
-	 * @return the thumbnailURL
-	 */
-	public String getThumbnailURL() {
-		return thumbnailURL;
-	}
-
-	/**
-	 * @param thumbnailURL the thumbnailURL to set
-	 */
-	public void setThumbnailURL(String thumbnailURL) {
-		this.thumbnailURL = thumbnailURL;
+	@FXML
+	public void initialize() {
+		
 	}
 }

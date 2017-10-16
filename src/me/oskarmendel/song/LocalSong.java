@@ -25,7 +25,7 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.entities;
+package me.oskarmendel.song;
 
 /**
  * Object representing a song from the local hard drive.

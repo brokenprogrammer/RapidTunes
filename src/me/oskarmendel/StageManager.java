@@ -49,6 +49,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.model.SearchResultModel;
+import me.oskarmendel.model.SettingsModel;
 import me.oskarmendel.view.NavigationController;
 import me.oskarmendel.view.PlaylistController;
 import me.oskarmendel.view.RapidTunesController;
@@ -68,6 +69,7 @@ public class StageManager {
 	
 	private static StageManager instance;
 	
+	private SettingsModel settingsModel;
 	private SearchResultModel searchResultModel;
 	private CurrentlyPlayingModel currentlyPlayingModel;
 	private Stage mainStage;
@@ -124,6 +126,7 @@ public class StageManager {
 		AnchorPane songBrowserLayout = (AnchorPane) loadLayout(RapidTunesController.SONGBROWSER_LAYOUT);
 		BorderPane rootLayout = (BorderPane) loadLayout(RapidTunesController.ROOT_LAYOUT);
 		
+		settingsModel = new SettingsModel();
 		searchResultModel = new SearchResultModel();
 		currentlyPlayingModel = new CurrentlyPlayingModel();
 		

@@ -31,9 +31,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.oskarmendel.entities.LocalSong;
-import me.oskarmendel.entities.LocalSongFormat;
-import me.oskarmendel.entities.Song;
+import me.oskarmendel.song.LocalSong;
+import me.oskarmendel.song.LocalSongFormat;
+import me.oskarmendel.song.Song;
 import me.oskarmendel.util.song.FileStripper;
 
 /**

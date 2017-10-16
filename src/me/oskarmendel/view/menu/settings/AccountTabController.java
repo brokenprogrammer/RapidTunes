@@ -25,16 +25,21 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.entities;
+package me.oskarmendel.view.menu.settings;
+
+import javafx.fxml.FXML;
 
 /**
- * Enum for the different types of supported local song formats.
+ * Controller class for the Account tab in the Settings Menu.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name LocalSongFormat.java
+ * @name AccountTabController.java
  */
-public enum LocalSongFormat {
-	MP3,
-	FLAC
+public class AccountTabController {
+
+	@FXML
+	public void initialize() {
+		
+	}
 }

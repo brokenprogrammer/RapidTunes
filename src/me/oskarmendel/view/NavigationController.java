@@ -41,10 +41,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import me.oskarmendel.entities.Song;
 import me.oskarmendel.model.SearchResultModel;
 import me.oskarmendel.player.search.SearchHandler;
-
+import me.oskarmendel.song.Song;
 import me.oskarmendel.util.DoublyLinkedList;
 
 /**

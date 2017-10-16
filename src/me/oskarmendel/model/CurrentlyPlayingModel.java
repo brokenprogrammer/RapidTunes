@@ -31,8 +31,8 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import me.oskarmendel.entities.Song;
-import me.oskarmendel.entities.YouTubeSong;
+import me.oskarmendel.song.Song;
+import me.oskarmendel.song.YouTubeSong;
 
 /**
  * Model that manages the currently played song for the application.

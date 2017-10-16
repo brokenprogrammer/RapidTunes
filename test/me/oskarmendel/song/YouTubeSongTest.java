@@ -25,13 +25,16 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.entities;
+package me.oskarmendel.song;
 
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import me.oskarmendel.song.Song;
+import me.oskarmendel.song.YouTubeSong;
 
 
 /**
@@ -54,7 +57,7 @@ public class YouTubeSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.YouTubeSong#getTitle()}.
+	 * Test method for {@link me.oskarmendel.song.YouTubeSong#getTitle()}.
 	 */
 	@Test
 	public void testGetTitle() {
@@ -65,7 +68,7 @@ public class YouTubeSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.YouTubeSong#setTitle()}.
+	 * Test method for {@link me.oskarmendel.song.YouTubeSong#setTitle()}.
 	 */
 	@Test
 	public void testSetTitle() {
@@ -76,7 +79,7 @@ public class YouTubeSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.YouTubeSong#getArtist()}.
+	 * Test method for {@link me.oskarmendel.song.YouTubeSong#getArtist()}.
 	 */
 	@Test
 	public void testGetArtist() {
@@ -87,7 +90,7 @@ public class YouTubeSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.YouTubeSong#setArtist()}.
+	 * Test method for {@link me.oskarmendel.song.YouTubeSong#setArtist()}.
 	 */
 	@Test
 	public void testSetArtist() {
@@ -98,7 +101,7 @@ public class YouTubeSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.YouTubeSong#getAlbum()}.
+	 * Test method for {@link me.oskarmendel.song.YouTubeSong#getAlbum()}.
 	 */
 	@Test
 	public void testGetAlbum() {
@@ -109,7 +112,7 @@ public class YouTubeSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.YouTubeSong#setAlbum()}.
+	 * Test method for {@link me.oskarmendel.song.YouTubeSong#setAlbum()}.
 	 */
 	@Test
 	public void testSetAlbum() {
@@ -120,7 +123,7 @@ public class YouTubeSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.YouTubeSong#getLength()}.
+	 * Test method for {@link me.oskarmendel.song.YouTubeSong#getLength()}.
 	 */
 	@Test
 	public void testGetLength() {
@@ -131,7 +134,7 @@ public class YouTubeSongTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.entities.YouTubeSong#setLength()}.
+	 * Test method for {@link me.oskarmendel.song.YouTubeSong#setLength()}.
 	 */
 	@Test
 	public void testSetLength() {
@@ -142,7 +145,7 @@ public class YouTubeSongTest {
 	}
 	
 	/**
-	 * Test method for {@link me.oskarmendel.entities.YouTubeSong#getPath()}.
+	 * Test method for {@link me.oskarmendel.song.YouTubeSong#getPath()}.
 	 */
 	@Test
 	public void testGetPath() {
@@ -153,7 +156,7 @@ public class YouTubeSongTest {
 	}
 	
 	/**
-	 * Test method for {@link me.oskarmendel.entities.YouTubeSong#setPath()}.
+	 * Test method for {@link me.oskarmendel.song.YouTubeSong#setPath()}.
 	 */
 	@Test
 	public void testSetPath() {
