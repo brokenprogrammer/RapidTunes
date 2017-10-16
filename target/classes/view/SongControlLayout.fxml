@@ -39,12 +39,12 @@
    <children>
       <VBox id="logoBG" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Label fx:id="songSong" text="Song Name">
+            <Label fx:id="songSong" text="%song.songName">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="songArtist" text="Artist Name" />
+            <Label fx:id="songArtist" text="%song.artistName" />
          </children>
       </VBox>
       <HBox prefHeight="50.0">
