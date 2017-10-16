@@ -65,12 +65,12 @@
                   <Insets right="25.0" />
                </HBox.margin>
             </HBox>
-            <TextField fx:id="navSearchField" text="Search..">
+            <TextField fx:id="navSearchField" text="%navigation.search">
                <HBox.margin>
                   <Insets left="25.0" />
                   <Insets top="25.0" />
                </HBox.margin></TextField>
-            <Button fx:id="navSearchBtn" mnemonicParsing="false" text="Search">
+            <Button fx:id="navSearchBtn" mnemonicParsing="false" text="%common.search">
             	<graphic>
             		<Glyph fontFamily="FontAwesome" icon="SEARCH"/>
             	</graphic>
@@ -81,7 +81,7 @@
                <Pane HBox.hgrow="ALWAYS" />
             <HBox id="darkBG" prefHeight="50.0">
                <children>
-                  <Text fx:id="navAccountName" strokeType="OUTSIDE" strokeWidth="0.0" text="Unknown">
+                  <Text fx:id="navAccountName" strokeType="OUTSIDE" strokeWidth="0.0" text="%common.unknown">
                      <HBox.margin>
                         <Insets top="25.0" />
                      </HBox.margin>
