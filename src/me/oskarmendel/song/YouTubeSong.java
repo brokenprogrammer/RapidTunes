@@ -82,7 +82,7 @@ public class YouTubeSong extends Song{
 	 * @param length
 	 */
 	@Override
-	public void setLength(String length) {
+	public void setLength(long length) {
 		this.length = length;
 	}
 	

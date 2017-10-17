@@ -127,10 +127,10 @@ public class LocalSongTest {
 	 */
 	@Test
 	public void testGetLength() {
-		song.setLength("120");
-		assertEquals("Length of the song is '120'", "120", song.getLength());
-		song.setLength("1000");
-		assertEquals("Length of the song is '1000'", "1000", song.getLength());
+		song.setLength(120);
+		assertEquals("Length of the song is '120'", 120, song.getLength());
+		song.setLength(1000);
+		assertEquals("Length of the song is '1000'", 1000, song.getLength());
 	}
 
 	/**
@@ -138,10 +138,10 @@ public class LocalSongTest {
 	 */
 	@Test
 	public void testSetLength() {
-		song.setLength("120");
-		assertEquals("Length of the song is '120'", "120", song.getLength());
-		song.setLength("1000");
-		assertEquals("Length of the song is '1000'", "1000", song.getLength());
+		song.setLength(120);
+		assertEquals("Length of the song is '120'", 120, song.getLength());
+		song.setLength(1000);
+		assertEquals("Length of the song is '1000'", 1000, song.getLength());
 	}
 	
 	/**

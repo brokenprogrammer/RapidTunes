@@ -27,6 +27,7 @@
 
 package me.oskarmendel.player.search;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,10 +100,10 @@ public class SearchHandler {
 		for (int i = 0; i < ytList.size(); i++) {
 
 			YouTubeSong s = new YouTubeSong();
-
+			
 			s.setTitle(ytList.get(i).getSnippet().getTitle());
 			s.setArtist(ytList.get(i).getSnippet().getChannelTitle());
-			s.setLength(ytList.get(i).getContentDetails().getDuration());
+			s.setLength(Duration.parse((ytList.get(i).getContentDetails().getDuration())).getSeconds());
 			s.setPath(ytList.get(i).getId());
 			s.setThumbnailURL(ytList.get(i).getSnippet().getThumbnails().getDefault().getUrl());
 			songList.add(s);

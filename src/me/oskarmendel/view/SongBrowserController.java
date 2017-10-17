@@ -95,7 +95,7 @@ public class SongBrowserController implements RapidTunesController {
 		//Manually setting the content as a simple string property.
 		songListSong.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getTitle()));
 		songListPublisher.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getArtist()));
-		songListTime.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getLength()));
+		songListTime.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getLengthString()));
 		songListSource.setCellValueFactory(new PropertyValueFactory<>("graphic"));
 		songListSource.setCellFactory(new Callback<TableColumn<Song, String>, TableCell<Song, String>>() {
 			@Override
