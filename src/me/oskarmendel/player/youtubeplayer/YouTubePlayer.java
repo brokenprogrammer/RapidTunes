@@ -29,7 +29,9 @@ package me.oskarmendel.player.youtubeplayer;
 
 import java.io.File;
 
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.scene.web.WebView;
+import javafx.util.Duration;
 import me.oskarmendel.player.Player;
 import me.oskarmendel.song.Song;
 import me.oskarmendel.song.YouTubeSong;
@@ -61,6 +63,8 @@ public class YouTubePlayer extends Player{
 	 * fields to default values.
 	 */
 	public YouTubePlayer() {
+		super();
+		
 		browserPlayer = new WebView();
 		File localHtml = new File("res/view/player/YouTube.html");
 		
@@ -81,6 +85,7 @@ public class YouTubePlayer extends Player{
 				this.browserPlayer.getEngine().executeScript("startVideo()");
 				
 				this.status = Status.PLAYING;
+				startTimer();
 			} else {
 				// TODO: Throw exception trying to play non initialized web player.
 			}
@@ -97,6 +102,7 @@ public class YouTubePlayer extends Player{
 				this.browserPlayer.getEngine().executeScript("pauseVideo()");
 				
 				this.status = Status.PAUSED;
+				stopTimer();
 			} else {
 				// TODO: Throw exception trying to play non initialized web player.
 			}
@@ -112,6 +118,7 @@ public class YouTubePlayer extends Player{
 		this.browserPlayer.getEngine().load(null);
 		
 		this.status = Status.STOPPED;
+		stopTimer();
 	}
 	
 	/**
@@ -123,7 +130,11 @@ public class YouTubePlayer extends Player{
 	public void setSong(Song song) {
 		YouTubeSong youtubeSong = (YouTubeSong)song;
 		this.browserPlayer.getEngine().executeScript("setSong('" + youtubeSong.getPath() + "')");
+		//this.currentTime = 0;
+		this.currentTime.set(Duration.ZERO);
+		
 		this.status = Status.PLAYING;
+		startTimer();
 	}
 
 	@Override
@@ -132,9 +143,8 @@ public class YouTubePlayer extends Player{
 	}
 
 	@Override
-	public double getCurrentTime() {
-		// TODO Auto-generated method stub
-		return 0;
+	public ReadOnlyObjectProperty<Duration> getCurrentTime() {
+		return this.currentTime;
 	}
 
 	@Override

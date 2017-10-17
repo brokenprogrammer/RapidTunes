@@ -31,6 +31,7 @@ import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
@@ -178,10 +179,10 @@ public class LocalPlayer extends Player {
 	 * 
 	 * @return - Current playback time of the currently playing media or song in seconds.
 	 */
-	@Override
-	public double getCurrentTime() {
+	@Override 
+	public ReadOnlyObjectProperty<Duration> getCurrentTime() {
 		if (this.fxPlayer != null) {
-			return this.fxPlayer.getCurrentTime().toSeconds();
+			return this.fxPlayer.currentTimeProperty();
 		} else {
 			// TODO: Create own RT exception type for this.
 			throw new IllegalStateException("fxPlayer not initialized.");

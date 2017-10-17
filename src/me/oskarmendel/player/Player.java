@@ -27,6 +27,12 @@
 
 package me.oskarmendel.player;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.util.Duration;
 import me.oskarmendel.song.Song;
 
 /**
@@ -40,9 +46,16 @@ public abstract class Player {
 	
 	protected Song song;
 	
-	protected long currentTime;
+	protected ReadOnlyObjectWrapper<Duration> currentTime;
 	
 	protected int volume;
+	
+	protected Timer timer;
+	
+	public Player() { 
+		this.currentTime = new ReadOnlyObjectWrapper<Duration>();
+		this.currentTime.set(Duration.ZERO);
+	}
 	
 	/**
 	 * Starts playing the song or media. If the song was previously 
@@ -74,13 +87,27 @@ public abstract class Player {
 	 */
 	public abstract void seek(int seekTime);
 	
+	public void startTimer() {
+		this.timer = new Timer(true);
+		this.timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				currentTime.set(currentTime.get().add(Duration.millis(100)));
+			}
+		}, 0, 100);
+	}
+	
+	public void stopTimer() {
+		this.timer.cancel();
+	}
+	
 	/**
 	 * Getter for the current playback time for the currently playing song
 	 * or media.
 	 * 
 	 * @return - Current playback time of the currently playing media or song.
 	 */
-	public abstract double getCurrentTime();
+	public abstract ReadOnlyObjectProperty<Duration> getCurrentTime();
 	
 	/**
 	 * Setter for the volume value of this player. Accepts a value between

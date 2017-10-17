@@ -36,6 +36,8 @@ import org.controlsfx.glyphfont.Glyph;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -44,6 +46,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
+import javafx.util.Duration;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.player.SongPlayerHandler;
 import me.oskarmendel.song.Song;
@@ -70,6 +73,7 @@ public class SongController implements RapidTunesController {
 	
 	@FXML private Label songCurrentTime;
 	@FXML private ProgressBar songProgressBar;
+	private ChangeListener<Duration> progressBarChangeListener;
 	@FXML private Label songTotalTime;
 	
 	@FXML private CheckBox songShuffle;
@@ -92,7 +96,6 @@ public class SongController implements RapidTunesController {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
 		
 		songProgressBar.setMaxWidth(Double.MAX_VALUE);
-		
 		initSongPlayer();
 		
 		songPrev.setOnAction(new EventHandler<ActionEvent>() {
@@ -128,6 +131,14 @@ public class SongController implements RapidTunesController {
 			}
 		});
 		
+		progressBarChangeListener = new ChangeListener<Duration>() {
+			@Override
+			public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+				// Set progress to 1 * player.currentTime / player.totalTime
+				songProgressBar.setProgress(1 * newValue.toSeconds() / player.getSong().getLength());
+			}
+		};
+		
 		songVolume.valueProperty().addListener(new InvalidationListener() {
 			public void invalidated(Observable ov) {
 				if (songVolume.isValueChanging()) {
@@ -162,8 +173,13 @@ public class SongController implements RapidTunesController {
 				@SuppressWarnings("unchecked")
 				ObjectProperty<Song> property = (ObjectProperty<Song>) observable;
 				
-				player.setSong(property.getValue());
+				// Reset the current progressbar.
+				songProgressBar.setProgress(0);
+				
+				// Set the new song for the player to play.
+				player.setSong(property.getValue(), progressBarChangeListener);
 				player.play();
+				
 				
 				playing = true;
 				songPlayIco.setIcon(FontAwesome.Glyph.PAUSE);
