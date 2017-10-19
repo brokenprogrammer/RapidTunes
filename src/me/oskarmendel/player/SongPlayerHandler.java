@@ -28,7 +28,7 @@
 package me.oskarmendel.player;
 
 import javafx.beans.property.ReadOnlyObjectProperty;
-import javafx.beans.value.ChangeListener;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.util.Duration;
 import me.oskarmendel.player.localplayer.LocalPlayer;
 import me.oskarmendel.player.youtubeplayer.YouTubePlayer;
@@ -61,6 +61,8 @@ public class SongPlayerHandler {
 		SOUNDCLOUD
 	}
 	
+	private ReadOnlyObjectProperty<Duration> currentTime;
+	
 	private Song currentSong;
 	private Source currentSource;
 	
@@ -72,6 +74,8 @@ public class SongPlayerHandler {
 		this.youtubePlayer = new YouTubePlayer();
 		
 		this.currentSource = Source.NONE;
+		
+		this.currentTime = new ReadOnlyObjectWrapper<Duration>();
 	}
 	
 	/**
@@ -142,7 +146,7 @@ public class SongPlayerHandler {
 	 * @param s - Song object.
 	 * @param changeListener - ChangeListener to bind to the currentTime of the player.
 	 */
-	public void setSong(Song s, ChangeListener<Duration> changeListener) {
+	public void setSong(Song s) {
 		this.currentSong = s;
 		
 		// Pause currently used player.
@@ -151,11 +155,11 @@ public class SongPlayerHandler {
 			break;
 		case LOCAL:
 			this.localPlayer.pause();
-			this.localPlayer.getCurrentTime().removeListener(changeListener);
+			//this.localPlayer.getCurrentTime().removeListener(changeListener);
 			break;
 		case YOUTUBE:
 			this.youtubePlayer.pause();
-			this.youtubePlayer.getCurrentTime().removeListener(changeListener);
+			//this.youtubePlayer.getCurrentTime().removeListener(changeListener);
 			break;
 		case SPOTIFY:
 			break;
@@ -167,12 +171,12 @@ public class SongPlayerHandler {
 		if (s instanceof LocalSong) {
 			this.currentSource = Source.LOCAL;
 			this.localPlayer.setSong(this.currentSong);
-			this.localPlayer.getCurrentTime().addListener(changeListener);
+			this.currentTime = getCurrentTime();
 			
 		} else if (s instanceof YouTubeSong) {
 			this.currentSource = Source.YOUTUBE;
 			this.youtubePlayer.setSong(this.currentSong);
-			this.youtubePlayer.getCurrentTime().addListener(changeListener);
+			this.currentTime = getCurrentTime();
 		}
 	}
 	
@@ -203,7 +207,7 @@ public class SongPlayerHandler {
 	 * 
 	 * @return currentTime - Current time of the playing player.
 	 */
-	public ReadOnlyObjectProperty<Duration> getCurrentTime() {
+	private ReadOnlyObjectProperty<Duration> getCurrentTime() {
 		switch(this.currentSource) {
 		case LOCAL:
 			return this.localPlayer.getCurrentTime();
@@ -216,6 +220,16 @@ public class SongPlayerHandler {
 		default:
 			return null;
 		}
+	}
+	
+	/**
+	 * Getter for Observable that is set to the currently used Players currentTime
+	 * property.
+	 * 
+	 * @return - Observable for the currently used Player.
+	 */
+	public ReadOnlyObjectProperty<Duration> getCurrentTimeObserver() {
+		return this.currentTime;
 	}
 	
 	/**

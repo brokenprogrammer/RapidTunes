@@ -27,12 +27,14 @@
 
 package me.oskarmendel.view;
 
+import java.time.LocalTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.controlsfx.glyphfont.FontAwesome;
 import org.controlsfx.glyphfont.Glyph;
 
+import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.property.ObjectProperty;
@@ -134,10 +136,17 @@ public class SongController implements RapidTunesController {
 		progressBarChangeListener = new ChangeListener<Duration>() {
 			@Override
 			public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-				// Set progress to 1 * player.currentTime / player.totalTime
+				Platform.runLater(() -> {
+					//TODO: This way of doing things is used in the Song class getLengthString
+					//TODO and in the SongBrowserController, Create class / helper functions to perform this conversion.
+					LocalTime t = LocalTime.MIN.plusSeconds((long) newValue.toSeconds());
+					songCurrentTime.setText(t.toString());
+				});
 				songProgressBar.setProgress(1 * newValue.toSeconds() / player.getSong().getLength());
 			}
 		};
+		player.getCurrentTimeObserver().addListener(progressBarChangeListener);
+		
 		
 		songVolume.valueProperty().addListener(new InvalidationListener() {
 			public void invalidated(Observable ov) {
@@ -176,10 +185,13 @@ public class SongController implements RapidTunesController {
 				// Reset the current progressbar.
 				songProgressBar.setProgress(0);
 				
+				player.getCurrentTimeObserver().removeListener(progressBarChangeListener);
+				
 				// Set the new song for the player to play.
-				player.setSong(property.getValue(), progressBarChangeListener);
+				player.setSong(property.getValue());
 				player.play();
 				
+				player.getCurrentTimeObserver().addListener(progressBarChangeListener);
 				
 				playing = true;
 				songPlayIco.setIcon(FontAwesome.Glyph.PAUSE);
