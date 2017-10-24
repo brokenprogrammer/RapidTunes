@@ -85,7 +85,7 @@ public abstract class Player {
 	 * 
 	 * @param seekTime - Requested playback time in seconds.
 	 */
-	public abstract void seek(int seekTime);
+	public abstract void seek(long seekTime);
 	
 	public void startTimer() {
 		this.timer = new Timer(true);

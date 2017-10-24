@@ -42,11 +42,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.player.SongPlayerHandler;
@@ -144,6 +147,20 @@ public class SongController implements RapidTunesController {
 		};
 		player.getCurrentTimeObserver().addListener(progressBarChangeListener);
 		
+		
+		songProgressBar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				if (event.getButton() == MouseButton.PRIMARY) {
+					Bounds b1 = songProgressBar.getLayoutBounds();
+	                double mouseX = event.getX();
+	                double percent = (((b1.getMinX() + mouseX ) * 100) / b1.getMaxX());
+					
+					songProgressBar.setProgress((percent) / 100);
+					player.seek((long) (currentlyPlayingModel.getCurrentSong().get().getLength() * (percent/ 100)));
+				}
+			}
+		});
 		
 		songVolume.valueProperty().addListener(new InvalidationListener() {
 			public void invalidated(Observable ov) {

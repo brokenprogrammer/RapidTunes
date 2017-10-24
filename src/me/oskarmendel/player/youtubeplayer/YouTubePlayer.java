@@ -138,8 +138,11 @@ public class YouTubePlayer extends Player{
 	}
 
 	@Override
-	public void seek(int seekTime) {
-		
+	public void seek(long seekTime) {
+		stopTimer();
+		this.browserPlayer.getEngine().executeScript("seek(" + seekTime + ")");
+		this.currentTime.set(Duration.seconds(seekTime));
+		startTimer();
 	}
 
 	@Override

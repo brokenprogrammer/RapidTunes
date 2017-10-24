@@ -164,7 +164,7 @@ public class LocalPlayer extends Player {
 	 * @param seekTime - Requested playback time in seconds.
 	 */
 	@Override
-	public void seek(int seekTime) {
+	public void seek(long seekTime) {
 		if (this.fxPlayer != null) {
 			//TODO: Check that seekTime is in range.
 			this.fxPlayer.seek(Duration.seconds(seekTime));

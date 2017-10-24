@@ -185,7 +185,7 @@ public class SongPlayerHandler {
 	 * 
 	 * @param seekTime - Requested playback time in seconds.
 	 */
-	public void seek(int seekTime) {
+	public void seek(long seekTime) {
 		switch(this.currentSource) {
 		case NONE:
 			break;
