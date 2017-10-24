@@ -27,9 +27,6 @@
 
 package me.oskarmendel.song;
 
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-
 /**
  * Object representing a song
  * 
@@ -39,8 +36,6 @@ import java.time.format.DateTimeFormatter;
  */
 public abstract class Song {
 	
-	private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-
 	protected String title;
 	protected String artist;
 	protected String album;
@@ -110,15 +105,6 @@ public abstract class Song {
 		return length;
 	}
 	
-	/**
-	 * Get the song length as a String with the format HH:mm:ss.
-	 * 
-	 * @return - String representation of the Song length.
-	 */
-	public String getLengthString() {
-		LocalTime time = LocalTime.MIN.plusSeconds(length);
-		return formatter.format(time);
-	}
 	/**
 	 * Set song length
 	 * 

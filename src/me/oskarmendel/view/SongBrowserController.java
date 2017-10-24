@@ -45,6 +45,7 @@ import javafx.util.Callback;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.model.SearchResultModel;
 import me.oskarmendel.song.Song;
+import me.oskarmendel.util.song.SongUtil;
 
 /**
  * TODO: Create a CellFactory that decides how to present the listView Cells.
@@ -95,7 +96,7 @@ public class SongBrowserController implements RapidTunesController {
 		//Manually setting the content as a simple string property.
 		songListSong.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getTitle()));
 		songListPublisher.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getArtist()));
-		songListTime.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getLengthString()));
+		songListTime.setCellValueFactory(c -> new SimpleStringProperty(SongUtil.lengthToString(c.getValue())));
 		songListSource.setCellValueFactory(new PropertyValueFactory<>("graphic"));
 		songListSource.setCellFactory(new Callback<TableColumn<Song, String>, TableCell<Song, String>>() {
 			@Override

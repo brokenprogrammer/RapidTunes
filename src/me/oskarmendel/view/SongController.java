@@ -27,7 +27,6 @@
 
 package me.oskarmendel.view;
 
-import java.time.LocalTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,6 +51,7 @@ import javafx.util.Duration;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.player.SongPlayerHandler;
 import me.oskarmendel.song.Song;
+import me.oskarmendel.util.song.SongUtil;
 
 /**
  * 
@@ -137,10 +137,7 @@ public class SongController implements RapidTunesController {
 			@Override
 			public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
 				Platform.runLater(() -> {
-					//TODO: This way of doing things is used in the Song class getLengthString
-					//TODO and in the SongBrowserController, Create class / helper functions to perform this conversion.
-					LocalTime t = LocalTime.MIN.plusSeconds((long) newValue.toSeconds());
-					songCurrentTime.setText(t.toString());
+					songCurrentTime.setText(SongUtil.currentSongTimeToString(newValue.toSeconds()));
 				});
 				songProgressBar.setProgress(1 * newValue.toSeconds() / player.getSong().getLength());
 			}
@@ -192,6 +189,8 @@ public class SongController implements RapidTunesController {
 				player.play();
 				
 				player.getCurrentTimeObserver().addListener(progressBarChangeListener);
+				
+				songTotalTime.setText(SongUtil.lengthToString(currentlyPlayingModel.getCurrentSong().get()));
 				
 				playing = true;
 				songPlayIco.setIcon(FontAwesome.Glyph.PAUSE);
