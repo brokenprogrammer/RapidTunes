@@ -155,11 +155,9 @@ public class SongPlayerHandler {
 			break;
 		case LOCAL:
 			this.localPlayer.pause();
-			//this.localPlayer.getCurrentTime().removeListener(changeListener);
 			break;
 		case YOUTUBE:
 			this.youtubePlayer.pause();
-			//this.youtubePlayer.getCurrentTime().removeListener(changeListener);
 			break;
 		case SPOTIFY:
 			break;

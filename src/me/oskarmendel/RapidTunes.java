@@ -47,23 +47,6 @@ public class RapidTunes extends Application{
 	private static final String LOG_FILE = "RapidTunes-log.txt";
 	
 	public static void main(String[] args) {
-		// TODO Create stylings like text size that fits all screens, now fits mac not windows comp.
-		// TODO Add functionality to search / query song sources.
-		// TODO Display search results from searched / queried source.
-		// TODO Download song and split video / sound if required and add to created song object.
-		// TODO Does logger need improovement, Add formatting through simple formatter?? 
-		// TODO Implement threading when song is splitted with video etc.. Concurrency package
-		
-		//SongParser sp = new SongParser();
-		//String[] videoData = {};
-		//videoData = sp.parseSong("http://www.youtube.com/get_video_info?video_id=t-_fGnCPXeQ");
-		
-		//So far parsed video data, and decoded. (Song object that contains some specific data?)
-		//System.out.println("Length of videoData: " + videoData.length);
-		//for(int i = 0; i <= videoData.length-1; i++) {
-			//System.out.println(videoData[i]);
-		//}
-		
 		initializeLogger();
 		
 		//Launches this application and calls the start method.

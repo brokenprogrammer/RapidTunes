@@ -52,6 +52,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import me.oskarmendel.model.CurrentlyPlayingModel;
+import me.oskarmendel.model.SongQueueModel;
 import me.oskarmendel.player.SongPlayerHandler;
 import me.oskarmendel.song.Song;
 import me.oskarmendel.util.song.SongUtil;
@@ -94,6 +95,7 @@ public class SongController implements RapidTunesController {
 	private static final Logger LOGGER = Logger.getLogger(SongController.class.getName());
 	
 	private CurrentlyPlayingModel currentlyPlayingModel;
+	private SongQueueModel songQueueModel;
 	private SongPlayerHandler player;
 	
 	@FXML 
@@ -139,9 +141,18 @@ public class SongController implements RapidTunesController {
 		progressBarChangeListener = new ChangeListener<Duration>() {
 			@Override
 			public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+				
 				Platform.runLater(() -> {
 					songCurrentTime.setText(SongUtil.currentSongTimeToString(newValue.toSeconds()));
+					
+					// If entire song has been played we grab the next song form the queue and play it.
+					if (songProgressBar.getProgress() >= 1) {
+						Song nextSong = songQueueModel.getNext();
+						currentlyPlayingModel.setCurrentSong(nextSong);
+					}
+					
 				});
+				
 				songProgressBar.setProgress(1 * newValue.toSeconds() / player.getSong().getLength());
 			}
 		};
@@ -214,6 +225,21 @@ public class SongController implements RapidTunesController {
 			}
 			
 		});
+	}
+	
+	/**
+	 * Initializes the SongQueueModel which this class will send data to when a song is 
+	 * clicked within the SongBrowser. 
+	 * 
+	 * @param songQueueModel - SongQueueModel object to send data to.
+	 */
+	public void initSongQueueModel(SongQueueModel songQueueModel) {
+		//Make sure model is only set once.
+		if (this.songQueueModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
+		
+		this.songQueueModel = songQueueModel;
 	}
 	
 	/**

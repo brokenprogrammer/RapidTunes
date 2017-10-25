@@ -50,6 +50,7 @@ import javafx.stage.Stage;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.model.SearchResultModel;
 import me.oskarmendel.model.SettingsModel;
+import me.oskarmendel.model.SongQueueModel;
 import me.oskarmendel.view.NavigationController;
 import me.oskarmendel.view.PlaylistController;
 import me.oskarmendel.view.RapidTunesController;
@@ -71,6 +72,7 @@ public class StageManager {
 	
 	private SettingsModel settingsModel;
 	private SearchResultModel searchResultModel;
+	private SongQueueModel songQueueModel;
 	private CurrentlyPlayingModel currentlyPlayingModel;
 	private Stage mainStage;
 	
@@ -128,6 +130,7 @@ public class StageManager {
 		
 		settingsModel = new SettingsModel();
 		searchResultModel = new SearchResultModel();
+		songQueueModel = new SongQueueModel();
 		currentlyPlayingModel = new CurrentlyPlayingModel();
 		
 		getNavigationController().initSearchResultModel(searchResultModel);
@@ -136,6 +139,9 @@ public class StageManager {
 		getPlaylistController().initCurrentlyPlayingModel(currentlyPlayingModel);
 		getSongBrowserController().initCurrentlyPlayingModel(currentlyPlayingModel);
 		getSongController().initCurrentlyPlayingModel(currentlyPlayingModel);
+		
+		getSongBrowserController().initSongQueueModel(songQueueModel);
+		getSongController().initSongQueueModel(songQueueModel);
 		
 		rootLayout.setTop(navigationLayout);
 		rootLayout.setLeft(playlistControlLayout);

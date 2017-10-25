@@ -130,7 +130,7 @@ public class YouTubePlayer extends Player{
 	public void setSong(Song song) {
 		YouTubeSong youtubeSong = (YouTubeSong)song;
 		this.browserPlayer.getEngine().executeScript("setSong('" + youtubeSong.getPath() + "')");
-		//this.currentTime = 0;
+		
 		this.currentTime.set(Duration.ZERO);
 		
 		this.status = Status.PLAYING;

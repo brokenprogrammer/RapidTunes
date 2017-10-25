@@ -44,6 +44,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Callback;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.model.SearchResultModel;
+import me.oskarmendel.model.SongQueueModel;
 import me.oskarmendel.song.Song;
 import me.oskarmendel.util.song.SongUtil;
 
@@ -71,6 +72,7 @@ public class SongBrowserController implements RapidTunesController {
 	
 	private SearchResultModel searchResultModel;
 	private CurrentlyPlayingModel currentlyPlayingModel;
+	private SongQueueModel songQueueModel;
 	
 	@FXML 
 	public void initialize() {
@@ -130,7 +132,13 @@ public class SongBrowserController implements RapidTunesController {
 				if(event.getClickCount() == 2 && (!row.isEmpty())) {
 					//Here we will call an even to start the song.
 					Song s = row.getItem();
+					int i = row.getIndex();
+					
 					currentlyPlayingModel.setCurrentSong(s);
+					
+					// Adds all the next songs in the list to the queue and adds the previous ones at the end.
+					songQueueModel.setSongQueue(songList.getItems().subList(i+1, songList.getItems().size()));
+					songQueueModel.addSongs(songList.getItems().subList(0, i));
 				}
 			});
 			return row;
@@ -153,20 +161,6 @@ public class SongBrowserController implements RapidTunesController {
 		
 		this.searchResultModel = searchResultModel;
 		songList.setItems(searchResultModel.getSearchResultList());
-		
-		
-		//Only display the title of each song in the search result list
-		/*songList.setCellFactory(lv -> new ListCell<SearchResult>() {
-			@Override
-			public void updateItem(SearchResult result, boolean empty) {
-				super.updateItem(result, empty);
-				if (empty) {
-					setText(null);
-				} else {
-					setText(result.getSnippet().getTitle());
-				}
-			}
-		});*/
 	}
 	
 	/**
@@ -182,5 +176,20 @@ public class SongBrowserController implements RapidTunesController {
 		}
 		
 		this.currentlyPlayingModel = currentlyPlayingModel;
+	}
+	
+	/**
+	 * Initializes the SongQueueModel which this class will send data to when a song is 
+	 * clicked within the SongBrowser. 
+	 * 
+	 * @param songQueueModel - SongQueueModel object to send data to.
+	 */
+	public void initSongQueueModel(SongQueueModel songQueueModel) {
+		//Make sure model is only set once.
+		if (this.songQueueModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
+		
+		this.songQueueModel = songQueueModel;
 	}
 }

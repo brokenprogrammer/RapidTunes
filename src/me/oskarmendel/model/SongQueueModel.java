@@ -57,10 +57,20 @@ public class SongQueueModel {
 	 * Clears the Song Queue and adds all the elements in the specified
 	 * list of Songs to the queue.
 	 * 
-	 * @param songList - List of Songs to add to the song Queue.
+	 * @param songList - List of Songs to add to the Song Queue.
 	 */
 	public void setSongQueue(List<Song> songList) {
 		songQueue.setAll(songList);
+	}
+	
+	/**
+	 * Adds all the elements within the specified Song List at the end
+	 * of the Song Queue.
+	 * 
+	 * @param songList - List of songs to add at the end of the Song Queue.
+	 */
+	public void addSongs(List<Song> songList) {
+		songQueue.addAll(songList);
 	}
 	
 	/**
