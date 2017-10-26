@@ -47,7 +47,7 @@ import me.oskarmendel.song.YouTubeSong;
  * @version 0.00.00
  * @name SongPlayerHandler.java
  */
-public class SongPlayerHandler {
+public class SongPlayerHandler implements PlayerInterface {
 	
 	/**
 	 * Enumeration describing which source the {@link SongPlayerHandler} is
@@ -80,9 +80,8 @@ public class SongPlayerHandler {
 	
 	/**
 	 * Play the current song within the MediaPlayer if it is initialized.
-	 * 
-	 * @throws - 
 	 */
+	@Override
 	public void play() {
 		switch(this.currentSource) {
 		case LOCAL:
@@ -103,6 +102,7 @@ public class SongPlayerHandler {
 	/**
 	 * Pauses the current song if the player is is playing.
 	 */
+	@Override
 	public void pause() {
 		switch(this.currentSource) {
 		case NONE:
@@ -123,6 +123,7 @@ public class SongPlayerHandler {
 	/**
 	 * Stops this player completley disposing media used by this player.
 	 */
+	@Override
 	public void stop ( ) {
 		switch(this.currentSource) {
 		case NONE:
@@ -146,6 +147,7 @@ public class SongPlayerHandler {
 	 * @param s - Song object.
 	 * @param changeListener - ChangeListener to bind to the currentTime of the player.
 	 */
+	@Override
 	public void setSong(Song s) {
 		this.currentSong = s;
 		
@@ -183,6 +185,7 @@ public class SongPlayerHandler {
 	 * 
 	 * @param seekTime - Requested playback time in seconds.
 	 */
+	@Override
 	public void seek(long seekTime) {
 		switch(this.currentSource) {
 		case NONE:
@@ -205,7 +208,8 @@ public class SongPlayerHandler {
 	 * 
 	 * @return currentTime - Current time of the playing player.
 	 */
-	private ReadOnlyObjectProperty<Duration> getCurrentTime() {
+	@Override
+	public ReadOnlyObjectProperty<Duration> getCurrentTime() {
 		switch(this.currentSource) {
 		case LOCAL:
 			return this.localPlayer.getCurrentTime();
@@ -221,20 +225,11 @@ public class SongPlayerHandler {
 	}
 	
 	/**
-	 * Getter for Observable that is set to the currently used Players currentTime
-	 * property.
-	 * 
-	 * @return - Observable for the currently used Player.
-	 */
-	public ReadOnlyObjectProperty<Duration> getCurrentTimeObserver() {
-		return this.currentTime;
-	}
-	
-	/**
 	 * Setter for the volume of the currently used SongPlayer.
 	 * 
 	 * @param volume - Volume value to set to the currently used SongPlayer.
 	 */
+	@Override
 	public void setVolume(int volume) {
 		if (volume < 0 || volume > 100) {
 			throw new IllegalArgumentException("Invalid volume value, specify a volume between 0-100.");
@@ -261,6 +256,7 @@ public class SongPlayerHandler {
 	 * 
 	 * @return - Volume value of the currently used SongPlayer.
 	 */
+	@Override
 	public int getVolume() {
 		switch(this.currentSource) {
 		case LOCAL:
@@ -274,6 +270,16 @@ public class SongPlayerHandler {
 		default:
 			throw new IllegalStateException(); //TODO: Right exception to throw?
 		}
+	}
+	
+	/**
+	 * Getter for Observable that is set to the currently used Players currentTime
+	 * property.
+	 * 
+	 * @return - Observable for the currently used Player.
+	 */
+	public ReadOnlyObjectProperty<Duration> getCurrentTimeObserver() {
+		return this.currentTime;
 	}
 	
 	/**

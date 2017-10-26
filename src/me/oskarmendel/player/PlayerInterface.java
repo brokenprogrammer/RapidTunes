@@ -27,55 +27,70 @@
 
 package me.oskarmendel.player;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.util.Duration;
 import me.oskarmendel.song.Song;
 
 /**
- * Abstract Player class that holds common data and methods for all music players.
+ * PlayerInterface that collects common methods shared to operate the Players
+ * in RapidTunes.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name Player.java
+ * @name PlayerInterface.java
  */
-public abstract class Player implements PlayerInterface {
-	
-	protected Song song;
-	
-	protected ReadOnlyObjectWrapper<Duration> currentTime;
-	
-	protected int volume;
-	
-	protected Timer timer;
+public interface PlayerInterface {
 	
 	/**
-	 * 
+	 * Starts playing the song or media. If the song was previously 
+	 * paused the song will resume the playback at where it was paused.
 	 */
-	public Player() { 
-		this.currentTime = new ReadOnlyObjectWrapper<Duration>();
-		this.currentTime.set(Duration.ZERO);
-	}
+	public void play();
 	
 	/**
-	 * 
+	 * Pauses the playing of the song or media.
 	 */
-	public void startTimer() {
-		this.timer = new Timer(true);
-		this.timer.schedule(new TimerTask() {
-			@Override
-			public void run() {
-				currentTime.set(currentTime.get().add(Duration.millis(100)));
-			}
-		}, 0, 100);
-	}
+	public void pause();
 	
 	/**
-	 * 
+	 * Stops this player completley disposing media used by this player.
 	 */
-	public void stopTimer() {
-		this.timer.cancel();
-	}
+	public void stop();
+	
+	/**
+	 * Sets the currently playing song to the specified Song object.
+	 * 
+	 * @param song - Song to play.
+	 */
+	public void setSong(Song song);
+	
+	/**
+	 * Seeks the player to a new target time within the song or media. 
+	 * 
+	 * @param seekTime - Requested playback time in seconds.
+	 */
+	public void seek(long seekTime);
+	
+	/**
+	 * Getter for the current playback time for the currently playing song
+	 * or media.
+	 * 
+	 * @return - Current playback time of the currently playing media or song.
+	 */
+	public ReadOnlyObjectProperty<Duration> getCurrentTime();
+	
+	/**
+	 * Setter for the volume value of this player. Accepts a value between
+	 * 0 - 100.
+	 * 
+	 * @param volume - Target volume to set the player to.
+	 */
+	public void setVolume(int volume);
+	
+	/**
+	 * Getter for the volume value of this player. 
+	 * 
+	 * @return - Current volume of this player.
+	 */
+	public int getVolume();
 }
