@@ -88,4 +88,19 @@ public class SongQueueModel {
 		
 		return song;
 	}
+	
+	/**
+	 * Retrieves the last Song in the Queue and places it in the 
+	 * front of the queue.
+	 * 
+	 * @return - Previous Song in the Queue.
+	 */
+	public Song getPrevious() {
+		Song song = songQueue.get(songQueue.size()-1);
+		
+		songQueue.remove(songQueue.size()-1);
+		songQueue.add(0, song);
+		
+		return song;
+	}
 }

@@ -138,7 +138,7 @@ public class SongBrowserController implements RapidTunesController {
 					
 					// Adds all the next songs in the list to the queue and adds the previous ones at the end.
 					songQueueModel.setSongQueue(songList.getItems().subList(i+1, songList.getItems().size()));
-					songQueueModel.addSongs(songList.getItems().subList(0, i));
+					songQueueModel.addSongs(songList.getItems().subList(0, i+1));
 				}
 			});
 			return row;

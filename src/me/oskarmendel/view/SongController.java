@@ -108,15 +108,29 @@ public class SongController implements RapidTunesController {
 		songPrev.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
+				Song currentSong = currentlyPlayingModel.getCurrentSong().getValue();
+				Song prevSong = songQueueModel.getPrevious();
 				
+				if (currentSong.getTitle().equals(prevSong.getTitle())) {
+					player.seek(0);
+					songProgressBar.setProgress(0);
+				} else {
+					currentlyPlayingModel.setCurrentSong(prevSong);					
+				}
 			}
 		});
 		
 		songNext.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
+				Song currentSong = currentlyPlayingModel.getCurrentSong().getValue();
+				Song nextSong = songQueueModel.getNext();
+				
+				if (currentSong.getTitle().equals(nextSong.getTitle())) {
+					currentlyPlayingModel.setCurrentSong(songQueueModel.getNext());					
+				} else {
+					currentlyPlayingModel.setCurrentSong(nextSong);
+				}
 				
 			}
 		});
