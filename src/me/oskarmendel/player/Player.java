@@ -52,7 +52,8 @@ public abstract class Player implements PlayerInterface {
 	protected Timer timer;
 	
 	/**
-	 * 
+	 * Default constructor for the abstract Player class that initializes
+	 * the Player with default values.
 	 */
 	public Player() { 
 		this.currentTime = new ReadOnlyObjectWrapper<Duration>();
@@ -60,7 +61,8 @@ public abstract class Player implements PlayerInterface {
 	}
 	
 	/**
-	 * 
+	 * Starts the timer for the Player that is used to count seconds
+	 * for the current time of the Player.
 	 */
 	public void startTimer() {
 		this.timer = new Timer(true);
@@ -73,7 +75,8 @@ public abstract class Player implements PlayerInterface {
 	}
 	
 	/**
-	 * 
+	 * Stops the timer for the Player that counts the current time of the
+	 * Player.
 	 */
 	public void stopTimer() {
 		this.timer.cancel();
