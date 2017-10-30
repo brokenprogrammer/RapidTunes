@@ -74,6 +74,15 @@ public class SongQueueModel {
 	}
 	
 	/**
+	 * Adds the specified Song to the end of the Song Queue.
+	 * 
+	 * @param song - Song to add to the end of the Song Queue.
+	 */
+	public void addSong(Song song) {
+		songQueue.add(song);
+	}
+	
+	/**
 	 * Retrieves the next Song in the Queue and places it in the 
 	 * end of the queue.
 	 * 

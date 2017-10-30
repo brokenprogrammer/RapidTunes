@@ -43,6 +43,7 @@ public class YouTubeSong extends Song{
 	 * object needed for a displaying a YouTubeSong.
 	 */
 	public YouTubeSong() {
+		super();
 		this.graphic = "FontAwesome|YOUTUBE_PLAY";
 	}
 	
