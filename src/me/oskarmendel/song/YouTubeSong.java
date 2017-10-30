@@ -27,6 +27,8 @@
 
 package me.oskarmendel.song;
 
+import java.util.Objects;
+
 /**
  * Object representing a song from the youtube
  * 
@@ -45,6 +47,7 @@ public class YouTubeSong extends Song{
 	public YouTubeSong() {
 		super();
 		this.graphic = "FontAwesome|YOUTUBE_PLAY";
+		this.thumbnailURL = "";
 	}
 	
 	/**
@@ -109,5 +112,43 @@ public class YouTubeSong extends Song{
 	 */
 	public void setThumbnailURL(String thumbnailURL) {
 		this.thumbnailURL = thumbnailURL;
+	}
+	
+	/**
+	 * Indicates whether some other object is "equal to" this one.
+	 * 
+	 * @param o - the reference object with which to compare.
+	 * 
+	 * @return - true if this object is the same as the obj argument; false otherwise.
+	 */
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof YouTubeSong)) {
+			return false;
+		}
+		
+		YouTubeSong s = (YouTubeSong) o;
+		
+		return s.getTitle().equals(title)
+				&& s.getArtist().equals(artist)
+				&& s.getAlbum().equals(album)
+				&& s.getLength() == length
+				&& s.getPath().equals(path)
+				&& s.getGraphic().equals(graphic)
+				&& s.getThumbnailURL().equals(thumbnailURL);
+	}
+	
+	/**
+	 * Returns a hash code value for the object. This method is supported for the 
+	 * benefit of hash tables such as those provided by java.util.HashMap. 
+	 * 
+	 * @return - a hash code value for this object.
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(title, artist, album, length, path, graphic, thumbnailURL);
 	}
 }

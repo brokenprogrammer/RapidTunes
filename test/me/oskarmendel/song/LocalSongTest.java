@@ -276,7 +276,7 @@ public class LocalSongTest {
 	
 	/**
 	 * Helper testing method that creates a dummy LocalSong with the 
-	 * specified Title and length.
+	 * specified Title and Length.
 	 * 
 	 * @param title - Title of the LocalSong to create.
 	 * @param length - Length of the LocalSong to create.
@@ -330,7 +330,7 @@ public class LocalSongTest {
 	 * @param title - Title of the Song object.
 	 * @param length - Length of the Song object.
 	 * 
-	 * @return - A YouTube song object with specified values returned as a Song object.
+	 * @return - A YouTubeSong object with specified values returned as a Song object.
 	 */
 	private Song createDummyYouTubeSong(String title, long length) {
 		YouTubeSong song = new YouTubeSong();
