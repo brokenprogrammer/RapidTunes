@@ -31,6 +31,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.oskarmendel.player.search.SearchStrategy;
 import me.oskarmendel.song.LocalSong;
 import me.oskarmendel.song.LocalSongFormat;
 import me.oskarmendel.song.Song;
@@ -46,15 +47,37 @@ import me.oskarmendel.util.song.FileStripper;
  * @version 0.00.00
  * @name LocalSearch.java
  */
-public class LocalSearch {
+public class LocalSearchStrategy implements SearchStrategy {
 
-	private ArrayList<Song> list = new ArrayList<Song>();
 	private static final String[] format = { ".mp3", ".flac", ".wav" };
-	
-	private FileStripper fileStripper = new FileStripper();
-	
-	public LocalSearch() {
 
+	private ArrayList<Song> list;
+	
+	private FileStripper fileStripper;
+	
+	private String path;
+	
+	/**
+	 * Default constructor for the LocalSearchStrategy initializing 
+	 * members to default values.
+	 */
+	public LocalSearchStrategy() {
+		this.list = new ArrayList<Song>();
+		this.fileStripper = new FileStripper();
+		this.path = "";
+	}
+	
+	/**
+	 * Performs a search using the specified keyword.
+	 * 
+	 * @param keyword - Keyword to use as a search term.
+	 * 
+	 * @return - List of Songs retrieved from the search.
+	 */
+	@Override
+	public List<Song> search(String keyword) {
+		this.list.clear();
+		return search(keyword, this.path);
 	}
 	
 	/**
@@ -64,8 +87,7 @@ public class LocalSearch {
 	 * @param path - Path on the device to search through.
 	 * @return list - Containing all the found songs. 
 	 */
-	public List<Song> search(String keyword, String path) {
-
+	private List<Song> search(String keyword, String path) {
 		try {
 			File directory = new File(path);
 
@@ -98,7 +120,6 @@ public class LocalSearch {
 							s = new LocalSong();
 							s.setTitle(directory.getName());
 						}
-
 						list.add(s);
 					}
 				}
@@ -124,5 +145,23 @@ public class LocalSearch {
 		} else {
 			return false;
 		}
+	}
+	
+	/**
+	 * Getter for the path of this LocalSearchStrategy.
+	 * 
+	 * @return - Path this LocalSearchStrategy is using.
+	 */
+	public String getPath() {
+		return this.path;
+	}
+	
+	/**
+	 * Setter for the path of this LocalSearchStrategy.
+	 * 
+	 * @param path - Path for this LocalSearchStrategy to use.
+	 */
+	public void setPath(String path) {
+		this.path = path;
 	}
 }

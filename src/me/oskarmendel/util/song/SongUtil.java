@@ -73,9 +73,11 @@ public class SongUtil {
 	}
 	
 	/**
+	 * Converts a YouTube Video object into a YouTubeSong object.
 	 * 
-	 * @param youtubeVideo
-	 * @return
+	 * @param youtubeVideo - YouTube Video object to convert.
+	 * 
+	 * @return - YouTubeSong constructed using values from the specified YouTube video.
 	 */
 	public static YouTubeSong youtubeVideoToYouTubeSong(Video youtubeVideo) {
 		YouTubeSong song = new YouTubeSong();

@@ -55,7 +55,7 @@ import me.oskarmendel.util.song.SongUtil;
  * 
  * TODO Add API key inside a file.
  * 
- * @author Oskar
+ * @author Oskar Mendel
  * @version 0.00.00
  * @name YouTubeSearch.java
  */
@@ -79,7 +79,9 @@ public class YouTubeSearchStrategy implements SearchStrategy {
 	public static YouTube youtube;
 	
 	/**
-	 * 
+	 * Default constructor for the YouTubeSearchStrategy initializing 
+	 * members to default values and initializing the API key by reading 
+	 * it's properties file.
 	 */
 	public YouTubeSearchStrategy () {
 		// Load the properties required for YouTube data api requests by
