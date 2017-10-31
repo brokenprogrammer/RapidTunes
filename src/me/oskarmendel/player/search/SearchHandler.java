@@ -27,15 +27,11 @@
 
 package me.oskarmendel.player.search;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.api.services.youtube.model.Video;
-
-import me.oskarmendel.player.search.local.LocalSearch;
+import me.oskarmendel.player.search.local.LocalSearchStrategy;
 import me.oskarmendel.song.Song;
-import me.oskarmendel.song.YouTubeSong;
 
 /**
  * Class that handles all searches. Uses a Singleton.
@@ -47,9 +43,13 @@ import me.oskarmendel.song.YouTubeSong;
 public class SearchHandler {
 
 	private static SearchHandler INSTANCE = null;
-
+	
+	private LocalSearchStrategy localSearchStrategy;
+	private YouTubeSearchStrategy youtubeSearchStrategy;
+	
 	private SearchHandler() {
-
+		this.localSearchStrategy = new LocalSearchStrategy();
+		this.youtubeSearchStrategy = new YouTubeSearchStrategy();
 	}
 
 	/**
@@ -75,57 +75,18 @@ public class SearchHandler {
 
 		List<Song> songList = new ArrayList<Song>();
 
-		songList.addAll(searchLocal(searchWord, path));
-		songList.addAll(searchYouTube(searchWord));
-
-		return songList;
-	}
-
-	/**
-	 * Search method that runs a youtube search and converts the Video objects
-	 * to YouTubeSong objects
-	 * 
-	 * @param searchWord
-	 * @return List of songs
-	 */
-	private List<Song> searchYouTube(String searchWord) {
-
-		List<Song> songList = new ArrayList<Song>();
-
-		YouTubeSearch ys = new YouTubeSearch();
-
-		List<Video> ytList = ys.search(searchWord); // List of videos from yt
-
-		// Convert all videos to YouTubeSong and add them to songList
-		for (int i = 0; i < ytList.size(); i++) {
-
-			YouTubeSong s = new YouTubeSong();
-			
-			s.setTitle(ytList.get(i).getSnippet().getTitle());
-			s.setArtist(ytList.get(i).getSnippet().getChannelTitle());
-			s.setLength(Duration.parse((ytList.get(i).getContentDetails().getDuration())).getSeconds());
-			s.setPath(ytList.get(i).getId());
-			s.setThumbnailURL(ytList.get(i).getSnippet().getThumbnails().getDefault().getUrl());
-			songList.add(s);
+		// TODO: Check if source is checked in settings, if true perform search
+		// from source.
+		
+		if (true) {
+			localSearchStrategy.setPath(path);
+			songList.addAll(localSearchStrategy.search(searchWord));
 		}
-
+		
+		if (true) {
+			songList.addAll(youtubeSearchStrategy.search(searchWord));
+		}
+		
 		return songList;
-	}
-
-	/**
-	 * Search method that runs a local search.
-	 * 
-	 * @param searchWord
-	 * @param path
-	 * @return List of songs
-	 */
-	private List<Song> searchLocal(String searchWord, String path) {
-
-		LocalSearch ls = new LocalSearch();
-
-		List<Song> localList = ls.search(searchWord, path); // List of songs
-															// from local
-
-		return localList;
 	}
 }

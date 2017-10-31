@@ -36,6 +36,7 @@ import me.oskarmendel.StageManager;
 
 
 /**
+ * Main entry-point of the application.
  * 
  * @author Oskar
  * @version 0.00.00

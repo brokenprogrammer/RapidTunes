@@ -27,49 +27,25 @@
 
 package me.oskarmendel.player.search;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import com.google.api.services.youtube.model.Video;
+import me.oskarmendel.song.Song;
 
 /**
+ * Interface defining how a SearchStrategy should be represented.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name YouTubeSearchTest.java
+ * @name SearchStrategy.java
  */
-public class YouTubeSearchTest {
+public interface SearchStrategy {
 	
-	//YouTubeSearch youtubeSearch;
-
 	/**
-	 * @throws java.lang.Exception
+	 * Performs a search using the specified keyword.
+	 * 
+	 * @param keyword - Keyword to use as a search term.
+	 * 
+	 * @return - List of Songs retrieved from the search.
 	 */
-	@Before
-	public void setUp() throws Exception {
-		//youtubeSearch = new YouTubeSearch();
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	/**
-	 * Test method for {@link me.oskarmendel.player.search.YouTubeSearchStrategy#search(java.lang.String)}.
-	 */
-	@Test
-	public final void testSearch() {
-		//List<Video> youtubeResults = youtubeSearch.search("Jimmy Eat World");
-		//assertTrue("There were results from the youtube search.", youtubeResults.size() > 0);
-		//assertTrue("There were results from the youtube search.", youtubeResults.isEmpty() != true);
-	}
-
+	public List<Song> search(String keyword);
 }

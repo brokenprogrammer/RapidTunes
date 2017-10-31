@@ -27,10 +27,14 @@
 
 package me.oskarmendel.util.song;
 
+import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import me.oskarmendel.song.Song;
+import me.oskarmendel.song.YouTubeSong;
+
+import com.google.api.services.youtube.model.Video;
 
 /**
  * Class with static methods to provide Utility functions for Songs.
@@ -66,5 +70,22 @@ public class SongUtil {
 		LocalTime t = LocalTime.MIN.plusSeconds((long) seconds);
 		
 		return t.toString();
+	}
+	
+	/**
+	 * 
+	 * @param youtubeVideo
+	 * @return
+	 */
+	public static YouTubeSong youtubeVideoToYouTubeSong(Video youtubeVideo) {
+		YouTubeSong song = new YouTubeSong();
+		
+		song.setTitle(youtubeVideo.getSnippet().getTitle());
+		song.setArtist(youtubeVideo.getSnippet().getChannelTitle());
+		song.setLength(Duration.parse((youtubeVideo.getContentDetails().getDuration())).getSeconds());
+		song.setPath(youtubeVideo.getId());
+		song.setThumbnailURL(youtubeVideo.getSnippet().getThumbnails().getDefault().getUrl());
+		
+		return song;
 	}
 }
