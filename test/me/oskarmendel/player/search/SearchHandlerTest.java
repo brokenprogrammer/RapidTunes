@@ -47,11 +47,11 @@ import me.oskarmendel.song.Song;
  */
 public class SearchHandlerTest {
 
-	SearchHandler sh;
+	//SearchHandler sh;
 
 	@Before
 	public void setUp() throws Exception {
-		sh = SearchHandler.getInstance();
+		//sh = SearchHandler.getInstance();
 	}
 
 	@After
