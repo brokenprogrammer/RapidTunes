@@ -59,8 +59,9 @@ public class SearchHandler {
 	 */
 	public static SearchHandler getInstance() {
 
-		if (INSTANCE == null)
+		if (INSTANCE == null) {
 			INSTANCE = new SearchHandler();
+		}
 
 		return INSTANCE;
 	}
