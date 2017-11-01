@@ -50,20 +50,9 @@ import me.oskarmendel.song.Song;
  * @name LocalPlayer.java
  */
 public class LocalPlayer extends Player {
-
-	/**
-	 * Enumeration describing the different statuses of {@link YoutubePlayer}}.
-	 */
-	public enum Status {
-		READY,
-		PAUSED,
-		PLAYING,
-		STOPPED
-	};
 	
 	private MediaPlayer fxPlayer;
 	private Media currentMedia;
-	private Status status;
 	
 	/**
 	 * Default constructor for the LocalPlayer initializing all 
@@ -217,14 +206,5 @@ public class LocalPlayer extends Player {
 	@Override
 	public int getVolume() {
 		return this.volume;
-	}
-	
-	/**
-	 * Getter for the current status of the LocalPlayer.
-	 * 
-	 * @return - Current status of the LocalPlayer.
-	 */
-	public Status getStatus() {
-		return this.status;
 	}
 }

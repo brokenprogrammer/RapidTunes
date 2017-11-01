@@ -43,6 +43,16 @@ import me.oskarmendel.song.Song;
  */
 public abstract class Player implements PlayerInterface {
 	
+	/**
+	 * Enumeration describing the different statuses of {@link Player}}.
+	 */
+	public enum Status {
+		READY,
+		PAUSED,
+		PLAYING,
+		STOPPED
+	};
+	
 	protected Song song;
 	
 	protected ReadOnlyObjectWrapper<Duration> currentTime;
@@ -50,6 +60,8 @@ public abstract class Player implements PlayerInterface {
 	protected int volume;
 	
 	protected Timer timer;
+	
+	protected Status status;
 	
 	/**
 	 * Default constructor for the abstract Player class that initializes
@@ -80,5 +92,14 @@ public abstract class Player implements PlayerInterface {
 	 */
 	public void stopTimer() {
 		this.timer.cancel();
+	}
+	
+	/**
+	 * Getter for the current status of the Player.
+	 * 
+	 * @return - Current status of the Player.
+	 */
+	public Status getStatus() {
+		return this.status;
 	}
 }

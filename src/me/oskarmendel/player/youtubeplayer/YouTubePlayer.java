@@ -45,18 +45,7 @@ import me.oskarmendel.song.YouTubeSong;
  */
 public class YouTubePlayer extends Player{
 	
-	/**
-	 * Enumeration describing the different statuses of {@link YoutubePlayer}}.
-	 */
-	public enum Status {
-		READY,
-		PAUSED,
-		PLAYING,
-		STOPPED
-	};
-	
 	private WebView browserPlayer;
-	private Status status;
 	
 	/**
 	 * Default constructor for the YouTubePlayer initializing all 
@@ -71,7 +60,7 @@ public class YouTubePlayer extends Player{
 		this.browserPlayer.getEngine().load(localHtml.toURI().toString());
 		this.status = Status.READY;
 		
-		//TODO: Set volume, Set current time.. 
+		//TODO: Set volume, Set current time..
 	}
 	
 	/**
@@ -159,14 +148,5 @@ public class YouTubePlayer extends Player{
 	public int getVolume() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-	
-	/**
-	 * Getter for the current status of the YouTubePlayer.
-	 * 
-	 * @return - Current status of the YouTubePlayer.
-	 */
-	public Status getStatus() {
-		return this.status;
 	}
 }
