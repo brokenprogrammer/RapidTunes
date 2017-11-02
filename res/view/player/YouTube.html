@@ -46,6 +46,7 @@
 		
 		<script type="text/javascript">
 			var player;
+			var myVolume = 5;
 			
 			// Load the IFrame API.
 			loadPlayerAPI();
@@ -88,7 +89,8 @@
 			 */
 			function onPlayerStateChange(event) {
 				if (event.data == YT.PlayerState.PLAYING) {
-					
+					player.setVolume(Number(20));
+					event.target.setVolume(Number(myVolume));
 				}
 			}
 			
@@ -119,7 +121,6 @@
 			 */
 			function setSong(songID) {
 				player.loadVideoById(songID);
-				player.playVideo();
 			}
 			
 			/**
@@ -129,7 +130,8 @@
 			 */
 			function setVolume(volume) {
 				if (typeof(volume) === 'number') {
-					player.setVolume(volume);
+					myVolume = Number(volume);
+					player.setVolume(Number(volume));
 				}
 			}
 			
