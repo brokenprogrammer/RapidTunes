@@ -191,6 +191,8 @@ public class StageManager {
 	private ResourceBundle getResourseBundle(String language) {
 		switch (language) {
 			case "sv":
+				return ResourceBundle.getBundle("bundle.strings",
+						new Locale(language));
 			case "ru":
 				return ResourceBundle.getBundle("bundle.strings",
 						new Locale(language), new UTF8Control());
