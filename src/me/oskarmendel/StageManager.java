@@ -133,6 +133,8 @@ public class StageManager {
 		songQueueModel = new SongQueueModel();
 		currentlyPlayingModel = new CurrentlyPlayingModel();
 		
+		getNavigationController().initSettingsModel(settingsModel);
+		
 		getNavigationController().initSearchResultModel(searchResultModel);
 		getSongBrowserController().initSearchResultModel(searchResultModel);
 		
