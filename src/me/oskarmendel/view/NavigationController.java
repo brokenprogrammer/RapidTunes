@@ -112,6 +112,9 @@ public class NavigationController implements RapidTunesController {
 		}
 		
 		this.settingsModel = settingsModel;
+		
+		// Initialize the SettingsModel for the controller of the MenuBar.
+		this.menuBarController.initSettingsModel(settingsModel);
 	}
 	
 	/**

@@ -120,6 +120,11 @@ public class StageManager {
 		mainStage = primaryStage;
 		mainStage.setTitle("RapidTunes");
 		
+		settingsModel = new SettingsModel();
+		searchResultModel = new SearchResultModel();
+		songQueueModel = new SongQueueModel();
+		currentlyPlayingModel = new CurrentlyPlayingModel();
+		
 		LOGGER.log(Level.FINE, "Loading layouts..");
 		// Loading all the layouts for the different parts of the application.
 		VBox navigationLayout = (VBox) loadLayout(RapidTunesController.NAVIGATION_LAYOUT);
@@ -127,11 +132,6 @@ public class StageManager {
 		HBox songControlLayout = (HBox) loadLayout(RapidTunesController.SONGCONTROL_LAYOUT);
 		AnchorPane songBrowserLayout = (AnchorPane) loadLayout(RapidTunesController.SONGBROWSER_LAYOUT);
 		BorderPane rootLayout = (BorderPane) loadLayout(RapidTunesController.ROOT_LAYOUT);
-		
-		settingsModel = new SettingsModel();
-		searchResultModel = new SearchResultModel();
-		songQueueModel = new SongQueueModel();
-		currentlyPlayingModel = new CurrentlyPlayingModel();
 		
 		getNavigationController().initSettingsModel(settingsModel);
 		
@@ -152,8 +152,8 @@ public class StageManager {
 		
 		Scene mainScene = new Scene(rootLayout);
 		
-		LOGGER.log(Level.FINE, "Loading stylesheet: " + RapidTunesController.DEFAULT_STYLING);
-		mainScene.getStylesheets().add(getClass().getResource(RapidTunesController.DEFAULT_STYLING).toString());
+		LOGGER.log(Level.FINE, "Loading stylesheet: " + this.settingsModel.getGeneralSettings().getTheme());
+		mainScene.getStylesheets().add(this.settingsModel.getGeneralSettings().getTheme());
 		
 		mainStage.setScene(mainScene);
 		mainStage.setMinWidth(800);
@@ -174,7 +174,8 @@ public class StageManager {
 		
 		LOGGER.log(Level.FINE, "Loading Layout: " + layout);
 		loader.setLocation(getClass().getResource(layout));
-		loader.setResources(getResourseBundle(System.getProperty("user.language")));
+		//loader.setResources(getResourseBundle(System.getProperty("user.language")));
+		loader.setResources(getResourseBundle(this.settingsModel.getGeneralSettings().getLanguage().toString()));		
 		Parent nodeLayout = loader.load();
 		
 		//Store controller of target layout
@@ -191,7 +192,7 @@ public class StageManager {
 	 * @return ResourceBundle for entire application
 	 */
 	private ResourceBundle getResourseBundle(String language) {
-		switch (language) {
+		switch (language.toLowerCase()) {
 			case "sv":
 				return ResourceBundle.getBundle("bundle.strings",
 						new Locale(language));
