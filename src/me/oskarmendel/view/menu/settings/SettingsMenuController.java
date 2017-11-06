@@ -28,6 +28,7 @@
 package me.oskarmendel.view.menu.settings;
 
 import javafx.fxml.FXML;
+import me.oskarmendel.model.SettingsModel;
 
 /**
  * Controller class for the Settings Menu.
@@ -38,10 +39,28 @@ import javafx.fxml.FXML;
  */
 public class SettingsMenuController {
 	
-	@FXML private GeneralTabController generalTablController;
+	@FXML private GeneralTabController settingsMenuGeneralController;
+	@FXML private SongTabController settingsMenuSongController;
+	
+	private SettingsModel settingsModel;
 	
 	@FXML
 	public void initialize() {
 		
+	}
+	
+	/**
+	 * Initializes the SettingsModel which contains the applications settings.
+	 * 
+	 * @param settingsModel - settingsModel object to share data with.
+	 */
+	public void initSettingsModel(SettingsModel settingsModel) {
+		if (this.settingsModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
+		
+		this.settingsModel = settingsModel;
+		
+		settingsMenuGeneralController.initSettingsModel(this.settingsModel);
 	}
 }

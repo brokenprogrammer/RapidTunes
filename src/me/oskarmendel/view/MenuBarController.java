@@ -30,7 +30,6 @@ package me.oskarmendel.view;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,6 +43,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import me.oskarmendel.model.SearchResultModel;
+import me.oskarmendel.model.SettingsModel;
+import me.oskarmendel.view.menu.settings.SettingsMenuController;
 
 /**
  * Controller class for the MenuBar in the Navigation part of the application.
@@ -92,6 +93,7 @@ public class MenuBarController implements RapidTunesController {
 	
 	private static final Logger LOGGER = Logger.getLogger(MenuBarController.class.getName());
 
+	private SettingsModel settingsModel;
 	private SearchResultModel searchResultModel;
 	
 	@FXML 
@@ -102,19 +104,38 @@ public class MenuBarController implements RapidTunesController {
 			@Override
 			public void handle(ActionEvent event) {
 				Parent root;
+				URI location = new File("res/view/menu/settings/SettingsMenuLayout.fxml").toURI();
+				SettingsMenuController settingsMenuController;
 				
 				try {
-					URI location = new File("res/view/menu/settings/SettingsMenuLayout.fxml").toURI();
-					root = FXMLLoader.load(location.toURL());
+					FXMLLoader loader = new FXMLLoader(location.toURL());
+					root = loader.load();
 					Stage stage = new Stage();
 					stage.setTitle("Settings");
 					stage.setScene(new Scene(root, 325, 250));
+					
+					settingsMenuController = loader.<SettingsMenuController>getController();
+					settingsMenuController.initSettingsModel(settingsModel);
+					
 					stage.show();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
 		});
+	}
+	
+	/**
+	 * Initializes the SettingsModel which contains the applications settings.
+	 * 
+	 * @param settingsModel - settingsModel object to share data with.
+	 */
+	public void initSettingsModel(SettingsModel settingsModel) {
+		if (this.settingsModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
+		
+		this.settingsModel = settingsModel;
 	}
 	
 	/**
