@@ -42,6 +42,7 @@ import me.oskarmendel.settings.HotkeySettings;
 import me.oskarmendel.settings.PlaylistSettings;
 import me.oskarmendel.settings.SongSettings;
 import me.oskarmendel.settings.SourceSettings;
+import me.oskarmendel.view.menu.settings.locale.Locale;
 
 /**
  * Tests for the SettingsManager.
@@ -96,7 +97,7 @@ public class SettingsManagerTest {
 		playlistSettings = (PlaylistSettings) settingsManager.loadSettings(playlistSettings);
 		
 		assertTrue("Current theme is: \"/css/Default.css\"", generalSettings.getTheme().equals("/css/Default.css"));
-		assertTrue("Current language is: \"en\"", generalSettings.getLanguage().equals("en"));
+		assertEquals("Current language is: \"en\"", generalSettings.getLanguage(), Locale.EN);
 		
 		assertTrue("Current crossfade is toggled to false.", !songSettings.isCrossfade());
 		assertTrue("Current crossfade seconds is set to 6.", songSettings.getCrossfadeSeconds() == 6);
@@ -106,7 +107,7 @@ public class SettingsManagerTest {
 		
 		// Change then save the settings within GeneralSettings.
 		generalSettings.setTheme("TestingTheme");
-		generalSettings.setLanguage("TestingLanguage");
+		generalSettings.setLanguage("SV");
 		settingsManager.saveSettings(generalSettings);
 		
 		// Change then save the settings within SongSettings.
@@ -132,7 +133,7 @@ public class SettingsManagerTest {
 		playlistSettings = (PlaylistSettings) settingsManager.loadSettings(playlistSettings);
 		
 		assertTrue("New theme was set to \"TestingTheme\"", generalSettings.getTheme().equals("TestingTheme"));
-		assertTrue("New language was set to \"TestingLanguage\"", generalSettings.getLanguage().equals("TestingLanguage"));
+		assertEquals("New language was set to \"SV\"", generalSettings.getLanguage(), Locale.SV);
 		
 		assertTrue("New crossfade is toggled to true.", songSettings.isCrossfade());
 		assertTrue("New crossfade seconds is set to 12.", songSettings.getCrossfadeSeconds() == 12);
@@ -203,7 +204,7 @@ public class SettingsManagerTest {
 		generalSettings = (GeneralSettings) settingsManager.loadSettings(generalSettings);
 		
 		assertTrue("Current theme is: \"/css/Default.css\"", generalSettings.getTheme().equals("/css/Default.css"));
-		assertTrue("Current language is: \"en\"", generalSettings.getLanguage().equals("en"));
+		assertEquals("Current language is: \"en\"", generalSettings.getLanguage(), Locale.EN);
 		
 		generalSettings.setTheme("TestingTheme");
 		generalSettings.setLanguage("TestingLanguage");
@@ -213,7 +214,7 @@ public class SettingsManagerTest {
 		generalSettings = (GeneralSettings) settingsManager.loadSettings(generalSettings);
 		
 		assertTrue("New theme was set to \"TestingTheme\"", generalSettings.getTheme().equals("TestingTheme"));
-		assertTrue("New language was set to \"TestingLanguage\"", generalSettings.getLanguage().equals("TestingLanguage"));
+		assertEquals("New language was set to \"EN\"", generalSettings.getLanguage(), Locale.EN);
 	}
 	
 	/**
