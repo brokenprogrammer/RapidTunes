@@ -66,5 +66,7 @@ public class SettingsMenuController {
 		this.settingsModel = settingsModel;
 		
 		settingsMenuGeneralController.initSettingsModel(this.settingsModel);
+		settingsMenuSongController.initSettingsModel(this.settingsModel);
+		settingsMenuPlaylistController.initSettingsModel(this.settingsModel);
 	}
 }

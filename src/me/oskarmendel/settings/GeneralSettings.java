@@ -29,8 +29,8 @@ package me.oskarmendel.settings;
 
 import java.util.Properties;
 
+import me.oskarmendel.settings.locale.Locale;
 import me.oskarmendel.view.RapidTunesController;
-import me.oskarmendel.view.menu.settings.locale.Locale;
 
 /**
  * GeneralSettings class that stores and controls settings handling

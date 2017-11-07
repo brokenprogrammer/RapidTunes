@@ -35,7 +35,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import me.oskarmendel.model.SettingsModel;
 import me.oskarmendel.settings.GeneralSettings;
-import me.oskarmendel.view.menu.settings.locale.Locale;
+import me.oskarmendel.settings.locale.Locale;
 
 /**
  * Controller class for the General tab in the Settings Menu.

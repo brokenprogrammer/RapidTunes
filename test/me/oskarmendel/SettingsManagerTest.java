@@ -42,7 +42,7 @@ import me.oskarmendel.settings.HotkeySettings;
 import me.oskarmendel.settings.PlaylistSettings;
 import me.oskarmendel.settings.SongSettings;
 import me.oskarmendel.settings.SourceSettings;
-import me.oskarmendel.view.menu.settings.locale.Locale;
+import me.oskarmendel.settings.locale.Locale;
 
 /**
  * Tests for the SettingsManager.

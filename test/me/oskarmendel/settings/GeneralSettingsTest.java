@@ -35,7 +35,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import me.oskarmendel.view.menu.settings.locale.Locale;
+import me.oskarmendel.settings.locale.Locale;
 
 /**
  * Tests for the GeneralSettings.

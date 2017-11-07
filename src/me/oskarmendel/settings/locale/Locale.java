@@ -25,7 +25,7 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.view.menu.settings.locale;
+package me.oskarmendel.settings.locale;
 
 /**
  * Enum for the supported Locales in RapidTunes.

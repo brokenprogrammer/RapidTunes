@@ -32,6 +32,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import me.oskarmendel.model.SettingsModel;
+import me.oskarmendel.settings.PlaylistSettings;
 
 /**
  * Controller class for the Playlist tab in the Settings Menu.
@@ -49,8 +51,31 @@ public class PlaylistTabController {
 	@FXML private CheckBox playlistSettingsExportYouTubeCheckBox;
 	@FXML private CheckBox playlistSettingsExportSoundCloudCheckBox;
 	
+	private SettingsModel settingsModel;
+	
 	@FXML
 	public void initialize() {
 		
+	}
+	
+	/**
+	 * Initializes the SettingsModel which contains the applications settings.
+	 * 
+	 * @param settingsModel - settingsModel object to share data with.
+	 */
+	public void initSettingsModel(SettingsModel settingsModel) {
+		if (this.settingsModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
+		
+		this.settingsModel = settingsModel;
+		
+		PlaylistSettings playlistSettings = this.settingsModel.getPlaylistSettings();
+		
+		// Initializing UI values based on current Settings
+		playlistSettingsDirectoryTextField.setText(playlistSettings.getPlaylistDirectory());
+		
+		playlistSettingsExportYouTubeCheckBox.setSelected(playlistSettings.isAutoExportYouTube());
+		playlistSettingsExportSoundCloudCheckBox.setSelected(playlistSettings.isAutoExportSoundCloud());
 	}
 }
