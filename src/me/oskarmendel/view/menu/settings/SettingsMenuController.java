@@ -41,6 +41,10 @@ public class SettingsMenuController {
 	
 	@FXML private GeneralTabController settingsMenuGeneralController;
 	@FXML private SongTabController settingsMenuSongController;
+	@FXML private PlaylistTabController settingsMenuPlaylistController;
+	@FXML private SourceTabController settingsMenuSourceController;
+	@FXML private HotkeysTabController settingsMenuHotkeysController;
+	@FXML private AccountTabController settingsMenuAccountController;
 	
 	private SettingsModel settingsModel;
 	
