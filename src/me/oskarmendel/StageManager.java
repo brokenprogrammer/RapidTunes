@@ -51,6 +51,7 @@ import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.model.SearchResultModel;
 import me.oskarmendel.model.SettingsModel;
 import me.oskarmendel.model.SongQueueModel;
+import me.oskarmendel.settings.listener.SettingsChangeListenerFactory;
 import me.oskarmendel.view.NavigationController;
 import me.oskarmendel.view.PlaylistController;
 import me.oskarmendel.view.RapidTunesController;
@@ -120,10 +121,10 @@ public class StageManager {
 		mainStage = primaryStage;
 		mainStage.setTitle("RapidTunes");
 		
-		settingsModel = new SettingsModel();
-		searchResultModel = new SearchResultModel();
-		songQueueModel = new SongQueueModel();
-		currentlyPlayingModel = new CurrentlyPlayingModel();
+		this.settingsModel = new SettingsModel();
+		this.searchResultModel = new SearchResultModel();
+		this.songQueueModel = new SongQueueModel();
+		this.currentlyPlayingModel = new CurrentlyPlayingModel();
 		
 		LOGGER.log(Level.FINE, "Loading layouts..");
 		// Loading all the layouts for the different parts of the application.
@@ -151,6 +152,8 @@ public class StageManager {
 		rootLayout.setCenter(songBrowserLayout);
 		
 		Scene mainScene = new Scene(rootLayout);
+		
+		bindSettingsListeners(new SettingsChangeListenerFactory(), mainScene);
 		
 		LOGGER.log(Level.FINE, "Loading stylesheet: " + this.settingsModel.getGeneralSettings().getTheme());
 		mainScene.getStylesheets().add(this.settingsModel.getGeneralSettings().getTheme());
@@ -203,6 +206,21 @@ public class StageManager {
 			default:
 				return ResourceBundle.getBundle("bundle.strings", Locale.ROOT, new UTF8Control());
 		}
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @param changeListenerFactory
+	 * @param mainScene
+	 */
+	private void bindSettingsListeners(SettingsChangeListenerFactory changeListenerFactory, Scene mainScene) {
+		this.settingsModel.getGeneralSettingsProperty().addListener(changeListenerFactory.getGeneralSettingsChangeListener(mainScene));
+		this.settingsModel.getSongSettingsProperty().addListener(changeListenerFactory.getSongSettingsChangeListener());
+		this.settingsModel.getPlaylistSettingsProperty().addListener(changeListenerFactory.getPlaylistSettingsChangeListener());
+		this.settingsModel.getSourceSettingsProperty().addListener(changeListenerFactory.getSourceSettingsChangeListener());
+		this.settingsModel.getHotkeySettingsProperty().addListener(changeListenerFactory.getHotkeySettingsChangeListener());
+		this.settingsModel.getAccountSettingsProperty().addListener(changeListenerFactory.getAccountSettingsChangeListener());
 	}
 
 	/**

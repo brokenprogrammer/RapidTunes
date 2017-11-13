@@ -28,6 +28,8 @@
 package me.oskarmendel.view.menu.settings;
 
 import javafx.fxml.FXML;
+import me.oskarmendel.model.SettingsModel;
+import me.oskarmendel.settings.AccountSettings;
 
 /**
  * Controller class for the Account tab in the Settings Menu.
@@ -36,10 +38,37 @@ import javafx.fxml.FXML;
  * @version 0.00.00
  * @name AccountTabController.java
  */
-public class AccountTabController {
+public class AccountTabController implements SettingsMenuTab {
 
+	private SettingsModel settingsModel;
+	
 	@FXML
 	public void initialize() {
 		
+	}
+	
+	/**
+	 * Applies the Settings within the Tab by modifying the current settings
+	 * within the SettingsModel contained within the SettingsTab.
+	 */
+	@Override
+	public void apply() {
+		AccountSettings accountSettings = new AccountSettings();
+		
+		this.settingsModel.getAccountSettingsProperty().set(accountSettings);
+	}
+	
+	/**
+	 * Initializes the SettingsModel which contains the applications settings.
+	 * 
+	 * @param settingsModel - settingsModel object to share data with.
+	 */
+	@Override
+	public void initSettingsModel(SettingsModel settingsModel) {
+		if (this.settingsModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
+		
+		this.settingsModel = settingsModel;
 	}
 }

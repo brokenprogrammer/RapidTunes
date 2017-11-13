@@ -27,7 +27,10 @@
 
 package me.oskarmendel.view.menu.settings;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 import me.oskarmendel.model.SettingsModel;
 
 /**
@@ -46,10 +49,31 @@ public class SettingsMenuController {
 	@FXML private HotkeysTabController settingsMenuHotkeysController;
 	@FXML private AccountTabController settingsMenuAccountController;
 	
+	@FXML private Button settingsMenuApplyButton;
+	@FXML private Button settingsMenuCancelButton;
+	
 	private SettingsModel settingsModel;
 	
 	@FXML
 	public void initialize() {
+		
+	}
+	
+	@FXML
+	public void onApply(ActionEvent event) {
+		this.settingsMenuGeneralController.apply();
+		this.settingsMenuSongController.apply();
+		this.settingsMenuPlaylistController.apply();
+		this.settingsMenuSourceController.apply();
+		this.settingsMenuHotkeysController.apply();
+		this.settingsMenuAccountController.apply();
+		
+		Stage stage = (Stage) this.settingsMenuApplyButton.getScene().getWindow();
+		stage.close();
+	}
+	
+	@FXML
+	public void onCancel(ActionEvent event) {
 		
 	}
 	
@@ -65,8 +89,15 @@ public class SettingsMenuController {
 		
 		this.settingsModel = settingsModel;
 		
-		settingsMenuGeneralController.initSettingsModel(this.settingsModel);
-		settingsMenuSongController.initSettingsModel(this.settingsModel);
-		settingsMenuPlaylistController.initSettingsModel(this.settingsModel);
+		this.settingsMenuGeneralController.initSettingsModel(this.settingsModel);
+		this.settingsMenuSongController.initSettingsModel(this.settingsModel);
+		this.settingsMenuPlaylistController.initSettingsModel(this.settingsModel);
+		this.settingsMenuSourceController.initSettingsModel(this.settingsModel);
+		this.settingsMenuHotkeysController.initSettingsModel(this.settingsModel);
+		this.settingsMenuAccountController.initSettingsModel(this.settingsModel);
+	}
+	
+	public SettingsModel get() {
+		return this.settingsModel;
 	}
 }

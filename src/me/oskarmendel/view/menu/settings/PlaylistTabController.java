@@ -42,7 +42,7 @@ import me.oskarmendel.settings.PlaylistSettings;
  * @version 0.00.00
  * @name PlaylistTabController.java
  */
-public class PlaylistTabController {
+public class PlaylistTabController implements SettingsMenuTab {
 	
 	@FXML private Label playlistSettingsDirectoryLabel;
 	@FXML private TextField playlistSettingsDirectoryTextField;
@@ -59,10 +59,26 @@ public class PlaylistTabController {
 	}
 	
 	/**
+	 * Applies the Settings within the Tab by modifying the current settings
+	 * within the SettingsModel contained within the SettingsTab.
+	 */
+	@Override
+	public void apply() {
+		PlaylistSettings playlistSettings = new PlaylistSettings();
+		
+		playlistSettings.setPlaylistDirectory(playlistSettingsDirectoryTextField.getText());
+		playlistSettings.setAutoExportYouTube(playlistSettingsExportYouTubeCheckBox.isSelected());
+		playlistSettings.setAutoExportSoundCloud(playlistSettingsExportSoundCloudCheckBox.isSelected());
+		
+		this.settingsModel.getPlaylistSettingsProperty().set(playlistSettings);
+	}
+	
+	/**
 	 * Initializes the SettingsModel which contains the applications settings.
 	 * 
 	 * @param settingsModel - settingsModel object to share data with.
 	 */
+	@Override
 	public void initSettingsModel(SettingsModel settingsModel) {
 		if (this.settingsModel != null) {
 			throw new IllegalStateException("Model can only be initialized once");

@@ -30,6 +30,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
 
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.oskarmendel.view.menu.settings.SettingsMenuController">
@@ -68,5 +70,11 @@
             </Tab>
         </tabs>
       </TabPane>
+      <HBox>
+      	<children>
+      		<Button fx:id="settingsMenuApplyButton" mnemonicParsing="false" text="Ok" onAction="#onApply" />
+      		<Button fx:id="settingsMenuCancelButton" mnemonicParsing="false" text="Cancel" onAction="#onCancel" />
+      	</children>
+      </HBox>
    </children>
 </AnchorPane>

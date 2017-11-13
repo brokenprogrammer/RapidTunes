@@ -43,7 +43,7 @@ import me.oskarmendel.settings.SongSettings.PlaybackQuality;
  * @version 0.00.00
  * @name SongTabController.java
  */
-public class SongTabController {
+public class SongTabController implements SettingsMenuTab {
 	
 	@FXML private CheckBox songSettingsCrossfadeCheckBox;
 	@FXML private Slider songSettingsCrossfadeSlider;
@@ -62,10 +62,28 @@ public class SongTabController {
 	}
 	
 	/**
+	 * Applies the Settings within the Tab by modifying the current settings
+	 * within the SettingsModel contained within the SettingsTab.
+	 */
+	@Override
+	public void apply() {
+		SongSettings songSettings = new SongSettings();
+		
+		songSettings.setCrossfade(songSettingsCrossfadeCheckBox.isSelected());
+		songSettings.setCrossfadeSeconds((int) songSettingsCrossfadeSlider.getValue());
+		songSettings.setPlaybackQuality(songSettingsPlaybackQualityChoiceBox.getValue());
+		songSettings.setSoundEnhancer(songSettingsSoundEnhancerCheckBox.isSelected());
+		songSettings.setSoundEnhancerValue((int) songSettingsSoundEnhancerSlider.getValue());
+		
+		this.settingsModel.getSongSettingsProperty().set(songSettings);
+	}
+	
+	/**
 	 * Initializes the SettingsModel which contains the applications settings.
 	 * 
 	 * @param settingsModel - settingsModel object to share data with.
 	 */
+	@Override
 	public void initSettingsModel(SettingsModel settingsModel) {
 		if (this.settingsModel != null) {
 			throw new IllegalStateException("Model can only be initialized once");

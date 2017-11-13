@@ -103,26 +103,34 @@ public class MenuBarController implements RapidTunesController {
 		this.menuEditSettings.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Parent root;
-				URI location = new File("res/view/menu/settings/SettingsMenuLayout.fxml").toURI();
-				SettingsMenuController settingsMenuController;
-				
-				try {
-					FXMLLoader loader = new FXMLLoader(location.toURL());
-					root = loader.load();
-					Stage stage = new Stage();
-					stage.setTitle("Settings");
-					stage.setScene(new Scene(root, 325, 250));
-					
-					settingsMenuController = loader.<SettingsMenuController>getController();
-					settingsMenuController.initSettingsModel(settingsModel);
-					
-					stage.show();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				openSettingsMenu();
 			}
 		});
+	}
+	
+	/**
+	 * Opens the SettingsMenu window by constructing a new Scene, initializing
+	 * the needed models then displaying it.
+	 */
+	private void openSettingsMenu() {
+		Parent root;
+		URI location = new File("res/view/menu/settings/SettingsMenuLayout.fxml").toURI();
+		SettingsMenuController settingsMenuController;
+		
+		try {
+			FXMLLoader loader = new FXMLLoader(location.toURL());
+			root = loader.load();
+			Stage stage = new Stage();
+			stage.setTitle("Settings");
+			stage.setScene(new Scene(root, 325, 250));
+			
+			settingsMenuController = loader.<SettingsMenuController>getController();
+			settingsMenuController.initSettingsModel(settingsModel);
+			
+			stage.showAndWait();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**

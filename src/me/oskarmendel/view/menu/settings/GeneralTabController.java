@@ -44,7 +44,7 @@ import me.oskarmendel.settings.locale.Locale;
  * @version 0.00.00
  * @name GeneralTabController.java
  */
-public class GeneralTabController {
+public class GeneralTabController implements SettingsMenuTab {
 	
 	@FXML private Label generalSettingsThemeLabel;
 	@FXML private TextField generalSettingsThemeTextField;
@@ -64,10 +64,26 @@ public class GeneralTabController {
 	}
 	
 	/**
+	 * Applies the Settings within the Tab by modifying the current settings
+	 * within the SettingsModel contained within the SettingsTab.
+	 */
+	@Override
+	public void apply() {
+		GeneralSettings generalSettings = new GeneralSettings();
+		
+		generalSettings.setTheme(this.generalSettingsThemeTextField.getText());
+		generalSettings.setLanguage(this.generalSettingsLanguageChoiceBox.getSelectionModel().getSelectedItem());
+		generalSettings.setNotifications(this.generalSettingsNotificationsToggle.isSelected());
+		
+		this.settingsModel.getGeneralSettingsProperty().set(generalSettings);
+	}
+	
+	/**
 	 * Initializes the SettingsModel which contains the applications settings.
 	 * 
 	 * @param settingsModel - settingsModel object to share data with.
 	 */
+	@Override
 	public void initSettingsModel(SettingsModel settingsModel) {
 		if (this.settingsModel != null) {
 			throw new IllegalStateException("Model can only be initialized once");
