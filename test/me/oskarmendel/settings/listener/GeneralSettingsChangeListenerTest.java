@@ -112,11 +112,6 @@ public class GeneralSettingsChangeListenerTest {
 		
 		assertEquals("Theme was changed through ChangeListener.", mockedScene.getStylesheets().get(0), "/css/Dark.css");
 		
-		// Bind listener and test for changes
-		// 1. Assert current theme, language and notifications
-		// 2. New GeneralSettings object and set it to the objectProperty <- Here
-		// 3. Check for changes in the mocked Scene..
-		
 		Mockito.verify(mockedScene, Mockito.times(4)).getStylesheets();
 	}
 
