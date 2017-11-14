@@ -44,10 +44,25 @@ public class GeneralSettingsChangeListener implements ChangeListener<GeneralSett
 	
 	private Scene mainScene;
 
+	/**
+	 * Constructor to create a new GeneralSettingsChangeListener that takes
+	 * a JavaFX Scene object which is needed in case the theme of the 
+	 * application has been changed. 
+	 * 
+	 * @param mainScene - JavaFX Scene object to manipulate when GeneralSettings has been changed.
+	 */
 	public GeneralSettingsChangeListener(Scene mainScene) {
 		this.mainScene = mainScene;
 	}
 	
+	/**
+	 * This method needs to be provided by an implementation of ChangeListener. 
+	 * It is called if the value of an ObservableValue changes.
+	 * 
+	 * @param observable - The ObservableValue which value changed.
+	 * @param oldValue - The old value.
+	 * @param newValue - The new value.
+	 */
 	@Override
 	public void changed(ObservableValue<? extends GeneralSettings> observable, GeneralSettings oldValue,
 			GeneralSettings newValue) {
@@ -72,5 +87,14 @@ public class GeneralSettingsChangeListener implements ChangeListener<GeneralSett
 				//TODO: Turn off notifications.
 			}
 		}
+	}
+	
+	/**
+	 * Getter for the Scene connected to this GeneralSettingsChangeListener
+	 * 
+	 * @return - Scene connected to this Settings Listener.
+	 */
+	public Scene getScene() {
+		return this.mainScene;
 	}
 }
