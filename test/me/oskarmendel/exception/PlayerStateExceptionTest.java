@@ -43,7 +43,7 @@ import me.oskarmendel.player.Player;
 import me.oskarmendel.player.Player.Status;
 
 /**
- * Tests for the PlayerStateExceptionTest.
+ * Tests for the PlayerStateException.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
