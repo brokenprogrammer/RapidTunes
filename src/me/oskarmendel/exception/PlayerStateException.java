@@ -39,7 +39,7 @@ import me.oskarmendel.player.Player;
 public class PlayerStateException extends Exception {
 
 	/**
-	 * 
+	 * Generated UID for serialization.
 	 */
 	private static final long serialVersionUID = 5334388931378231018L;
 
@@ -79,7 +79,7 @@ public class PlayerStateException extends Exception {
 	 * @param player - Player object to retrieve data from.
 	 */
 	public PlayerStateException(String message, Player player) {
-		super(message + ", Player status: " + player.getStatus() +
+		super(message + ", Player Status: " + player.getStatus() +
 				" Player current time: " + player.getCurrentTime().get());
 	}
 
