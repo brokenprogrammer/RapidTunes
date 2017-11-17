@@ -187,11 +187,10 @@ public class SongController implements RapidTunesController {
 			}
 		});
 		
-		songVolume.valueProperty().addListener(new InvalidationListener() {
-			public void invalidated(Observable ov) {
-				if (songVolume.isValueChanging()) {
-					player.setVolume((int)songVolume.getValue());
-				}
+		songVolume.valueProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				player.setVolume((int)songVolume.getValue());
 			}
 		});
 	}
