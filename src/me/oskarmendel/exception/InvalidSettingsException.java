@@ -27,79 +27,77 @@
 
 package me.oskarmendel.exception;
 
-import me.oskarmendel.player.Player;
+import me.oskarmendel.settings.Settings;
 
 /**
- * Exception class thrown when an illegal player state is encountered.
+ * Exception class thrown when an illegal settings is encountered.
  * 
  * @author Oskar Mendel
- * @name PlayerStateException.java
+ * @name InvalidSettingsException.java
  * @version 0.00.00
  */
-public class PlayerStateException extends Exception {
+public class InvalidSettingsException extends Exception {
 
 	/**
 	 * Generated UID for serialization.
 	 */
-	private static final long serialVersionUID = 5334388931378231018L;
-
+	private static final long serialVersionUID = 5270213007809315095L;
+	
 	/**
-	 * Default constructor for the PlayerStateException, constructs a new PlayerStateException 
+	 * Default constructor for the InvalidSettingsException, constructs a new InvalidSettingsException 
 	 * with null as its detail message. 
 	 */
-	public PlayerStateException() {
+	public InvalidSettingsException() {
 		super();
 	}
 	
 	/**
-	 * Constructs a new PlayerStateException with the specified detail message.
+	 * Constructs a new InvalidSettingsException with the specified detail message.
 	 * 
 	 * @param message - The detail message.
 	 */
-	public PlayerStateException(String message) {
+	public InvalidSettingsException(String message) {
 		super(message);
 	}
 	
 	/**
-	 * Constructs a new PlayerStateException with the a generated detail message using
-	 * the specified player.
+	 * Constructs a new InvalidSettingsException with the a generated detail message using
+	 * the specified Settings object.
 	 * 
-	 * @param player - Player to generate detail message from.
+	 * @param settings - Settings to generate detail message from.
 	 */
-	public PlayerStateException(Player player) {
-		super("Player Status: " + player.getStatus() + 
-				" Player current time: " + player.getCurrentTime().get());
+	public InvalidSettingsException(Settings settings) {
+		super("Invalid settings with location: " + settings.getPath());
 	}
 	
 	/**
-	 * Constructs a new PlayerStateException with the specified detail message and data from
-	 * the specified player.
+	 * Constructs a new InvalidSettingsException with the specified detail message and data from
+	 * the specified Settings object.
 	 * 
 	 * @param message - The detail message.
-	 * @param player - Player object to retrieve data from.
+	 * @param player - Settings object to retrieve data from.
 	 */
-	public PlayerStateException(String message, Player player) {
-		super(message + ", Player Status: " + player.getStatus() +
-				" Player current time: " + player.getCurrentTime().get());
+	public InvalidSettingsException(String message, Settings settings) {
+		super(message + ", with settings location: " + settings.getPath());
 	}
-
+	
 	/**
-	 * Constructs a new PlayerStateException with the specified detail message and cause. 
+	 * Constructs a new InvalidSettingsException with the specified detail message and cause. 
 	 * 
 	 * @param message - The detail message.
 	 * @param cause - The cause.
 	 */
-	public PlayerStateException(String message, Throwable cause) {
+	public InvalidSettingsException(String message, Throwable cause) {
 		super(message, cause);
 	}
-
+	
 	/**
-	 * Constructs a new PlayerStateException with the specified cause and a detail message of 
+	 * Constructs a new InvalidSettingsException with the specified cause and a detail message of 
 	 * (cause==null ? null : cause.toString())
 	 * 
 	 * @param cause - The cause.
 	 */
-	public PlayerStateException(Throwable cause) {
+	public InvalidSettingsException(Throwable cause) {
 		super(cause);
 	}
 }
