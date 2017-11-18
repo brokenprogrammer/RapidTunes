@@ -102,6 +102,8 @@ public class SettingsManagerTest {
 		assertTrue("Current crossfade is toggled to false.", !songSettings.isCrossfade());
 		assertTrue("Current crossfade seconds is set to 6.", songSettings.getCrossfadeSeconds() == 6);
 		
+		
+		assertFalse("Current save playlist locally is set to false.", playlistSettings.getSavePlaylistLocal());
 		assertTrue("Current playlist directory is set to \"playlists/\".", playlistSettings.getPlaylistDirectory().equals("playlists/"));
 		assertTrue("Currently auto export to YouTube is set to false.", !playlistSettings.isAutoExportYouTube());
 		
@@ -116,6 +118,7 @@ public class SettingsManagerTest {
 		settingsManager.saveSettings(songSettings);
 		
 		// Change then save the settings within PlaylistSettings.
+		playlistSettings.setSavePlaylistsLocal(true);
 		playlistSettings.setPlaylistDirectory("long/testing/path");
 		playlistSettings.setAutoExportYouTube(true);
 		settingsManager.saveSettings(playlistSettings);
@@ -138,6 +141,7 @@ public class SettingsManagerTest {
 		assertTrue("New crossfade is toggled to true.", songSettings.isCrossfade());
 		assertTrue("New crossfade seconds is set to 12.", songSettings.getCrossfadeSeconds() == 12);
 		
+		assertTrue("New save playlist locally is set to true", playlistSettings.getSavePlaylistLocal());
 		assertTrue("New playlist directory is set to \"long/testing/path\"", playlistSettings.getPlaylistDirectory().equals("long/testing/path"));
 		assertTrue("New auto export to YouTube is set to true", playlistSettings.isAutoExportYouTube());
 	}

@@ -44,6 +44,8 @@ import me.oskarmendel.settings.PlaylistSettings;
  */
 public class PlaylistTabController implements SettingsMenuTab {
 	
+	@FXML private CheckBox playlistSettingsSaveLocalCheckBox;
+	
 	@FXML private Label playlistSettingsDirectoryLabel;
 	@FXML private TextField playlistSettingsDirectoryTextField;
 	@FXML private Button playlistSettingsDirectoryButton;
@@ -89,6 +91,8 @@ public class PlaylistTabController implements SettingsMenuTab {
 		PlaylistSettings playlistSettings = this.settingsModel.getPlaylistSettings();
 		
 		// Initializing UI values based on current Settings
+		playlistSettingsSaveLocalCheckBox.setSelected(playlistSettings.getSavePlaylistLocal());
+		
 		playlistSettingsDirectoryTextField.setText(playlistSettings.getPlaylistDirectory());
 		
 		playlistSettingsExportYouTubeCheckBox.setSelected(playlistSettings.isAutoExportYouTube());
