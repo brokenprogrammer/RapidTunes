@@ -39,7 +39,7 @@ import me.oskarmendel.settings.SongSettings;
 import me.oskarmendel.settings.SongSettings.PlaybackQuality;
 
 /**
- * Tests for the SongSettingsChangeListenerTest.
+ * Tests for the SongSettingsChangeListener.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
