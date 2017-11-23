@@ -42,6 +42,20 @@ public class Hotkey {
 	final private Keybind keybind;
 	
 	/**
+	 * Constructs a new Hotkey using the specified String, if multiple keys are detected
+	 * in the String a KeyCombination is detected otherwise a single keybind is created.
+	 * 
+	 * @param keys - String containing key or keys to use to construct this Hotkey.
+	 */
+	public Hotkey(String keys) {
+		if (keys.contains("+")) {
+			this.keybind = new KeybindCombination(KeyCombination.keyCombination(keys));
+		} else {
+			this.keybind = new KeybindSingle(KeyCode.valueOf(keys));
+		}
+	}
+	
+	/**
 	 * Constructs a new Hotkey to hold a single key using the specified KeyCode.
 	 * 
 	 * @param key - KeyCode of the single key to bind this hotkey to.

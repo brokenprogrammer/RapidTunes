@@ -47,7 +47,7 @@ import me.oskarmendel.settings.GeneralSettings;
 import me.oskarmendel.settings.locale.Locale;
 
 /**
- * Tests for the GeneralSettingsChangeListenerTest.
+ * Tests for the GeneralSettingsChangeListener.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
