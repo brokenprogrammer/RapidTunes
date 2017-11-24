@@ -508,6 +508,7 @@ public class HotkeySettings extends Settings {
 	 * @return - String with key or keys for the specified Hotkey.
 	 */
 	private String hotkeyToString(Hotkey hotkey) {
-		return hotkey.isSingleKey() ? String.valueOf(hotkey.getSingleKeybind().getKey()) : String.valueOf(hotkey.getCombinationKeybind().getKeyCombination());
+		return hotkey.isSingleKey() ? String.valueOf(hotkey.getSingleKeybind().getKey()) 
+									: String.valueOf(hotkey.getCombinationKeybind().getKeyCombination());
 	}
 }
