@@ -36,6 +36,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCombination;
+import me.oskarmendel.settings.hotkeys.Hotkey;
 
 /**
  * Tests for the HotkeySettings.
@@ -93,33 +95,33 @@ public class HotkeySettingsTest {
 		
 		HotkeySettings settings = new HotkeySettings(properties);
 		
-		assertEquals("", settings.getNewPlaylist().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+N");
-		assertEquals("", settings.getImportPlaylist().getCombinationKeybind().getKeyCombination().getName(), "Shift+Ctrl+N");
+		assertEquals(settings.getNewPlaylist().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+N");
+		assertEquals(settings.getImportPlaylist().getCombinationKeybind().getKeyCombination().getName(), "Shift+Ctrl+N");
 		
-		assertEquals("", settings.getUndo().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+Z");
-		assertEquals("", settings.getRedo().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+Y");
-		assertEquals("", settings.getCut().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+X");
-		assertEquals("", settings.getCopy().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+C");
-		assertEquals("", settings.getPaste().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+V");
+		assertEquals(settings.getUndo().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+Z");
+		assertEquals(settings.getRedo().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+Y");
+		assertEquals(settings.getCut().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+X");
+		assertEquals(settings.getCopy().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+C");
+		assertEquals(settings.getPaste().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+V");
 		
-		assertEquals("", settings.getDelete().isSingleKey(), true);
-		assertEquals("", settings.getDelete().getSingleKeybind().getKey(), KeyCode.DELETE);
+		assertEquals(settings.getDelete().isSingleKey(), true);
+		assertEquals(settings.getDelete().getSingleKeybind().getKey(), KeyCode.DELETE);
 		
-		assertEquals("", settings.getMarkAll().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+A");
-		assertEquals("", settings.getSearch().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+L");
-		assertEquals("", settings.getSettings().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+P");
+		assertEquals(settings.getMarkAll().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+A");
+		assertEquals(settings.getSearch().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+L");
+		assertEquals(settings.getSettings().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+P");
 		
-		assertEquals("", settings.getNext().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+Right");
-		assertEquals("", settings.getPrevious().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+Left");
-		assertEquals("", settings.getFastForward().getCombinationKeybind().getKeyCombination().getName(), "Shift+Right");
-		assertEquals("", settings.getRewind().getCombinationKeybind().getKeyCombination().getName(), "Shift+Left");
-		assertEquals("", settings.getShuffle().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+S");
-		assertEquals("", settings.getRepeat().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+R");
-		assertEquals("", settings.getVolumeUp().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+Up");
-		assertEquals("", settings.getVolumeDown().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+Down");
+		assertEquals(settings.getNext().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+Right");
+		assertEquals(settings.getPrevious().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+Left");
+		assertEquals(settings.getFastForward().getCombinationKeybind().getKeyCombination().getName(), "Shift+Right");
+		assertEquals(settings.getRewind().getCombinationKeybind().getKeyCombination().getName(), "Shift+Left");
+		assertEquals(settings.getShuffle().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+S");
+		assertEquals(settings.getRepeat().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+R");
+		assertEquals(settings.getVolumeUp().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+Up");
+		assertEquals(settings.getVolumeDown().getCombinationKeybind().getKeyCombination().getName(), "Ctrl+Down");
 		
-		assertEquals("", settings.getRapidtunesHelp().isSingleKey(), true);
-		assertEquals("", settings.getRapidtunesHelp().getSingleKeybind().getKey(), KeyCode.F1);
+		assertEquals(settings.getRapidtunesHelp().isSingleKey(), true);
+		assertEquals(settings.getRapidtunesHelp().getSingleKeybind().getKey(), KeyCode.F1);
 	}
 	
 	/**
@@ -127,7 +129,60 @@ public class HotkeySettingsTest {
 	 */
 	@Test
 	public final void testToProperties() {
-		fail("Not yet implemented");
+		HotkeySettings settings = new HotkeySettings();
+		
+		settings.setNewPlaylist(new Hotkey(KeyCombination.keyCombination("Ctrl+N")));
+		settings.setImportPlaylist(new Hotkey(KeyCombination.keyCombination("Shift+Ctrl+N")));
+		
+		settings.setUndo(new Hotkey(KeyCombination.keyCombination("Ctrl+Z")));
+		settings.setRedo(new Hotkey(KeyCombination.keyCombination("Ctrl+Y")));
+		settings.setCut(new Hotkey(KeyCombination.keyCombination("Ctrl+X")));
+		settings.setCopy(new Hotkey(KeyCombination.keyCombination("Ctrl+C")));
+		settings.setPaste(new Hotkey(KeyCombination.keyCombination("Ctrl+V")));
+		
+		settings.setDelete(new Hotkey(KeyCode.DELETE));
+		
+		settings.setMarkAll(new Hotkey(KeyCombination.keyCombination("Ctrl+A")));
+		settings.setSearch(new Hotkey(KeyCombination.keyCombination("Ctrl+L")));
+		settings.setSettings(new Hotkey(KeyCombination.keyCombination("Ctrl+P")));
+		
+		settings.setNext(new Hotkey(KeyCombination.keyCombination("Ctrl+Right")));
+		settings.setPrevious(new Hotkey(KeyCombination.keyCombination("Ctrl+Left")));
+		settings.setFastForward(new Hotkey(KeyCombination.keyCombination("Shift+Right")));
+		settings.setRewind(new Hotkey(KeyCombination.keyCombination("Shift+Left")));
+		settings.setShuffle(new Hotkey(KeyCombination.keyCombination("Ctrl+S")));
+		settings.setRepeat(new Hotkey(KeyCombination.keyCombination("Ctrl+R")));
+		settings.setVolumeUp(new Hotkey(KeyCombination.keyCombination("Ctrl+Up")));
+		settings.setVolumeDown(new Hotkey(KeyCombination.keyCombination("Ctrl+Down")));
+		
+		settings.setRapidtunesHelp(new Hotkey(KeyCode.F1));
+		
+		Properties properties = settings.toProperties();
+		
+		assertEquals(properties.get("newPlaylist"), "Ctrl+N");
+		assertEquals(properties.get("importPlaylist"), "Shift+Ctrl+N");
+		
+		assertEquals(properties.get("undo"), "Ctrl+Z");
+		assertEquals(properties.get("redo"), "Ctrl+Y");
+		assertEquals(properties.get("cut"), "Ctrl+X");
+		assertEquals(properties.get("copy"), "Ctrl+C");
+		assertEquals(properties.get("paste"), "Ctrl+V");
+		assertEquals(properties.get("delete"), "DELETE");
+		assertEquals(properties.get("markAll"), "Ctrl+A");
+		assertEquals(properties.get("search"), "Ctrl+L");
+		assertEquals(properties.get("settings"), "Ctrl+P");
+		
+		assertEquals(properties.get("next"), "Ctrl+Right");
+		assertEquals(properties.get("previous"), "Ctrl+Left");
+		assertEquals(properties.get("fastForward"), "Shift+Right");
+		assertEquals(properties.get("rewind"), "Shift+Left");
+		assertEquals(properties.get("shuffle"), "Ctrl+S");
+		assertEquals(properties.get("repeat"), "Ctrl+R");
+		assertEquals(properties.get("volumeUp"), "Ctrl+Up");
+		assertEquals(properties.get("volumeDown"), "Ctrl+Down");
+		
+		assertEquals(properties.get("rapidtunesHelp"), "F1");
+		
 	}
 
 	/**
@@ -135,6 +190,32 @@ public class HotkeySettingsTest {
 	 */
 	@Test
 	public final void testGetDefaultProperties() {
-		fail("Not yet implemented");
+		HotkeySettings settings = new HotkeySettings();
+		
+		Properties properties = settings.getDefaultProperties();
+		
+		assertEquals(properties.get("newPlaylist"), "Ctrl+N");
+		assertEquals(properties.get("importPlaylist"), "Shift+Ctrl+N");
+		
+		assertEquals(properties.get("undo"), "Ctrl+Z");
+		assertEquals(properties.get("redo"), "Ctrl+Y");
+		assertEquals(properties.get("cut"), "Ctrl+X");
+		assertEquals(properties.get("copy"), "Ctrl+C");
+		assertEquals(properties.get("paste"), "Ctrl+V");
+		assertEquals(properties.get("delete"), "DELETE");
+		assertEquals(properties.get("markAll"), "Ctrl+A");
+		assertEquals(properties.get("search"), "Ctrl+L");
+		assertEquals(properties.get("settings"), "Ctrl+P");
+		
+		assertEquals(properties.get("next"), "Ctrl+Right");
+		assertEquals(properties.get("previous"), "Ctrl+Left");
+		assertEquals(properties.get("fastForward"), "Shift+Right");
+		assertEquals(properties.get("rewind"), "Shift+Left");
+		assertEquals(properties.get("shuffle"), "Ctrl+S");
+		assertEquals(properties.get("repeat"), "Ctrl+R");
+		assertEquals(properties.get("volumeUp"), "Ctrl+Up");
+		assertEquals(properties.get("volumeDown"), "Ctrl+Down");
+		
+		assertEquals(properties.get("rapidtunesHelp"), "F1");
 	}
 }
