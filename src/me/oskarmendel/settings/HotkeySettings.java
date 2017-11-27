@@ -137,28 +137,36 @@ public class HotkeySettings extends Settings {
 	}
 	
 	/**
-	 * @return the newPlaylist
+	 * Getter for the NewPlaylist Hotkey stored in this HotkeySettings.
+	 * 
+	 * @return - NewPlaylist Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getNewPlaylist() {
 		return newPlaylist;
 	}
 
 	/**
-	 * @param newPlaylist the newPlaylist to set
+	 * Setter for the NewPlaylist Hotkey of this HotkeySettings.
+	 * 
+	 * @param newPlaylist - NewPlaylist Hotkey to set.
 	 */
 	public void setNewPlaylist(Hotkey newPlaylist) {
 		this.newPlaylist = newPlaylist;
 	}
 
 	/**
-	 * @return the importPlaylist
+	 * Getter for the ImportPlaylist Hotkey stored in this HotkeySettings.
+	 * 
+	 * @return - ImportPlaylist Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getImportPlaylist() {
 		return importPlaylist;
 	}
 
 	/**
-	 * @param importPlaylist the importPlaylist to set
+	 * Setter for the ImportPlaylist Hotkey of this HotkeySettings.
+	 * 
+	 * @param importPlaylist - ImportPlaylist Hotkey to set.
 	 */
 	public void setImportPlaylist(Hotkey importPlaylist) {
 		this.importPlaylist = importPlaylist;
