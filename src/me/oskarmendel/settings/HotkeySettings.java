@@ -173,252 +173,324 @@ public class HotkeySettings extends Settings {
 	}
 
 	/**
-	 * @return the undo
+	 * Getter for the Undo Hotkey of this HotkeySettings.
+	 * 
+	 * @return - Undo Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getUndo() {
 		return undo;
 	}
 
 	/**
-	 * @param undo the undo to set
+	 * Setter for the Undo Hotkey of this HotkeySettings.
+	 * 
+	 * @param undo - Undo Hotkey to set.
 	 */
 	public void setUndo(Hotkey undo) {
 		this.undo = undo;
 	}
 
 	/**
-	 * @return the redo
+	 * Getter for the Redo Hotkey of this HotkeySettings.
+	 * 
+	 * @return - Redo Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getRedo() {
 		return redo;
 	}
 
 	/**
-	 * @param redo the redo to set
+	 * Setter for the Redo Hotkey of this HotkeySettings.
+	 * 
+	 * @param redo - Redo Hotkey to set.
 	 */
 	public void setRedo(Hotkey redo) {
 		this.redo = redo;
 	}
 
 	/**
-	 * @return the cut
+	 * Getter for the Cut Hotkey of this HotkeySettings.
+	 * 
+	 * @return - Cut Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getCut() {
 		return cut;
 	}
 
 	/**
-	 * @param cut the cut to set
+	 * Setter for the Cut Hotkey of this HotkeySettings.
+	 * 
+	 * @param cut - Cut Hotkey to set.
 	 */
 	public void setCut(Hotkey cut) {
 		this.cut = cut;
 	}
 
 	/**
-	 * @return the copy
+	 * Getter for the Copy Hotkey of this HotkeySettings.
+	 * 
+	 * @return - Copy Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getCopy() {
 		return copy;
 	}
 
 	/**
-	 * @param copy the copy to set
+	 * Setter for the Copy Hotkey of this HotkeySettings.
+	 * 
+	 * @param copy - Copy Hotkey to set.
 	 */
 	public void setCopy(Hotkey copy) {
 		this.copy = copy;
 	}
 
 	/**
-	 * @return the paste
+	 * Getter for the Paste Hotkey of this HotkeySettings.
+	 * 
+	 * @return - Paste Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getPaste() {
 		return paste;
 	}
 
 	/**
-	 * @param paste the paste to set
+	 * Setter for the Paste Hotkey of this HotkeySettings.
+	 * 
+	 * @param paste - Paste Hotkey to set.
 	 */
 	public void setPaste(Hotkey paste) {
 		this.paste = paste;
 	}
 
 	/**
-	 * @return the delete
+	 * Getter for the Delete Hotkey of this HotkeySettings.
+	 * 
+	 * @return - Delete Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getDelete() {
 		return delete;
 	}
 
 	/**
-	 * @param delete the delete to set
+	 * Setter for the Delete Hotkey of this HotkeySettings.
+	 * 
+	 * @param delete - Delete Hotkey to set.
 	 */
 	public void setDelete(Hotkey delete) {
 		this.delete = delete;
 	}
 
 	/**
-	 * @return the markAll
+	 * Getter for the MarkAll Hotkey of this HotkeySettings.
+	 * 
+	 * @return - MarkAll Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getMarkAll() {
 		return markAll;
 	}
 
 	/**
-	 * @param markAll the markAll to set
+	 * Setter for the MarkAll Hotkey of this HotkeySettings.
+	 * 
+	 * @param markAll - MarkAll Hotkey to set.
 	 */
 	public void setMarkAll(Hotkey markAll) {
 		this.markAll = markAll;
 	}
 
 	/**
-	 * @return the search
+	 * Getter for the Search Hotkey of this HotkeySettings.
+	 * 
+	 * @return - Search Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getSearch() {
 		return search;
 	}
 
 	/**
-	 * @param search the search to set
+	 * Setter for the Search Hoteky of this HotkeySettings.
+	 * 
+	 * @param search - Search Hotkey to set.
 	 */
 	public void setSearch(Hotkey search) {
 		this.search = search;
 	}
 
 	/**
-	 * @return the settings
+	 * Getter for the Settings Hotkey of this HotkeySettings.
+	 * 
+	 * @return - Settings Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getSettings() {
 		return settings;
 	}
 
 	/**
-	 * @param settings the settings to set
+	 * Setter for the Settings Hotkey of this HotkeySettings.
+	 * 
+	 * @param settings - Settings Hotkey to set.
 	 */
 	public void setSettings(Hotkey settings) {
 		this.settings = settings;
 	}
 
 	/**
-	 * @return the next
+	 * Getter for the Next Hotkey of this HotkeySettings.
+	 * 
+	 * @return - Next Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getNext() {
 		return next;
 	}
 
 	/**
-	 * @param next the next to set
+	 * Setter for the Next Hotkey of this HotkeySettings.
+	 * 
+	 * @param next - Next Hotkey to set.
 	 */
 	public void setNext(Hotkey next) {
 		this.next = next;
 	}
 
 	/**
-	 * @return the previous
+	 * Getter for the Previous Hotkey of this HotkeySettings.
+	 * 
+	 * @return - Previous Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getPrevious() {
 		return previous;
 	}
 
 	/**
-	 * @param previous the previous to set
+	 * Setter for the Previous Hotkey of this HotkeySettings.
+	 * 
+	 * @param previous - Previous Hotkey to set.
 	 */
 	public void setPrevious(Hotkey previous) {
 		this.previous = previous;
 	}
 
 	/**
-	 * @return the fastForward
+	 * Getter for the FastForward Hotkey of this HotkeySettings.
+	 * 
+	 * @return - FastForward Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getFastForward() {
 		return fastForward;
 	}
 
 	/**
-	 * @param fastForward the fastForward to set
+	 * Setter for the FastForward Hotkey of this HotkeySettings.
+	 * 
+	 * @param fastForward - FastForward Hotkey to set.
 	 */
 	public void setFastForward(Hotkey fastForward) {
 		this.fastForward = fastForward;
 	}
 
 	/**
-	 * @return the rewind
+	 * Getter for the Rewind Hotkey of this HotkeySettings.
+	 * 
+	 * @return - Rewind Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getRewind() {
 		return rewind;
 	}
 
 	/**
-	 * @param rewind the rewind to set
+	 * Setter for the Rewind Hotkey of this HotkeySettings.
+	 * 
+	 * @param rewind - Rewind Hotkey to set.
 	 */
 	public void setRewind(Hotkey rewind) {
 		this.rewind = rewind;
 	}
 
 	/**
-	 * @return the shuffle
+	 * Getter for the Shuffle Hotkey of this HotkeySettings.
+	 * 
+	 * @return - Shuffle Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getShuffle() {
 		return shuffle;
 	}
 
 	/**
-	 * @param shuffle the shuffle to set
+	 * Setter for the Shuffle Hotkey of this HotkeySettings.
+	 * 
+	 * @param shuffle - Shuffle Hotkey to set.
 	 */
 	public void setShuffle(Hotkey shuffle) {
 		this.shuffle = shuffle;
 	}
 
 	/**
-	 * @return the repeat
+	 * Getter for the Repeat Hotkey of this HotkeySettings.
+	 * 
+	 * @return - Repeat Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getRepeat() {
 		return repeat;
 	}
 
 	/**
-	 * @param repeat the repeat to set
+	 * Setter for the Repeat Hotkey of this HotkeySettings.
+	 * 
+	 * @param repeat - Repeat Hotkey to set.
 	 */
 	public void setRepeat(Hotkey repeat) {
 		this.repeat = repeat;
 	}
 
 	/**
-	 * @return the volumeUp
+	 * Getter for the VolumeUp Hotkey of this HotkeySettings.
+	 * 
+	 * @return - VolumeUp Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getVolumeUp() {
 		return volumeUp;
 	}
 
 	/**
-	 * @param volumeUp the volumeUp to set
+	 * Setter for the VolumeUp Hotkey of this HotkeySettings.
+	 * 
+	 * @param volumeUp - VolumeUp Hotkey to set.
 	 */
 	public void setVolumeUp(Hotkey volumeUp) {
 		this.volumeUp = volumeUp;
 	}
 
 	/**
-	 * @return the volumeDown
+	 * Getter for the VolumeDown Hotkey of this HotkeySettings.
+	 * 
+	 * @return - VolumeDown Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getVolumeDown() {
 		return volumeDown;
 	}
 
 	/**
-	 * @param volumeDown the volumeDown to set
+	 * Setter for the VolumeDown Hotkey of this HotkeySettings.
+	 * 
+	 * @param volumeDown - VolumeDown Hotkey to set.
 	 */
 	public void setVolumeDown(Hotkey volumeDown) {
 		this.volumeDown = volumeDown;
 	}
 
 	/**
-	 * @return the rapidtunesHelp
+	 * Getter for the RapidtunesHelp Hotkey of this HotkeySettings.
+	 * 
+	 * @return - RapidtunesHelp Hotkey of this HotkeySettings.
 	 */
 	public Hotkey getRapidtunesHelp() {
 		return rapidtunesHelp;
 	}
 
 	/**
-	 * @param rapidtunesHelp the rapidtunesHelp to set
+	 * Setter for the RapidtunesHelp Hotkey of this HotkeySettings.
+	 * 
+	 * @param rapidtunesHelp - RapidtunesHelp Hotkey to set.
 	 */
 	public void setRapidtunesHelp(Hotkey rapidtunesHelp) {
 		this.rapidtunesHelp = rapidtunesHelp;
