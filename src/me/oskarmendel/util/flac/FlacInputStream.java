@@ -27,7 +27,7 @@ public interface FlacInputStream extends AutoCloseable{
 	
 	public void readAll(byte[] b) throws IOException;
 	
-	public void resetCrc();
+	public void resetCrcs();
 	
 	public int getCrc8();
 	

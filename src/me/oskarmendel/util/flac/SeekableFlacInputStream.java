@@ -22,12 +22,6 @@ public class SeekableFlacInputStream extends AbstractFlacInputStream {
 	}
 
 	@Override
-	public void resetCrc() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	protected int readUnderlying(byte[] buf, int off, int len) throws IOException {
 		// TODO Auto-generated method stub
 		return 0;
