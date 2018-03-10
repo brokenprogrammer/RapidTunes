@@ -10,8 +10,6 @@ import java.io.IOException;
  * @author Oskar Mendel
  * @version 0.00.00
  * @name FlacInputStream.java
- * 
- * TODO: Find next class to implement.
  */
 public interface FlacInputStream extends AutoCloseable{
 
