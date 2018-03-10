@@ -1,7 +1,10 @@
-package me.oskarmendel.util.flac;
+package me.oskarmendel.util.song.flac.decoder;
 
 import java.io.IOException;
 import java.util.Arrays;
+
+import me.oskarmendel.util.song.flac.Frame;
+import me.oskarmendel.util.song.flac.inputstream.FlacInputStream;
 
 /**
  * Decodes a flac frame using the give input stream.

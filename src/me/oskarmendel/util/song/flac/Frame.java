@@ -1,6 +1,8 @@
-package me.oskarmendel.util.flac;
+package me.oskarmendel.util.song.flac;
 
 import java.io.IOException;
+
+import me.oskarmendel.util.song.flac.inputstream.FlacInputStream;
 
 /**
  * Frame object with all the frame fields for a flac frame.

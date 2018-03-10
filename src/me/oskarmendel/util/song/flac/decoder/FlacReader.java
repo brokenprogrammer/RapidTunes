@@ -1,10 +1,13 @@
-package me.oskarmendel.util.flac;
+package me.oskarmendel.util.song.flac.decoder;
 
 import java.io.File;
 import java.io.IOException;
 
+import me.oskarmendel.util.song.flac.Frame;
 import me.oskarmendel.util.song.flac.StreamInfo;
 import me.oskarmendel.util.song.flac.VorbisComments;
+import me.oskarmendel.util.song.flac.inputstream.FlacInputStream;
+import me.oskarmendel.util.song.flac.inputstream.SeekableFlacInputStream;
 import me.oskarmendel.util.song.flac.structure.FlacMetadataBlockType;
 
 /**
@@ -14,11 +17,12 @@ import me.oskarmendel.util.song.flac.structure.FlacMetadataBlockType;
  * TODO: Finish the SeekTable class.
  * TODO: Look over all classes and make members private.
  * TODO: Implement seek methods.
+ * TODO: Update StreamInfo and VorbisComments and connected classes, documentation and what not.
  */
 public class FlacReader {
 
 	private FlacInputStream input;
-	public StreamInfo streamInfo;
+	private StreamInfo streamInfo;
 	//public SeekTable seekTable;
 	private VorbisComments vorbisComments;
 
@@ -150,5 +154,33 @@ public class FlacReader {
 	
 	public void close() throws IOException {
 		
+	}
+
+	/**
+	 * @return the streamInfo
+	 */
+	public StreamInfo getStreamInfo() {
+		return streamInfo;
+	}
+
+	/**
+	 * @return the vorbisComments
+	 */
+	public VorbisComments getVorbisComments() {
+		return vorbisComments;
+	}
+
+	/**
+	 * @param streamInfo the streamInfo to set
+	 */
+	public void setStreamInfo(StreamInfo streamInfo) {
+		this.streamInfo = streamInfo;
+	}
+
+	/**
+	 * @param vorbisComments the vorbisComments to set
+	 */
+	public void setVorbisComments(VorbisComments vorbisComments) {
+		this.vorbisComments = vorbisComments;
 	}
 }
