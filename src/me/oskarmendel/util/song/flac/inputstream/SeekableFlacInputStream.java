@@ -1,4 +1,4 @@
-package me.oskarmendel.util.flac;
+package me.oskarmendel.util.song.flac.inputstream;
 
 import java.io.File;
 import java.io.IOException;

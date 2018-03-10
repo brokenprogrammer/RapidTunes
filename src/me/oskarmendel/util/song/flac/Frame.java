@@ -1,41 +1,9 @@
-/**
- * RapidTunes.
- * The music application to help you use all your music sources in one place.
- *
- * The MIT License (MIT)
- *
- * Copyright (C) 2016 The RapidTunes
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
-package me.oskarmendel.util.song.flac;
+package me.oskarmendel.util.flac;
 
 import java.io.IOException;
-import java.io.InputStream;
-
-import me.oskarmendel.util.BinaryReader;
-import me.oskarmendel.util.BinaryUtil;
 
 /**
- * Represents a Frame from the Flac format.
- * TODO: Javadoc.
+ * Frame object with all the frame fields for a flac frame.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
@@ -43,198 +11,310 @@ import me.oskarmendel.util.BinaryUtil;
  */
 public class Frame {
 	
-	BinaryReader reader;
-	
-	private int frameIndex;
-	private long sampleOffset;
-	
-	private int syncCode;
-	private int blockingStrategy;
-	private int blockSize;
-	private int sampleRate;
-	private int channelAssignment;
-	private int sampleSize;
-	
+	/**
+	 * The different block size codes supported by flac.
+	 */
 	private static final int[] BLOCK_SIZE_CODES = {
 		-1, 192, 576, 1152, 2304, 4608, -1, -1, 256, 
 		512, 1024, 2048, 4096, 8192, 16384, 32768
 	};
 	
-	private static final int[] SAMPLE_SIZE_CODES = {
+	/**
+	 * The bits per sample sizes or samples sizes supported by flac.
+	 */
+	private static final int[] BITS_PER_SAMPLE_CODES = {
 		-1, 8, 12, -1, 16, 20, 24, -1 
 	};
 	
+	/**
+	 * The sample rate codes supported by flac.
+	 */
 	private static final int[] SAMPLE_RATE_CODES = {
 		-1, 88200, 176400, 192000, 8000, 16000, 
 		22050, 24000, 32000, 44100, 48000, 96000
 	};
 	
 	/**
-	 * 
+	 * The index for the subframe where the first subframe has index 0 and future
+	 * frame increments this value.
+	 */
+	private int frameIndex;
+	
+	/**
+	 * The offset of this frame in respect to the input stream.
+	 */
+	private long sampleOffset;
+	
+	/**
+	 * The number of channels for the audio this frame is using.
+	 */
+	private int numberChannels;
+	
+	/**
+	 * The number of independent channels for the frame, determines if 
+	 * the frame is using stereo, mono etc..
+	 */
+	private int channelAssignment;
+	
+	/**
+	 * The number of samples per channel in this frame.
+	 */
+	private int blockSize;
+	
+	/**
+	 * The sample rate for this frame specified in hertz (Hz).
+	 */
+	private int sampleRate;
+	
+	/**
+	 * The bits per sample for this stream of the sample size.
+	 */
+	private int bitsPerSample;
+	
+	/**
+	 * The size of this frame in bytes.
+	 */
+	private int frameSize;
+	
+	/**
+	 * Constructs a new empty frame invalidating all its members.
 	 */
 	public Frame() {
-		this.frameIndex = -1;
-		this.syncCode = -1;
-		this.blockingStrategy = -1;
-		this.blockSize = -1;
-		this.sampleRate = -1;
-		this.channelAssignment = -1;
-		this.sampleSize = -1;
+		frameIndex = -1;
+		sampleOffset = -1;
+		numberChannels = -1;
+		channelAssignment = -1;
+		blockSize = -1;
+		sampleRate = -1;
+		bitsPerSample = -1;
+		frameSize = -1;
 	}
 	
-	public Frame(InputStream input) throws IOException {
-		//TODO: Add frame crc here as well.
-		reader = new BinaryReader(input);
+	/**
+	 * Reads a new frame header from the specified input stream.
+	 * 
+	 * @param input - Input stream to read frame header form.
+	 * 
+	 * @return - Frame header populated with read data.
+	 * 
+	 * @throws IOException - On input stream failure.
+	 */
+	public static Frame readFrame (FlacInputStream input) throws IOException {
+		input.resetCrcs();
 		
-		int temp = reader.readByte();
-		//int n = input.read();
-		
+		int temp = input.readByte();
 		if (temp == -1) {
-			//TODO: Make this an invalid state.. return null;
-			System.out.println("First byte was -1, Invalid state.");
+			return null;
 		}
 		
-		// FrameSize = -1
+		Frame frame = new Frame();
+		frame.setFrameSize(-1);
 		
-		// Read sync code.
-		this.syncCode = (temp << 6) | reader.readUnsignedInt(6);
-		if (this.syncCode != 0x3FFE) {
-			// TODO: Throw new error / exception.
-			System.out.println("Sync code didn't match");
+		// Read sync code
+		int syncCode = (temp << 6) | input.readUnsignedInt(6);
+		if (syncCode != 0x3FFE) {
+			// Expected sync code but was not found.
+			throw new IOException(); //TODO Make my own exception here.
 		}
 		
-		// Read next fields
-		if (reader.readUnsignedInt(1) != 0) {
-			//TODO: Throw exception, Reserved bit
+		// Read frame fields.
+		if (input.readUnsignedInt(1) != 0) {
+			// Reserved bit.
+			throw new IOException(); //TODO Make my own exception here.
 		}
 		
-		this.blockingStrategy  = reader.readUnsignedInt(1);
-		this.blockSize 		   = reader.readUnsignedInt(4);
-		this.sampleRate 	   = reader.readUnsignedInt(4);
-		this.channelAssignment = reader.readUnsignedInt(4);
+		int blockingStrategy = input.readUnsignedInt(1);
+		int blockSize = input.readUnsignedInt(4);
+		int sampleRate = input.readUnsignedInt(4);
+		int channelAssignment = input.readUnsignedInt(4);
 		
-		if (this.channelAssignment < 8) {
-			//TODO
-		} else if (8 <= this.channelAssignment && this.channelAssignment <= 10) {
-			//TODO
+		frame.setChannelAssignments(channelAssignment);
+		
+		if (channelAssignment < 8) {
+			frame.setNumberChannels(channelAssignment + 1);
+		} else if (channelAssignment >= 8 && channelAssignment <= 10) {
+			frame.setNumberChannels(2);
 		} else {
-			//TODO
+			// Reserved bit.
+			throw new IOException(); //TODO Make my own exception here.
 		}
 		
-		this.sampleSize = decodeSampleSize(reader.readUnsignedInt(3));
+		frame.setBitsPerSample(readBitsPerSample(input.readUnsignedInt(3)));
 		
-		if (reader.readUnsignedInt(1) != 0) {
-			// Throw new exception, Reserved bit.
+		if (input.readUnsignedInt(1) != 0) {
+			// Reserved bit.
+			throw new IOException(); //TODO Make my own exception here.
 		}
 		
-		long position = BinaryUtil.readUtf8Integer(input);
+		long position = readUtf8Int(input);
 		
-		if (this.blockingStrategy == 0) {
+		if (blockingStrategy == 0) {
 			if ((position >>> 31) != 0) {
-				// Exception, Frame index is too large.
+				// Frame index is too large.
+				throw new IOException(); //TODO Make my own exception here.
 			}
-			
-			this.frameIndex = (int) position;
-			this.sampleOffset = -1;
-		} else if (this.blockingStrategy == 1) {
-			this.sampleOffset = position;
-			this.frameIndex = -1;
+			frame.setFrameIndex((int)position);
+			frame.setSampleOffset(-1);
+		} else if (blockingStrategy == 1) {
+			frame.setSampleOffset(position);
+			frame.setFrameIndex(-1);
 		} else {
-			// Assertion error.
+			throw new IllegalStateException("Invalid blocking strategy.");
 		}
 		
-		this.blockSize = decodeBlockSize(this.blockSize);
-		this.sampleRate = decodeSampleRate(this.sampleRate);
+		frame.setBlockSize(readBlockSize(blockSize, input));
+		frame.setSampleRate(readSampleRate(sampleRate, input));
 		
-		int crc8 = 0;
-		if (reader.readUnsignedInt(8) != crc8) {
-			//Throw error, CRC8 missmatch.
-		}
-		
-		//TODO: Get crc8
-	}
-	
-	/**
-	 * 
-	 * @param code
-	 * @return
-	 */
-	private int decodeSampleSize(int code) {
-		if ((code >>> 3) != 0)  {
-			// Throw illegalargumentexception
+		int crc8 = input.getCrc8();
+		if (input.readUnsignedInt(8) != crc8) {
+			// CRC 8 missmatch
+			throw new IOException(); //TODO Make my own exception here.
 		}
 		
-		if (code == 0) {
-			return -1;
-		} else {
-			int res = SAMPLE_SIZE_CODES[code];
-			
-			if (res == -1) {
-				// Throw error.
-			}
-			
-			return res;
-		}
-	}
-	
-	/**
-	 * 
-	 * @param code
-	 * @return
-	 * @throws IOException
-	 */
-	private int decodeBlockSize(int code) throws IOException {
-		if ((code >>> 4) != 0) {
-			// Throw illegalargumentexception.
-		}
-		
-		switch (code) {
-		case 0:
-			// Throw error, Reserved bit.
-		case 6:
-			return reader.readUnsignedInt(8);
-		case 7:
-			return reader.readUnsignedInt(16);
-		default:
-			int res = BLOCK_SIZE_CODES[code];
-			
-			// TODO: Maybe check the res value?
-			
-			return res;
-		}
-	}
-	
-	/**
-	 * 
-	 * @param code
-	 * @return
-	 * @throws IOException
-	 */
-	private int decodeSampleRate(int code) throws IOException {
-		if ((code >>> 4) != 0) {
-			// Throw illegalargumentexception.
-		}
-		
-		switch (code) {
-		case 0:
-			return -1;
-		case 12:
-			return reader.readUnsignedInt(8);
-		case 13:
-			return reader.readUnsignedInt(16);
-		case 14:
-			return reader.readUnsignedInt(16) * 10;
-		case 15:
-			// Throw error, invalid sample rate.
-		default:
-			int res = SAMPLE_RATE_CODES[code];
-			
-			// TODO: Maybe check the res value?
-			
-			return res;
-		}
+		return frame;
 	}
 
+	/**
+	 * Reads a UTF-8 coded sample number used for the blocksize.
+	 * 
+	 * @param input - Input stream to read bytes from.
+	 * 
+	 * @return - 36 bit unsigned integer form read bytes.
+	 * 
+	 * @throws IOException - On input stream failure.
+	 */
+	private static long readUtf8Int(FlacInputStream input) throws IOException {
+		int h = input.readUnsignedInt(8);
+		int n = Integer.numberOfLeadingZeros(~(h << 24));
+		
+		if (n == 0) {
+			return h;
+		} else if (n == 1 || n == 8) {
+			// Invalid UTF8 number
+			throw new IOException(); //TODO Make my own exception here.
+		} else {
+			long res = h & (0x7F >>> n);
+			for (int i = 0; i < n - 1; i++) {
+				int t = input.readUnsignedInt(8);
+				if ((t & 0xC0) != 0x80) {
+					// Invalid UTF8 number
+					throw new IOException(); //TODO Make my own exception here.
+				}
+				res = (res << 6) | (t & 0x3F);
+			}
+			
+			if ((res >>> 36) != 0) {
+				throw new IllegalStateException();
+			}
+			
+			return res;
+		}
+	}
+	
+	/**
+	 * Reads the blockSize based on the values previously read from the input stream and
+	 * translates it to the actual block size of this frame.
+	 * 
+	 * @param blockSize - Previously read blockSize value.
+	 * 
+	 * @param input - Input stream to read data from.
+	 * 
+	 * @return - The block size this frame is using.
+	 * 
+	 * @throws IOException - On input stream failure.
+	 */
+	private static int readBlockSize(int blockSize, FlacInputStream input) throws IOException {
+		if ((blockSize >>> 4) != 0) {
+			throw new IllegalArgumentException();
+		}
+		
+		switch (blockSize) {
+		case 0: 
+			throw new IOException("Reserved block size."); //TODO Make my own exception.
+		case 6: 
+			return input.readUnsignedInt(8) + 1;
+		case 7:
+			return input.readUnsignedInt(16) + 1;
+		default:
+			int res = BLOCK_SIZE_CODES[blockSize];
+			
+			if (res < 1 || res > 65536) {
+				throw new IllegalStateException("Invalid block size read.");
+			}
+			
+			return res;
+		}
+	}
+	
+	/**
+	 * Reads the sample rate based on the previously read sample rate value and
+	 * translates it to a valid sample rate for this frame.
+	 * 
+	 * @param sampleRate - Previously read sampleRate value.
+	 * @param input - Input stream to read data from.
+	 * 
+	 * @return - The sample rate for this frame.
+	 * 
+	 * @throws IOException - On input stream failure.
+	 */
+	private static int readSampleRate(int sampleRate, FlacInputStream input) throws IOException {
+		if ((sampleRate >>> 4) != 0) {
+			throw new IllegalArgumentException();
+		}
+		
+		switch (sampleRate) {
+		case 0: 
+			return -1;
+		case 12:
+			return input.readUnsignedInt(8);
+		case 13:
+			return input.readUnsignedInt(16);
+		case 14:
+			return input.readUnsignedInt(16) * 10;
+		case 15:
+			throw new IOException("Invalid sample rate"); //TODO Make my own exception.
+		default:
+			int res = SAMPLE_RATE_CODES[sampleRate];
+			
+			if (res < 1 || res > 65536) {
+				throw new IllegalStateException("Invalid sample rate read.");
+			}
+			
+			return res;
+		}
+		
+	}
+	
+	/**
+	 * Reads the bits per samples based on the previously read value and
+	 * translates it to a valid bits per sampel for this frame.
+	 * 
+	 * @param bitsPerSample - Previously read bits per sample value.
+	 * 
+	 * @return - The bits per sample for this frame.
+	 */
+	private static int readBitsPerSample(int bitsPerSample) {
+		if ((bitsPerSample >>> 3) != 0) {
+			throw new IllegalArgumentException();
+		}
+		
+		if (bitsPerSample == 0) {
+			return -1;
+		} else {
+			int res = BITS_PER_SAMPLE_CODES[bitsPerSample];
+			
+			if (res == -1) {
+				throw new IllegalStateException("Reserved bits per sample size."); // TODO: Make this my own exception
+			}
+			
+			if (res < 1 || res > 32) {
+				throw new IllegalStateException("Invalid bits per sample read.");
+			}
+			
+			return res;
+		}
+	}
+	
 	/**
 	 * @return the frameIndex
 	 */
@@ -250,17 +330,17 @@ public class Frame {
 	}
 
 	/**
-	 * @return the syncCode
+	 * @return the numberChannels
 	 */
-	public int getSyncCode() {
-		return syncCode;
+	public int getNumberChannels() {
+		return numberChannels;
 	}
 
 	/**
-	 * @return the blockingStrategy
+	 * @return the channelAssignment
 	 */
-	public int getBlockingStrategy() {
-		return blockingStrategy;
+	public int getChannelAssignment() {
+		return channelAssignment;
 	}
 
 	/**
@@ -278,16 +358,72 @@ public class Frame {
 	}
 
 	/**
-	 * @return the channelAssignment
+	 * @return the bitsPerSample
 	 */
-	public int getChannelAssignment() {
-		return channelAssignment;
+	public int getBitsPerSample() {
+		return bitsPerSample;
 	}
 
 	/**
-	 * @return the sampleSize
+	 * @return the frameSize
 	 */
-	public int getSampleSize() {
-		return sampleSize;
+	public int getFrameSize() {
+		return frameSize;
+	}
+
+	/**
+	 * @param frameIndex the frameIndex to set
+	 */
+	public void setFrameIndex(int frameIndex) {
+		this.frameIndex = frameIndex;
+	}
+
+	/**
+	 * @param sampleOffset the sampleOffset to set
+	 */
+	public void setSampleOffset(long sampleOffset) {
+		this.sampleOffset = sampleOffset;
+	}
+
+	/**
+	 * @param numberChannels the numberChannels to set
+	 */
+	public void setNumberChannels(int numberChannels) {
+		this.numberChannels = numberChannels;
+	}
+
+	/**
+	 * @param channelAssignments the channelAssignments to set
+	 */
+	public void setChannelAssignments(int channelAssignment) {
+		this.channelAssignment = channelAssignment;
+	}
+
+	/**
+	 * @param blockSize the blockSize to set
+	 */
+	public void setBlockSize(int blockSize) {
+		this.blockSize = blockSize;
+	}
+
+	/**
+	 * @param sampleRate the sampleRate to set
+	 */
+	public void setSampleRate(int sampleRate) {
+		this.sampleRate = sampleRate;
+	}
+
+	/**
+	 * @param bitsPerSample the bitsPerSample to set
+	 */
+	public void setBitsPerSample(int bitsPerSample) {
+		this.bitsPerSample = bitsPerSample;
+	}
+
+	/**
+	 * @param frameSize the frameSize to set
+	 */
+	public void setFrameSize(int frameSize) {
+		this.frameSize = frameSize;
 	}
 }
