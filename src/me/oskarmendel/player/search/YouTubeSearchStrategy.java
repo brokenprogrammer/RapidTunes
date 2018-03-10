@@ -47,18 +47,21 @@ import com.google.api.services.youtube.model.SearchResult;
 import com.google.api.services.youtube.model.Video;
 import com.google.api.services.youtube.model.VideoListResponse;
 
+import me.oskarmendel.song.Song;
+import me.oskarmendel.util.song.SongUtil;
+
 /**
  * Search History object to keep track of search entries.
  * 
  * TODO Add API key inside a file.
  * 
- * @author Oskar
+ * @author Oskar Mendel
  * @version 0.00.00
  * @name YouTubeSearch.java
  */
-public class YouTubeSearch {
+public class YouTubeSearchStrategy implements SearchStrategy {
 	
-	private static final Logger LOGGER = Logger.getLogger(YouTubeSearch.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(YouTubeSearchStrategy.class.getName());
 	
 	/*
 	 * Define a file that contains the developers API-key.
@@ -76,9 +79,11 @@ public class YouTubeSearch {
 	public static YouTube youtube;
 	
 	/**
-	 * 
+	 * Default constructor for the YouTubeSearchStrategy initializing 
+	 * members to default values and initializing the API key by reading 
+	 * it's properties file.
 	 */
-	public YouTubeSearch () {
+	public YouTubeSearchStrategy () {
 		// Load the properties required for YouTube data api requests by
 		// using the API key stored inside the properties file.
 		Properties properties = new Properties();
@@ -96,11 +101,31 @@ public class YouTubeSearch {
 	}
 	
 	/**
+	 * Performs a search using the specified keyword.
+	 * 
+	 * @param keyword - Keyword to use as a search term.
+	 * 
+	 * @return - List of Songs retrieved from the search.
+	 */
+	@Override
+	public List<Song> search(String keyword) {
+		List<Song> songList = new ArrayList<Song>();
+		List<Video> ytList = performSearch(keyword);
+		
+		// Convert all videos to YouTubeSong and add them to songList
+		for (int i = 0; i < ytList.size(); i++) {
+			songList.add(SongUtil.youtubeVideoToYouTubeSong(ytList.get(i)));
+		}
+		
+		return songList;
+	}
+	
+	/**
 	 * 
 	 * @param keywords
 	 * @return
 	 */
-	public List<Video> search(String keywords) {
+	private List<Video> performSearch(String keywords) {
 		LOGGER.log(Level.FINE, "YouTube Search Initiated..");
 		
 		try {
@@ -171,5 +196,4 @@ public class YouTubeSearch {
 		
 		return null;
 	}
-	
 }

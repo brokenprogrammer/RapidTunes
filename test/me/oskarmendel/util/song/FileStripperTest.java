@@ -73,7 +73,7 @@ public class FileStripperTest {
 		assertEquals("Title of the song is 'Total Breakdown'", "Total Breakdown", songBrad.getTitle());
 		assertEquals("Artist of the song is 'Brad Sucks'", "Brad Sucks", songBrad.getArtist());
 		assertEquals("Album of the song is 'Out of It'", "Out of It", songBrad.getAlbum());
-		assertEquals("Length of the song in seconds is '139'", "139", songBrad.getLength());
+		assertEquals("Length of the song in seconds is '139'", 139, songBrad.getLength());
 		
 		//Force exception
 		fileStripper.stripMp3Song(new File(""));
@@ -90,7 +90,7 @@ public class FileStripperTest {
 		assertEquals("Title of the song is 'Untitled Star'", "Untitled Star", songJimmy.getTitle());
 		assertEquals("Artist of the song is 'Jimmy Penguin'", "Jimmy Pengiun", songJimmy.getArtist());
 		assertEquals("Album of the song is 'The S27 Double Bluff'", "The S27 Double Bluff", songJimmy.getAlbum());
-		assertEquals("Length of the song in seconds is 'unknown'", "", songJimmy.getLength()); //Length for flac songs is not yet parsed.
+		assertEquals("Length of the song in seconds is '0'", 0, songJimmy.getLength()); //Length for flac songs is not yet parsed.
 		
 		//Force exception
 		fileStripper.stripFlacSong(new File(""));

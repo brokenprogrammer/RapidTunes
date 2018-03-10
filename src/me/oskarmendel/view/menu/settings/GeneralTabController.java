@@ -33,6 +33,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import me.oskarmendel.model.SettingsModel;
+import me.oskarmendel.settings.GeneralSettings;
+import me.oskarmendel.settings.locale.Locale;
 
 /**
  * Controller class for the General tab in the Settings Menu.
@@ -41,20 +44,58 @@ import javafx.scene.control.TextField;
  * @version 0.00.00
  * @name GeneralTabController.java
  */
-public class GeneralTabController {
+public class GeneralTabController implements SettingsMenuTab {
 	
 	@FXML private Label generalSettingsThemeLabel;
 	@FXML private TextField generalSettingsThemeTextField;
 	@FXML private Button generalSettingsThemeBtn;
 	
 	@FXML private Label generalSettingsLanguageLabel;
-	@FXML private ChoiceBox generalSettingsLanguageChoiceBox;
+	@FXML private ChoiceBox<Locale> generalSettingsLanguageChoiceBox;
 	
 	@FXML private CheckBox generalSettingsNotificationsToggle;
 	@FXML private Label generalSettingsNotificationsInfoLabel;
 	
+	private SettingsModel settingsModel;
+	
 	@FXML
 	public void initialize() {
+		generalSettingsLanguageChoiceBox.getItems().setAll((Locale.values()));
+	}
+	
+	/**
+	 * Applies the Settings within the Tab by modifying the current settings
+	 * within the SettingsModel contained within the SettingsTab.
+	 */
+	@Override
+	public void apply() {
+		GeneralSettings generalSettings = new GeneralSettings();
 		
+		generalSettings.setTheme(this.generalSettingsThemeTextField.getText());
+		generalSettings.setLanguage(this.generalSettingsLanguageChoiceBox.getSelectionModel().getSelectedItem());
+		generalSettings.setNotifications(this.generalSettingsNotificationsToggle.isSelected());
+		
+		this.settingsModel.getGeneralSettingsProperty().set(generalSettings);
+	}
+	
+	/**
+	 * Initializes the SettingsModel which contains the applications settings.
+	 * 
+	 * @param settingsModel - settingsModel object to share data with.
+	 */
+	@Override
+	public void initSettingsModel(SettingsModel settingsModel) {
+		if (this.settingsModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
+		
+		this.settingsModel = settingsModel;
+		
+		GeneralSettings generalSettings = this.settingsModel.getGeneralSettings();
+		
+		// Initializing UI values based on current Settings.
+		generalSettingsThemeTextField.setText(generalSettings.getTheme());
+		generalSettingsLanguageChoiceBox.getSelectionModel().select(generalSettings.getLanguage());
+		generalSettingsNotificationsToggle.setSelected(generalSettings.isNotifications());
 	}
 }

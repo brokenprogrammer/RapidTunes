@@ -36,5 +36,6 @@ package me.oskarmendel.song;
  */
 public enum LocalSongFormat {
 	MP3,
-	FLAC
+	FLAC,
+	UNKNOWN_FORMAT
 }

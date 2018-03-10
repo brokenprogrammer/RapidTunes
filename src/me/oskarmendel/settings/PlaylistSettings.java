@@ -41,10 +41,14 @@ public class PlaylistSettings extends Settings {
 	
 	private static final String PATH = "settings/playlist.properties";
 	
+	private static final boolean DEFAULT_STORE_PLAYLISTS_LOCALLY = false;
+	
 	private static final String DEFAULT_PLAYLISTDIRECTORY = "playlists/";
 	
 	private static final boolean DEFAULT_AUTOEXPORT_YOUTUBE = false;
 	private static final boolean DEFAULT_AUTOEXPORT_SOUNDCLOUD = false;
+	
+	private boolean savePlaylistsLocal;			// Toggle storing the playlists locally.
 	
 	private String playlistDirectory;			// Path for the directory to store the users playlists in.
 	
@@ -68,9 +72,19 @@ public class PlaylistSettings extends Settings {
 	public PlaylistSettings(Properties properties) {
 		super();
 		
+		this.savePlaylistsLocal = Boolean.valueOf(properties.getProperty("savePlaylistsLocal"));
 		this.playlistDirectory = properties.getProperty("playlistDirectory");
 		this.autoExportYouTube = Boolean.valueOf(properties.getProperty("autoExportYouTube"));
 		this.autoExportSoundCloud = Boolean.valueOf(properties.getProperty("autoExportSoundCloud"));
+	}
+	
+	/**
+	 * Getter for the savePlaylistLocal value of this PlaylistSettings.
+	 * 
+	 * @return - SavePlaylistLocal value of this PlaylistSettings.
+	 */
+	public boolean getSavePlaylistLocal() {
+		return this.savePlaylistsLocal;
 	}
 	
 	/**
@@ -100,6 +114,15 @@ public class PlaylistSettings extends Settings {
 		return autoExportSoundCloud;
 	}
 
+	/**
+	 * Setter for the savePlaylistLocal value of this PlaylistSettings.
+	 * 
+	 * @param savePlaylistLocal - SavePlaylistLocal value to set.
+	 */
+	public void setSavePlaylistsLocal(boolean savePlaylistLocal) {
+		this.savePlaylistsLocal = savePlaylistLocal;
+	}
+	
 	/**
 	 * Setter for the playlistDirectory value of this PlaylistSettings.
 	 * 
@@ -147,6 +170,7 @@ public class PlaylistSettings extends Settings {
 	public Properties toProperties() {
 		Properties properties = new Properties();
 		
+		properties.setProperty("savePlaylistsLocal", String.valueOf(this.savePlaylistsLocal));
 		properties.setProperty("playlistDirectory", this.playlistDirectory);
 		properties.setProperty("autoExportYouTube", String.valueOf(this.autoExportYouTube));
 		properties.setProperty("autoExportSoundCloud", String.valueOf(this.autoExportSoundCloud));
@@ -163,6 +187,7 @@ public class PlaylistSettings extends Settings {
 	public Properties getDefaultProperties() {
 		Properties properties = new Properties();
 		
+		properties.setProperty("savePlaylistsLocal", String.valueOf(DEFAULT_STORE_PLAYLISTS_LOCALLY));
 		properties.setProperty("playlistDirectory", DEFAULT_PLAYLISTDIRECTORY);
 		properties.setProperty("autoExportYouTube", String.valueOf(DEFAULT_AUTOEXPORT_YOUTUBE));
 		properties.setProperty("autoExportSoundCloud", String.valueOf(DEFAULT_AUTOEXPORT_SOUNDCLOUD));

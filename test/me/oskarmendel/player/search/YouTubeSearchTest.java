@@ -63,7 +63,7 @@ public class YouTubeSearchTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.player.search.YouTubeSearch#search(java.lang.String)}.
+	 * Test method for {@link me.oskarmendel.player.search.YouTubeSearchStrategy#search(java.lang.String)}.
 	 */
 	@Test
 	public final void testSearch() {

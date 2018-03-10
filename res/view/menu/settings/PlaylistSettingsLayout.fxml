@@ -36,6 +36,19 @@
    <children>
       <VBox AnchorPane.leftAnchor="10.0">
          <children>
+         	<HBox>
+         		<children>
+               	  <CheckBox fx:id="playlistSettingsSaveLocalCheckBox" mnemonicParsing="false" text="Save playlists locally" />
+         		</children>
+         		<VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+         	</HBox>
+         	<Separator>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </Separator>
             <HBox>
                <children>
                   <Label fx:id="playlistSettingsDirectoryLabel" text="Playlist Directory:">
@@ -50,9 +63,6 @@
                   </TextField>
                   <Button fx:id="playlistSettingsDirectoryButton" mnemonicParsing="false" text="Change..." />
                </children>
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
             </HBox>
             <Separator>
                <VBox.margin>

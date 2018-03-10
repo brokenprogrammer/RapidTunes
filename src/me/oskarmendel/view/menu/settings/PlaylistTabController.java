@@ -32,6 +32,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import me.oskarmendel.model.SettingsModel;
+import me.oskarmendel.settings.PlaylistSettings;
 
 /**
  * Controller class for the Playlist tab in the Settings Menu.
@@ -40,7 +42,9 @@ import javafx.scene.control.TextField;
  * @version 0.00.00
  * @name PlaylistTabController.java
  */
-public class PlaylistTabController {
+public class PlaylistTabController implements SettingsMenuTab {
+	
+	@FXML private CheckBox playlistSettingsSaveLocalCheckBox;
 	
 	@FXML private Label playlistSettingsDirectoryLabel;
 	@FXML private TextField playlistSettingsDirectoryTextField;
@@ -49,8 +53,49 @@ public class PlaylistTabController {
 	@FXML private CheckBox playlistSettingsExportYouTubeCheckBox;
 	@FXML private CheckBox playlistSettingsExportSoundCloudCheckBox;
 	
+	private SettingsModel settingsModel;
+	
 	@FXML
 	public void initialize() {
 		
+	}
+	
+	/**
+	 * Applies the Settings within the Tab by modifying the current settings
+	 * within the SettingsModel contained within the SettingsTab.
+	 */
+	@Override
+	public void apply() {
+		PlaylistSettings playlistSettings = new PlaylistSettings();
+		
+		playlistSettings.setPlaylistDirectory(playlistSettingsDirectoryTextField.getText());
+		playlistSettings.setAutoExportYouTube(playlistSettingsExportYouTubeCheckBox.isSelected());
+		playlistSettings.setAutoExportSoundCloud(playlistSettingsExportSoundCloudCheckBox.isSelected());
+		
+		this.settingsModel.getPlaylistSettingsProperty().set(playlistSettings);
+	}
+	
+	/**
+	 * Initializes the SettingsModel which contains the applications settings.
+	 * 
+	 * @param settingsModel - settingsModel object to share data with.
+	 */
+	@Override
+	public void initSettingsModel(SettingsModel settingsModel) {
+		if (this.settingsModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
+		
+		this.settingsModel = settingsModel;
+		
+		PlaylistSettings playlistSettings = this.settingsModel.getPlaylistSettings();
+		
+		// Initializing UI values based on current Settings
+		playlistSettingsSaveLocalCheckBox.setSelected(playlistSettings.getSavePlaylistLocal());
+		
+		playlistSettingsDirectoryTextField.setText(playlistSettings.getPlaylistDirectory());
+		
+		playlistSettingsExportYouTubeCheckBox.setSelected(playlistSettings.isAutoExportYouTube());
+		playlistSettingsExportSoundCloudCheckBox.setSelected(playlistSettings.isAutoExportSoundCloud());
 	}
 }

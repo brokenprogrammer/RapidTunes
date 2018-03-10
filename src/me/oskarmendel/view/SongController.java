@@ -33,20 +33,29 @@ import java.util.logging.Logger;
 import org.controlsfx.glyphfont.FontAwesome;
 import org.controlsfx.glyphfont.Glyph;
 
+import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 import me.oskarmendel.model.CurrentlyPlayingModel;
+import me.oskarmendel.model.SongQueueModel;
 import me.oskarmendel.player.SongPlayerHandler;
 import me.oskarmendel.song.Song;
+import me.oskarmendel.util.song.SongUtil;
 
 /**
  * 
@@ -70,6 +79,7 @@ public class SongController implements RapidTunesController {
 	
 	@FXML private Label songCurrentTime;
 	@FXML private ProgressBar songProgressBar;
+	private ChangeListener<Duration> progressBarChangeListener;
 	@FXML private Label songTotalTime;
 	
 	@FXML private CheckBox songShuffle;
@@ -85,6 +95,7 @@ public class SongController implements RapidTunesController {
 	private static final Logger LOGGER = Logger.getLogger(SongController.class.getName());
 	
 	private CurrentlyPlayingModel currentlyPlayingModel;
+	private SongQueueModel songQueueModel;
 	private SongPlayerHandler player;
 	
 	@FXML 
@@ -92,21 +103,34 @@ public class SongController implements RapidTunesController {
 		LOGGER.log(Level.FINE, "Initialized: " + this.getClass().getName());
 		
 		songProgressBar.setMaxWidth(Double.MAX_VALUE);
-		
 		initSongPlayer();
 		
 		songPrev.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
+				Song currentSong = currentlyPlayingModel.getCurrentSong().getValue();
+				Song prevSong = songQueueModel.getPrevious();
 				
+				if (currentSong.getTitle().equals(prevSong.getTitle())) {
+					player.seek(0);
+					songProgressBar.setProgress(0);
+				} else {
+					currentlyPlayingModel.setCurrentSong(prevSong);					
+				}
 			}
 		});
 		
 		songNext.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
+				Song currentSong = currentlyPlayingModel.getCurrentSong().getValue();
+				Song nextSong = songQueueModel.getNext();
+				
+				if (currentSong.getTitle().equals(nextSong.getTitle())) {
+					currentlyPlayingModel.setCurrentSong(songQueueModel.getNext());					
+				} else {
+					currentlyPlayingModel.setCurrentSong(nextSong);
+				}
 				
 			}
 		});
@@ -128,11 +152,45 @@ public class SongController implements RapidTunesController {
 			}
 		});
 		
-		songVolume.valueProperty().addListener(new InvalidationListener() {
-			public void invalidated(Observable ov) {
-				if (songVolume.isValueChanging()) {
-					player.setVolume((int)songVolume.getValue());
+		progressBarChangeListener = new ChangeListener<Duration>() {
+			@Override
+			public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+				
+				Platform.runLater(() -> {
+					songCurrentTime.setText(SongUtil.currentSongTimeToString(newValue.toSeconds()));
+					
+					// If entire song has been played we grab the next song form the queue and play it.
+					if (songProgressBar.getProgress() >= 1) {
+						Song nextSong = songQueueModel.getNext();
+						currentlyPlayingModel.setCurrentSong(nextSong);
+					}
+					
+				});
+				
+				songProgressBar.setProgress(1 * newValue.toSeconds() / player.getSong().getLength());
+			}
+		};
+		player.getCurrentTimeObserver().addListener(progressBarChangeListener);
+		
+		
+		songProgressBar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				if (event.getButton() == MouseButton.PRIMARY) {
+					Bounds b1 = songProgressBar.getLayoutBounds();
+	                double mouseX = event.getX();
+	                double percent = (((b1.getMinX() + mouseX ) * 100) / b1.getMaxX());
+					
+					songProgressBar.setProgress((percent) / 100);
+					player.seek((long) (currentlyPlayingModel.getCurrentSong().get().getLength() * (percent/ 100)));
 				}
+			}
+		});
+		
+		songVolume.valueProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				player.setVolume((int)songVolume.getValue());
 			}
 		});
 	}
@@ -162,14 +220,39 @@ public class SongController implements RapidTunesController {
 				@SuppressWarnings("unchecked")
 				ObjectProperty<Song> property = (ObjectProperty<Song>) observable;
 				
+				// Reset the current progressbar.
+				songProgressBar.setProgress(0);
+				
+				player.getCurrentTimeObserver().removeListener(progressBarChangeListener);
+				
+				// Set the new song for the player to play.
 				player.setSong(property.getValue());
 				player.play();
+				
+				player.getCurrentTimeObserver().addListener(progressBarChangeListener);
+				
+				songTotalTime.setText(SongUtil.lengthToString(currentlyPlayingModel.getCurrentSong().get()));
 				
 				playing = true;
 				songPlayIco.setIcon(FontAwesome.Glyph.PAUSE);
 			}
 			
 		});
+	}
+	
+	/**
+	 * Initializes the SongQueueModel which this class will send data to when a song is 
+	 * clicked within the SongBrowser. 
+	 * 
+	 * @param songQueueModel - SongQueueModel object to send data to.
+	 */
+	public void initSongQueueModel(SongQueueModel songQueueModel) {
+		//Make sure model is only set once.
+		if (this.songQueueModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
+		
+		this.songQueueModel = songQueueModel;
 	}
 	
 	/**

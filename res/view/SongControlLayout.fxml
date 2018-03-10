@@ -77,9 +77,10 @@
             <Insets />
          </HBox.margin>
       </Button>
-      <Label fx:id="songCurrentTime" text=" 0:00">
+      <Label fx:id="songCurrentTime" text=" 00:00:00">
          <HBox.margin>
             <Insets left="10.0" />
+            <Insets right="10.0" />
          </HBox.margin>
       </Label>
       <ProgressBar fx:id="songProgressBar" HBox.hgrow="ALWAYS" prefHeight="18.0" prefWidth="200.0" progress="0.0">
@@ -87,7 +88,7 @@
             <Insets />
          </HBox.margin>
       </ProgressBar>
-      <Label fx:id="songTotalTime" text="9:99">
+      <Label fx:id="songTotalTime" text="00:00:00">
          <HBox.margin>
             <Insets left="10.0" />
          </HBox.margin>

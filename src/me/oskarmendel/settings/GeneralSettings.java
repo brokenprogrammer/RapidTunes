@@ -29,6 +29,7 @@ package me.oskarmendel.settings;
 
 import java.util.Properties;
 
+import me.oskarmendel.settings.locale.Locale;
 import me.oskarmendel.view.RapidTunesController;
 
 /**
@@ -44,11 +45,11 @@ public class GeneralSettings extends Settings {
 	private static final String PATH = "settings/general.properties";
 	
 	private static final String DEFAULT_THEME = RapidTunesController.DEFAULT_STYLING;
-	private static final String DEFAULT_LANGUAGE = "en";
+	private static final Locale DEFAULT_LANGUAGE = Locale.EN;
 	private static final boolean DEFAULT_NOTIFICATIONS = true;
 	
 	private String theme;				// Path of the CSS theme to be used for styling of the application.
-	private String language;			// Language to be used by the application.
+	private Locale language;			// Language to be used by the application.
 	private boolean notifications;		// Boolean toggle for turning notifications on / off.
 	//TODO: More UI settings goes here.
 	
@@ -70,7 +71,7 @@ public class GeneralSettings extends Settings {
 		super();
 		
 		this.theme = properties.getProperty("theme");
-		this.language = properties.getProperty("language");
+		this.language = Locale.getLocale(properties.getProperty("language"));
 		this.notifications = Boolean.valueOf(properties.getProperty("notifications"));
 	}
 
@@ -88,7 +89,7 @@ public class GeneralSettings extends Settings {
 	 * 
 	 * @return - Language of this GeneralSettings.
 	 */
-	public String getLanguage() {
+	public Locale getLanguage() {
 		return language;
 	}
 
@@ -116,7 +117,16 @@ public class GeneralSettings extends Settings {
 	 * @param language - Language value to set.
 	 */
 	public void setLanguage(String language) {
-		this.language = language;
+		this.language = Locale.getLocale(language);
+	}
+	
+	/**
+	 * Setter for the language of this GeneralSettings.
+	 * 
+	 * @param locale - Locale value to set.
+	 */
+	public void setLanguage(Locale locale) {
+		this.language = locale;
 	}
 
 	/**
@@ -149,7 +159,7 @@ public class GeneralSettings extends Settings {
 		Properties properties = new Properties();
 		
 		properties.setProperty("theme", this.theme);
-		properties.setProperty("language", this.language);
+		properties.setProperty("language", this.language.toString());
 		properties.setProperty("notifications", String.valueOf(this.notifications));
 		
 		return properties;
@@ -165,7 +175,7 @@ public class GeneralSettings extends Settings {
 		Properties properties = new Properties();
 		
 		properties.setProperty("theme", DEFAULT_THEME);
-		properties.setProperty("language", DEFAULT_LANGUAGE);
+		properties.setProperty("language", DEFAULT_LANGUAGE.name());
 		properties.setProperty("notifications", String.valueOf(DEFAULT_NOTIFICATIONS));
 		
 		return properties;

@@ -127,10 +127,10 @@ public class LocalSongTest {
 	 */
 	@Test
 	public void testGetLength() {
-		song.setLength("120");
-		assertEquals("Length of the song is '120'", "120", song.getLength());
-		song.setLength("1000");
-		assertEquals("Length of the song is '1000'", "1000", song.getLength());
+		song.setLength(120);
+		assertEquals("Length of the song is '120'", 120, song.getLength());
+		song.setLength(1000);
+		assertEquals("Length of the song is '1000'", 1000, song.getLength());
 	}
 
 	/**
@@ -138,10 +138,10 @@ public class LocalSongTest {
 	 */
 	@Test
 	public void testSetLength() {
-		song.setLength("120");
-		assertEquals("Length of the song is '120'", "120", song.getLength());
-		song.setLength("1000");
-		assertEquals("Length of the song is '1000'", "1000", song.getLength());
+		song.setLength(120);
+		assertEquals("Length of the song is '120'", 120, song.getLength());
+		song.setLength(1000);
+		assertEquals("Length of the song is '1000'", 1000, song.getLength());
 	}
 	
 	/**
@@ -165,5 +165,179 @@ public class LocalSongTest {
 		song.setPath("C:\\Users\\Jesper\\Music\\King.mp3");
 		assertEquals("Path of the song is 'C:\\Users\\Jesper\\Music\\King.mp3'", "C:\\Users\\Jesper\\Music\\King.mp3", song.getPath());
 	}
-}
+	
+	/**
+	 * Test method for {@link me.oskarmendel.song.LocalSong#equals()}.
+	 */
+	@Test
+	public void testEquals_Reflexive() {
+		// Testing for the reflexive relation.
+		LocalSong reflexiveSong1 = createDummySong("SongX", 999);
+		LocalSong reflexiveSong2 = createDummySong("SongX", 999);
+		LocalSong reflexiveSong3 = createDummySong("SongY", 123);
+		Song reflexiveYouTubeSong = createDummyYouTubeSong("SongX", 999);
+		
+		assertEquals("reflexiveSong1 is equal to reflexiveSong1 according to the reflexive property.", reflexiveSong1.equals(reflexiveSong1), true);
+		assertEquals("reflexiveSong1 is equal to reflexiveSong2 according to the reflexive property.", reflexiveSong1.equals(reflexiveSong2), true);
+		
+		// Testing reflexive hashcodes.
+		assertEquals("Hashcode of reflexiveSong1 is equal to itself.", reflexiveSong1.hashCode() == reflexiveSong1.hashCode(), true);
+		assertEquals("Hashcode of reflexiveSong1 and reflexiveSong2 is equal.", reflexiveSong1.hashCode() == reflexiveSong2.hashCode(), true);
+		assertEquals("Hashcode of reflexiveSong1 and reflexiveSong3 is not equal.", reflexiveSong1.hashCode() == reflexiveSong3.hashCode(), false);
+		
+		// Testing that songs is never equal to null.
+		assertEquals("reflexiveSong1 is never equals to null.", reflexiveSong1.equals(null), false);
+		assertEquals("reflexiveSong2 is never equals to null.", reflexiveSong2.equals(null), false);
+		
+		assertEquals("reflexiveSong1 is not equal to reflexiveSong3.", reflexiveSong1.equals(reflexiveSong3), false);
+		assertEquals("reflexiveSong2 is not equal to reflexiveSong3.", reflexiveSong2.equals(reflexiveSong3), false);
+		
+		assertEquals("reflexiveSong1 cannot be equal to a YouTubeSong.", reflexiveSong1.equals(reflexiveYouTubeSong), false);
+		assertEquals("reflexiveSong2 cannot be equal to a YouTubeSong.", reflexiveSong2.equals(reflexiveYouTubeSong), false);
+		assertEquals("reflexiveSong3 cannot be equal to a YouTubeSong.", reflexiveSong3.equals(reflexiveYouTubeSong), false);
+	}
+	
+	/**
+	 * Test method for {@link me.oskarmendel.song.LocalSong#equals()}.
+	 */
+	@Test
+	public void testEquals_Symmetric() {
+		// Testing for symmetric relation.
+		LocalSong symmetricSong1 = createDummySong("SongX", "ArtistX", "AlbumX", 12345, "C:/some/dir", "LocalIcon");
+		LocalSong symmetricSong2 = createDummySong("SongX", "ArtistX", "AlbumX", 12345, "C:/some/dir", "LocalIcon");
+		LocalSong symmetricSong3 = createDummySong("SongY", "ArtistY", "AlbumY", 54321, "C:/some/other/dir", "FunnyIcon");
+		LocalSong symmetricSong4 = createDummySong("SongY", "ArtistY", "AlbumY", 54321, "C:/some/other/dir", "FunnyIcon");
+		LocalSong symmetricSong5 = createDummySong("SongZ", "ArtistZ", "AlbumZ", 10101, "C:/some/completely/other/dir", "RandomIcon");
+		
+		assertEquals("symmetricSong1 is equal to symmetricSong2.", symmetricSong1.equals(symmetricSong2), true);
+		assertEquals("symmetricSong2 is equal to symmetricSong1 according to the symmetric property.", symmetricSong2.equals(symmetricSong1), true);
+		assertEquals("symmetricSong3 is equal to symmetricSong4.", symmetricSong3.equals(symmetricSong4), true);
+		assertEquals("symmetricSong4 is equal to symmetricSong3 according to the symmetric property.", symmetricSong4.equals(symmetricSong3), true);
+		
+		assertEquals("symmetricSong1 is not equal to symmetricSong5.", symmetricSong1.equals(symmetricSong5), false);
+		assertEquals("symmetricSong2 is not equal to symmetricSong5.", symmetricSong2.equals(symmetricSong5), false);
+		assertEquals("symmetricSong3 is not equal to symmetricSong5.", symmetricSong3.equals(symmetricSong5), false);
+		assertEquals("symmetricSong4 is not equal to symmetricSong5.", symmetricSong4.equals(symmetricSong5), false);
+		
+		// Testing symmetric hashcodes.
+		assertEquals("Hashcode of symmetricSong1 is equal to itself.", symmetricSong1.hashCode() == symmetricSong1.hashCode(), true);
+		assertEquals("Hashcode of symmetricSong1 is equal to symmetricSong2.", symmetricSong1.hashCode() == symmetricSong2.hashCode(), true);
+		assertEquals("Hashcode of symmetricSong1 is equal to itself.", symmetricSong3.hashCode() == symmetricSong3.hashCode(), true);
+		assertEquals("Hashcode of symmetricSong3 is equal to symmetricSong4.", symmetricSong3.hashCode() == symmetricSong4.hashCode(), true);
+		
+		assertEquals("Hashcode of symmetricSong1 is not equal to hashcode of symmetricSong5.", symmetricSong1.hashCode() == symmetricSong5.hashCode(), false);
+		assertEquals("Hashcode of symmetricSong2 is not equal to hashcode of symmetricSong5.", symmetricSong2.hashCode() == symmetricSong5.hashCode(), false);
+		assertEquals("Hashcode of symmetricSong3 is not equal to hashcode of symmetricSong5.", symmetricSong3.hashCode() == symmetricSong5.hashCode(), false);
+		assertEquals("Hashcode of symmetricSong4 is not equal to hashcode of symmetricSong5.", symmetricSong4.hashCode() == symmetricSong5.hashCode(), false);
+		
+		// Testing that songs is never equal to null.
+		assertEquals("symmetricSong1 is never equal to null", symmetricSong1.equals(null), false);
+		assertEquals("symmetricSong2 is never equal to null", symmetricSong2.equals(null), false);
+		assertEquals("symmetricSong3 is never equal to null", symmetricSong3.equals(null), false);
+		assertEquals("symmetricSong4 is never equal to null", symmetricSong4.equals(null), false);
+		assertEquals("symmetricSong5 is never equal to null", symmetricSong5.equals(null), false);
+	}
+	
+	/**
+	 * Test method for {@link me.oskarmendel.song.LocalSong#equals()}.
+	 */
+	@Test
+	public void testEquals_Transitive() {
+		// Testing for the transitive relation.
+		LocalSong transitiveSong1 = createDummySong("SongX", "ArtistX", "AlbumX", 12345, "C:/some/dir", "LocalIcon");
+		LocalSong transitiveSong2 = createDummySong("SongX", "ArtistX", "AlbumX", 12345, "C:/some/dir", "LocalIcon");
+		LocalSong transitiveSong3 = createDummySong("SongX", "ArtistX", "AlbumX", 12345, "C:/some/dir", "LocalIcon");
+		LocalSong transitiveSong4 = createDummySong("SongY", "ArtistY", "AlbumY", 54321, "C:/some/other/dir", "FunnyIcon");
+		
+		assertEquals("transitiveSong1 is equal to itself.", transitiveSong1.equals(transitiveSong1), true);
+		assertEquals("transitiveSong1 is equal to transitiveSong2.", transitiveSong1.equals(transitiveSong2), true);
+		assertEquals("transitiveSong2 is equal to transitiveSong3.", transitiveSong2.equals(transitiveSong3), true);
+		assertEquals("transitiveSong1 is equal to transitiveSong3 according to the transitive property.", transitiveSong1.equals(transitiveSong3), true);
+		assertEquals("transitiveSong1 is not equal to transitiveSong4.", transitiveSong1.equals(transitiveSong4), false);
+		assertEquals("transitiveSong2 is not equal to transitiveSong4.", transitiveSong2.equals(transitiveSong4), false);
+		assertEquals("transitiveSong3 is not equal to transitiveSong4.", transitiveSong3.equals(transitiveSong4), false);
+		
+		//Testing transitive hashcodes.
+		assertEquals("Hashcode of transitiveSong1 is equal to itself.", transitiveSong1.hashCode() == transitiveSong1.hashCode(), true);
+		assertEquals("Hashcode of transitiveSong1 is equal to transitiveSong2.", transitiveSong1.hashCode() == transitiveSong2.hashCode(), true);
+		assertEquals("Hashcode of transitiveSong2 is equal to transitiveSong3.", transitiveSong2.hashCode() == transitiveSong3.hashCode(), true);
+		assertEquals("Hashcode of transitiveSong1 is equal to transitiveSong3.", transitiveSong1.hashCode() == transitiveSong3.hashCode(), true);
+		
+		assertEquals("Hashcode of transitiveSong1 is not equal to transitiveSong4.", transitiveSong1.hashCode() == transitiveSong4.hashCode(), false);
+		assertEquals("Hashcode of transitiveSong2 is not equal to transitiveSong4.", transitiveSong2.hashCode() == transitiveSong4.hashCode(), false);
+		assertEquals("Hashcode of transitiveSong3 is not equal to transitiveSong4.", transitiveSong3.hashCode() == transitiveSong4.hashCode(), false);
 
+		// Testing that songs is never equal to null.
+		assertEquals("transitiveSong1 is never equals to null.", transitiveSong1.equals(null), false);
+		assertEquals("transitiveSong2 is never equals to null.", transitiveSong2.equals(null), false);
+		assertEquals("transitiveSong3 is never equals to null.", transitiveSong3.equals(null), false);
+		assertEquals("transitiveSong4 is never equals to null.", transitiveSong4.equals(null), false);
+	}
+	
+	/**
+	 * Helper testing method that creates a dummy LocalSong with the 
+	 * specified Title and Length.
+	 * 
+	 * @param title - Title of the LocalSong to create.
+	 * @param length - Length of the LocalSong to create.
+	 * 
+	 * @return - LocalSong object created with specified values.
+	 */
+	private LocalSong createDummySong(String title, long length) {
+		LocalSong song = new LocalSong();
+		
+		song.setTitle(title);
+		song.setLength(length);
+		
+		return song;
+	}
+	
+	/**
+	 * Helper testing method that creates a dummy LocalSong with the
+	 * specified Title, Artist, Album, Length, Path and Graphic.
+	 * 
+	 * @param title - Title of the LocalSong to create.
+	 * @param artist - Artist of the LocalSong to create.
+	 * @param album - Album of the LocalSong to create.
+	 * @param length - Length of the LocalSong to create.
+	 * @param path - Path of the LocalSong to create.
+	 * @param graphic - Graphic of the LocalSong to create.
+	 * 
+	 * @return - LocalSong object created with the specified value.
+	 */
+	private LocalSong createDummySong(String title, String artist, String album, long length, String path, String graphic) {
+		LocalSong song = new LocalSong();
+		
+		song.setTitle(title);
+		song.setArtist(artist);
+		song.setAlbum(album);
+		song.setLength(length);
+		song.setPath(path);
+		song.setGraphic(graphic);
+		
+		song.setSongFormat(LocalSongFormat.MP3);
+		song.setSampleRate(12345);
+		song.setNumChannels(8);
+		song.setBitsPerSample(54321);
+		
+		return song;
+	}
+	
+	/**
+	 * Helper testing method that creates a dummy YouTubeSong with the
+	 * specified Title and Length returned as a Song object.
+	 * 
+	 * @param title - Title of the Song object.
+	 * @param length - Length of the Song object.
+	 * 
+	 * @return - A YouTubeSong object with specified values returned as a Song object.
+	 */
+	private Song createDummyYouTubeSong(String title, long length) {
+		YouTubeSong song = new YouTubeSong();
+		
+		song.setTitle(title);
+		song.setLength(length);
+		
+		return song;
+	}
+}

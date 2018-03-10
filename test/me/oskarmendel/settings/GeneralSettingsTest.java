@@ -35,6 +35,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import me.oskarmendel.settings.locale.Locale;
+
 /**
  * Tests for the GeneralSettings.
  * 
@@ -72,7 +74,7 @@ public class GeneralSettingsTest {
 		GeneralSettings settings = new GeneralSettings(properties);
 		
 		assertEquals("Theme is \"testingTheme\".", settings.getTheme().equals("testingTheme"), true);
-		assertEquals("Language is \"testingLanguage\".", settings.getLanguage().equals("testingLanguage"), true);
+		assertEquals("Language is \"EN\".", settings.getLanguage(), Locale.EN);
 		assertEquals("Notifications is set to true.", settings.isNotifications(), true);
 	}
 	
@@ -84,13 +86,13 @@ public class GeneralSettingsTest {
 		GeneralSettings settings = new GeneralSettings();
 		
 		settings.setTheme("myTestingTheme");
-		settings.setLanguage("myTestingLanguage");
+		settings.setLanguage("ru");
 		settings.setNotifications(true);
 		
 		Properties properties = settings.toProperties();
 		
 		assertEquals("Theme is set to \"myTestingTheme\".", properties.get("theme").equals("myTestingTheme"), true);
-		assertEquals("Language is set to \"myTestingLanguage\".", properties.get("language").equals("myTestingLanguage"), true);
+		assertEquals("Language is set to \"RU\".", properties.get("language"), "RU");
 		assertEquals("Notifications is set to true.", properties.get("notifications").equals("true"), true);
 	}
 
@@ -104,7 +106,7 @@ public class GeneralSettingsTest {
 		Properties properties = settings.getDefaultProperties();
 		
 		assertEquals("Default theme is: \"/css/Default.css\".", properties.get("theme").equals("/css/Default.css"), true);
-		assertEquals("Default language is: \"en\"\".", properties.get("language").equals("en"), true);
+		assertEquals("Default language is: \"en\"\".", properties.get("language").equals("EN"), true);
 		assertEquals("Default notifications is set to true.", properties.get("notifications").equals("true"), true);
 	}
 }

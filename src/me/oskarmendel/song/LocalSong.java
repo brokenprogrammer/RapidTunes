@@ -27,6 +27,8 @@
 
 package me.oskarmendel.song;
 
+import java.util.Objects;
+
 /**
  * Object representing a song from the local hard drive.
  * 
@@ -49,7 +51,12 @@ public class LocalSong extends Song{
 	 * object needed for a displaying a LocalSong.
 	 */
 	public LocalSong() {
+		super();
 		this.graphic = "FontAwesome|HDD_ALT";
+		this.songFormat = LocalSongFormat.UNKNOWN_FORMAT;
+		this.sampleRate = 0;
+		this.numChannels = 0;
+		this.bitsPerSample = 0;
 	}
 	
 	/**
@@ -160,7 +167,7 @@ public class LocalSong extends Song{
 	 * @param length
 	 */
 	@Override
-	public void setLength(String length) {
+	public void setLength(long length) {
 		this.length = length;
 	}
 	
@@ -173,5 +180,46 @@ public class LocalSong extends Song{
 	public void setPath(String path) {
 		this.path = path;
 	}
+	
+	/**
+	 * Indicates whether some other object is "equal to" this one.
+	 * 
+	 * @param o - the reference object with which to compare.
+	 * 
+	 * @return - true if this object is the same as the obj argument; false otherwise.
+	 */
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof LocalSong)) {
+			return false;
+		}
 		
+		LocalSong s = (LocalSong) o;
+		
+		return s.getTitle().equals(title)
+				&& s.getArtist().equals(artist)
+				&& s.getAlbum().equals(album)
+				&& s.getLength() == length
+				&& s.getPath().equals(path)
+				&& s.getGraphic().equals(graphic)
+				&& s.getSongFormat() == this.songFormat
+				&& s.getSampleRate() == this.sampleRate
+				&& s.getNumChannels() == this.numChannels
+				&& s.getBitsPerSample() == this.bitsPerSample;
+	}
+	
+	/**
+	 * Returns a hash code value for the object. This method is supported for the 
+	 * benefit of hash tables such as those provided by java.util.HashMap. 
+	 * 
+	 * @return - a hash code value for this object.
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(title, artist, album, length, path, graphic, 
+				songFormat, sampleRate, numChannels, bitsPerSample);
+	}
 }

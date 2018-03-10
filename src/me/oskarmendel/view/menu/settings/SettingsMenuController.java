@@ -27,7 +27,11 @@
 
 package me.oskarmendel.view.menu.settings;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+import me.oskarmendel.model.SettingsModel;
 
 /**
  * Controller class for the Settings Menu.
@@ -38,10 +42,62 @@ import javafx.fxml.FXML;
  */
 public class SettingsMenuController {
 	
-	@FXML private GeneralTabController generalTablController;
+	@FXML private GeneralTabController settingsMenuGeneralController;
+	@FXML private SongTabController settingsMenuSongController;
+	@FXML private PlaylistTabController settingsMenuPlaylistController;
+	@FXML private SourceTabController settingsMenuSourceController;
+	@FXML private HotkeysTabController settingsMenuHotkeysController;
+	@FXML private AccountTabController settingsMenuAccountController;
+	
+	@FXML private Button settingsMenuApplyButton;
+	@FXML private Button settingsMenuCancelButton;
+	
+	private SettingsModel settingsModel;
 	
 	@FXML
 	public void initialize() {
 		
+	}
+	
+	@FXML
+	public void onApply(ActionEvent event) {
+		this.settingsMenuGeneralController.apply();
+		this.settingsMenuSongController.apply();
+		this.settingsMenuPlaylistController.apply();
+		this.settingsMenuSourceController.apply();
+		this.settingsMenuHotkeysController.apply();
+		this.settingsMenuAccountController.apply();
+		
+		Stage stage = (Stage) this.settingsMenuApplyButton.getScene().getWindow();
+		stage.close();
+	}
+	
+	@FXML
+	public void onCancel(ActionEvent event) {
+		
+	}
+	
+	/**
+	 * Initializes the SettingsModel which contains the applications settings.
+	 * 
+	 * @param settingsModel - settingsModel object to share data with.
+	 */
+	public void initSettingsModel(SettingsModel settingsModel) {
+		if (this.settingsModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
+		
+		this.settingsModel = settingsModel;
+		
+		this.settingsMenuGeneralController.initSettingsModel(this.settingsModel);
+		this.settingsMenuSongController.initSettingsModel(this.settingsModel);
+		this.settingsMenuPlaylistController.initSettingsModel(this.settingsModel);
+		this.settingsMenuSourceController.initSettingsModel(this.settingsModel);
+		this.settingsMenuHotkeysController.initSettingsModel(this.settingsModel);
+		this.settingsMenuAccountController.initSettingsModel(this.settingsModel);
+	}
+	
+	public SettingsModel get() {
+		return this.settingsModel;
 	}
 }

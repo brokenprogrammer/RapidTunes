@@ -46,11 +46,12 @@ import me.oskarmendel.song.Song;
  */
 public class LocalSearchTest {
 
-	LocalSearch search;
+	LocalSearchStrategy search;
 	
 	@Before
 	public void setUp() throws Exception {
-		search = new LocalSearch();
+		search = new LocalSearchStrategy();
+		search.setPath("./demo");
 	}
 
 	@After
@@ -58,7 +59,7 @@ public class LocalSearchTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.player.search.local.LocalSearch#LocalSearch()}.
+	 * Test method for {@link me.oskarmendel.player.search.local.LocalSearchStrategy#LocalSearch()}.
 	 */
 	@Test
 	public final void testLocalSearch() {
@@ -66,21 +67,21 @@ public class LocalSearchTest {
 	}
 
 	/**
-	 * Test method for {@link me.oskarmendel.player.search.local.LocalSearch#search()}.
+	 * Test method for {@link me.oskarmendel.player.search.local.LocalSearchStrategy#search()}.
 	 */
 	@Test
 	public final void testSearch() {
 		List<Song> songList = new ArrayList<Song>();
 		
 		//Find the local demo song called "Brad Sucks - Total Breakdown" in the demo folder.
-		songList = search.search("Brad Sucks", "./demo");
+		songList = search.search("Brad Sucks");
 		assertEquals("The local song 'Brad Sucks' was searched for", "Total Breakdown", songList.get(0).getTitle());
 		assertEquals("Only one song matched the search", 1, songList.size());
 		
 		//Find the local demo songs in the demo folder.
 		//TODO: Should't have to clear list when making new search.
 		songList.clear();
-		songList = search.search("", "./demo"); //Searching for all songs in that directory.
+		songList = search.search(""); //Searching for all songs in that directory.
 		
 		assertEquals("Two song matched the search", 2, songList.size());
 		assertEquals("The second local song is 'Jimmy Pengium'", "Untitled Star", songList.get(1).getTitle());

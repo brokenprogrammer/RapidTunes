@@ -29,7 +29,9 @@ package me.oskarmendel.player.youtubeplayer;
 
 import java.io.File;
 
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.scene.web.WebView;
+import javafx.util.Duration;
 import me.oskarmendel.player.Player;
 import me.oskarmendel.song.Song;
 import me.oskarmendel.song.YouTubeSong;
@@ -43,31 +45,22 @@ import me.oskarmendel.song.YouTubeSong;
  */
 public class YouTubePlayer extends Player{
 	
-	/**
-	 * Enumeration describing the different statuses of {@link YoutubePlayer}}.
-	 */
-	public enum Status {
-		READY,
-		PAUSED,
-		PLAYING,
-		STOPPED
-	};
-	
 	private WebView browserPlayer;
-	private Status status;
 	
 	/**
 	 * Default constructor for the YouTubePlayer initializing all 
 	 * fields to default values.
 	 */
 	public YouTubePlayer() {
+		super();
+		
 		browserPlayer = new WebView();
 		File localHtml = new File("res/view/player/YouTube.html");
 		
 		this.browserPlayer.getEngine().load(localHtml.toURI().toString());
 		this.status = Status.READY;
 		
-		//TODO: Set volume, Set current time.. 
+		//TODO: Set volume, Set current time..
 	}
 	
 	/**
@@ -81,6 +74,7 @@ public class YouTubePlayer extends Player{
 				this.browserPlayer.getEngine().executeScript("startVideo()");
 				
 				this.status = Status.PLAYING;
+				startTimer();
 			} else {
 				// TODO: Throw exception trying to play non initialized web player.
 			}
@@ -97,6 +91,7 @@ public class YouTubePlayer extends Player{
 				this.browserPlayer.getEngine().executeScript("pauseVideo()");
 				
 				this.status = Status.PAUSED;
+				stopTimer();
 			} else {
 				// TODO: Throw exception trying to play non initialized web player.
 			}
@@ -112,6 +107,7 @@ public class YouTubePlayer extends Player{
 		this.browserPlayer.getEngine().load(null);
 		
 		this.status = Status.STOPPED;
+		stopTimer();
 	}
 	
 	/**
@@ -123,18 +119,24 @@ public class YouTubePlayer extends Player{
 	public void setSong(Song song) {
 		YouTubeSong youtubeSong = (YouTubeSong)song;
 		this.browserPlayer.getEngine().executeScript("setSong('" + youtubeSong.getPath() + "')");
-		this.status = Status.PLAYING;
-	}
-
-	@Override
-	public void seek(int seekTime) {
 		
+		this.currentTime.set(Duration.ZERO);
+		
+		this.status = Status.PLAYING;
+		startTimer();
 	}
 
 	@Override
-	public double getCurrentTime() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void seek(long seekTime) {
+		stopTimer();
+		this.browserPlayer.getEngine().executeScript("seek(" + seekTime + ")");
+		this.currentTime.set(Duration.seconds(seekTime));
+		startTimer();
+	}
+
+	@Override
+	public ReadOnlyObjectProperty<Duration> getCurrentTime() {
+		return this.currentTime;
 	}
 
 	@Override
@@ -146,14 +148,5 @@ public class YouTubePlayer extends Player{
 	public int getVolume() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-	
-	/**
-	 * Getter for the current status of the YouTubePlayer.
-	 * 
-	 * @return - Current status of the YouTubePlayer.
-	 */
-	public Status getStatus() {
-		return this.status;
 	}
 }

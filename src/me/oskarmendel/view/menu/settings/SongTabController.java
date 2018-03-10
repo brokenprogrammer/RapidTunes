@@ -32,6 +32,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import me.oskarmendel.model.SettingsModel;
+import me.oskarmendel.settings.SongSettings;
+import me.oskarmendel.settings.SongSettings.PlaybackQuality;
 
 /**
  * Controller class for the Song tab in the Settings Menu.
@@ -40,7 +43,7 @@ import javafx.scene.control.Slider;
  * @version 0.00.00
  * @name SongTabController.java
  */
-public class SongTabController {
+public class SongTabController implements SettingsMenuTab {
 	
 	@FXML private CheckBox songSettingsCrossfadeCheckBox;
 	@FXML private Slider songSettingsCrossfadeSlider;
@@ -49,10 +52,54 @@ public class SongTabController {
 	@FXML private Slider songSettingsSoundEnhancerSlider;
 	
 	@FXML private Label songSettingsPlaybackQualityLabel;
-	@FXML private ChoiceBox songSettingsPlaybackQualityChoiceBox;
+	@FXML private ChoiceBox<PlaybackQuality> songSettingsPlaybackQualityChoiceBox;
+	
+	private SettingsModel settingsModel;
 	
 	@FXML
 	public void initialize() {
+		songSettingsPlaybackQualityChoiceBox.getItems().setAll(PlaybackQuality.values());
+	}
+	
+	/**
+	 * Applies the Settings within the Tab by modifying the current settings
+	 * within the SettingsModel contained within the SettingsTab.
+	 */
+	@Override
+	public void apply() {
+		SongSettings songSettings = new SongSettings();
 		
+		songSettings.setCrossfade(songSettingsCrossfadeCheckBox.isSelected());
+		songSettings.setCrossfadeSeconds((int) songSettingsCrossfadeSlider.getValue());
+		songSettings.setPlaybackQuality(songSettingsPlaybackQualityChoiceBox.getValue());
+		songSettings.setSoundEnhancer(songSettingsSoundEnhancerCheckBox.isSelected());
+		songSettings.setSoundEnhancerValue((int) songSettingsSoundEnhancerSlider.getValue());
+		
+		this.settingsModel.getSongSettingsProperty().set(songSettings);
+	}
+	
+	/**
+	 * Initializes the SettingsModel which contains the applications settings.
+	 * 
+	 * @param settingsModel - settingsModel object to share data with.
+	 */
+	@Override
+	public void initSettingsModel(SettingsModel settingsModel) {
+		if (this.settingsModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
+		
+		this.settingsModel = settingsModel;
+		
+		SongSettings songSettings = this.settingsModel.getSongSettings();
+		
+		// Initializing UI values based on current Settings.
+		songSettingsCrossfadeCheckBox.setSelected(songSettings.isCrossfade());
+		songSettingsCrossfadeSlider.setValue(songSettings.getCrossfadeSeconds());
+		
+		songSettingsSoundEnhancerCheckBox.setSelected(songSettings.isSoundEnhancer());
+		songSettingsSoundEnhancerSlider.setValue(songSettings.getSoundEnhancerValue());
+		
+		songSettingsPlaybackQualityChoiceBox.getSelectionModel().select(songSettings.getPlaybackQuality());
 	}
 }

@@ -32,6 +32,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import me.oskarmendel.util.song.MusicFile;
+import me.oskarmendel.util.song.flac.decoder.FlacReader;
 
 /**
  * Object to represent files of the Flac format.
@@ -98,7 +99,18 @@ public class FlacFile extends MusicFile {
 		}
 		
 		try {
-			FlacParser.parseFlacFile(this.file, this);
+			//TODO: This structure got to change somehow.
+			FlacReader reader = new FlacReader(this.file);
+			VorbisComments comments = reader.getVorbisComments();
+			
+			this.artist = comments.getArtist();
+			this.album = comments.getAlbum();
+			this.title = comments.getTitle();
+			this.genre = comments.getGenre();
+			this.trackNumber = comments.getTrackNumber();
+			this.date = comments.getDate();
+			
+			reader.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

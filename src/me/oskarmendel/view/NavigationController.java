@@ -35,13 +35,13 @@ import org.controlsfx.glyphfont.Glyph;
 import java.util.List;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import me.oskarmendel.model.SearchResultModel;
+import me.oskarmendel.model.SettingsModel;
 import me.oskarmendel.player.search.SearchHandler;
 import me.oskarmendel.song.Song;
 import me.oskarmendel.util.DoublyLinkedList;
@@ -66,6 +66,7 @@ public class NavigationController implements RapidTunesController {
 	
 	private static final Logger LOGGER = Logger.getLogger(NavigationController.class.getName());
 	
+	private SettingsModel settingsModel;
 	private SearchResultModel searchResultModel;
 	
 	DoublyLinkedList<String> searchHistory = new DoublyLinkedList<String>();
@@ -82,25 +83,38 @@ public class NavigationController implements RapidTunesController {
 		searchHistoryIterator = searchHistory.getIterator(true);
 		this.navLogoIco.size(25.0);
 		this.navAccountBtnIco.size(20.0);
+	}
+	
+	@FXML
+	public void onSearch(ActionEvent event) {
+		//Save the search to history so we can back to it later.
+        searchHistory.add(navSearchField.getText());
+        searchHistoryIterator.update(true);
+        
+        //SearchHandler performs a search and ads results to list.
+        SearchHandler sh = SearchHandler.getInstance();
+        List<Song> songList = sh.search(navSearchField.getText(), "./demo");
+        
+        //TODO: Make on change event / observable instead of changing entire list each time?
+        //Performs the search for the keywords in the YouTube data API and 
+        //populates the searchResultModel with results.
+        searchResultModel.setSearchResultList(songList);
+	}
+	
+	/**
+	 * Initializes the SettingsModel which contains the applications settings.
+	 * 
+	 * @param settingsModel - settingsModel object to share data with.
+	 */
+	public void initSettingsModel(SettingsModel settingsModel) {
+		if (this.settingsModel != null) {
+			throw new IllegalStateException("Model can only be initialized once");
+		}
 		
-		//Search Button in the search bar.
-		navSearchBtn.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override 
-		    public void handle(ActionEvent e) {
-		        //Save the search to history so we can back to it later.
-		        searchHistory.add(navSearchField.getText());
-		        searchHistoryIterator.update(true);
-		        
-		        //SearchHandler performs a search and ads results to list.
-		        SearchHandler sh = SearchHandler.getInstance();
-		        List<Song> songList = sh.search(navSearchField.getText(), "./demo");
-		        
-		        //TODO: Make on change event / observable instead of changing entire list each time?
-		        //Performs the search for the keywords in the YouTube data API and 
-		        //populates the searchResultModel with results.
-		        searchResultModel.setSearchResultList(songList);
-		    }
-		});
+		this.settingsModel = settingsModel;
+		
+		// Initialize the SettingsModel for the controller of the MenuBar.
+		this.menuBarController.initSettingsModel(settingsModel);
 	}
 	
 	/**

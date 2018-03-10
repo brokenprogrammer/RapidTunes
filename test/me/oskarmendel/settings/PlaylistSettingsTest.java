@@ -65,11 +65,14 @@ public class PlaylistSettingsTest {
 	public final void testPlaylistSettingsProperties() {
 		Properties properties = new Properties();
 		
+		properties.setProperty("savePlaylistsLocal", "true");
 		properties.setProperty("playlistDirectory", "myPlaylistDirectory/is/long");
 		properties.setProperty("autoExportYouTube", "true");
 		properties.setProperty("autoExportSoundCloud", "true");
 		
 		PlaylistSettings settings = new PlaylistSettings(properties);
+		
+		assertEquals("Save playlist locally is set to true", settings.getSavePlaylistLocal(), true);
 		
 		assertEquals("Playlist directory is set to: \"myPlaylistDirectory/is/long\"", settings.getPlaylistDirectory().equals("myPlaylistDirectory/is/long"), true);
 		
@@ -84,11 +87,14 @@ public class PlaylistSettingsTest {
 	public final void testToProperties() {
 		PlaylistSettings settings = new PlaylistSettings();
 		
+		settings.setSavePlaylistsLocal(true);
 		settings.setPlaylistDirectory("long/testing/directory");
 		settings.setAutoExportYouTube(true);
 		settings.setAutoExportSoundCloud(true);
 		
 		Properties properties = settings.toProperties();
+		
+		assertEquals("Save playlist locally is set to true", properties.getProperty("savePlaylistsLocal").equals("true"), true);
 		
 		assertEquals("Playlist directory is set to: \"long/testing/directory\"", properties.get("playlistDirectory").equals("long/testing/directory"), true);
 		
@@ -104,7 +110,9 @@ public class PlaylistSettingsTest {
 		PlaylistSettings settings = new PlaylistSettings();
 		
 		Properties properties = settings.getDefaultProperties();
-		
+
+		assertEquals("Default save playlist locally is set to false", properties.getProperty("savePlaylistsLocal").equals("true"), false);
+
 		assertEquals("Default playlist directory is set to: \"playlists/\"", properties.get("playlistDirectory").equals("playlists/"), true);
 		
 		assertEquals("Default auto export to YouTube is set to false.", properties.get("autoExportYouTube").equals("false"), true);

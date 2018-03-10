@@ -27,6 +27,11 @@
 
 package me.oskarmendel.player;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.util.Duration;
 import me.oskarmendel.song.Song;
 
 /**
@@ -36,64 +41,65 @@ import me.oskarmendel.song.Song;
  * @version 0.00.00
  * @name Player.java
  */
-public abstract class Player {
+public abstract class Player implements PlayerInterface {
+	
+	/**
+	 * Enumeration describing the different statuses of {@link Player}}.
+	 */
+	public enum Status {
+		READY,
+		PAUSED,
+		PLAYING,
+		STOPPED
+	};
 	
 	protected Song song;
 	
-	protected long currentTime;
+	protected ReadOnlyObjectWrapper<Duration> currentTime;
 	
 	protected int volume;
 	
-	/**
-	 * Starts playing the song or media. If the song was previously 
-	 * paused the song will resume the playback at where it was paused.
-	 */
-	public abstract void play();
+	protected Timer timer;
+	
+	protected Status status;
 	
 	/**
-	 * Pauses the playing of the song or media.
+	 * Default constructor for the abstract Player class that initializes
+	 * the Player with default values.
 	 */
-	public abstract void pause();
+	public Player() { 
+		this.currentTime = new ReadOnlyObjectWrapper<Duration>();
+		this.currentTime.set(Duration.ZERO);
+	}
 	
 	/**
-	 * Stops this player completley disposing media used by this player.
+	 * Starts the timer for the Player that is used to count seconds
+	 * for the current time of the Player.
 	 */
-	public abstract void stop();
+	public void startTimer() {
+		this.timer = new Timer(true);
+		this.timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				currentTime.set(currentTime.get().add(Duration.millis(100)));
+			}
+		}, 0, 100);
+	}
 	
 	/**
-	 * Sets the currently playing song to the specified Song object.
+	 * Stops the timer for the Player that counts the current time of the
+	 * Player.
+	 */
+	public void stopTimer() {
+		this.timer.cancel();
+	}
+	
+	/**
+	 * Getter for the current status of the Player.
 	 * 
-	 * @param song - Requested Song to play.
+	 * @return - Current status of the Player.
 	 */
-	public abstract void setSong(Song song);
-	
-	/**
-	 * Seeks the player to a new target time within the song or media. 
-	 * 
-	 * @param seekTime - Requested playback time in seconds.
-	 */
-	public abstract void seek(int seekTime);
-	
-	/**
-	 * Getter for the current playback time for the currently playing song
-	 * or media.
-	 * 
-	 * @return - Current playback time of the currently playing media or song.
-	 */
-	public abstract double getCurrentTime();
-	
-	/**
-	 * Setter for the volume value of this player. Accepts a value between
-	 * 0 - 100.
-	 * 
-	 * @param volume - Target volume to set the player to.
-	 */
-	public abstract void setVolume(int volume);
-	
-	/**
-	 * Getter for the volume value of this player. 
-	 * 
-	 * @return - Current volume of this player.
-	 */
-	public abstract int getVolume();
+	public Status getStatus() {
+		return this.status;
+	}
 }

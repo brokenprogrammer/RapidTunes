@@ -50,6 +50,8 @@ import javafx.stage.Stage;
 import me.oskarmendel.model.CurrentlyPlayingModel;
 import me.oskarmendel.model.SearchResultModel;
 import me.oskarmendel.model.SettingsModel;
+import me.oskarmendel.model.SongQueueModel;
+import me.oskarmendel.settings.listener.SettingsChangeListenerFactory;
 import me.oskarmendel.view.NavigationController;
 import me.oskarmendel.view.PlaylistController;
 import me.oskarmendel.view.RapidTunesController;
@@ -71,6 +73,7 @@ public class StageManager {
 	
 	private SettingsModel settingsModel;
 	private SearchResultModel searchResultModel;
+	private SongQueueModel songQueueModel;
 	private CurrentlyPlayingModel currentlyPlayingModel;
 	private Stage mainStage;
 	
@@ -118,6 +121,11 @@ public class StageManager {
 		mainStage = primaryStage;
 		mainStage.setTitle("RapidTunes");
 		
+		this.settingsModel = new SettingsModel();
+		this.searchResultModel = new SearchResultModel();
+		this.songQueueModel = new SongQueueModel();
+		this.currentlyPlayingModel = new CurrentlyPlayingModel();
+		
 		LOGGER.log(Level.FINE, "Loading layouts..");
 		// Loading all the layouts for the different parts of the application.
 		VBox navigationLayout = (VBox) loadLayout(RapidTunesController.NAVIGATION_LAYOUT);
@@ -126,9 +134,7 @@ public class StageManager {
 		AnchorPane songBrowserLayout = (AnchorPane) loadLayout(RapidTunesController.SONGBROWSER_LAYOUT);
 		BorderPane rootLayout = (BorderPane) loadLayout(RapidTunesController.ROOT_LAYOUT);
 		
-		settingsModel = new SettingsModel();
-		searchResultModel = new SearchResultModel();
-		currentlyPlayingModel = new CurrentlyPlayingModel();
+		getNavigationController().initSettingsModel(settingsModel);
 		
 		getNavigationController().initSearchResultModel(searchResultModel);
 		getSongBrowserController().initSearchResultModel(searchResultModel);
@@ -137,6 +143,9 @@ public class StageManager {
 		getSongBrowserController().initCurrentlyPlayingModel(currentlyPlayingModel);
 		getSongController().initCurrentlyPlayingModel(currentlyPlayingModel);
 		
+		getSongBrowserController().initSongQueueModel(songQueueModel);
+		getSongController().initSongQueueModel(songQueueModel);
+		
 		rootLayout.setTop(navigationLayout);
 		rootLayout.setLeft(playlistControlLayout);
 		rootLayout.setBottom(songControlLayout);
@@ -144,8 +153,10 @@ public class StageManager {
 		
 		Scene mainScene = new Scene(rootLayout);
 		
-		LOGGER.log(Level.FINE, "Loading stylesheet: " + RapidTunesController.DEFAULT_STYLING);
-		mainScene.getStylesheets().add(getClass().getResource(RapidTunesController.DEFAULT_STYLING).toString());
+		bindSettingsListeners(new SettingsChangeListenerFactory(), mainScene);
+		
+		LOGGER.log(Level.FINE, "Loading stylesheet: " + this.settingsModel.getGeneralSettings().getTheme());
+		mainScene.getStylesheets().add(this.settingsModel.getGeneralSettings().getTheme());
 		
 		mainStage.setScene(mainScene);
 		mainStage.setMinWidth(800);
@@ -166,7 +177,8 @@ public class StageManager {
 		
 		LOGGER.log(Level.FINE, "Loading Layout: " + layout);
 		loader.setLocation(getClass().getResource(layout));
-		loader.setResources(getResourseBundle(System.getProperty("user.language")));
+		//loader.setResources(getResourseBundle(System.getProperty("user.language")));
+		loader.setResources(getResourseBundle(this.settingsModel.getGeneralSettings().getLanguage().toString()));		
 		Parent nodeLayout = loader.load();
 		
 		//Store controller of target layout
@@ -183,8 +195,10 @@ public class StageManager {
 	 * @return ResourceBundle for entire application
 	 */
 	private ResourceBundle getResourseBundle(String language) {
-		switch (language) {
+		switch (language.toLowerCase()) {
 			case "sv":
+				return ResourceBundle.getBundle("bundle.strings",
+						new Locale(language));
 			case "ru":
 				return ResourceBundle.getBundle("bundle.strings",
 						new Locale(language), new UTF8Control());
@@ -192,6 +206,21 @@ public class StageManager {
 			default:
 				return ResourceBundle.getBundle("bundle.strings", Locale.ROOT, new UTF8Control());
 		}
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @param changeListenerFactory
+	 * @param mainScene
+	 */
+	private void bindSettingsListeners(SettingsChangeListenerFactory changeListenerFactory, Scene mainScene) {
+		this.settingsModel.getGeneralSettingsProperty().addListener(changeListenerFactory.getGeneralSettingsChangeListener(mainScene));
+		this.settingsModel.getSongSettingsProperty().addListener(changeListenerFactory.getSongSettingsChangeListener());
+		this.settingsModel.getPlaylistSettingsProperty().addListener(changeListenerFactory.getPlaylistSettingsChangeListener());
+		this.settingsModel.getSourceSettingsProperty().addListener(changeListenerFactory.getSourceSettingsChangeListener());
+		this.settingsModel.getHotkeySettingsProperty().addListener(changeListenerFactory.getHotkeySettingsChangeListener());
+		this.settingsModel.getAccountSettingsProperty().addListener(changeListenerFactory.getAccountSettingsChangeListener());
 	}
 
 	/**

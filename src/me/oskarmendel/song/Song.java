@@ -27,6 +27,8 @@
 
 package me.oskarmendel.song;
 
+import java.util.Objects;
+
 /**
  * Object representing a song
  * 
@@ -39,13 +41,22 @@ public abstract class Song {
 	protected String title;
 	protected String artist;
 	protected String album;
-	protected String length;
+	protected long length;
 	protected String path;
 	
 	protected String graphic;
 	
+	/**
+	 * Default constructor for the abstract Song class initializing all 
+	 * members to default values.
+	 */
 	public Song(){
-		
+		this.title = "";
+		this.artist = "";
+		this.album = "";
+		this.length = 0;
+		this.path = "";
+		this.graphic = "";
 	}
 	
 	/**
@@ -101,7 +112,7 @@ public abstract class Song {
 	 * 
 	 * @return length
 	 */
-	public String getLength(){
+	public long getLength(){
 		return length;
 	}
 	
@@ -110,7 +121,7 @@ public abstract class Song {
 	 * 
 	 * @param length
 	 */
-	abstract void setLength(String length);
+	abstract void setLength(long length);
 	
 	/**
 	 * Get song path
@@ -144,5 +155,42 @@ public abstract class Song {
 	 */
 	public String getGraphic() {
 		return this.graphic;
+	}
+	
+	/**
+	 * Indicates whether some other object is "equal to" this one.
+	 * 
+	 * @param o - the reference object with which to compare.
+	 * 
+	 * @return - true if this object is the same as the obj argument; false otherwise.
+	 */
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		}
+		if (!(o instanceof Song)) {
+			return false;
+		}
+		
+		Song s = (Song) o;
+		
+		return s.getTitle().equals(title)
+				&& s.getArtist().equals(artist)
+				&& s.getAlbum().equals(album)
+				&& s.getLength() == length
+				&& s.getPath().equals(path)
+				&& s.getGraphic().equals(graphic);
+	}
+	
+	/**
+	 * Returns a hash code value for the object. This method is supported for the 
+	 * benefit of hash tables such as those provided by java.util.HashMap. 
+	 * 
+	 * @return - a hash code value for this object.
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(title, artist, album, length, path, graphic);
 	}
 }

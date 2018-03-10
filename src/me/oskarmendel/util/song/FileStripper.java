@@ -102,7 +102,7 @@ public class FileStripper {
 		song.setArtist(flac.getArtist());
 		song.setAlbum(flac.getAlbum());
 		song.setPath(flacFile.toURI().toString());
-		song.setLength("");
+		song.setLength(0);
 		
 		song.setSampleRate(flac.getSampleRate());
 		song.setNumChannels(flac.getNumChannels());
@@ -128,7 +128,7 @@ public class FileStripper {
 		mp3Song.setTitle(id3v1Tags.getTitle());
 		mp3Song.setArtist(id3v1Tags.getArtist());
 		mp3Song.setAlbum(id3v1Tags.getAlbum());
-		mp3Song.setLength("" + mp3File.getLengthInSeconds());
+		mp3Song.setLength(mp3File.getLengthInSeconds());
 		
 		return mp3Song;
 	}
@@ -150,7 +150,7 @@ public class FileStripper {
 		mp3Song.setTitle(id3v2Tags.getTitle());
 		mp3Song.setArtist(id3v2Tags.getArtist());
 		mp3Song.setAlbum(id3v2Tags.getAlbum());
-		mp3Song.setLength("" + mp3File.getLengthInSeconds());
+		mp3Song.setLength(mp3File.getLengthInSeconds());
 		
 		return mp3Song;
 	}

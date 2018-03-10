@@ -31,6 +31,7 @@ import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
@@ -49,20 +50,9 @@ import me.oskarmendel.song.Song;
  * @name LocalPlayer.java
  */
 public class LocalPlayer extends Player {
-
-	/**
-	 * Enumeration describing the different statuses of {@link YoutubePlayer}}.
-	 */
-	public enum Status {
-		READY,
-		PAUSED,
-		PLAYING,
-		STOPPED
-	};
 	
 	private MediaPlayer fxPlayer;
 	private Media currentMedia;
-	private Status status;
 	
 	/**
 	 * Default constructor for the LocalPlayer initializing all 
@@ -163,7 +153,7 @@ public class LocalPlayer extends Player {
 	 * @param seekTime - Requested playback time in seconds.
 	 */
 	@Override
-	public void seek(int seekTime) {
+	public void seek(long seekTime) {
 		if (this.fxPlayer != null) {
 			//TODO: Check that seekTime is in range.
 			this.fxPlayer.seek(Duration.seconds(seekTime));
@@ -178,10 +168,10 @@ public class LocalPlayer extends Player {
 	 * 
 	 * @return - Current playback time of the currently playing media or song in seconds.
 	 */
-	@Override
-	public double getCurrentTime() {
+	@Override 
+	public ReadOnlyObjectProperty<Duration> getCurrentTime() {
 		if (this.fxPlayer != null) {
-			return this.fxPlayer.getCurrentTime().toSeconds();
+			return this.fxPlayer.currentTimeProperty();
 		} else {
 			// TODO: Create own RT exception type for this.
 			throw new IllegalStateException("fxPlayer not initialized.");
@@ -216,14 +206,5 @@ public class LocalPlayer extends Player {
 	@Override
 	public int getVolume() {
 		return this.volume;
-	}
-	
-	/**
-	 * Getter for the current status of the LocalPlayer.
-	 * 
-	 * @return - Current status of the LocalPlayer.
-	 */
-	public Status getStatus() {
-		return this.status;
 	}
 }
