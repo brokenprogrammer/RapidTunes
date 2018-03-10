@@ -2,31 +2,83 @@ package me.oskarmendel.util.flac;
 
 import java.io.IOException;
 
+/**
+ * Frame object with all the frame fields for a flac frame.
+ * 
+ * @author Oskar Mendel
+ * @version 0.00.00
+ * @name Frame.java
+ */
 public class Frame {
 	
+	/**
+	 * The different block size codes supported by flac.
+	 */
 	private static final int[] BLOCK_SIZE_CODES = {
 		-1, 192, 576, 1152, 2304, 4608, -1, -1, 256, 
 		512, 1024, 2048, 4096, 8192, 16384, 32768
 	};
 	
-	private static final int[] SAMPLE_SIZE_CODES = {
+	/**
+	 * The bits per sample sizes or samples sizes supported by flac.
+	 */
+	private static final int[] BITS_PER_SAMPLE_CODES = {
 		-1, 8, 12, -1, 16, 20, 24, -1 
 	};
 	
+	/**
+	 * The sample rate codes supported by flac.
+	 */
 	private static final int[] SAMPLE_RATE_CODES = {
 		-1, 88200, 176400, 192000, 8000, 16000, 
 		22050, 24000, 32000, 44100, 48000, 96000
 	};
 	
+	/**
+	 * The index for the subframe where the first subframe has index 0 and future
+	 * frame increments this value.
+	 */
 	private int frameIndex;
+	
+	/**
+	 * The offset of this frame in respect to the input stream.
+	 */
 	private long sampleOffset;
+	
+	/**
+	 * The number of channels for the audio this frame is using.
+	 */
 	private int numberChannels;
+	
+	/**
+	 * The number of independent channels for the frame, determines if 
+	 * the frame is using stereo, mono etc..
+	 */
 	private int channelAssignment;
+	
+	/**
+	 * The number of samples per channel in this frame.
+	 */
 	private int blockSize;
+	
+	/**
+	 * The sample rate for this frame specified in hertz (Hz).
+	 */
 	private int sampleRate;
+	
+	/**
+	 * The bits per sample for this stream of the sample size.
+	 */
 	private int bitsPerSample;
+	
+	/**
+	 * The size of this frame in bytes.
+	 */
 	private int frameSize;
 	
+	/**
+	 * Constructs a new empty frame invalidating all its members.
+	 */
 	public Frame() {
 		frameIndex = -1;
 		sampleOffset = -1;
@@ -38,6 +90,15 @@ public class Frame {
 		frameSize = -1;
 	}
 	
+	/**
+	 * Reads a new frame header from the specified input stream.
+	 * 
+	 * @param input - Input stream to read frame header form.
+	 * 
+	 * @return - Frame header populated with read data.
+	 * 
+	 * @throws IOException - On input stream failure.
+	 */
 	public static Frame readFrame (FlacInputStream input) throws IOException {
 		input.resetCrcs();
 		
@@ -113,6 +174,15 @@ public class Frame {
 		return frame;
 	}
 
+	/**
+	 * Reads a UTF-8 coded sample number used for the blocksize.
+	 * 
+	 * @param input - Input stream to read bytes from.
+	 * 
+	 * @return - 36 bit unsigned integer form read bytes.
+	 * 
+	 * @throws IOException - On input stream failure.
+	 */
 	private static long readUtf8Int(FlacInputStream input) throws IOException {
 		int h = input.readUnsignedInt(8);
 		int n = Integer.numberOfLeadingZeros(~(h << 24));
@@ -141,6 +211,18 @@ public class Frame {
 		}
 	}
 	
+	/**
+	 * Reads the blockSize based on the values previously read from the input stream and
+	 * translates it to the actual block size of this frame.
+	 * 
+	 * @param blockSize - Previously read blockSize value.
+	 * 
+	 * @param input - Input stream to read data from.
+	 * 
+	 * @return - The block size this frame is using.
+	 * 
+	 * @throws IOException - On input stream failure.
+	 */
 	private static int readBlockSize(int blockSize, FlacInputStream input) throws IOException {
 		if ((blockSize >>> 4) != 0) {
 			throw new IllegalArgumentException();
@@ -164,6 +246,17 @@ public class Frame {
 		}
 	}
 	
+	/**
+	 * Reads the sample rate based on the previously read sample rate value and
+	 * translates it to a valid sample rate for this frame.
+	 * 
+	 * @param sampleRate - Previously read sampleRate value.
+	 * @param input - Input stream to read data from.
+	 * 
+	 * @return - The sample rate for this frame.
+	 * 
+	 * @throws IOException - On input stream failure.
+	 */
 	private static int readSampleRate(int sampleRate, FlacInputStream input) throws IOException {
 		if ((sampleRate >>> 4) != 0) {
 			throw new IllegalArgumentException();
@@ -192,6 +285,14 @@ public class Frame {
 		
 	}
 	
+	/**
+	 * Reads the bits per samples based on the previously read value and
+	 * translates it to a valid bits per sampel for this frame.
+	 * 
+	 * @param bitsPerSample - Previously read bits per sample value.
+	 * 
+	 * @return - The bits per sample for this frame.
+	 */
 	private static int readBitsPerSample(int bitsPerSample) {
 		if ((bitsPerSample >>> 3) != 0) {
 			throw new IllegalArgumentException();
@@ -200,7 +301,7 @@ public class Frame {
 		if (bitsPerSample == 0) {
 			return -1;
 		} else {
-			int res = SAMPLE_SIZE_CODES[bitsPerSample];
+			int res = BITS_PER_SAMPLE_CODES[bitsPerSample];
 			
 			if (res == -1) {
 				throw new IllegalStateException("Reserved bits per sample size."); // TODO: Make this my own exception

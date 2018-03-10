@@ -10,7 +10,7 @@ import me.oskarmendel.util.song.flac.structure.FlacMetadataBlockType;
 /**
  * 
  * @author Oskar Mendel
- * TODO: Finalize Frame & FrameReader + add docs.
+ * 
  * TODO: Finish the SeekTable class.
  * TODO: Look over all classes and make members private.
  * TODO: Implement seek methods.

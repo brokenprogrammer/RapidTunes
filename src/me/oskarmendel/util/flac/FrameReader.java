@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
+ * Decodes a flac frame using the give input stream.
  * 
- * @author Oskar
- *
+ * @author Oskar Mendel
+ * @version 0.00.00
+ * @name FrameReader.java
  */
 public class FrameReader {
 
@@ -23,14 +25,31 @@ public class FrameReader {
 			{4, -6, 4, -1}
 	};
 	
+	/**
+	 * The input stream used to read the frames.
+	 */
 	private FlacInputStream input;
+	
+	/**
+	 * The expected bitsPerSample for the frames.
+	 */
 	private int bitsPerSample;
 	
 	private long[] temp0;
-	private long[] temp1;		//TODO: Are theese needed?
+	private long[] temp1;
 	
+	/**
+	 * The number of samples per channel in the current frame that is being
+	 * read. This value is only used while a frame is being read.
+	 */
 	private int currentBlockSize;
 	
+	/**
+	 * Constructs a new FrameReader using the specified input stream.
+	 * 
+	 * @param input - Input stream to read frames from.
+	 * @param bitsPerSample - The expected bits per sample for the frames to read.
+	 */
 	public FrameReader(FlacInputStream input, int bitsPerSample) {
 		this.input = input;
 		this.bitsPerSample = bitsPerSample;
@@ -41,7 +60,17 @@ public class FrameReader {
 		this.currentBlockSize = -1;
 	}
 	
-	//TODO Change so it returns my own frame.
+	/**
+	 * Reads the next frame from the input stream member and decodes it and stores it
+	 * within the specified samples array. When finished the Frame data object is returned.
+	 * 
+	 * @param samples - The samples array to which the data is read into.
+	 * @param offset - The offset to store data from.
+	 * 
+	 * @return - Frame data object populated with data for the read frame.
+	 * 
+	 * @throws IOException - TODO
+	 */
 	public Frame readFrame(int[][] samples, int offset) throws IOException {
 		if (this.input == null) {
 			throw new IllegalStateException("Input stream was invalidated.");
@@ -110,6 +139,16 @@ public class FrameReader {
 		return frame;
 	}
 	
+	/**
+	 * Reads the subframes for the current frame.
+	 * 
+	 * @param bitsPerSample - The bits per sample used for the frame.
+	 * @param channelAssignment - The channel assignment for the frame that is being read.
+	 * @param samples - The samples array to which the data is read into.
+	 * @param offset - The offset to store data from.
+	 * 
+	 * @throws IOException - TODO
+	 */
 	private void readSubframes(int bitsPerSample, int channelAssignment, int[][] samples, int offset) throws IOException {
 		if (bitsPerSample > 32 || bitsPerSample < 1) {
 			throw new IllegalArgumentException();
@@ -130,16 +169,15 @@ public class FrameReader {
 				}
 			}
 		} else if (channelAssignment >= 8 && channelAssignment <= 10) {
+			
 			// Handle the 8 - 10 coded channels
-//			if (channelAssignment == 9) {
-//				readSubframe(bitsPerSample + 1, temp0);
-//				readSubframe(bitsPerSample, 	temp1);
-//			} else {
-//				readSubframe(bitsPerSample, 	temp0);
-//				readSubframe(bitsPerSample + 1, temp1);
-//			}
-			readSubframe(bitsPerSample + (channelAssignment == 9 ? 1 : 0), temp0);
-			readSubframe(bitsPerSample + (channelAssignment == 9 ? 0 : 1), temp1);
+			if (channelAssignment == 9) {
+				readSubframe(bitsPerSample + 1, temp0);
+				readSubframe(bitsPerSample, 	temp1);
+			} else {
+				readSubframe(bitsPerSample, 	temp0);
+				readSubframe(bitsPerSample + 1, temp1);
+			}
 			
 			if (channelAssignment == 8) {
 				for (int i = 0; i < this.currentBlockSize; i++) {
@@ -173,6 +211,15 @@ public class FrameReader {
 		}
 	}
 	
+	/**
+	 * Reads one subframe from the input stream member and decodes it then writes it
+	 * to the given samples array.
+	 * 
+	 * @param bitsPerSample - The bits per sample used for the frame.
+	 * @param samples - The samples array to which the data is read into.
+	 * 
+	 * @throws IOException - TODO
+	 */
 	private void readSubframe(int bitsPerSample, long[] samples) throws IOException {
 		if (samples == null) {
 			throw new IllegalArgumentException();
@@ -251,6 +298,16 @@ public class FrameReader {
 		}
 	}
 	
+	/**
+	 * Reads the input stream for a fixed prediction subframe and performs the computation
+	 * based on the given prediction order.
+	 * 
+	 * @param predictionOrder - Prediction order for the fixed prediction.
+	 * @param bitsPerSample - The bits per sample used for the current frame.
+	 * @param samples - The samples array to which the data is read into.
+	 * 
+	 * @throws IOException - TODO
+	 */
 	private void readFixedPredictionSubframe(int predictionOrder, int bitsPerSample, long[] samples) throws IOException {
 		if (samples == null) {
 			throw new IllegalArgumentException();
@@ -277,6 +334,16 @@ public class FrameReader {
 		handleLPC(FIXED_COEFFICIENTS[predictionOrder], bitsPerSample, 0, samples);
 	}
 	
+	/**
+	 * Reads the input stream for a linear prediction subframe and performs the computation
+	 * based on the given lpc order.
+	 * 
+	 * @param lpcOrder - The linear predictive coding.
+	 * @param bitsPerSample - The bits per sample used for the current frame.
+	 * @param samples - The samples array to which the data is read into.
+	 * 
+	 * @throws IOException - TODO
+	 */
 	private void readLinearPredictionSubframe(int lpcOrder, int bitsPerSample, long[] samples) throws IOException {
 		if (samples == null) {
 			throw new IllegalArgumentException();
@@ -322,6 +389,15 @@ public class FrameReader {
 		handleLPC(coefficients, bitsPerSample, predictorCoefficientShift, samples);
 	}
 	
+	/**
+	 * Reads the Rice-coded values from the input stream storing them in 
+	 * the specified samples array from the specified start position.
+	 * 
+	 * @param start - Start position to store read rice coded values to.
+	 * @param samples - The samples array to which the data is read into.
+	 * 
+	 * @throws IOException - TODO
+	 */
 	private void readSubframeResiduals(int start, long[] samples) throws IOException {
 		if (samples == null) {
 			throw new IllegalArgumentException();
@@ -370,6 +446,15 @@ public class FrameReader {
 		}
 	}
 	
+	/**
+	 * Updates the values read under the predictive coding and writes them to the
+	 * specified samples array.
+	 * 
+	 * @param coefficients - Coefficients read or being used for calculating the samples.
+	 * @param bitsPerSample - The bits per sample for the frames to read.
+	 * @param coefficientShift - The shift of the coefficients.
+	 * @param samples - The samples array to which the data is read into.
+	 */
 	private void handleLPC(int[] coefficients, int bitsPerSample, int coefficientShift, long[] samples) {
 		if (samples == null) {
 			throw new IllegalArgumentException();
