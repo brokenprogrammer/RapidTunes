@@ -5,15 +5,21 @@ import java.io.IOException;
 import java.util.Arrays;
 
 /**
+ * An abstract implementation of the FlacInputStream.
  * 
- * @author Oskar
- *
+ * @author Oskar Mendel
+ * @version 0.00.00
+ * @name AbstractFlacInputStream.java
  */
 public abstract class AbstractFlacInputStream implements FlacInputStream {
 	
-	private static byte[] CRC8_TABLE  = new byte[256];
-	private static char[] CRC16_TABLE = new char[256];
+	private static final int BYTE_BUFFER_SIZE = 4096;
+	private static final int CRC_TABLE_SIZE = 256;
 	
+	private static byte[] CRC8_TABLE  = new byte[CRC_TABLE_SIZE];
+	private static char[] CRC16_TABLE = new char[CRC_TABLE_SIZE];
+	
+	//TODO: These must be changed into something sane.
 	private static final int RICE_DECODING_TABLE_BITS = 13;  // Configurable, must be positive
 	private static final int RICE_DECODING_TABLE_MASK = (1 << RICE_DECODING_TABLE_BITS) - 1;
 	private static final byte[][] RICE_DECODING_CONSUMED_TABLES = new byte[31][1 << RICE_DECODING_TABLE_BITS];
@@ -33,16 +39,19 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 	private int crcStartIndex;
 	
 	/**
-	 * 
+	 * Constructs a new AbstractFlacInputStream, this initializes the 
+	 * bytes buffer and resets the position to 0.
 	 */
 	public AbstractFlacInputStream() {
-		this.byteBuffer = new byte[4096];
+		this.byteBuffer = new byte[BYTE_BUFFER_SIZE];
 		this.positionChanged(0);
 	}
 	
 	/**
+	 * When child class handles seeking this method must be used to flush
+	 * the buffers from incoming data.
 	 * 
-	 * @param position
+	 * @param position - Target position to change the buffer start position to.
 	 */
 	protected void positionChanged(long position) {
 		this.byteBufferStartPosition = position;
@@ -54,6 +63,15 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 		this.resetCrcs();
 	}
 	
+	/**
+	 * Reads the next specified number of bits as an unsigned integer.
+	 * 
+	 * @param n - Number of bits to read.
+	 * 
+	 * @return - An unsigned integer read with the specified number of bits.
+	 * 
+	 * @throws IOException - TODO
+	 */
 	public int readUnsignedInt(int n) throws IOException {
 		if (n < 0 || n > 32) {
 			throw new IllegalArgumentException();
@@ -80,7 +98,13 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 	}
 	
 	/**
+	 * Reads the next specified number of bits as a signed integer.
 	 * 
+	 * @param n - Number of bits to read.
+	 * 
+	 * @return - An signed integer read with the specified number of bits.
+	 * 
+	 * @throws IOException - TODO
 	 */
 	public int readSignedInt(int n) throws IOException {
 		int bitShift = 32 - n;
@@ -88,7 +112,15 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 	}
 	
 	/**
+	 * Reads and decodes the next batch of Rice-coded signed integers.
+	 * Rice-coded integers might read a very large number of bits from the underlying stream.
 	 * 
+	 * @param param - The encoding parameter for the rice partition.
+	 * @param result - The array to store the result within.
+	 * @param start - Start index of the result.
+	 * @param end - End index of the result.
+	 * 
+	 * @throws IOException - TODO
 	 */
 	public void readRiceSignedInts(int param, long[] result, int start, int end) throws IOException {
 		if (param < 0 || param > 31) {
@@ -157,8 +189,9 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 	}
 	
 	/**
+	 * Appends bits to the bit buffer to fill it properly.
 	 * 
-	 * @throws IOException
+	 * @throws IOException - TODO
 	 */
 	private void fillBitBuffer() throws IOException {
 		int index = this.byteBufferIndex;
@@ -187,7 +220,12 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 	}
 	
 	/**
+	 * Reads the next unsigned byte value.
 	 * 
+	 * @return - The next byte as an unsigned byte value in the range of 0 - 255.
+	 * 
+	 * @throws IOException - TODO
+	 * @throws IllegalStateException - If the input stream is at an invalid byte boundary.
 	 */
 	public int readByte() throws IOException {
 		if (!this.checkByteAligned()) {
@@ -205,7 +243,12 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 	}
 	
 	/**
+	 * Reads the specified byte array fully.
 	 * 
+	 * @param b - Byte array to read all the bytes into.
+	 * 
+	 * @throws IOException - TODO
+	 * @throws IllegalStateException - If the input stream is at an invalid byte boundary.
 	 */
 	public void readAll(byte[] b) throws IOException {
 		if (b == null) {
@@ -221,8 +264,10 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 	}
 	
 	/**
+	 * Reads a byte from the byte buffer returning a unsigned integer from the read byte.
 	 * 
-	 * @return
+	 * @return - A read unsigned 8 bit integer and -1 on failure.
+	 * 
 	 * @throws IOException
 	 */
 	private int readUnderlying() throws IOException {
@@ -249,18 +294,24 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 	}
 	
 	/**
+	 * Abstract readUnderlying method that allows for child's to specify how to read
+	 * a byte from its underlying byte buffer.
 	 * 
-	 * @param buf
-	 * @param off
-	 * @param len
-	 * @return
-	 * @throws IOException
+	 * @param buf - The buffer into which the data is read.
+	 * @param off - The start offset in array b at which the data is written.
+	 * @param len - The maximum number of bytes read.
+	 * 
+	 * @return - the total number of bytes read into the buffer, 
+	 * 	or -1 if there is no more data because the end of the file has been reached.
+	 * 
+	 * @throws IOException - TODO
 	 */
 	protected abstract int readUnderlying(byte[] buf, int off, int len) throws IOException;
 	
 	/**
+	 * Checks if the byte is aligned.
 	 * 
-	 * @return
+	 * @return True if it is aligned; False otherwise.
 	 */
 	private boolean checkByteAligned() {
 		if (bitBufferLength % 8 != 0) {
@@ -271,7 +322,9 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 	}
 	
 	/**
+	 * Sets the current byte position to the start of the CRC calculations.
 	 * 
+	 * @throws IllegalStateException - If the input stream is at an invalid byte boundary.
 	 */
 	public void resetCrcs() {
 		if (!this.checkByteAligned()) {
@@ -284,7 +337,11 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 	}
 	
 	/**
+	 * Returns the CRC8 hash of the read bytes. 
 	 * 
+	 * @return - CRC8 hash of the read bytes.
+	 * 
+	 * @throws IllegalStateException - If the input stream is at an invalid byte boundary.
 	 */
 	public int getCrc8() {
 		if (!this.checkByteAligned()) {
@@ -300,7 +357,11 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 	}
 	
 	/**
+	 * Returns the CRC16 hash of the read bytes.
 	 * 
+	 * @return - CRC16 hash of the read bytes.
+	 * 
+	 * @throws IllegalStateException - If the input stream is at an invalid byte boundary.
 	 */
 	public int getCrc16() {
 		if (!this.checkByteAligned()) {
@@ -315,8 +376,10 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 		return this.crc16;
 	}
 	
-	/*
+	/**
+	 * Updates the two CRC hashes using the data within the byte buffer.
 	 * 
+	 * @param trailingBytes - The number of trailing unused bytes within the buffer.
 	 */
 	private void updateCrcs(int trailingBytes) {
 		int end = this.byteBufferIndex - trailingBytes;
@@ -336,7 +399,28 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 	}
 	
 	/**
+	 * Returns the current byte position of the stream.
 	 * 
+	 * @return - Current byte position of the stream.
+	 */
+	public long getPosition() {
+		return this.byteBufferStartPosition + this.byteBufferIndex 
+				- (this.bitBufferLength + 7) / 8;
+	}
+	
+	/**
+	 * Returns the current number of read bits in the current byte.
+	 * This is in a range from 0 - 7
+	 * 
+	 * @return - Current number of bits read in current byte.
+	 */
+	public int getBitPosition() {
+		return (-this.bitBufferLength) & 7;
+	}
+	
+	/**
+	 * Closes the underlying objects and resources and discards the buffers.
+	 * Calling this invalidates the input stream and it is then forbidden to call its members.
 	 */
 	public void close() throws IOException {
 		this.byteBuffer = null;
@@ -349,24 +433,6 @@ public abstract class AbstractFlacInputStream implements FlacInputStream {
 		this.crcStartIndex = -1;
 	}
 	
-	/**
-	 * 
-	 */
-	public long getPosition() {
-		return this.byteBufferStartPosition + this.byteBufferIndex 
-				- (this.bitBufferLength + 7) / 8;
-	}
-	
-	/**
-	 * 
-	 */
-	public int getBitPosition() {
-		return (-this.bitBufferLength) & 7;
-	}
-	
-	/**
-	 * 
-	 */
 	static {
 		for (int i = 0; i < CRC8_TABLE.length; i++) {
 			int c8 = i;
