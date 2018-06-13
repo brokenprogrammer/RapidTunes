@@ -52,6 +52,7 @@ import me.oskarmendel.song.Song;
 public class LocalPlayer extends Player {
 	
 	private MediaPlayer fxPlayer;
+	private FlacPlayer flacPlayer;
 	private Media currentMedia;
 	
 	/**
@@ -74,7 +75,7 @@ public class LocalPlayer extends Player {
 				
 				this.status = Status.PLAYING;
 			} else {
-				//Throw exception, trying to play non existing song.
+				//TODO: Throw exception, trying to play non existing song.
 			}
 		}
 	}
