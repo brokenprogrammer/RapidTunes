@@ -135,4 +135,44 @@ public class FlacPlayer extends Player {
 	private void dispose() {
 		//TODO: Implement. Clear all objects.
 	}
+	
+	private class FlacPlayerThread extends Thread {
+		
+		private boolean playing = false;
+		
+		private FlacReader reader;
+		private StreamInfo streamInfo;
+		private AudioFormat format;
+		private DataLine.Info info;
+		private SourceDataLine line;
+		
+		private int bytesPerSample;
+		private long startTime;
+		private int[][] samples;
+		private byte[] sampleBytes;
+		
+		public FlacPlayerThread() {
+			
+		}
+		
+		public void run() {
+			try {
+				while (this.playing) {
+					int blockSamples = this.reader.readAudioBlock(samples, 0);
+					int sampleBytesLen = 0;
+					for (int index = 0; index < blockSamples; index++) {
+						for (int channel = 0; channel < this.streamInfo.getNumChannels(); channel++) {
+							int value = this.samples[channel][index];
+							for (int i = 0; i < this.bytesPerSample; i++, sampleBytesLen++) {
+								this.sampleBytes[sampleBytesLen] = (byte)(value >>> (i << 3));
+							}
+						}
+					}
+					this.line.write(this.sampleBytes, 0, sampleBytesLen);
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
