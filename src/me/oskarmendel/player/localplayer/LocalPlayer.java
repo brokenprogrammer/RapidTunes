@@ -27,10 +27,6 @@
 
 package me.oskarmendel.player.localplayer;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.SourceDataLine;
-
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -60,6 +56,7 @@ public class LocalPlayer extends Player {
 	 * fields to default values.
 	 */
 	public LocalPlayer() {
+		this.flacPlayer = new FlacPlayer();
 		this.status = Status.READY;
 	}
 	
@@ -124,21 +121,7 @@ public class LocalPlayer extends Player {
 		}
 		
 		if (localSong.getSongFormat() == LocalSongFormat.FLAC) {
-			// Handle flac separately.
-			System.out.println("Flac song is being handled.");
-			System.out.println("Sample Rate: " + localSong.getSampleRate());
-			System.out.println("Num Channels: " + localSong.getNumChannels());
-			System.out.println("Bits per sample: " + localSong.getBitsPerSample());
-			
-			//TODO: Own player class for the individual players..
-			AudioFormat format = new AudioFormat(localSong.getSampleRate(), localSong.getBitsPerSample(), 
-					localSong.getNumChannels(), true, false);
-			
-			DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
-			//SourceDataLine line = (SourceDataLine)AudioSystem.getLine(info);
-			
-			//line.open(format);
-			//line.start();
+			this.flacPlayer.setSong(localSong);
 		} else {
 			this.currentMedia = new Media(localSong.getPath());
 			this.fxPlayer = new MediaPlayer(this.currentMedia);
@@ -173,6 +156,9 @@ public class LocalPlayer extends Player {
 	public ReadOnlyObjectProperty<Duration> getCurrentTime() {
 		if (this.fxPlayer != null) {
 			return this.fxPlayer.currentTimeProperty();
+		} else if (this.flacPlayer != null) {
+			//TODO: Add some enum state for which player is being used.
+			return this.currentTime;
 		} else {
 			// TODO: Create own RT exception type for this.
 			throw new IllegalStateException("fxPlayer not initialized.");

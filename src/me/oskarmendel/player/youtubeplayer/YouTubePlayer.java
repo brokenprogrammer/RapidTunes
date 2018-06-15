@@ -43,7 +43,7 @@ import me.oskarmendel.song.YouTubeSong;
  * @version 0.00.00
  * @name YouTubePlayer.java
  */
-public class YouTubePlayer extends Player{
+public class YouTubePlayer extends Player {
 	
 	private WebView browserPlayer;
 	
