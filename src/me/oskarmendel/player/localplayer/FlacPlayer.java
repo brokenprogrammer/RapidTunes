@@ -27,25 +27,20 @@
 
 package me.oskarmendel.player.localplayer;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.SourceDataLine;
-
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.util.Duration;
 import me.oskarmendel.player.Player;
 import me.oskarmendel.song.LocalSong;
 import me.oskarmendel.song.LocalSongFormat;
 import me.oskarmendel.song.Song;
-import me.oskarmendel.util.song.flac.StreamInfo;
-import me.oskarmendel.util.song.flac.decoder.FlacReader;
 
 /**
  * FlacPlayer that manages the playing of local flac files.
+ * 
+ * TODO: There is like a 1 second delay upon pausing the FlacPlayerThread, make it NONE.
+ * TODO: Implement stop.
+ * TODO: Implement seek
+ * TODO: Implement volume.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
@@ -62,8 +57,12 @@ public class FlacPlayer extends Player {
 	@Override
 	public void play() {
 		if (this.getStatus() == Status.READY || this.getStatus() == Status.PAUSED) {
-			if (this.playerThread.isReady && this.playerThread.isPlaying()) {
+			if (this.playerThread.isReady() && this.playerThread.isPlaying()) {
 				this.playerThread.run();
+				
+				this.status = Status.PLAYING;
+			} else if (this.playerThread.isReady() && !this.playerThread.isPlaying()) {
+				this.playerThread.play();
 				
 				this.status = Status.PLAYING;
 			} else {
@@ -128,90 +127,5 @@ public class FlacPlayer extends Player {
 	public int getVolume() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-	
-	private void dispose() {
-		//TODO: Implement. Clear all objects.
-	}
-	
-	private class FlacPlayerThread extends Thread {
-		
-		private boolean playing = false;
-		private boolean isReady = false;
-		
-		private FlacReader reader;
-		private StreamInfo streamInfo;
-		private AudioFormat format;
-		private DataLine.Info info;
-		private SourceDataLine line;
-		
-		private int bytesPerSample;
-		private long startTime;
-		private int[][] samples;
-		private byte[] sampleBytes;
-		
-		public FlacPlayerThread(LocalSong song) {
-			try {
-				this.reader = new FlacReader(new File("./demo/Jimmy Pengiun - Untitled Star.flac"));
-				this.streamInfo = reader.getStreamInfo();
-				
-				if (this.streamInfo.getNumChannels() == 0) {
-					throw new IllegalArgumentException("Unknwon audio length.");
-				}
-				
-				this.format = new AudioFormat(this.streamInfo.getSampleRate(),
-											  this.streamInfo.getBitsPerSample(),
-											  this.streamInfo.getNumChannels(),
-											  true, false);
-				
-				this.info = new DataLine.Info(SourceDataLine.class, this.format);
-				this.line = (SourceDataLine)AudioSystem.getLine(info);
-				this.line.open(this.format);
-				this.line.start();
-				
-				this.bytesPerSample = this.streamInfo.getBitsPerSample() / 8;
-				this.startTime = line.getMicrosecondPosition();
-				this.samples = new int[this.streamInfo.getNumChannels()][65536];
-				this.sampleBytes = new byte[65536 * this.streamInfo.getNumChannels() * this.bytesPerSample];
-			} catch (Exception e) {
-				//TODO: Proper error handling.
-				e.printStackTrace();
-			}
-			
-			this.isReady = true;
-			this.playing = true;
-		}
-		
-		public void run() {
-			try {
-				while (this.playing) {
-					int blockSamples = this.reader.readAudioBlock(samples, 0);
-					int sampleBytesLen = 0;
-					for (int index = 0; index < blockSamples; index++) {
-						for (int channel = 0; channel < this.streamInfo.getNumChannels(); channel++) {
-							int value = this.samples[channel][index];
-							for (int i = 0; i < this.bytesPerSample; i++, sampleBytesLen++) {
-								this.sampleBytes[sampleBytesLen] = (byte)(value >>> (i << 3));
-							}
-						}
-					}
-					this.line.write(this.sampleBytes, 0, sampleBytesLen);
-				}
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		public void pause() {
-			this.playing = false;
-		}
-		
-		public boolean isPlaying() {
-			return this.playing;
-		}
-		
-		public boolean isReady() {
-			return this.isReady;
-		}
 	}
 }

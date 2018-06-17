@@ -69,12 +69,29 @@ public class LocalPlayer extends Player {
 	@Override
 	public void play() {
 		if (this.getStatus() == Status.READY || this.getStatus() == Status.PAUSED) {
-			if (this.fxPlayer != null && this.fxPlayer.getMedia() != null) {
-				fxPlayer.play();
-				
-				this.status = Status.PLAYING;
-			} else {
-				//TODO: Throw exception, trying to play non existing song.
+			switch (this.currentSongFormat) {
+			case FLAC:
+				{
+					if (this.flacPlayer.getStatus() == Status.READY || this.flacPlayer.getStatus() == Status.PAUSED) {
+						this.flacPlayer.play();
+						this.status = Status.PLAYING;
+					} else {
+						throw new IllegalStateException("Attempting to play non-existing song.");
+					}
+				} break;
+			case MP3:
+				{
+					if (this.fxPlayer != null && this.fxPlayer.getMedia() != null) {
+						fxPlayer.play();
+						this.status = Status.PLAYING;
+					} else {
+						throw new IllegalStateException("Attempting to play non-existing song.");
+					}
+				} break;
+			case UNKNOWN_FORMAT:
+				{
+					throw new IllegalStateException("Attempt to play unknown song format.");
+				}
 			}
 		}
 	}
@@ -85,10 +102,27 @@ public class LocalPlayer extends Player {
 	@Override
 	public void pause() {
 		if (this.getStatus() == Status.PLAYING) {
-			if (this.fxPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
-				this.fxPlayer.pause();
-				
-				this.status = Status.PAUSED;
+			switch (this.currentSongFormat) {
+			case FLAC:
+				{
+					if (this.flacPlayer.getStatus() == Status.PLAYING) {
+						this.flacPlayer.pause();
+						
+						this.status = Status.PAUSED;
+					}
+				} break;
+			case MP3:
+				{
+					if (this.fxPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+						this.fxPlayer.pause();
+						
+						this.status = Status.PAUSED;
+					}
+				}break;
+			case UNKNOWN_FORMAT:
+				{
+					throw new IllegalStateException("Attempt to pause unknown song format.");
+				}
 			}
 		}
 	}
@@ -98,10 +132,16 @@ public class LocalPlayer extends Player {
 	 */
 	@Override
 	public void stop() {
-		// Disposes and handles old player.
+		// Disposes and handles old mp3 player.
 		if (this.fxPlayer != null) {
 			this.fxPlayer.stop();
 			this.fxPlayer.dispose();
+		}
+		
+		// Disposes and handles old flac player.
+		if (this.flacPlayer != null) {
+			this.flacPlayer.stop();
+			this.flacPlayer = null;
 		}
 		
 		this.status = Status.STOPPED;
