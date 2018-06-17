@@ -47,6 +47,7 @@ import me.oskarmendel.song.Song;
  */
 public class LocalPlayer extends Player {
 	
+	private LocalSongFormat currentSongFormat; //TODO: Implement this to check what player to use.
 	private MediaPlayer fxPlayer;
 	private FlacPlayer flacPlayer;
 	private Media currentMedia;
@@ -56,6 +57,7 @@ public class LocalPlayer extends Player {
 	 * fields to default values.
 	 */
 	public LocalPlayer() {
+		this.currentSongFormat = LocalSongFormat.UNKNOWN_FORMAT;
 		this.flacPlayer = new FlacPlayer();
 		this.status = Status.READY;
 	}
@@ -119,13 +121,26 @@ public class LocalPlayer extends Player {
 			this.fxPlayer.stop();
 			this.fxPlayer.dispose();
 		}
+		if (this.flacPlayer != null) {
+			this.flacPlayer.stop();
+		}
 		
-		if (localSong.getSongFormat() == LocalSongFormat.FLAC) {
-			this.flacPlayer.setSong(localSong);
-		} else {
-			this.currentMedia = new Media(localSong.getPath());
-			this.fxPlayer = new MediaPlayer(this.currentMedia);
-			this.fxPlayer.play();
+		this.currentSongFormat = localSong.getSongFormat();
+		switch(this.currentSongFormat) {
+		case FLAC:
+			{
+				this.flacPlayer.setSong(localSong);
+			} break;
+		case MP3:
+			{
+				this.currentMedia = new Media(localSong.getPath());
+				this.fxPlayer = new MediaPlayer(this.currentMedia);
+				this.fxPlayer.play();
+			} break;
+		case UNKNOWN_FORMAT:
+			{
+				throw new IllegalArgumentException("Unknown song format.");
+			}
 		}
 		
 		this.status = Status.PLAYING;

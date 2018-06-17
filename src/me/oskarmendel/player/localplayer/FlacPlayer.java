@@ -63,7 +63,6 @@ public class FlacPlayer extends Player {
 	public void play() {
 		if (this.getStatus() == Status.READY || this.getStatus() == Status.PAUSED) {
 			if (this.playerThread.isReady && this.playerThread.isPlaying()) {
-				System.out.println("Time to run");
 				this.playerThread.run();
 				
 				this.status = Status.PLAYING;
@@ -76,7 +75,7 @@ public class FlacPlayer extends Player {
 	@Override
 	public void pause() {
 		if (this.getStatus() == Status.PLAYING) {
-			//TODO: Pause the thread that plays the song.
+			this.playerThread.pause();
 			
 			this.status = Status.PAUSED;
 		}
@@ -201,6 +200,10 @@ public class FlacPlayer extends Player {
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
+		}
+		
+		public void pause() {
+			this.playing = false;
 		}
 		
 		public boolean isPlaying() {
