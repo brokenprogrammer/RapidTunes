@@ -119,13 +119,16 @@ public class FlacPlayer extends Player {
 
 	@Override
 	public void setVolume(int volume) {
-		// TODO Auto-generated method stub
+		if (volume < 0 || volume > 100) {
+			throw new IllegalArgumentException("Invalid volume value, specify a volume between 0-100.");
+		}
 		
+		this.volume = volume;
+		this.playerThread.setGain(this.volume);
 	}
 
 	@Override
 	public int getVolume() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.volume;
 	}
 }

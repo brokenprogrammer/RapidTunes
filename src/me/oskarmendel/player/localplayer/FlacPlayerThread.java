@@ -32,6 +32,7 @@ import java.io.File;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
+import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.SourceDataLine;
 
 import me.oskarmendel.song.LocalSong;
@@ -41,6 +42,8 @@ import me.oskarmendel.util.song.flac.decoder.FlacReader;
 /**
  * FlacPlayerThread which contains the implementation for the thread that plays the sound
  * of the FlacPlayer.
+ * 
+ * TODO: Review if fields should be volatile and methods synchronized or not.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
@@ -63,6 +66,7 @@ public class FlacPlayerThread extends Thread {
 	
 	public FlacPlayerThread(LocalSong song) {
 		try {
+			//TODO: Use the actual localsong filepath here.
 			this.reader = new FlacReader(new File("./demo/Jimmy Pengiun - Untitled Star.flac"));
 			this.streamInfo = reader.getStreamInfo();
 			
@@ -95,6 +99,7 @@ public class FlacPlayerThread extends Thread {
 	
 	public void run() {
 		try {
+			//TODO: Should this be a while(true) ?
 			while (true) {
 				while (this.playing) {
 					int blockSamples = this.reader.readAudioBlock(samples, 0);
@@ -112,6 +117,19 @@ public class FlacPlayerThread extends Thread {
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
+		}
+	}
+	
+	//TODO: There is a delay when changing volume and for the change to take effect.
+	//TODO: There may be a way to solve this by changing the size of the buffer for the SourceDataLine?
+	public synchronized void setGain(int percent) {
+		if (this.line.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
+			FloatControl control = (FloatControl)this.line.getControl(FloatControl.Type.MASTER_GAIN);
+			float volume = (percent / 100f);
+			
+			control.setValue((float) ( 20 * Math.log10(volume <= 0.0 ? 0.0000 : volume)));
+		} else {
+			System.out.println("COULDNT FIND VOLUME CONTROL.");
 		}
 	}
 	
