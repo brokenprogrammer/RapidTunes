@@ -65,6 +65,7 @@ public class FlacPlayer extends Player {
 				this.playerThread.play();
 				
 				this.status = Status.PLAYING;
+				//startTimer();
 			} else {
 				//TODO: Throw exception, trying to play non existing song.
 			}
@@ -77,6 +78,7 @@ public class FlacPlayer extends Player {
 			this.playerThread.pause();
 			
 			this.status = Status.PAUSED;
+			//stopTimer();
 		}
 	}
 
@@ -84,6 +86,7 @@ public class FlacPlayer extends Player {
 	public void stop() {
 		// TODO Auto-generated method stub
 		
+		//stopTimer();
 	}
 
 	@Override
@@ -98,11 +101,14 @@ public class FlacPlayer extends Player {
 		}
 		
 		this.currentSong = localSong;
+		this.currentTime.set(Duration.ZERO);
+
 		this.playerThread = new FlacPlayerThread(this.currentSong);
 		this.playerThread.setDaemon(true);
 		this.playerThread.start();
 		
 		this.status = Status.PLAYING;
+		startTimer();
 	}
 
 	@Override
@@ -113,8 +119,7 @@ public class FlacPlayer extends Player {
 
 	@Override
 	public ReadOnlyObjectProperty<Duration> getCurrentTime() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.currentTime;
 	}
 
 	@Override

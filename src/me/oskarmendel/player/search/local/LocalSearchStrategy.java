@@ -43,7 +43,7 @@ import me.oskarmendel.util.song.FileStripper;
  * 			Make the file stripper check if tags of the file exist else set title as 
  * 				file name and strip extension.
  * 
- * @author Jesper Bergström
+ * @author Jesper Bergstrï¿½m
  * @version 0.00.00
  * @name LocalSearch.java
  */
@@ -127,6 +127,7 @@ public class LocalSearchStrategy implements SearchStrategy {
 
 			return list;
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println("File not found");
 			return null;
 		}

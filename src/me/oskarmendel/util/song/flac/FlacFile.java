@@ -53,7 +53,7 @@ public class FlacFile extends MusicFile {
 	private int sampleRate;			//Represented as 20 bits
 	private int numChannels;		//Represented as 3 bits
 	private int bitsPerSample;		//Represented as 5 bits
-	private int numSamples;			//Represented as 36 bits
+	private long numSamples;		//Represented as 36 bits
 	
 	//Data from the Vorbis Comments within the Flac file.
 	String vendor;
@@ -102,7 +102,8 @@ public class FlacFile extends MusicFile {
 			//TODO: This structure got to change somehow.
 			FlacReader reader = new FlacReader(this.file);
 			VorbisComments comments = reader.getVorbisComments();
-			
+			StreamInfo streamInfo = reader.getStreamInfo();
+
 			this.artist = comments.getArtist();
 			this.album = comments.getAlbum();
 			this.title = comments.getTitle();
@@ -110,6 +111,16 @@ public class FlacFile extends MusicFile {
 			this.trackNumber = comments.getTrackNumber();
 			this.date = comments.getDate();
 			
+			this.minimumBlockSize = streamInfo.getMinimumBlockSize();
+			this.maximumBlockSize = streamInfo.getMaximumBlockSize();
+			this.minimumFrameSize = streamInfo.getMinimumFrameSize();
+			this.maximumFrameSize = streamInfo.getMaximumFrameSize();
+
+			this.sampleRate = streamInfo.getSampleRate();
+			this.numChannels = streamInfo.getNumChannels();
+			this.bitsPerSample = streamInfo.getBitsPerSample();
+			this.numSamples = streamInfo.getNumSamples();
+
 			reader.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -170,7 +181,7 @@ public class FlacFile extends MusicFile {
 	/**
 	 * @return the numSamples
 	 */
-	public int getNumSamples() {
+	public long getNumSamples() {
 		return numSamples;
 	}
 
