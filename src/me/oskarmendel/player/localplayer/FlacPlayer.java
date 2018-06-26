@@ -49,11 +49,19 @@ import me.oskarmendel.song.Song;
 public class FlacPlayer extends Player {	
 	private LocalSong currentSong;
 	private FlacPlayerThread playerThread;
-		
+	
+	/**
+	 * Default constructor for the LocalPlayer initializing all 
+	 * fields to default values.
+	 */
 	public FlacPlayer() {
 		this.status = Status.READY;
 	}
 	
+	/**
+	 * Starts playing the song or media. If the song was previously 
+	 * paused the song will resume the playback at where it was paused.
+	 */
 	@Override
 	public void play() {
 		if (this.getStatus() == Status.READY || this.getStatus() == Status.PAUSED) {
@@ -61,27 +69,34 @@ public class FlacPlayer extends Player {
 				this.playerThread.run();
 				
 				this.status = Status.PLAYING;
+				startTimer();
 			} else if (this.playerThread.isReady() && !this.playerThread.isPlaying()) {
 				this.playerThread.play();
 				
 				this.status = Status.PLAYING;
-				//startTimer();
+				startTimer();
 			} else {
 				//TODO: Throw exception, trying to play non existing song.
 			}
 		}
 	}
-
+	
+	/**
+	 * Pauses the playing of the song or media.
+	 */
 	@Override
 	public void pause() {
 		if (this.getStatus() == Status.PLAYING) {
 			this.playerThread.pause();
 			
 			this.status = Status.PAUSED;
-			//stopTimer();
+			stopTimer();
 		}
 	}
-
+	
+	/**
+	 * Stops this player completley disposing media used by this player.
+	 */
 	@Override
 	public void stop() {
 		// TODO Auto-generated method stub
@@ -89,6 +104,11 @@ public class FlacPlayer extends Player {
 		//stopTimer();
 	}
 
+	/**
+	 * Sets the currently playing song to the specified Song object.
+	 * 
+	 * @param song - Requested Song to play.
+	 */
 	@Override
 	public void setSong(Song song) {
 		if (!(song instanceof LocalSong)) {
@@ -110,18 +130,35 @@ public class FlacPlayer extends Player {
 		this.status = Status.PLAYING;
 		startTimer();
 	}
-
+	
+	/**
+	 * Seeks the player to a new target time in seconds within the song or media. 
+	 * 
+	 * @param seekTime - Requested playback time in seconds.
+	 */
 	@Override
 	public void seek(long seekTime) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Getter for the current playback time in seconds for the 
+	 * currently playing song or media.
+	 * 
+	 * @return - Current playback time of the currently playing media or song in seconds.
+	 */
 	@Override
 	public ReadOnlyObjectProperty<Duration> getCurrentTime() {
 		return this.currentTime;
 	}
-
+	
+	/**
+	 * Setter for the volume value of this player. Accepts a value between
+	 * 0 - 100.
+	 * 
+	 * @param volume - Target volume to set the player to.
+	 */
 	@Override
 	public void setVolume(int volume) {
 		if (volume < 0 || volume > 100) {
@@ -132,6 +169,11 @@ public class FlacPlayer extends Player {
 		this.playerThread.setGain(this.volume);
 	}
 
+	/**
+	 * Getter for the volume value of this player. 
+	 * 
+	 * @return - Current volume of this player.
+	 */
 	@Override
 	public int getVolume() {
 		return this.volume;
