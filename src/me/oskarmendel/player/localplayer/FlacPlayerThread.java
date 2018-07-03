@@ -66,8 +66,7 @@ public class FlacPlayerThread extends Thread {
 	
 	public FlacPlayerThread(LocalSong song) {
 		try {
-			//TODO: Use the actual localsong filepath here.
-			this.reader = new FlacReader(new File("./demo/Jimmy Pengiun - Untitled Star.flac"));
+			this.reader = new FlacReader(new File(song.getPath()));
 			this.streamInfo = reader.getStreamInfo();
 			
 			if (this.streamInfo.getNumChannels() == 0) {
