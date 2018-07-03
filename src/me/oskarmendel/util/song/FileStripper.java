@@ -92,7 +92,7 @@ public class FileStripper {
 	 */
 	public LocalSong stripFlacSong(File flacFile) {
 		if(!flacFile.exists()) {
-			throw new IllegalArgumentException("No such file exists!");
+			throw new IllegalArgumentException("No such Flac file exists!");
 		}
 		
 		FlacFile flac = new FlacFile(flacFile);
@@ -101,9 +101,9 @@ public class FileStripper {
 		song.setTitle(flac.getTitle());
 		song.setArtist(flac.getArtist());
 		song.setAlbum(flac.getAlbum());
-		song.setPath(flacFile.toURI().toString());
-		song.setLength(0);
-		
+		song.setPath(flacFile.getAbsolutePath()); //NOTE: Path will later be used in a RandomAccessFile object so Absolute is used here.
+
+		song.setLength(flac.getNumSamples() / flac.getSampleRate());
 		song.setSampleRate(flac.getSampleRate());
 		song.setNumChannels(flac.getNumChannels());
 		song.setBitsPerSample(flac.getBitsPerSample());

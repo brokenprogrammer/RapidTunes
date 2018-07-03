@@ -177,8 +177,8 @@ public class StageManager {
 		
 		LOGGER.log(Level.FINE, "Loading Layout: " + layout);
 		loader.setLocation(getClass().getResource(layout));
-		//loader.setResources(getResourseBundle(System.getProperty("user.language")));
-		loader.setResources(getResourseBundle(this.settingsModel.getGeneralSettings().getLanguage().toString()));		
+		//loader.setResources(getResourceBundle(System.getProperty("user.language")));
+		loader.setResources(getResourceBundle(this.settingsModel.getGeneralSettings().getLanguage().toString()));
 		Parent nodeLayout = loader.load();
 		
 		//Store controller of target layout
@@ -194,7 +194,7 @@ public class StageManager {
 	 * @param language
 	 * @return ResourceBundle for entire application
 	 */
-	private ResourceBundle getResourseBundle(String language) {
+	private ResourceBundle getResourceBundle(String language) {
 		switch (language.toLowerCase()) {
 			case "sv":
 				return ResourceBundle.getBundle("bundle.strings",
@@ -204,7 +204,8 @@ public class StageManager {
 						new Locale(language), new UTF8Control());
 			case "en":
 			default:
-				return ResourceBundle.getBundle("bundle.strings", Locale.ROOT, new UTF8Control());
+				return ResourceBundle.getBundle("bundle.strings",
+						Locale.ROOT, new UTF8Control());
 		}
 	}
 	

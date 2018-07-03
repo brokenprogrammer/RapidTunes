@@ -27,10 +27,6 @@
 
 package me.oskarmendel.player.localplayer;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.SourceDataLine;
-
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -42,8 +38,6 @@ import me.oskarmendel.song.Song;
 
 /**
  * LocalPlayer that controls the playing of local content.
- * TODO: Separate player for FLAC, handle the separate player in 
- * 	play / pause etc..
  * 
  * @author Oskar Mendel
  * @version 0.00.00
@@ -51,7 +45,9 @@ import me.oskarmendel.song.Song;
  */
 public class LocalPlayer extends Player {
 	
+	private LocalSongFormat currentSongFormat;
 	private MediaPlayer fxPlayer;
+	private FlacPlayer flacPlayer;
 	private Media currentMedia;
 	
 	/**
@@ -59,6 +55,8 @@ public class LocalPlayer extends Player {
 	 * fields to default values.
 	 */
 	public LocalPlayer() {
+		this.currentSongFormat = LocalSongFormat.UNKNOWN_FORMAT;
+		this.flacPlayer = new FlacPlayer();
 		this.status = Status.READY;
 	}
 	
@@ -69,12 +67,30 @@ public class LocalPlayer extends Player {
 	@Override
 	public void play() {
 		if (this.getStatus() == Status.READY || this.getStatus() == Status.PAUSED) {
-			if (this.fxPlayer != null && this.fxPlayer.getMedia() != null) {
-				fxPlayer.play();
-				
-				this.status = Status.PLAYING;
-			} else {
-				//Throw exception, trying to play non existing song.
+			switch (this.currentSongFormat) {
+			case FLAC:
+				{
+					if ((this.flacPlayer.getStatus() == Status.READY || this.flacPlayer.getStatus() == Status.PAUSED) && this.flacPlayer != null) {
+						this.flacPlayer.play();
+						this.status = Status.PLAYING;
+					} else {
+						throw new IllegalStateException("Attempting to play non-existing song.");
+					}
+				} break;
+			case MP3:
+				{
+					if (this.fxPlayer.getStatus() == MediaPlayer.Status.PAUSED && this.fxPlayer != null && this.fxPlayer.getMedia() != null) {
+						fxPlayer.play();
+						this.status = Status.PLAYING;
+					} else {
+						throw new IllegalStateException("Attempting to play non-existing song.");
+					}
+				} break;
+			case UNKNOWN_FORMAT:
+			default:
+				{
+					throw new IllegalStateException("Attempt to play unknown song format.");
+				}
 			}
 		}
 	}
@@ -85,10 +101,28 @@ public class LocalPlayer extends Player {
 	@Override
 	public void pause() {
 		if (this.getStatus() == Status.PLAYING) {
-			if (this.fxPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
-				this.fxPlayer.pause();
-				
-				this.status = Status.PAUSED;
+			switch (this.currentSongFormat) {
+			case FLAC:
+				{
+					if (this.flacPlayer.getStatus() == Status.PLAYING) {
+						this.flacPlayer.pause();
+						
+						this.status = Status.PAUSED;
+					}
+				} break;
+			case MP3:
+				{
+					if (this.fxPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
+						this.fxPlayer.pause();
+						
+						this.status = Status.PAUSED;
+					}
+				}break;
+			case UNKNOWN_FORMAT:
+			default:
+				{
+					throw new IllegalStateException("Attempt to pause unknown song format.");
+				}
 			}
 		}
 	}
@@ -98,10 +132,16 @@ public class LocalPlayer extends Player {
 	 */
 	@Override
 	public void stop() {
-		// Disposes and handles old player.
+		// Disposes and handles old mp3 player.
 		if (this.fxPlayer != null) {
 			this.fxPlayer.stop();
 			this.fxPlayer.dispose();
+		}
+		
+		// Disposes and handles old flac player.
+		if (this.flacPlayer != null) {
+			this.flacPlayer.stop();
+			this.flacPlayer = null;
 		}
 		
 		this.status = Status.STOPPED;
@@ -121,27 +161,27 @@ public class LocalPlayer extends Player {
 			this.fxPlayer.stop();
 			this.fxPlayer.dispose();
 		}
+		if (this.flacPlayer != null) {
+			this.flacPlayer.stop();
+		}
 		
-		if (localSong.getSongFormat() == LocalSongFormat.FLAC) {
-			// Handle flac separately.
-			System.out.println("Flac song is being handled.");
-			System.out.println("Sample Rate: " + localSong.getSampleRate());
-			System.out.println("Num Channels: " + localSong.getNumChannels());
-			System.out.println("Bits per sample: " + localSong.getBitsPerSample());
-			
-			//TODO: Own player class for the individual players..
-			AudioFormat format = new AudioFormat(localSong.getSampleRate(), localSong.getBitsPerSample(), 
-					localSong.getNumChannels(), true, false);
-			
-			DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
-			//SourceDataLine line = (SourceDataLine)AudioSystem.getLine(info);
-			
-			//line.open(format);
-			//line.start();
-		} else {
-			this.currentMedia = new Media(localSong.getPath());
-			this.fxPlayer = new MediaPlayer(this.currentMedia);
-			this.fxPlayer.play();
+		this.currentSongFormat = localSong.getSongFormat();
+		switch(this.currentSongFormat) {
+		case FLAC:
+			{
+				this.flacPlayer.setSong(localSong);
+			} break;
+		case MP3:
+			{
+				this.currentMedia = new Media(localSong.getPath());
+				this.fxPlayer = new MediaPlayer(this.currentMedia);
+				this.fxPlayer.play();
+			} break;
+		case UNKNOWN_FORMAT:
+		default:
+			{
+				throw new IllegalArgumentException("Unknown song format.");
+			}
 		}
 		
 		this.status = Status.PLAYING;
@@ -154,11 +194,28 @@ public class LocalPlayer extends Player {
 	 */
 	@Override
 	public void seek(long seekTime) {
-		if (this.fxPlayer != null) {
-			//TODO: Check that seekTime is in range.
-			this.fxPlayer.seek(Duration.seconds(seekTime));
-		} else {
-			// TODO: Create own RT exception type for this.
+		switch (this.currentSongFormat) {
+		case FLAC:
+			{
+				if (this.flacPlayer != null) {
+					this.flacPlayer.seek(seekTime);
+				} else {
+					throw new IllegalArgumentException("Unable to seek: Flac Player is not initialized.");
+				}
+			} break;
+		case MP3:
+			{
+				if (this.fxPlayer != null) {
+					this.fxPlayer.seek(Duration.seconds(seekTime));
+				} else {
+					throw new IllegalArgumentException("Unable to seek: MP3 Player is not initialized.");
+				}
+			}break;
+		case UNKNOWN_FORMAT:
+		default:
+			{
+				throw new IllegalStateException("Unable to seek: Unknown song format.");
+			}
 		}
 	}
 
@@ -170,11 +227,28 @@ public class LocalPlayer extends Player {
 	 */
 	@Override 
 	public ReadOnlyObjectProperty<Duration> getCurrentTime() {
-		if (this.fxPlayer != null) {
-			return this.fxPlayer.currentTimeProperty();
-		} else {
-			// TODO: Create own RT exception type for this.
-			throw new IllegalStateException("fxPlayer not initialized.");
+		switch (this.currentSongFormat) {
+		case FLAC:
+			{
+				if (this.flacPlayer != null) {
+					return this.flacPlayer.getCurrentTime();
+				} else {
+					throw new IllegalArgumentException("Unable to get current time: Flac Player is not initialized.");
+				}
+			}
+		case MP3:
+			{
+				if (this.fxPlayer != null) {
+					return this.fxPlayer.currentTimeProperty();
+				} else {
+					throw new IllegalArgumentException("Unable to get current time: MP3 Player is not initialized.");
+				}
+			}
+		case UNKNOWN_FORMAT:
+		default:
+			{			
+				throw new IllegalStateException("Unable to get current time: Unknown song format.");
+			}
 		}
 	}
 
@@ -190,11 +264,30 @@ public class LocalPlayer extends Player {
 			throw new IllegalArgumentException("Invalid volume value, specify a volume between 0-100.");
 		}
 		
-		if (this.fxPlayer != null) {
-			this.volume = volume;
-			this.fxPlayer.setVolume(this.volume * 0.01);
-		} else {
-			// Throw error trying to use non existing media player.
+		this.volume = volume;
+		
+		switch (this.currentSongFormat) {
+		case FLAC:
+			{
+				if (this.flacPlayer != null) {
+					this.flacPlayer.setVolume(this.volume);
+				} else {
+					throw new IllegalArgumentException("Unable to get current time: Flac Player is not initialized.");
+				}
+			} break;
+		case MP3:
+			{
+				if (this.fxPlayer != null) {
+					this.fxPlayer.setVolume(this.volume * 0.01);
+				} else {
+					throw new IllegalArgumentException("Unable to get current time: MP3 Player is not initialized.");
+				}
+			} break;
+		case UNKNOWN_FORMAT:
+		default:
+			{			
+				throw new IllegalStateException("Unable to get current time: Unknown song format.");
+			}
 		}
 	}
 

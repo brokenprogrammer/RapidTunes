@@ -25,42 +25,37 @@
  * SOFTWARE.
  */
 
-package me.oskarmendel.player.youtubeplayer;
-
-import java.io.File;
+package me.oskarmendel.player.localplayer;
 
 import javafx.beans.property.ReadOnlyObjectProperty;
-import javafx.scene.web.WebView;
 import javafx.util.Duration;
 import me.oskarmendel.player.Player;
+import me.oskarmendel.song.LocalSong;
+import me.oskarmendel.song.LocalSongFormat;
 import me.oskarmendel.song.Song;
-import me.oskarmendel.song.YouTubeSong;
 
 /**
- * YoutubePlayer that controls the playing of YouTube content.
+ * FlacPlayer that manages the playing of local flac files.
+ * 
+ * TODO: There is like a 1 second delay upon pausing the FlacPlayerThread, make it NONE.
+ * TODO: Implement stop.
+ * TODO: Implement seek
+ * TODO: Implement volume.
  * 
  * @author Oskar Mendel
  * @version 0.00.00
- * @name YouTubePlayer.java
+ * @name FlacPlayer.java
  */
-public class YouTubePlayer extends Player {
-	
-	private WebView browserPlayer;
+public class FlacPlayer extends Player {	
+	private LocalSong currentSong;
+	private FlacPlayerThread playerThread;
 	
 	/**
-	 * Default constructor for the YouTubePlayer initializing all 
+	 * Default constructor for the LocalPlayer initializing all 
 	 * fields to default values.
 	 */
-	public YouTubePlayer() {
-		super();
-		
-		browserPlayer = new WebView();
-		File localHtml = new File("res/view/player/YouTube.html");
-		
-		this.browserPlayer.getEngine().load(localHtml.toURI().toString());
+	public FlacPlayer() {
 		this.status = Status.READY;
-		
-		//TODO: Set volume, Set current time..
 	}
 	
 	/**
@@ -70,31 +65,32 @@ public class YouTubePlayer extends Player {
 	@Override
 	public void play() {
 		if (this.getStatus() == Status.READY || this.getStatus() == Status.PAUSED) {
-			if (this.browserPlayer.getEngine().getDocument() != null) {
-				this.browserPlayer.getEngine().executeScript("startVideo()");
+			if (this.playerThread.isReady() && this.playerThread.isPlaying()) {
+				this.playerThread.run();
+				
+				this.status = Status.PLAYING;
+				startTimer();
+			} else if (this.playerThread.isReady() && !this.playerThread.isPlaying()) {
+				this.playerThread.play();
 				
 				this.status = Status.PLAYING;
 				startTimer();
 			} else {
-				// TODO: Throw exception trying to play non initialized web player.
+				//TODO: Throw exception, trying to play non existing song.
 			}
 		}
 	}
-
+	
 	/**
 	 * Pauses the playing of the song or media.
 	 */
 	@Override
 	public void pause() {
 		if (this.getStatus() == Status.PLAYING) {
-			if (this.browserPlayer.getEngine().getDocument() != null) {
-				this.browserPlayer.getEngine().executeScript("pauseVideo()");
-				
-				this.status = Status.PAUSED;
-				stopTimer();
-			} else {
-				// TODO: Throw exception trying to play non initialized web player.
-			}
+			this.playerThread.pause();
+			
+			this.status = Status.PAUSED;
+			stopTimer();
 		}
 	}
 	
@@ -103,13 +99,11 @@ public class YouTubePlayer extends Player {
 	 */
 	@Override
 	public void stop() {
-		// Disposes the browser player.
-		this.browserPlayer.getEngine().load(null);
+		// TODO Auto-generated method stub
 		
-		this.status = Status.STOPPED;
-		stopTimer();
+		//stopTimer();
 	}
-	
+
 	/**
 	 * Sets the currently playing song to the specified Song object.
 	 * 
@@ -117,36 +111,71 @@ public class YouTubePlayer extends Player {
 	 */
 	@Override
 	public void setSong(Song song) {
-		YouTubeSong youtubeSong = (YouTubeSong)song;
-		this.browserPlayer.getEngine().executeScript("setSong('" + youtubeSong.getPath() + "')");
+		if (!(song instanceof LocalSong)) {
+			throw new IllegalArgumentException("Expected LocalSong.");
+		}
 		
+		LocalSong localSong = (LocalSong)song;
+		if (localSong.getSongFormat() != LocalSongFormat.FLAC) {
+			throw new IllegalArgumentException("Expected LocalSong to have format FLAC.");
+		}
+		
+		this.currentSong = localSong;
 		this.currentTime.set(Duration.ZERO);
+
+		this.playerThread = new FlacPlayerThread(this.currentSong);
+		this.playerThread.setDaemon(true);
+		this.playerThread.start();
 		
 		this.status = Status.PLAYING;
 		startTimer();
 	}
-
+	
+	/**
+	 * Seeks the player to a new target time in seconds within the song or media. 
+	 * 
+	 * @param seekTime - Requested playback time in seconds.
+	 */
 	@Override
 	public void seek(long seekTime) {
-		stopTimer();
-		this.browserPlayer.getEngine().executeScript("seek(" + seekTime + ")");
-		this.currentTime.set(Duration.seconds(seekTime));
-		startTimer();
+		// TODO Auto-generated method stub
+		
 	}
 
+	/**
+	 * Getter for the current playback time in seconds for the 
+	 * currently playing song or media.
+	 * 
+	 * @return - Current playback time of the currently playing media or song in seconds.
+	 */
 	@Override
 	public ReadOnlyObjectProperty<Duration> getCurrentTime() {
 		return this.currentTime;
 	}
-
+	
+	/**
+	 * Setter for the volume value of this player. Accepts a value between
+	 * 0 - 100.
+	 * 
+	 * @param volume - Target volume to set the player to.
+	 */
 	@Override
 	public void setVolume(int volume) {
-		this.browserPlayer.getEngine().executeScript("setVolume(" + volume + ")");
+		if (volume < 0 || volume > 100) {
+			throw new IllegalArgumentException("Invalid volume value, specify a volume between 0-100.");
+		}
+		
+		this.volume = volume;
+		this.playerThread.setGain(this.volume);
 	}
 
+	/**
+	 * Getter for the volume value of this player. 
+	 * 
+	 * @return - Current volume of this player.
+	 */
 	@Override
 	public int getVolume() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.volume;
 	}
 }
