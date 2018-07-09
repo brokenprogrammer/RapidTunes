@@ -82,6 +82,9 @@ public class Track {
 	// artworkData	binary data of the artwork image.
 	private boolean userFavourite;			// Track favourited by user. Only available for authenticated users.
 	
+	/**
+	 * Default constructor for the Track object. Creates an empty track object.
+	 */
 	public Track() {
 		
 	}
