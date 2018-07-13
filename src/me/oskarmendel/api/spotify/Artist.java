@@ -35,5 +35,163 @@ package me.oskarmendel.api.spotify;
  * @name Artist.java
  */
 public class Artist {
+	
+	private ExternalUrl externalUrls;
+	private Followers followers;
+	private String[] genres;
+	private String href;
+	private String id;
+	private Image[] images;
+	private String name;
+	private int popularity;
+	private String type;
+	private String uri;
+	
+	/**
+	 * Default constructor for the Artist object. Constructs an empty Artist object.
+	 */
+	public Artist() {
+		
+	}
 
+	/**
+	 * @return the externalUrls
+	 */
+	public ExternalUrl getExternalUrls() {
+		return externalUrls;
+	}
+
+	/**
+	 * @param externalUrls the externalUrls to set
+	 */
+	public void setExternalUrls(ExternalUrl externalUrls) {
+		this.externalUrls = externalUrls;
+	}
+
+	/**
+	 * @return the followers
+	 */
+	public Followers getFollowers() {
+		return followers;
+	}
+
+	/**
+	 * @param followers the followers to set
+	 */
+	public void setFollowers(Followers followers) {
+		this.followers = followers;
+	}
+
+	/**
+	 * @return the genres
+	 */
+	public String[] getGenres() {
+		return genres;
+	}
+
+	/**
+	 * @param genres the genres to set
+	 */
+	public void setGenres(String[] genres) {
+		this.genres = genres;
+	}
+
+	/**
+	 * @return the href
+	 */
+	public String getHref() {
+		return href;
+	}
+
+	/**
+	 * @param href the href to set
+	 */
+	public void setHref(String href) {
+		this.href = href;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public String getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the images
+	 */
+	public Image[] getImages() {
+		return images;
+	}
+
+	/**
+	 * @param images the images to set
+	 */
+	public void setImages(Image[] images) {
+		this.images = images;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the popularity
+	 */
+	public int getPopularity() {
+		return popularity;
+	}
+
+	/**
+	 * @param popularity the popularity to set
+	 */
+	public void setPopularity(int popularity) {
+		this.popularity = popularity;
+	}
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	/**
+	 * @return the uri
+	 */
+	public String getUri() {
+		return uri;
+	}
+
+	/**
+	 * @param uri the uri to set
+	 */
+	public void setUri(String uri) {
+		this.uri = uri;
+	}
+	
 }

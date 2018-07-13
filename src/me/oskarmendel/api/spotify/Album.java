@@ -55,6 +55,9 @@ public class Album {
 	private String type;
 	private String uri;
 	
+	/**
+	 * Default constructor for the Album class constructing an empty Album object.
+	 */
 	public Album() {
 		
 	}
