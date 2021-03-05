@@ -13,6 +13,7 @@ import Slider from '@material-ui/core/Slider';
 import VolumeDown from '@material-ui/icons/VolumeDown';
 import VolumeUp from '@material-ui/icons/VolumeUp';
 import Grid from '@material-ui/core/Grid';
+import { PlaybackMedia } from '../types';
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -60,7 +61,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Controls({ media }) {
+interface Props {
+  media: PlaybackMedia;
+}
+
+function Controls({ media }: Props) {
   const classes = useStyles();
   const [volume, setVolume] = useState<number>(30);
   const [playbackTime, setPlaybackTime] = useState(0);
