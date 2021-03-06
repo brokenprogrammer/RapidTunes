@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface Props {
-  media: PlaybackMedia;
+  media: PlaybackMedia | undefined;
 }
 
 function Controls({ media }: Props) {
