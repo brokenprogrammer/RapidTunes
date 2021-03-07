@@ -40,7 +40,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SongBrowser({ media, setMedia }) {
+interface Props {
+  media: PlaybackMedia | undefined;
+  setMedia: (arg0: PlaybackMedia) => void;
+}
+
+function SongBrowser({ media, setMedia }: Props) {
   const [searchValue, setSearchValue] = useState('');
   const [songs, setSongs] = useState([]);
 
