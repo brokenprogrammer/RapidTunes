@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { PlaybackMedia } from "./types";
 
-const App = () => {
+const MainView = () => {
+  const [media, setMedia] = useState<PlaybackMedia>();
+
+  useEffect(() => {}, []);
+
+  useEffect(() => {
+    console.log("This is called when song is clicked on in song browser.");
+  }, [media]);
+
   return (
     <div className="app">
       <h1>I'm React running in Electron App!!</h1>
     </div>
+    // <div>
+    //   <SongBrowser media={media} setMedia={setMedia}></SongBrowser>
+    //   <Controls media={media}></Controls>
+    // </div>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" component={MainView} />
+      </Switch>
+    </Router>
   );
 };
 
