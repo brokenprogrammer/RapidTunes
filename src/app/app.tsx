@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { PlaybackMedia } from "./types";
+import Controls from "./controls";
+import SongBrowser from "./songbrowser";
 
 const MainView = () => {
   const [media, setMedia] = useState<PlaybackMedia>();
@@ -12,13 +14,10 @@ const MainView = () => {
   }, [media]);
 
   return (
-    <div className="app">
-      <h1>I'm React running in Electron App!!</h1>
+    <div>
+      <SongBrowser media={media} setMedia={setMedia}></SongBrowser>
+      <Controls media={media}></Controls>
     </div>
-    // <div>
-    //   <SongBrowser media={media} setMedia={setMedia}></SongBrowser>
-    //   <Controls media={media}></Controls>
-    // </div>
   );
 };
 
