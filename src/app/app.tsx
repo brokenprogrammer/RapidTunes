@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { PlaybackMedia } from "./types";
 import Controls from "./controls";
 import SongBrowser from "./songbrowser";
-// @ts-ignore
 import Script from "react-load-script";
 
 const MainView = () => {
@@ -25,9 +24,9 @@ const MainView = () => {
 
   const handleScriptLoad = () => {
     window.onSpotifyWebPlaybackSDKReady = () => {
-      const token =
-        "BQCb4e7uRbh0AadeMfAyMewOyId75orPHjsbOSzMPZhKaP3fQn3wMAwLnQDXTidgFklLrdXKkyjWEPhLErN7H1QBEPC1YMMjFi55UzxxN4dPkF4BgtwWpg_D6LwmSmY8vPi0MMPCk9-cXLNqMFEf9y97n-eDZo7R1dKINNm6O_w-Lg";
+      const token = "SPOTIFY-TOKEN-HERE";
 
+      // TODO(Oskar): Later we want the player to be used from the controls module.
       const player = new window.Spotify.Player({
         name: "RapidTunes",
         getOAuthToken: (cb) => {
