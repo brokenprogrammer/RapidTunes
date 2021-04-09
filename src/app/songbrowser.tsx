@@ -60,7 +60,11 @@ function SongBrowser({ media, setMedia }: Props) {
   // TODO(Oskar): Load in next page when scrolling to bottom.
   function performSpotifySearch(value: string) {
     var spotifyApi = new Spotify();
-    spotifyApi.setAccessToken("YOUR_ACCESS_TOKEN_HERE");
+
+    let str = localStorage.getItem('spotifyAuth');
+    let spotifyAuth = str ? JSON.parse(str) : null;
+
+    spotifyApi.setAccessToken(spotifyAuth.access_token);
 
     spotifyApi.searchTracks(value).then(
       function (data: any) {
