@@ -4,18 +4,23 @@ import { PlaybackMedia } from "./types";
 import Controls from "./controls";
 import SongBrowser from "./songbrowser";
 import Script from "react-load-script";
-import { Button } from "@material-ui/core";
-import { loginSpotify, refreshSpotifyAuth, authorizeSpotify, initSpotify } from './util/auth';
+import { useSpotifyToken } from "./util/auth";
+import SpotifyAPI from "spotify-web-api-js";
 
 const MainView = () => {
   const [media, setMedia] = useState<PlaybackMedia>();
-
-  useEffect(() => {
-    
-  }, []);
+  const [spotifyPlayer, setSpotifyPlayer] =
+    useState<Spotify.SpotifyPlayer | null>(null);
+  const [spotifyAPI, setSpotifyAPI] =
+    useState<SpotifyAPI.SpotifyWebApiJs | null>(null);
+  const [spotifyDeviceId, setSpotifyDeviceId] = useState<string>("");
 
   useEffect(() => {
     console.log("This is called when song is clicked on in song browser.");
+
+    if (media) {
+      spotifyAPI?.play({ uris: [media.id], device_id: spotifyDeviceId });
+    }
   }, [media]);
 
   const handleScriptCreate = () => {
@@ -28,10 +33,11 @@ const MainView = () => {
 
   const handleScriptLoad = () => {
     window.onSpotifyWebPlaybackSDKReady = async () => {
-
-      const token = await initSpotify();
-      //const token = 'BQAGi5TVvBDZKFwz2HrK21y0MW2UIA5ZWmpBxTEeFYwT8HXuTn6qpgwoZJ0nJW6sWZs77Ui0hOyrJO1nab_YWIXOSp_UjU55jZsb4gGoO_sN2JI01w3eJIn2HUPlTQGjyuZhYRdhc6AJVCf8K709w044DB8kDRS7nxNY5MS3Sw_aRJems9mZG7Q'
+      const token = await useSpotifyToken();
       console.log(token);
+
+      setSpotifyAPI(new SpotifyAPI());
+      spotifyAPI?.setAccessToken(token);
 
       // TODO(Oskar): Later we want the player to be used from the controls module.
       const player = new window.Spotify.Player({
@@ -39,6 +45,7 @@ const MainView = () => {
         getOAuthToken: (cb) => {
           cb(token);
         },
+        volume: 0.2,
       });
 
       player.addListener("initialization_error", ({ message }) => {
@@ -63,6 +70,8 @@ const MainView = () => {
 
       player.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id);
+        setSpotifyDeviceId(device_id);
+        spotifyAPI?.transferMyPlayback([device_id], { play: true });
       });
 
       player.addListener("not_ready", ({ device_id }) => {
@@ -71,17 +80,12 @@ const MainView = () => {
 
       // Connect to the player!
       player.connect();
+      setSpotifyPlayer(player);
     };
   };
 
   return (
     <div>
-      <Button onClick={() => loginSpotify()}>Connect</Button>
-      <Button onClick={() => {
-        let str = localStorage.getItem('spotifyAuth');
-        let spotifyAuth = str ? JSON.parse(str) : null;
-        refreshSpotifyAuth(spotifyAuth.refresh_token).then(result => localStorage.setItem('spotifyAuth', JSON.stringify(result)));
-      }}>Update</Button>
       <SongBrowser media={media} setMedia={setMedia}></SongBrowser>
       <Controls media={media}></Controls>
       <Script
