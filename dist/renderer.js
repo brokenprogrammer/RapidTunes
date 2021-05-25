@@ -55451,28 +55451,36 @@ function requestSpotifyAuth(body) {
 }
 function useSpotifyToken() {
     return __awaiter(this, void 0, void 0, function () {
-        var spotifyAuth, params, spotifyCode, body, result;
+        var spotifyAuth, spotifyAuthJSON, date, result, params, spotifyCode, body, result;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     spotifyAuth = localStorage.getItem("spotifyAuth");
-                    if (spotifyAuth) {
-                        return [2 /*return*/, JSON.parse(spotifyAuth).access_token];
-                    }
+                    if (!spotifyAuth) return [3 /*break*/, 3];
+                    spotifyAuthJSON = JSON.parse(spotifyAuth);
+                    date = new Date();
+                    if (!(spotifyAuthJSON.expire_date < date)) return [3 /*break*/, 2];
+                    return [4 /*yield*/, refreshSpotifyAuth(spotifyAuthJSON.refresh_token)];
+                case 1:
+                    result = _a.sent();
+                    localStorage.setItem("spotifyAuth", JSON.stringify(result));
+                    return [2 /*return*/, result.access_token];
+                case 2: return [2 /*return*/, spotifyAuthJSON.access_token];
+                case 3:
                     params = new URLSearchParams(window.location.search);
                     spotifyCode = params.get("spotify_code");
-                    if (!(!spotifyAuth && spotifyCode)) return [3 /*break*/, 2];
+                    if (!(!spotifyAuth && spotifyCode)) return [3 /*break*/, 5];
                     body = "grant_type=authorization_code&" +
                         "code=" +
                         spotifyCode +
                         "&" +
                         "redirect_uri=rapidtunes://home";
                     return [4 /*yield*/, requestSpotifyAuth(body)];
-                case 1:
+                case 4:
                     result = _a.sent();
                     localStorage.setItem("spotifyAuth", JSON.stringify(result));
                     return [2 /*return*/, result.access_token];
-                case 2:
+                case 5:
                     // Case 3: Have to login through spotify
                     if (!spotifyAuth && !spotifyCode) {
                         loginSpotify();

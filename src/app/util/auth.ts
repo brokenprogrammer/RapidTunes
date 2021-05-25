@@ -36,7 +36,17 @@ export async function useSpotifyToken() {
   // Case 1: Auth exists in localstorage
   let spotifyAuth = localStorage.getItem("spotifyAuth");
   if (spotifyAuth) {
-    return JSON.parse(spotifyAuth).access_token;
+    let spotifyAuthJSON = JSON.parse(spotifyAuth);
+    // If expired we refresh
+    let date = new Date();
+    if (spotifyAuthJSON.expire_date < date) {
+      let result = await refreshSpotifyAuth(spotifyAuthJSON.refresh_token);
+      localStorage.setItem("spotifyAuth", JSON.stringify(result));
+
+      return result.access_token;
+    }
+
+    return spotifyAuthJSON.access_token;
   }
 
   // Case 2: returned from spotify redirect..
