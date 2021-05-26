@@ -1,7 +1,10 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, protocol } from "electron";
+import path from 'path';
+
+let win: BrowserWindow | null = null;
 
 const createWindow = (): void => {
-  let win = new BrowserWindow({
+  win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -15,3 +18,12 @@ const createWindow = (): void => {
 };
 
 app.on("ready", createWindow);
+
+app.whenReady().then(() => {
+  protocol.registerFileProtocol('rapidtunes', (request, callback) => {
+    let code = request.url.split('?code=')[1];
+    const url = path.normalize(`${__dirname}/index.html`);
+
+    win?.loadFile(url, { query: { "spotify_code": code } });
+  });
+});

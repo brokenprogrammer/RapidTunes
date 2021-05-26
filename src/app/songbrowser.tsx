@@ -11,6 +11,7 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import { MediaType, PlaybackMedia } from "./types";
 import Spotify from "spotify-web-api-js";
+import { useSpotifyToken } from "./util/auth";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,9 +59,9 @@ function SongBrowser({ media, setMedia }: Props) {
   }
 
   // TODO(Oskar): Load in next page when scrolling to bottom.
-  function performSpotifySearch(value: string) {
+  async function performSpotifySearch(value: string) {
     var spotifyApi = new Spotify();
-    spotifyApi.setAccessToken("YOUR_ACCESS_TOKEN_HERE");
+    spotifyApi.setAccessToken(await useSpotifyToken());
 
     spotifyApi.searchTracks(value).then(
       function (data: any) {
@@ -79,7 +80,7 @@ function SongBrowser({ media, setMedia }: Props) {
         <SearchBar
           value={searchValue}
           onChange={(newValue) => setSearchValue(newValue)}
-          onRequestSearch={() => performSpotifySearch(searchValue)}
+          onRequestSearch={async () => await performSpotifySearch(searchValue)}
         />
       </Box>
 
