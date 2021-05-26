@@ -10,7 +10,7 @@ import SpotifyAPI from "spotify-web-api-js";
 const MainView = () => {
   const [media, setMedia] = useState<PlaybackMedia>();
   const [spotifyPlayer, setSpotifyPlayer] =
-    useState<Spotify.SpotifyPlayer | null>(null);
+    useState<Spotify.Player | null>(null);
   const [spotifyAPI, setSpotifyAPI] =
     useState<SpotifyAPI.SpotifyWebApiJs | null>(null);
   const [spotifyDeviceId, setSpotifyDeviceId] = useState<string>("");

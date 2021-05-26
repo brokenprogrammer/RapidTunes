@@ -28,7 +28,7 @@ Create an EVS account:
 
 VMP-sign your application:
 
-`% python -m castlabs_evs.vmp sign-pkg node_modules/electron/dist`
+`% python3 -m castlabs_evs.vmp sign-pkg node_modules/electron/dist`
 
 ## License
 
