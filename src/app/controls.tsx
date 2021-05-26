@@ -14,6 +14,10 @@ import VolumeDown from "@material-ui/icons/VolumeDown";
 import VolumeUp from "@material-ui/icons/VolumeUp";
 import Grid from "@material-ui/core/Grid";
 import { PlaybackMedia } from "./types";
+import { copyFileSync } from "original-fs";
+import Spotify from "spotify-web-api-js";
+import { useSpotifyToken } from "./util/auth";
+import { useDebounce } from "use-debounce";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -63,29 +67,75 @@ const useStyles = makeStyles((theme) => ({
 
 interface Props {
   media: PlaybackMedia | undefined;
+  deviceID: string | undefined;
 }
 
-function Controls({ media }: Props) {
+function Controls({ media, deviceID }: Props) {
   const classes = useStyles();
   const [volume, setVolume] = useState<number>(30);
   const [playbackTime, setPlaybackTime] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [debouncedVolume] = useDebounce(volume, 350, { maxWait: 2 });
+  // const [debouncedPlaybackTime] = useDebounce(playbackTime, 350, {
+  //   maxWait: 2,
+  // });
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log("This is called when song is clicked on in song browser.");
+
+    if (media) {
+      useSpotifyToken().then((token) => {
+        var spotifyApi = new Spotify();
+        spotifyApi.setAccessToken(token);
+        spotifyApi.play({ uris: [media.id], device_id: deviceID });
+        setIsPlaying(true);
+      });
+    }
+  }, [media]);
+
+  useEffect(() => {
+    useSpotifyToken().then((token) => {
+      var spotifyApi = new Spotify();
+      spotifyApi.setAccessToken(token);
+      spotifyApi.setVolume(debouncedVolume);
+    });
+  }, [debouncedVolume]);
+
+  // useEffect(() => {
+  //   useSpotifyToken().then((token) => {
+  //     var spotifyApi = new Spotify();
+  //     spotifyApi.setAccessToken(token);
+  //     spotifyApi.seek(debouncedPlaybackTime);
+  //   });
+  // }, [debouncedPlaybackTime]);
 
   // TODO(Oskar): Perhaps use debounce or similar for this, if user drags
   // the slider then the request will happen too many times.
-  const handleVolumeChange = (event: any, newValue: number | number[]) => {
+  const handleVolumeChange = async (
+    event: any,
+    newValue: number | number[]
+  ) => {
     setVolume(newValue as number);
   };
 
-  const handlePlaybackTimeChange = (
+  const handlePlaybackTimeChange = async (
     event: any,
     newValue: number | number[]
   ) => {
     setPlaybackTime(newValue as number);
   };
 
-  const handlePlayClicked = (event: any) => {};
+  const handlePlayClicked = async (event: any) => {
+    var spotifyApi = new Spotify();
+    spotifyApi.setAccessToken(await useSpotifyToken());
+
+    if (isPlaying) {
+      spotifyApi.pause();
+    } else {
+      spotifyApi.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
 
   return (
     <AppBar position="fixed" className={classes.appBar}>
@@ -113,7 +163,7 @@ function Controls({ media }: Props) {
               edge="start"
               color="inherit"
               aria-label="play"
-              onClick={(event) => handlePlayClicked(event)}
+              onClick={async (event) => await handlePlayClicked(event)}
             >
               <PlayArrowIcon />
             </IconButton>
@@ -125,10 +175,12 @@ function Controls({ media }: Props) {
             <Grid container spacing={2}>
               <Grid item>
                 <Slider
+                  min={0}
+                  max={media ? media.media_total_time : 1} // TODO(Oskar): What do we do here?
                   className={classes.playbackTimeSlider}
                   value={playbackTime}
-                  onChange={(event, value) =>
-                    handlePlaybackTimeChange(event, value)
+                  onChange={async (event, value) =>
+                    await handlePlaybackTimeChange(event, value)
                   }
                 />
               </Grid>
@@ -148,7 +200,9 @@ function Controls({ media }: Props) {
               <Slider
                 className={classes.volumeSlider}
                 value={volume}
-                onChange={(event, value) => handleVolumeChange(event, value)}
+                onChange={async (event, value) =>
+                  await handleVolumeChange(event, value)
+                }
                 aria-labelledby="continuous-slider"
               />
             </Grid>

@@ -15,17 +15,6 @@ const MainView = () => {
     useState<SpotifyAPI.SpotifyWebApiJs | null>(null);
   const [spotifyDeviceId, setSpotifyDeviceId] = useState<string>("");
 
-  useEffect(() => {
-    console.log("This is called when song is clicked on in song browser.");
-
-    if (media) {
-      useSpotifyToken().then((token) => {
-        spotifyAPI?.setAccessToken(token);
-        spotifyAPI?.play({ uris: [media.id], device_id: spotifyDeviceId });
-      });
-    }
-  }, [media]);
-
   const handleScriptCreate = () => {
     console.log("Created");
   };
@@ -74,7 +63,11 @@ const MainView = () => {
       player.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id);
         setSpotifyDeviceId(device_id);
-        spotifyAPI?.transferMyPlayback([device_id], { play: true });
+
+        useSpotifyToken().then((token) => {
+          spotifyAPI?.setAccessToken(token);
+          spotifyAPI?.transferMyPlayback([device_id], { play: true });
+        });
       });
 
       player.addListener("not_ready", ({ device_id }) => {
@@ -90,7 +83,7 @@ const MainView = () => {
   return (
     <div>
       <SongBrowser media={media} setMedia={setMedia}></SongBrowser>
-      <Controls media={media}></Controls>
+      <Controls media={media} deviceID={spotifyDeviceId}></Controls>
       <Script
         url="https://sdk.scdn.co/spotify-player.js"
         onCreate={handleScriptCreate}

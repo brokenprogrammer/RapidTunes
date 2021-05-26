@@ -39,6 +39,7 @@
     "webpack-cli": "^4.7.0"
   },
   "dependencies": {
-    "spotify-web-api-js": "^1.5.1"
+    "spotify-web-api-js": "^1.5.1",
+    "use-debounce": "^6.0.1"
   }
 }

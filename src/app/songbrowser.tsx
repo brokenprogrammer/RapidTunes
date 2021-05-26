@@ -96,7 +96,7 @@ function SongBrowser({ media, setMedia }: Props) {
               media_title: value.name,
               media_author: value.artists[0].name,
               thumbnail_url: value.album.images[0].url,
-              media_total_time: value.duration_ms / 1000,
+              media_total_time: value.duration_ms,
             };
 
             return (
