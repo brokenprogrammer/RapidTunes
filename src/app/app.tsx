@@ -19,7 +19,10 @@ const MainView = () => {
     console.log("This is called when song is clicked on in song browser.");
 
     if (media) {
-      spotifyAPI?.play({ uris: [media.id], device_id: spotifyDeviceId });
+      useSpotifyToken().then((token) => {
+        spotifyAPI?.setAccessToken(token);
+        spotifyAPI?.play({ uris: [media.id], device_id: spotifyDeviceId });
+      });
     }
   }, [media]);
 
@@ -33,17 +36,17 @@ const MainView = () => {
 
   const handleScriptLoad = () => {
     window.onSpotifyWebPlaybackSDKReady = async () => {
-      const token = await useSpotifyToken();
-      console.log(token);
-
       setSpotifyAPI(new SpotifyAPI());
-      spotifyAPI?.setAccessToken(token);
+      spotifyAPI?.setAccessToken(await useSpotifyToken());
 
       // TODO(Oskar): Later we want the player to be used from the controls module.
       const player = new window.Spotify.Player({
         name: "RapidTunes",
         getOAuthToken: (cb) => {
-          cb(token);
+          console.log("PlaybackSDK asks for new token.");
+          useSpotifyToken().then((token) => {
+            cb(token);
+          });
         },
         volume: 0.2,
       });
