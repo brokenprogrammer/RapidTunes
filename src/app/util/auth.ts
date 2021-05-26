@@ -35,13 +35,19 @@ function requestSpotifyAuth(body: string): Promise<any> {
 export async function useSpotifyToken() {
   // Case 1: Auth exists in localstorage
   let spotifyAuth = localStorage.getItem("spotifyAuth");
-  if (spotifyAuth) {
+  let spotifyRefresh = localStorage.getItem("spotifyRefreshTime");
+  if (spotifyAuth && spotifyRefresh) {
     let spotifyAuthJSON = JSON.parse(spotifyAuth);
     // If expired we refresh
-    let date = new Date();
-    if (spotifyAuthJSON.expire_date < date) {
+    let spotifyRefreshTime = new Date(spotifyRefresh);
+    let now = new Date();
+    if (spotifyRefreshTime < now) {
       let result = await refreshSpotifyAuth(spotifyAuthJSON.refresh_token);
       localStorage.setItem("spotifyAuth", JSON.stringify(result));
+
+      let refreshDate = new Date();
+      refreshDate.setSeconds(refreshDate.getSeconds() + result.expires_in);
+      localStorage.setItem("spotifyRefreshTime", refreshDate.toString());
 
       return result.access_token;
     }
@@ -62,6 +68,11 @@ export async function useSpotifyToken() {
 
     let result = await requestSpotifyAuth(body);
     localStorage.setItem("spotifyAuth", JSON.stringify(result));
+
+    let refreshDate = new Date();
+    refreshDate.setSeconds(refreshDate.getSeconds() + result.expires_in);
+    localStorage.setItem("spotifyRefreshTime", refreshDate.toString());
+
     return result.access_token;
   }
 
