@@ -76,9 +76,9 @@ function Controls({ media, deviceID }: Props) {
   const [playbackTime, setPlaybackTime] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [debouncedVolume] = useDebounce(volume, 350, { maxWait: 2 });
-  // const [debouncedPlaybackTime] = useDebounce(playbackTime, 350, {
-  //   maxWait: 2,
-  // });
+  const [debouncedPlaybackTime] = useDebounce(playbackTime, 350, {
+    maxWait: 2,
+  });
 
   useEffect(() => {
     console.log("This is called when song is clicked on in song browser.");
@@ -101,13 +101,13 @@ function Controls({ media, deviceID }: Props) {
     });
   }, [debouncedVolume]);
 
-  // useEffect(() => {
-  //   useSpotifyToken().then((token) => {
-  //     var spotifyApi = new Spotify();
-  //     spotifyApi.setAccessToken(token);
-  //     spotifyApi.seek(debouncedPlaybackTime);
-  //   });
-  // }, [debouncedPlaybackTime]);
+  useEffect(() => {
+    useSpotifyToken().then((token) => {
+      var spotifyApi = new Spotify();
+      spotifyApi.setAccessToken(token);
+      spotifyApi.seek(debouncedPlaybackTime);
+    });
+  }, [debouncedPlaybackTime]);
 
   // TODO(Oskar): Perhaps use debounce or similar for this, if user drags
   // the slider then the request will happen too many times.
