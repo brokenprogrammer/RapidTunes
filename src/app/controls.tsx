@@ -14,10 +14,10 @@ import VolumeDown from "@material-ui/icons/VolumeDown";
 import VolumeUp from "@material-ui/icons/VolumeUp";
 import Grid from "@material-ui/core/Grid";
 import { PlaybackMedia } from "./types";
-import { copyFileSync } from "original-fs";
 import Spotify from "spotify-web-api-js";
 import { useSpotifyToken } from "./util/auth";
 import { useDebounce } from "use-debounce";
+import useTrait from "./hooks/useTrait";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -72,23 +72,21 @@ interface Props {
 
 function Controls({ media, deviceID }: Props) {
   const classes = useStyles();
+  const [timer, setTimer] = useState<any>();
   const [volume, setVolume] = useState<number>(30);
-  const [playbackTime, setPlaybackTime] = useState(0);
+  const playbackTime = useTrait(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [debouncedVolume] = useDebounce(volume, 350, { maxWait: 2 });
-  const [debouncedPlaybackTime] = useDebounce(playbackTime, 350, {
-    maxWait: 2,
-  });
 
   useEffect(() => {
     console.log("This is called when song is clicked on in song browser.");
-
     if (media) {
       useSpotifyToken().then((token) => {
         var spotifyApi = new Spotify();
         spotifyApi.setAccessToken(token);
         spotifyApi.play({ uris: [media.id], device_id: deviceID });
         setIsPlaying(true);
+        updateProgressBar(0);
       });
     }
   }, [media]);
@@ -100,14 +98,6 @@ function Controls({ media, deviceID }: Props) {
       spotifyApi.setVolume(debouncedVolume);
     });
   }, [debouncedVolume]);
-
-  useEffect(() => {
-    useSpotifyToken().then((token) => {
-      var spotifyApi = new Spotify();
-      spotifyApi.setAccessToken(token);
-      spotifyApi.seek(debouncedPlaybackTime);
-    });
-  }, [debouncedPlaybackTime]);
 
   // TODO(Oskar): Perhaps use debounce or similar for this, if user drags
   // the slider then the request will happen too many times.
@@ -122,7 +112,15 @@ function Controls({ media, deviceID }: Props) {
     event: any,
     newValue: number | number[]
   ) => {
-    setPlaybackTime(newValue as number);
+    var spotifyApi = new Spotify();
+    spotifyApi.setAccessToken(await useSpotifyToken());
+    spotifyApi.seek(newValue as number);
+
+    if (isPlaying) {
+      updateProgressBar(newValue as number);
+    } else {
+      playbackTime.set(newValue as number);
+    }
   };
 
   const handlePlayClicked = async (event: any) => {
@@ -131,10 +129,20 @@ function Controls({ media, deviceID }: Props) {
 
     if (isPlaying) {
       spotifyApi.pause();
+      clearInterval(timer);
     } else {
       spotifyApi.play();
+      updateProgressBar(playbackTime.get());
     }
     setIsPlaying(!isPlaying);
+  };
+
+  const updateProgressBar = (value: number) => {
+    playbackTime.set(value);
+    clearInterval(timer);
+    setTimer(setInterval(() => {
+      playbackTime.set(playbackTime.get() + 500);
+    }, 500));
   };
 
   return (
@@ -178,10 +186,17 @@ function Controls({ media, deviceID }: Props) {
                   min={0}
                   max={media ? media.media_total_time : 1} // TODO(Oskar): What do we do here?
                   className={classes.playbackTimeSlider}
-                  value={playbackTime}
-                  onChange={async (event, value) =>
+                  value={playbackTime.get()}
+                  onChangeCommitted={async (event, value) =>
                     await handlePlaybackTimeChange(event, value)
                   }
+                  onChange={(event, value) => {
+                    if (isPlaying) {
+                      updateProgressBar(value as number);
+                    } else {
+                      playbackTime.set(value as number);
+                    }
+                  }}
                 />
               </Grid>
             </Grid>
