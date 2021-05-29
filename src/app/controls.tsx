@@ -140,9 +140,11 @@ function Controls({ media, deviceID }: Props) {
   const updateProgressBar = (value: number) => {
     playbackTime.set(value);
     clearInterval(timer);
-    setTimer(setInterval(() => {
-      playbackTime.set(playbackTime.get() + 500);
-    }, 500));
+    setTimer(
+      setInterval(() => {
+        playbackTime.set(playbackTime.get() + 500);
+      }, 500)
+    );
   };
 
   return (
@@ -213,6 +215,8 @@ function Controls({ media, deviceID }: Props) {
             </Grid>
             <Grid item xs>
               <Slider
+                min={0}
+                max={100}
                 className={classes.volumeSlider}
                 value={volume}
                 onChange={async (event, value) =>
