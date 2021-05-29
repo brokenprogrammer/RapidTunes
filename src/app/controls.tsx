@@ -84,7 +84,10 @@ function Controls({ media, deviceID }: Props) {
       useSpotifyToken().then((token) => {
         var spotifyApi = new Spotify();
         spotifyApi.setAccessToken(token);
-        spotifyApi.play({ uris: [media.id], device_id: deviceID });
+        spotifyApi.play({
+          uris: [media.id].concat(media.next_media_ids),
+          device_id: deviceID,
+        });
         setIsPlaying(true);
         updateProgressBar(0);
       });

@@ -48,7 +48,7 @@ interface Props {
 
 function SongBrowser({ media, setMedia }: Props) {
   const [searchValue, setSearchValue] = useState("");
-  const [songs, setSongs] = useState([]);
+  const [songs, setSongs] = useState<SpotifyApi.TrackObjectFull[]>([]);
 
   const classes = useStyles();
 
@@ -62,13 +62,11 @@ function SongBrowser({ media, setMedia }: Props) {
   async function performSpotifySearch(value: string) {
     var spotifyApi = new Spotify();
     spotifyApi.setAccessToken(await useSpotifyToken());
-
     spotifyApi.searchTracks(value).then(
-      function (data: any) {
-        console.log(data.tracks.items);
+      (data) => {
         setSongs(data.tracks.items);
       },
-      function (err: any) {
+      (err: any) => {
         console.log("Something went wrong!", err);
       }
     );
@@ -86,17 +84,30 @@ function SongBrowser({ media, setMedia }: Props) {
 
       <Grid container spacing={3}>
         {/* // TODO(Oskar): Do not use any type for value as its bad practice. */}
-        {songs.map((value: any, index: number) => {
-          console.log(value);
+        {songs.map((value: SpotifyApi.TrackObjectFull, index: number) => {
+          // console.log(value);
           // TODO(Oskar): Allow more than tracks later
           if (value.type === "track") {
+            let indexOfMedia = songs.indexOf(value);
             let media: PlaybackMedia = {
               id: value.uri,
+              track_id: value.id,
+              artist_id: value.artists[0].id,
               media_type: MediaType.Spotify,
               media_title: value.name,
               media_author: value.artists[0].name,
               thumbnail_url: value.album.images[0].url,
               media_total_time: value.duration_ms,
+              next_media_ids: [...songs]
+                .map((value: SpotifyApi.TrackObjectFull) => {
+                  return value.uri;
+                })
+                .filter((v) => {
+                  if (v !== value.uri) {
+                    return true;
+                  }
+                  return false;
+                }),
             };
 
             return (

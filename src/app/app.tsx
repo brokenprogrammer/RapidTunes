@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { PlaybackMedia } from "./types";
+import { MediaType, PlaybackMedia } from "./types";
 import Controls from "./controls";
 import SongBrowser from "./songbrowser";
 import Script from "react-load-script";
@@ -8,12 +8,46 @@ import { useSpotifyToken } from "./util/auth";
 import SpotifyAPI from "spotify-web-api-js";
 
 const MainView = () => {
-  const [media, setMedia] = useState<PlaybackMedia>();
+  const [media, _setMedia] = useState<PlaybackMedia>();
   const [spotifyPlayer, setSpotifyPlayer] =
     useState<Spotify.Player | null>(null);
   const [spotifyAPI, setSpotifyAPI] =
     useState<SpotifyAPI.SpotifyWebApiJs | null>(null);
   const [spotifyDeviceId, setSpotifyDeviceId] = useState<string>("");
+  const myMediaRef = React.useRef(media);
+
+  const setMedia = (value: PlaybackMedia) => {
+    myMediaRef.current = value;
+    _setMedia(value);
+  };
+
+  const handleStateChange = (state: any) => {
+    if (state.track_window.current_track.id !== myMediaRef.current?.track_id) {
+      console.log("CHANGING SONG");
+      console.log(myMediaRef.current);
+      let value: any = state.track_window.current_track;
+      let actualMedia: PlaybackMedia = {
+        id: value.uri,
+        track_id: value.id,
+        artist_id: value.artists[0].id,
+        media_type: MediaType.Spotify,
+        media_title: value.name,
+        media_author: value.artists[0].name,
+        thumbnail_url: value.album.images[0].url,
+        media_total_time: value.duration_ms,
+        next_media_ids: myMediaRef.current
+          ? myMediaRef.current.next_media_ids.filter((v) => {
+              if (v !== value.uri) {
+                return true;
+              }
+              return false;
+            })
+          : [],
+      };
+      console.log(actualMedia);
+      setMedia(actualMedia);
+    }
+  };
 
   const handleScriptCreate = () => {
     console.log("Created");
@@ -56,9 +90,7 @@ const MainView = () => {
         console.error(message);
       });
 
-      player.addListener("player_state_changed", (state) => {
-        console.log(state);
-      });
+      player.addListener("player_state_changed", handleStateChange);
 
       player.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id);
