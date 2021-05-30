@@ -2,6 +2,7 @@ export enum MediaType {
 	Unknown = 0,
 	YouTube = 1,
 	Spotify = 2,
+	SoundCloud = 3
 }
 
 export interface PlaybackMedia {

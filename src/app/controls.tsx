@@ -13,7 +13,7 @@ import Slider from "@material-ui/core/Slider";
 import VolumeDown from "@material-ui/icons/VolumeDown";
 import VolumeUp from "@material-ui/icons/VolumeUp";
 import Grid from "@material-ui/core/Grid";
-import { PlaybackMedia } from "./types";
+import { MediaType, PlaybackMedia } from "./types";
 import Spotify from "spotify-web-api-js";
 import { useSpotifyToken } from "./util/auth";
 import { useDebounce } from "use-debounce";
@@ -80,8 +80,6 @@ function Controls({ media, deviceID }: Props) {
 	const [debouncedVolume] = useDebounce(volume, 350, { maxWait: 2 });
 
 	const spotifyPlayer: SpotifyPlayer = new SpotifyPlayer(
-		volume,
-		setVolume,
 		playbackTime,
 		isPlaying,
 		setIsPlaying,
@@ -92,7 +90,15 @@ function Controls({ media, deviceID }: Props) {
 	useEffect(() => {
 		console.log("This is called when song is clicked on in song browser.");
 		if (media) {
-			spotifyPlayer.handleSongClicked(media, deviceID as string);
+			switch ((media as PlaybackMedia).media_type) {
+				case MediaType.YouTube:
+					break;
+				case MediaType.Spotify:
+					spotifyPlayer.handleSongClicked(media, deviceID as string);
+					break;
+				case MediaType.SoundCloud:
+					break;
+			}
 		}
 	}, [media]);
 
@@ -104,7 +110,7 @@ function Controls({ media, deviceID }: Props) {
 		event: any,
 		newValue: number | number[]
 	) => {
-		spotifyPlayer.handleVolumeChange(event, newValue);
+		setVolume(newValue as number);
 	};
 
 	const handlePlaybackTimeChangeCommitted = async (

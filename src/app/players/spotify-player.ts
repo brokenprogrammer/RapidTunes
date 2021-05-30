@@ -5,8 +5,6 @@ import Spotify from "spotify-web-api-js";
 
 export class SpotifyPlayer implements Player {
 
-    volume: number = 30;
-    setVolume: any;
     playbackTime: any;
     isPlaying: boolean = false;
     setIsPlaying: any;
@@ -14,16 +12,12 @@ export class SpotifyPlayer implements Player {
     setTimer: any;
 
     constructor(
-        volume: number,
-        setVolume: any,
         playbackTime: any,
         isPlaying: boolean,
         setIsPlaying: any,
         timer: any,
         setTimer: any
     ) {
-        this.volume = volume;
-        this.setVolume = setVolume;
         this.playbackTime = playbackTime;
         this.isPlaying = isPlaying;
         this.setIsPlaying = setIsPlaying;
@@ -41,10 +35,6 @@ export class SpotifyPlayer implements Player {
 				this.updateProgressBar(0);
             });
         }
-    }
-
-    handleVolumeChange(event: any, newValue: number | number[]): void {
-        this.setVolume(newValue);
     }
 
     changeVolume(volume: number) {
