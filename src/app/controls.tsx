@@ -19,6 +19,7 @@ import { useSpotifyToken } from "./util/auth";
 import { useDebounce } from "use-debounce";
 import useTrait from "./hooks/useTrait";
 import { SpotifyPlayer } from "./players/spotify-player";
+import { Player } from "./players/player";
 
 const useStyles = makeStyles((theme) => ({
 	text: {
@@ -79,6 +80,8 @@ function Controls({ media, deviceID }: Props) {
 	const [timer, setTimer] = useState<any>();
 	const [debouncedVolume] = useDebounce(volume, 350, { maxWait: 2 });
 
+	const [currentPlayer, setCurrentPlayer] = useState<Player>();
+
 	const spotifyPlayer: SpotifyPlayer = new SpotifyPlayer(
 		playbackTime,
 		isPlaying,
@@ -90,20 +93,24 @@ function Controls({ media, deviceID }: Props) {
 	useEffect(() => {
 		console.log("This is called when song is clicked on in song browser.");
 		if (media) {
+			clearInterval(timer);
 			switch ((media as PlaybackMedia).media_type) {
 				case MediaType.YouTube:
 					break;
 				case MediaType.Spotify:
+					setCurrentPlayer(spotifyPlayer);
 					spotifyPlayer.handleSongClicked(media, deviceID as string);
 					break;
 				case MediaType.SoundCloud:
+					break;
+				default:
 					break;
 			}
 		}
 	}, [media]);
 
 	useEffect(() => {
-		spotifyPlayer.changeVolume(debouncedVolume);
+		currentPlayer?.changeVolume(debouncedVolume);
 	}, [debouncedVolume]);
 
 	const handleVolumeChange = async (
@@ -117,18 +124,18 @@ function Controls({ media, deviceID }: Props) {
 		event: any,
 		newValue: number | number[]
 	) => {
-		spotifyPlayer.handlePlaybackTimeChangeCommitted(event, newValue);
+		currentPlayer?.handlePlaybackTimeChangeCommitted(event, newValue);
 	};
 
 	const handlePlaybackTimeChange = async (
 		event: any,
 		newValue: number | number[]
 	) => {
-		spotifyPlayer.handlePlaybackTimeChange(event, newValue);
+		currentPlayer?.handlePlaybackTimeChange(event, newValue);
 	};
 
 	const handlePlayClicked = async (event: any) => {
-		spotifyPlayer.handlePlayClicked(event);
+		currentPlayer?.handlePlayClicked(event);
 	};
 
 	return (
