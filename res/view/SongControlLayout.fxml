@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ RapidTunes.
+ The music application to help you use all your music sources in one place.
+
+ The MIT License (MIT)
+
+ Copyright (C) 2017 The RapidTunes
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+-->
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+
+<?import org.controlsfx.glyphfont.Glyph?>
+
+<HBox alignment="CENTER" prefHeight="50.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="me.oskarmendel.view.SongController">
+   <children>
+      <VBox id="logoBG" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="songSong" text="%song.songName">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="songArtist" text="%song.artistName" />
+         </children>
+      </VBox>
+      <HBox prefHeight="50.0">
+		  <HBox.margin>
+		      <Insets left="25.0" />
+		      <Insets right="25.0" />
+	      </HBox.margin>
+	  </HBox>
+      <Button fx:id="songPrev" mnemonicParsing="false">
+      	<graphic>
+      		<Glyph fx:id="songPrevIco" fontFamily="FontAwesome" icon="BACKWARD"/>
+      	</graphic>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </Button>
+      <Button fx:id="songPlay" mnemonicParsing="false">
+      	<graphic>
+        	<Glyph fx:id="songPlayIco" fontFamily="FontAwesome" icon="PLAY"/>
+        </graphic>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </Button>
+      <Button fx:id="songNext" mnemonicParsing="false">
+      	<graphic>
+      		<Glyph fx:id="songNextIco" fontFamily="FontAwesome" icon="FORWARD"/>
+      	</graphic>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </Button>
+      <Label fx:id="songCurrentTime" text=" 00:00:00">
+         <HBox.margin>
+            <Insets left="10.0" />
+            <Insets right="10.0" />
+         </HBox.margin>
+      </Label>
+      <ProgressBar fx:id="songProgressBar" HBox.hgrow="ALWAYS" prefHeight="18.0" prefWidth="200.0" progress="0.0">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </ProgressBar>
+      <Label fx:id="songTotalTime" text="00:00:00">
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="50.0">
+      	<children>
+	      <CheckBox fx:id="songShuffle" mnemonicParsing="false">
+	         <graphic>
+	      		<Glyph fx:id="songShuffleIco" fontFamily="FontAwesome" icon="RANDOM"/>
+	      	 </graphic>
+	         <HBox.margin>
+	            <Insets left="10.0" />
+	         </HBox.margin>
+	      </CheckBox>
+	      <CheckBox fx:id="songRepeat" mnemonicParsing="false">
+	      	 <graphic>
+	      		<Glyph fx:id="songRepeatIco" fontFamily="FontAwesome" icon="REPEAT"/>
+	      	 </graphic>
+	      </CheckBox>
+	      <Slider fx:id="songVolume" prefHeight="14.0" prefWidth="80.0">
+	         <HBox.margin>
+	            <Insets left="10.0" />
+	         </HBox.margin>
+	      </Slider>
+      	</children>
+      </HBox>
+   </children>
+</HBox>
